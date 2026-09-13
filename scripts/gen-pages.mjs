@@ -57,17 +57,40 @@
 //   rank          integer, lower sorts earlier in the grids
 import { writeFileSync, mkdirSync, readFileSync, existsSync } from "node:fs";
 import { dirname, resolve } from "node:path";
+import { createHash } from "node:crypto";
 import {
   SITE, esc, xmlEsc, isPlayable, isSold, emulatorFor, screenshotFile, isNew,
   NEW_BADGE, FREE_BADGE, posterCard, byoCard, sortPlayable, categoryCounts,
   categoryChips, jsonText, maxDate, toRfc822, itemListLd, ERA_ORDER, ERA_LABELS,
 } from "./catalogue.mjs";
 import {
-  BRAND, TAGLINE, JS_V, head, header, footer, nav, page, crumbs, breadcrumbLd,
-  monthYear, adsAllowed,
+  BRAND, TAGLINE, head, header, footer, nav, page, crumbs, breadcrumbLd,
+  monthYear, adsAllowed, setAssetVersions, av,
 } from "./site.mjs";
 
 const ROOT = resolve(process.cwd(), "public");
+
+// Content-hash every asset the pages reference, so a changed file always gets a
+// changed URL and a returning visitor never runs yesterday's JavaScript against
+// today's HTML.
+const ASSETS = ["style.css", "macbin.js", "mac-player.js", "mac-loader.js", "grid-filter.js"];
+setAssetVersions(Object.fromEntries(ASSETS.map((f) => {
+  const p = resolve(ROOT, f);
+  return [f, existsSync(p) ? createHash("sha256").update(readFileSync(p)).digest("hex").slice(0, 8) : "0"];
+})));
+
+// What the file loader boots, everywhere it appears.
+//
+// Always a Macintosh IIfx under Basilisk II, regardless of the era the
+// surrounding page is about, for two reasons. Mini vMac has no host file
+// sharing at all, so on a Mac Plus a dropped .sit has nowhere to go, whereas
+// Basilisk II mounts a shared folder that appears on the desktop as "The
+// Outside World". And of the Basilisk machines, the IIfx ROM is the one that
+// actually boots this System 7.5 install: with the Quadra 650 ROM the machine
+// reads 31 KB, decides there is nothing bootable, and sits on a black screen
+// with no error anywhere.
+const LOADER_MACHINE = "Mac-IIfx";
+const LOADER_DISK = "system-7.5.3";
 const DATA = resolve(process.cwd(), "scripts", "app-pages.json");
 const UTILS = resolve(process.cwd(), "scripts", "utility-pages.json");
 const STATIC = resolve(process.cwd(), "scripts", "static-pages.json");
@@ -194,7 +217,8 @@ function playerBlock(p) {
     <div id="mac-loader"
          data-slug="${esc(p.slug)}"
          data-app-name="${esc(p.appName)}"
-         data-machine="${esc(p.machine)}"
+         data-machine="${LOADER_MACHINE}"
+         data-disk="${LOADER_DISK}"
          data-accepts="${esc(accepts.join(","))}">
       <noscript><p class="muted">JavaScript is required to run the emulator.</p></noscript>
     </div>`;
@@ -342,9 +366,9 @@ function runPage(p) {
 </main>
 
 ${footer()}`;
-  const scripts = `<script src="/macbin.js?v=${JS_V}"></script>
-<script src="/mac-player.js?v=${JS_V}"></script>${playable ? "" : `
-<script src="/mac-loader.js?v=${JS_V}"></script>`}`;
+  const scripts = `<script src="/macbin.js?v=${av("macbin.js")}"></script>
+<script src="/mac-player.js?v=${av("mac-player.js")}"></script>${playable ? "" : `
+<script src="/mac-loader.js?v=${av("mac-loader.js")}"></script>`}`;
   return page({ headHtml, bodyHtml: body, scripts });
 }
 
@@ -372,7 +396,7 @@ function playPage(p) {
 </div>`;
   return page({
     headHtml, bodyHtml: body,
-    scripts: `<script src="/mac-player.js?v=${JS_V}"></script>`,
+    scripts: `<script src="/mac-player.js?v=${av("mac-player.js")}"></script>`,
   });
 }
 
@@ -391,7 +415,7 @@ function embedPage(p) {
   });
   const body = `${macMount(p, { mode: "fallback" })}
 <div class="embedbar"><a href="${SITE}/play/${p.slug}/" target="_blank" rel="noopener">▶ Full speed on ${BRAND}</a></div>`;
-  return page({ headHtml, bodyHtml: body, scripts: `<script src="/mac-player.js?v=${JS_V}"></script>` });
+  return page({ headHtml, bodyHtml: body, scripts: `<script src="/mac-player.js?v=${av("mac-player.js")}"></script>` });
 }
 
 // ── grids and hubs ─────────────────────────────────────────────────────────
@@ -449,7 +473,7 @@ ${guides.map((p) => `      <li><a href="/run/${p.slug}/">${esc(p.appName)}</a> <
 </main>
 
 ${footer()}`;
-  return page({ headHtml, bodyHtml: body, scripts: `<script src="/grid-filter.js?v=${JS_V}"></script>` });
+  return page({ headHtml, bodyHtml: body, scripts: `<script src="/grid-filter.js?v=${av("grid-filter.js")}"></script>` });
 }
 
 function homePage() {
@@ -520,7 +544,7 @@ ${utils.filter((u) => u.onHome).map((u) => `      <a class="link-card" href="/${
 </main>
 
 ${footer()}`;
-  return page({ headHtml, bodyHtml: body, scripts: `<script src="/grid-filter.js?v=${JS_V}"></script>` });
+  return page({ headHtml, bodyHtml: body, scripts: `<script src="/grid-filter.js?v=${av("grid-filter.js")}"></script>` });
 }
 
 function collectionPage(era) {
@@ -574,7 +598,7 @@ const ERA_ADVICE = {
 
 const ERA_BLURB = {
   "system-6": "Black and white, 512×342, and a machine that booted from a floppy in under twenty seconds. System 6 ran on the Mac Plus and SE — the compact all-in-one Macs with the handle on top. Emulated here in Mini vMac, which is small and fast enough to run smoothly on a phone.",
-  "system-7": "The Macintosh most people actually remember: colour, the Apple menu you could put things in, aliases, and a Finder that could do more than one thing at once. System 7 ran from 1991 to 1997 and covers the school computer lab, the CD-ROM boom and most of the shareware era. Emulated here in Basilisk II on a Quadra 650.",
+  "system-7": "The Macintosh most people actually remember: colour, the Apple menu you could put things in, aliases, and a Finder that could do more than one thing at once. System 7 ran from 1991 to 1997 and covers the school computer lab, the CD-ROM boom and most of the shareware era. Emulated here in Basilisk II on a Macintosh IIfx.",
   "mac-os-8": "Platinum, contextual menus, and a Finder that finally used threads. Mac OS 8 arrived in 1997 and is the last classic system that still feels like the old Mac rather than a stepping stone to OS X.",
   "mac-os-9": "The end of the line for the classic Mac OS, and the fastest of them. Mac OS 9 ran on PowerPC hardware, so it is emulated here in SheepShaver — heavier than the 68k emulators, and worth it for the titles that need it.",
 };
@@ -613,7 +637,8 @@ function utilityPage(u) {
     <div id="mac-loader"
          data-slug="${esc(u.slug)}"
          data-app-name="${esc(u.crumb)}"
-         data-machine="${esc(u.machine || "Quadra-650")}"
+         data-machine="${esc(u.machine || LOADER_MACHINE)}"
+         data-disk="${esc(u.bootDisk || LOADER_DISK)}"
          data-accepts="${esc((u.accepts || []).join(","))}">
       <noscript><p class="muted">JavaScript is required to run the emulator.</p></noscript>
     </div>
@@ -625,9 +650,9 @@ ${sectionsHtml(u.sections)}${faqHtml(u)}${relatedHtml(u.related)}
 ${footer()}`;
   return page({
     headHtml, bodyHtml: body,
-    scripts: `<script src="/macbin.js?v=${JS_V}"></script>
-<script src="/mac-player.js?v=${JS_V}"></script>
-<script src="/mac-loader.js?v=${JS_V}"></script>`,
+    scripts: `<script src="/macbin.js?v=${av("macbin.js")}"></script>
+<script src="/mac-player.js?v=${av("mac-player.js")}"></script>
+<script src="/mac-loader.js?v=${av("mac-loader.js")}"></script>`,
   });
 }
 

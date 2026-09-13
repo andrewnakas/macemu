@@ -9,8 +9,10 @@
 // does not host looks exactly like a page that delivers one, right up until a
 // visitor clicks — and, on the sister site, right up until an ad reviewer did.
 import { readFileSync, existsSync, readdirSync, statSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { resolve, join } from "node:path";
 import { isPlayable, isSold, emulatorFor, EMULATORS, screenshotFile, CATEGORY_ORDER, ERA_ORDER, SITE } from "./catalogue.mjs";
+import { ISOLATE_CONTENT } from "./site.mjs";
 
 const ROOT = process.cwd();
 const PUB = resolve(ROOT, "public");
@@ -133,10 +135,22 @@ section("Internal links");
 // isolated page it will not render, and a reviewer loading the site sees a page
 // with ad markup and no ads — which reads as broken, or worse, as cloaking.
 section("Isolation and ads");
+console.log(`  mode: content pages ARE ${ISOLATE_CONTENT ? "" : "NOT "}cross-origin isolated (ISOLATE_CONTENT in site.mjs)`);
+if (ISOLATE_CONTENT && !existsSync(resolve(ROOT, "functions", "_middleware.js"))) {
+  fail("ISOLATE_CONTENT is true but functions/_middleware.js is missing. Content pages would fall back to the slow service-worker path, which has been observed freezing the renderer.");
+}
+if (!ISOLATE_CONTENT && existsSync(resolve(ROOT, "functions", "_middleware.js"))) {
+  fail("ISOLATE_CONTENT is false but functions/_middleware.js still isolates the site. Ads would be blocked on every page.");
+}
 for (const file of htmlFiles) {
   const html = readFileSync(resolve(PUB, file), "utf8");
   const isPlay = file.startsWith("play/");
   const isEmbed = file.startsWith("embed/");
+  // While the whole site is isolated, an ad tag anywhere is a tag that cannot
+  // render — which reads to a reviewer as a broken page, or as cloaking.
+  if (ISOLATE_CONTENT && /adsbygoogle|pagead2\.googlesyndication/.test(html)) {
+    fail(`${file}: carries an ad tag while ISOLATE_CONTENT is true. COEP blocks ad iframes, so it could never render.`);
+  }
   if ((isPlay || isEmbed) && /adsbygoogle|pagead2\.googlesyndication/.test(html)) {
     fail(`${file}: carries an ad tag. /play/ is cross-origin isolated (ads cannot render) and /embed/ runs on other people's sites.`);
   }
@@ -151,9 +165,33 @@ for (const file of htmlFiles) {
   }
 }
 {
-  const hdr = read("_headers") || "";
-  if (/^\s*Cross-Origin-Embedder-Policy/mi.test(hdr.split("\n").slice(0, 40).join("\n"))) {
-    fail("_headers appears to set a site-wide COEP. That blocks every cross-origin iframe, ad iframes included, and cannot be removed by _headers later — use a Pages Function middleware on the specific route.");
+  // Parse _headers into rules rather than grepping the whole file. The earlier
+  // version scanned the first forty lines for a COEP directive, which started
+  // failing the moment a legitimate per-path COEP rule moved into that window.
+  // What actually matters is which PATH a directive sits under.
+  const rules = new Map();
+  let current = null;
+  for (const line of (read("_headers") || "").split("\n")) {
+    if (!line.trim() || line.trim().startsWith("#")) continue;
+    if (!/^\s/.test(line)) { current = line.trim(); rules.set(current, []); }
+    else if (current) rules.get(current).push(line.trim());
+  }
+  const directives = (path) => (rules.get(path) || []).join("\n");
+
+  // Even when the whole site is isolated, the isolation belongs in a Function
+  // and not here: _headers can only ADD headers, so a COEP set here could never
+  // be lifted from /embed/, and embeds would break on every host page.
+  if (/Cross-Origin-Embedder-Policy/i.test(directives("/*"))) {
+    fail("_headers sets COEP under the /* catch-all. _headers can only add headers, so /embed/ could never opt out and embeds would break everywhere. Use functions/_middleware.js, which can exclude a path.");
+  }
+  // The mirror image: a worker script loaded from an isolated document must
+  // carry COEP itself, or Chrome refuses it with ERR_BLOCKED_BY_RESPONSE and
+  // every title fails to boot with nothing useful in the console.
+  if (!/require-corp/i.test(directives("/mac/*"))) {
+    fail("_headers does not set Cross-Origin-Embedder-Policy: require-corp on /mac/*. The emulator's worker is loaded from the isolated /play/ pages and would be blocked.");
+  }
+  if (!/Service-Worker-Allowed:\s*\//i.test(directives("/mac/emulator-service-worker.js"))) {
+    fail("_headers does not set Service-Worker-Allowed: / on /mac/emulator-service-worker.js. The script lives under /mac/ and could not claim /play/, so fallback mode would fail on exactly the browsers that need it.");
   }
   if (!existsSync(resolve(ROOT, "functions", "play", "_middleware.js"))) fail("functions/play/_middleware.js is missing — /play/ would not be cross-origin isolated and the emulator would silently run in slow mode");
   if (!existsSync(resolve(ROOT, "functions", "embed", "_middleware.js"))) fail("functions/embed/_middleware.js is missing — embeds would be blocked by X-Frame-Options");
@@ -240,6 +278,31 @@ section("Page depth");
     const words = text.split(/\s+/).filter(Boolean).length;
     if (words < MIN_WORDS) warn(`${file}: only ~${words} words. Thin pages are what "low value content" means.`);
   }
+}
+
+// ── 9b. cache-busting versions match the files on disk ────────────────────
+// /*.js is cached for a day, so a stale ?v= pins every returning visitor to
+// yesterday's script against today's HTML — which is exactly the deploy where
+// it matters. The versions are content hashes; this checks nobody hand-edited
+// a page or forgot to re-run the generator after touching a script.
+section("Asset versions");
+{
+  const hashOf = (f) => {
+    const p = resolve(PUB, f);
+    return existsSync(p) ? createHash("sha256").update(readFileSync(p)).digest("hex").slice(0, 8) : null;
+  };
+  const seen = new Map();
+  for (const file of htmlFiles) {
+    const html = readFileSync(resolve(PUB, file), "utf8");
+    for (const m of html.matchAll(/["'(]\/([a-z0-9-]+\.(?:js|css))\?v=([a-f0-9]+)["')]/g)) {
+      const [, asset, ver] = m;
+      const want = hashOf(asset);
+      if (!want) { fail(`${file} references /${asset}, which does not exist`); continue; }
+      if (ver !== want) fail(`${file}: /${asset}?v=${ver} is stale — the file now hashes to ${want}. Re-run the generator.`);
+      seen.set(asset, true);
+    }
+  }
+  console.log(`  ${seen.size} versioned assets checked`);
 }
 
 // ── 10. assets referenced by the chrome exist ─────────────────────────────

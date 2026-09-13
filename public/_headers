@@ -18,8 +18,15 @@
 
 # The emulator runtime: fixed filenames with a ?v= query, so the bytes behind a
 # name can change on deploy. Short cache, revalidated.
+#
+# COEP here is not optional and not a copy-paste of the /play/ rule. A dedicated
+# worker script loaded from a cross-origin-isolated document must ITSELF be
+# served with COEP, or Chrome refuses it with ERR_BLOCKED_BY_RESPONSE — so
+# without this line every /play/ page loads, shows its Start button, and then
+# fails to boot with nothing useful in the console.
 /mac/*
   Cache-Control: public, max-age=3600, must-revalidate
+  Cross-Origin-Embedder-Policy: require-corp
   Cross-Origin-Resource-Policy: same-origin
 
 # Disk manifests change whenever a title's image is rebuilt.

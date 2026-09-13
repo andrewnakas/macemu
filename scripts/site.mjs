@@ -11,8 +11,14 @@ import { SITE, esc } from "./catalogue.mjs";
 
 export const BRAND = "macemu";
 export const TAGLINE = "Classic Mac software, running in your browser tab";
-export const CSS_V = 1;   // bump when public/style.css changes
-export const JS_V = 1;    // bump when any public/*.js changes
+// Asset cache-busting versions, keyed by filename. These are CONTENT HASHES,
+// computed by the generator and handed in here, not numbers somebody remembers
+// to bump. A hand-maintained version is wrong exactly when it matters most:
+// the deploy that changes behaviour is the deploy where a stale ?v= pins every
+// returning visitor to the old file, and /*.js is cached for a day.
+let ASSET_V = {};
+export function setAssetVersions(map) { ASSET_V = map; }
+export const av = (file) => ASSET_V[file] || "0";
 
 // Google Analytics. Empty means no tag is emitted at all — better than a
 // half-configured property quietly collecting nothing. Fill in after the
@@ -25,10 +31,24 @@ export const GA_ID = "";
 // filled in, ADS_OK below decides which pages may carry it.
 export const ADSENSE_CLIENT = "";
 
+// Whether ordinary content pages are cross-origin isolated.
+//
+// true  — the emulator runs at full speed on every page, and no page may carry
+//         advertising, because COEP blocks ad iframes outright.
+// false — /run/ becomes a screenshot with a Launch button pointing at /play/,
+//         which stays isolated on its own; content pages are then free to carry
+//         ads.
+//
+// This is the single switch. functions/_middleware.js applies it at the edge
+// and check-consistency.mjs enforces whichever mode it names, so the headers,
+// the page layout and the ad policy cannot drift apart.
+export const ISOLATE_CONTENT = true;
+
 // Ads are never allowed on a cross-origin-isolated page (COEP blocks the ad
 // iframe outright — one of the three things that sank exebrowser's AdSense
 // application) and never inside an embed someone put on their own site.
-export const adsAllowed = (kind) => !!ADSENSE_CLIENT && kind === "content";
+export const adsAllowed = (kind) =>
+  !!ADSENSE_CLIENT && kind === "content" && !ISOLATE_CONTENT;
 
 const gaHtml = () => (GA_ID ? `
 <script async src="https://www.googletagmanager.com/gtag/js?id=${GA_ID}" crossorigin="anonymous"></script>
@@ -73,7 +93,7 @@ export function head({
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 <meta name="theme-color" content="#d8d4cc" />
 <link rel="alternate" type="application/rss+xml" title="${BRAND} — new titles and posts" href="/feed.xml" />
-<link rel="stylesheet" href="/style.css?v=${CSS_V}" />${adsHtml(kind)}${gaHtml()}${extraHead}
+<link rel="stylesheet" href="/style.css?v=${av("style.css")}" />${adsHtml(kind)}${gaHtml()}${extraHead}
 ${ld.filter(Boolean).join("\n")}`;
 }
 

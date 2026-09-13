@@ -48,6 +48,10 @@
     var stage = document.createElement("div");
     stage.className = "embed-stage";
     stage.style.aspectRatio = cfg.width + " / " + cfg.height;
+    // A Macintosh screen has a fixed size. Letting the stage stretch past it
+    // just paints black bars around a small picture, so cap it at the real
+    // resolution and centre it.
+    stage.style.maxWidth = cfg.width + "px";
 
     var screen = document.createElement("div");
     screen.className = "embed-console-wrap";
@@ -91,6 +95,7 @@
       height: parseInt(d.height, 10) || 480,
       ramMB: d.ram ? parseInt(d.ram, 10) : undefined,
       mode: d.mode || "isolated",
+      persist: d.persist === "true",
     };
   }
 
@@ -102,8 +107,28 @@
     ui.progress.hidden = false;
     ui.hint.textContent = "Starting…";
 
+    // A missing disk chunk does not raise an error — the emulator simply waits
+    // for bytes that never arrive. Without a watchdog that failure looks
+    // identical to a slow machine, and the visitor stares at a progress bar
+    // until they leave.
+    var watchdog = setTimeout(function () {
+      if (global.__macBooted) return;
+      ui.progress.hidden = true;
+      ui.overlay.hidden = false;
+      ui.btn.disabled = false;
+      ui.btn.innerHTML = "Try again";
+      ui.hint.innerHTML = "This machine did not finish starting. That usually means a disk is " +
+        "incomplete on our side rather than anything wrong at yours. " +
+        (cfg.slug ? '<a href="/contact/" style="color:#9cf">Tell us</a> and it gets fixed.' : "");
+    }, 90000);
+
     ui.booted = loadRuntime().then(function (MacEmulator) {
-      var disks = extra.disks || (cfg.disk ? [{ name: cfg.disk, persistent: true }] : []);
+      // Persistence is opt-in per page (data-persist="true"). It routes the
+      // disk through an origin-private-file-system saver, which is what a
+      // hosted game wants so progress survives, and which has been seen to stop
+      // a machine booting at all. Off unless a page asks for it.
+      var disks = extra.disks ||
+        (cfg.disk ? [{ name: cfg.disk, persistent: cfg.persist }] : []);
       if (!disks.length && !(extra.diskFiles && extra.diskFiles.length)) {
         // A machine with no disk boots to a blinking floppy icon, which looks
         // exactly like a bug. Say what is actually wrong.
@@ -123,6 +148,7 @@
           if (total) ui.fill.style.width = Math.round((done / total) * 100) + "%";
         },
         onLoaded: function (h) {
+          clearTimeout(watchdog);
           ui.overlay.hidden = true;
           ui.progress.hidden = true;
           global.__macBooted = true;
@@ -134,6 +160,8 @@
           if (typeof extra.onLoaded === "function") extra.onLoaded(h);
         },
         onError: function (message) {
+          clearTimeout(watchdog);
+          global.__macBootError = message;
           ui.progress.hidden = true;
           ui.btn.disabled = false;
           ui.overlay.hidden = false;
@@ -143,10 +171,12 @@
       state.instances.push(handle);
       return handle.ready;
     }).catch(function (err) {
+      clearTimeout(watchdog);
+      global.__macBootError = err && err.message ? err.message : String(err);
       ui.progress.hidden = true;
       ui.btn.disabled = false;
       ui.overlay.hidden = false;
-      ui.hint.textContent = "Could not start: " + (err && err.message ? err.message : String(err));
+      ui.hint.textContent = "Could not start: " + global.__macBootError;
       ui.booted = null;
       if (global.console) console.error("[macemu]", err);
       throw err;

@@ -1367,3 +1367,38 @@ kbd, .controls-table kbd {
   display: grid; gap: .8rem;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 }
+
+/* The dropzone's two actions sat on top of each other, so a real click landed
+   on "Choose a file" no matter where it was aimed. */
+.dz-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  margin: 0 0 0.4rem;
+}
+.linklike {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--accent);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.linklike:hover { color: var(--accent-hover); }
+
+/* The `hidden` attribute loses to any class that sets `display`, because the UA
+   stylesheet's [hidden] rule has lower specificity than a class selector. That
+   meant `overlay.hidden = true` left the Play overlay sitting on top of a
+   perfectly good running Macintosh, which looked exactly like a machine that
+   never started. */
+[hidden] { display: none !important; }
+
+/* Centre the emulated screen inside its stage, and keep it crisp: a 1991
+   Macintosh at 640×480 smoothed by the browser looks like a photograph of a
+   Macintosh rather than a Macintosh. */
+.embed-stage { margin-inline: auto; }
+.embed-console-wrap { display: grid; place-items: center; height: 100%; }
+.embed-console-wrap canvas { image-rendering: pixelated; max-width: 100%; }

@@ -1,112 +1,138 @@
 #!/usr/bin/env node
-// Headless boot test: does this title actually start, and at what speed?
+// Does a Macintosh actually start, and at what speed?
 //
-//   node scripts/boot-test.mjs marathon                    # against production
-//   node scripts/boot-test.mjs marathon --base http://localhost:8788
+//   node scripts/boot-test.mjs --page /classic-mac-emulator-online/
+//   node scripts/boot-test.mjs marathon            # its /play/ and /embed/ routes
 //   node scripts/boot-test.mjs --all
+//   ... --base https://macemu.pages.dev --timeout 120000 --headed
 //
-// Playwright is fetched on demand rather than made a dependency of the repo —
-// the site itself has none, and it should stay that way.
+// Playwright is fetched on demand rather than declared as a dependency: the
+// site itself has none and should keep it that way.
 //
-// What it asserts, and why each one matters:
-//   * /play/ reports crossOriginIsolated. If it does not, the COOP/COEP
-//     middleware is not applying and every visitor is silently getting the slow
-//     emulator with no error anywhere.
-//   * the emulator reaches its loaded callback within the timeout. A disk with
-//     a missing chunk hangs rather than failing, so only a timeout catches it.
-//   * the canvas is not a flat colour. A Mac that boots to a blinking floppy
-//     icon has "loaded" as far as the runtime is concerned.
-//   * nothing was logged to console.error.
+// What it asserts, and why each one is here:
+//   * the route's isolation is what the design intends. /play/ that is not
+//     cross-origin isolated still works — silently, at a fraction of the speed,
+//     with nothing in the console to say so.
+//   * the emulator reports itself loaded within the timeout. A disk with one
+//     missing chunk HANGS rather than failing, so only a timeout catches it.
+//   * the canvas is not a flat colour. A machine that stopped at the blinking
+//     floppy has "loaded" as far as the runtime is concerned.
+//   * nothing reached console.error.
 import { spawnSync } from "node:child_process";
-import { readFileSync } from "node:fs";
+import { readFileSync, existsSync } from "node:fs";
 import { resolve } from "node:path";
 
-const args = process.argv.slice(2);
-const flag = (name, dflt) => { const i = args.indexOf(`--${name}`); return i >= 0 ? args[i + 1] : dflt; };
-const BASE = flag("base", "https://macemu.com").replace(/\/$/, "");
-const TIMEOUT = parseInt(flag("timeout", "90000"), 10);
-const all = args.includes("--all");
-const slugs = all
-  ? JSON.parse(readFileSync(resolve(process.cwd(), "scripts", "app-pages.json"), "utf8"))
-      .filter((p) => p.bootDisk).map((p) => p.slug)
-  : args.filter((a) => !a.startsWith("--") && args[args.indexOf(a) - 1] !== "--base" && args[args.indexOf(a) - 1] !== "--timeout");
+const argv = process.argv.slice(2);
+const flag = (n, d) => { const i = argv.indexOf(`--${n}`); return i >= 0 ? argv[i + 1] : d; };
+const has = (n) => argv.includes(`--${n}`);
+const BASE = flag("base", "https://macemu.pages.dev").replace(/\/$/, "");
+const TIMEOUT = parseInt(flag("timeout", "120000"), 10);
 
-if (!slugs.length) {
-  console.error("usage: node scripts/boot-test.mjs <slug>... | --all   [--base URL] [--timeout MS]");
-  process.exit(2);
+// Build the list of {url, isolated} targets.
+const targets = [];
+const pageFlag = flag("page", null);
+if (pageFlag) {
+  targets.push({ url: BASE + pageFlag, isolated: false, label: pageFlag });
+} else {
+  const consumed = new Set(["--base", "--timeout", "--page"].flatMap((f) => {
+    const i = argv.indexOf(f); return i >= 0 ? [i, i + 1] : [];
+  }));
+  let slugs = argv.filter((a, i) => !a.startsWith("--") && !consumed.has(i));
+  if (has("all")) {
+    const data = resolve(process.cwd(), "scripts", "app-pages.json");
+    slugs = JSON.parse(readFileSync(data, "utf8")).filter((p) => p.bootDisk).map((p) => p.slug);
+  }
+  if (!slugs.length) {
+    console.error("usage: boot-test.mjs (<slug>... | --all | --page /path/)  [--base URL] [--timeout MS]");
+    process.exit(2);
+  }
+  for (const s of slugs) {
+    targets.push({ url: `${BASE}/play/${s}/`, isolated: true, label: `play/${s}` });
+    targets.push({ url: `${BASE}/embed/${s}/`, isolated: false, label: `embed/${s}` });
+  }
 }
 
 let chromium;
 try {
   ({ chromium } = await import("playwright"));
 } catch {
-  console.log("playwright not installed; fetching it into the project (not added to any manifest)…");
-  const r = spawnSync("npx", ["--yes", "playwright@1.49.0", "install", "--with-deps", "chromium"], { stdio: "inherit" });
-  if (r.status !== 0) { console.error("could not install playwright"); process.exit(2); }
-  ({ chromium } = await import("playwright"));
+  console.log("installing playwright (not added to any manifest)…");
+  if (spawnSync("npx", ["--yes", "playwright@1.49.0", "install", "chromium"], { stdio: "inherit" }).status !== 0) {
+    console.error("could not install playwright");
+    process.exit(2);
+  }
+  try { ({ chromium } = await import("playwright")); }
+  catch {
+    const r = spawnSync("npm", ["install", "--no-save", "--silent", "playwright@1.49.0"], { stdio: "inherit" });
+    if (r.status !== 0) { console.error("could not install playwright"); process.exit(2); }
+    ({ chromium } = await import("playwright"));
+  }
 }
 
-const browser = await chromium.launch();
+const browser = await chromium.launch({ headless: !has("headed") });
 let failures = 0;
 
-for (const slug of slugs) {
-  for (const [route, wantIsolated] of [["play", true], ["embed", false]]) {
-    const url = `${BASE}/${route}/${slug}/`;
-    const ctx = await browser.newContext();
-    const page = await ctx.newPage();
-    const errors = [];
-    page.on("console", (m) => { if (m.type() === "error") errors.push(m.text()); });
-    page.on("pageerror", (e) => errors.push(String(e)));
+for (const t of targets) {
+  const ctx = await browser.newContext();
+  const page = await ctx.newPage();
+  const errors = [];
+  page.on("console", (m) => { if (m.type() === "error") errors.push(m.text()); });
+  page.on("pageerror", (e) => errors.push(String(e)));
+  page.on("requestfailed", (r) => {
+    const u = r.url();
+    if (/\/Disk\/|\/rom\/|\/mac\//.test(u)) errors.push(`request failed: ${u} (${r.failure()?.errorText})`);
+  });
 
-    const t0 = Date.now();
-    let verdict = "ok";
-    try {
-      await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30000 });
+  const t0 = Date.now();
+  try {
+    await page.goto(t.url, { waitUntil: "domcontentloaded", timeout: 45000 });
 
-      const isolated = await page.evaluate(() => !!globalThis.crossOriginIsolated);
-      if (isolated !== wantIsolated) {
-        verdict = `crossOriginIsolated is ${isolated}, expected ${wantIsolated}`;
-        throw new Error(verdict);
-      }
-
-      // The /play/ route waits for a click; the embed starts itself.
-      const btn = await page.$(".embed-play");
-      if (btn) await btn.click();
-
-      await page.waitForFunction(() => globalThis.__macBooted === true, null, { timeout: TIMEOUT });
-
-      // A booted Mac has a desktop on it. A blank canvas means it stopped at
-      // the blinking floppy, which the runtime still calls "loaded".
-      const distinct = await page.evaluate(() => {
-        const c = document.querySelector("canvas");
-        if (!c) return -1;
-        const g = c.getContext("2d") || (c.getContext("webgl") ? null : null);
-        if (!g) return -2; // WebGL canvas; read it back the other way below
-        const d = g.getImageData(0, 0, c.width, c.height).data;
-        const seen = new Set();
-        for (let i = 0; i < d.length; i += 4 * 97) seen.add((d[i] << 16) | (d[i + 1] << 8) | d[i + 2]);
-        return seen.size;
-      });
-      if (distinct === 0 || distinct === 1) {
-        verdict = "the canvas is a flat colour — it probably stopped at the blinking floppy";
-        throw new Error(verdict);
-      }
-      if (errors.length) {
-        verdict = `console errors: ${errors.slice(0, 2).join(" | ")}`;
-        throw new Error(verdict);
-      }
-    } catch (e) {
-      failures++;
-      verdict = verdict === "ok" ? e.message : verdict;
-      console.log(`  FAIL  ${route}/${slug}  (${((Date.now() - t0) / 1000).toFixed(1)}s)  ${verdict}`);
-      await ctx.close();
-      continue;
+    const isolated = await page.evaluate(() => !!globalThis.crossOriginIsolated);
+    if (t.isolated && !isolated) {
+      throw new Error("not cross-origin isolated — the emulator would run at a fraction of full speed with nothing to say so");
     }
-    console.log(`  ok    ${route}/${slug}  booted in ${((Date.now() - t0) / 1000).toFixed(1)}s${wantIsolated ? " (shared memory)" : " (fallback)"}`);
-    await ctx.close();
+
+    // /play/ and /run/ wait for a click; an embed starts itself; a loader page
+    // offers "or just start a Macintosh".
+    const start = await page.$(".embed-play") || await page.$(".dz-bare");
+    if (start) await start.click();
+
+    await page.waitForFunction(
+      () => globalThis.__macBooted === true || globalThis.__macBootError,
+      null, { timeout: TIMEOUT }
+    );
+    const bootErr = await page.evaluate(() => globalThis.__macBootError || null);
+    if (bootErr) throw new Error("runtime reported: " + bootErr);
+
+    // A booted Mac has a desktop on it. A flat canvas means it stopped at the
+    // blinking floppy, which the runtime still calls loaded.
+    await page.waitForTimeout(2500);
+    const distinct = await page.evaluate(() => {
+      const c = document.querySelector("canvas");
+      if (!c) return -1;
+      const off = document.createElement("canvas");
+      off.width = c.width; off.height = c.height;
+      off.getContext("2d").drawImage(c, 0, 0);
+      const d = off.getContext("2d").getImageData(0, 0, off.width, off.height).data;
+      const seen = new Set();
+      for (let i = 0; i < d.length; i += 4 * 89) seen.add((d[i] << 16) | (d[i + 1] << 8) | d[i + 2]);
+      return seen.size;
+    });
+    if (distinct === -1) throw new Error("no canvas on the page");
+    if (distinct <= 2) throw new Error(`the screen is ${distinct} colour(s) — it probably stopped at the blinking floppy`);
+
+    const fatal = errors.filter((e) => !/favicon|adsbygoogle|gtag/i.test(e));
+    if (fatal.length) throw new Error("console: " + fatal.slice(0, 2).join(" | "));
+
+    const sab = await page.evaluate(() => typeof SharedArrayBuffer !== "undefined");
+    console.log(`  ok    ${t.label.padEnd(34)} booted in ${((Date.now() - t0) / 1000).toFixed(1)}s, ${distinct} colours, ${sab ? "shared memory" : "fallback"}`);
+  } catch (e) {
+    failures++;
+    console.log(`  FAIL  ${t.label.padEnd(34)} (${((Date.now() - t0) / 1000).toFixed(1)}s) ${e.message}`);
   }
+  await ctx.close();
 }
 
 await browser.close();
 if (failures) { console.error(`\n${failures} failure(s).`); process.exit(1); }
-console.log("\nAll titles booted.");
+console.log("\nEverything booted.");

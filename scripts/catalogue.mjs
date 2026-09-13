@@ -58,12 +58,31 @@ export const isSold = (p) => !!p.sold;
 
 // Which emulator a title boots under, derived from the machine so the JSON
 // can't state a combination that doesn't exist.
+// Machine → emulator, and the screen the machine actually has. These mirror
+// vendor/infinite-mac/src/defs/machines.ts exactly; getting one wrong means the
+// page advertises an emulator the runtime will not use. Mini vMac covers more
+// than the compact Macs — the Mac II and IIx run under it too, with a fixed
+// 640×480 screen — and only the Quadra and the Power Macs need the heavier
+// emulators.
 export const EMULATORS = {
   "Mac-Plus": "Mini vMac",
   "Mac-SE": "Mini vMac",
-  "Mac-II": "Basilisk II",
+  "Mac-II": "Mini vMac",
+  "Mac-IIx": "Mini vMac",
+  "Mac-IIfx": "Basilisk II",
   "Quadra-650": "Basilisk II",
+  "Power-Macintosh-9500": "SheepShaver",
   "Power-Macintosh-G3": "SheepShaver",
+};
+
+// Machines whose screen size is a property of the hardware, not a setting. Ask
+// Mini vMac for 800×600 and you get 512×342 anyway, so a page that claims
+// otherwise is simply wrong.
+export const FIXED_SCREENS = {
+  "Mac-Plus": { w: 512, h: 342 },
+  "Mac-SE": { w: 512, h: 342 },
+  "Mac-II": { w: 640, h: 480 },
+  "Mac-IIx": { w: 640, h: 480 },
 };
 export const emulatorFor = (p) => p.emulator || EMULATORS[p.machine] || null;
 

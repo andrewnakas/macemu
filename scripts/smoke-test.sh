@@ -44,6 +44,24 @@ body=$(curl -s "$U/Disk/0000000000000000.chunk")
 [ "$(code -I "$U/rom/Quadra-650.rom")" = "200" ] && pass "/rom/ answers HEAD" || fail "/rom/ HEAD" "404 on HEAD means only onRequestGet is exported"
 [ "$(code "$U/Disk/..%2F..%2Fetc%2Fpasswd")" != "200" ] && pass "/Disk/ rejects a traversal-shaped name" || fail "/Disk/" "accepted a bad name"
 
+echo "Disk manifests resolve to real chunks"
+for mf in public/mac/disks/*.json; do
+  [ -e "$mf" ] || continue
+  name=$(basename "$mf" .json)
+  miss=0; total=0
+  for h in $(python3 -c "
+import json,sys
+c=[x for x in json.load(open('$mf'))['chunks'] if x]
+u=sorted(set(c))
+print(' '.join(u[::max(1,len(u)//8)][:8]))
+"); do
+    total=$((total+1))
+    [ "$(code "$U/Disk/$h.chunk?cb=$RANDOM")" = "200" ] || miss=$((miss+1))
+  done
+  [ "$miss" = "0" ] && pass "$name: $total sampled chunks all present" \
+    || fail "$name" "$miss of $total sampled chunks are missing from R2 — titles will hang, not error"
+done
+
 echo "Crawler surface"
 for p in sitemap.xml robots.txt llms.txt favicon.ico og.png; do
   [ "$(code "$U/$p")" = "200" ] && pass "/$p" || fail "/$p" "not 200"

@@ -22,7 +22,7 @@
       "Puzzle & strategy"
     ],
     "era": "system-7",
-    "machine": "Quadra-650",
+    "machine": "Mac-IIfx",
     "ramMB": 16,
     "screen": {
       "w": 640,
@@ -35,7 +35,7 @@
       "kind": "good",
       "text": "Runs well"
     },
-    "intro": "<p>Nearly everybody who sat in front of a school Macintosh between 1991 and about 1998 played this. Not the Apple II green-screen original, and not the phone remake — <strong>this</strong> one: colour, a covered wagon rolling right to left across the bottom of the screen, and a river you were never quite sure whether to ford.</p>\n<p>It is the 1991 MECC release for the Macintosh, running here on an emulated Quadra 650 under System 7. Nothing to install. It starts in a couple of seconds and it saves where it always saved — inside the emulated Mac, which lives in your own browser.</p>",
+    "intro": "<p>Nearly everybody who sat in front of a school Macintosh between 1991 and about 1998 played this. Not the Apple II green-screen original, and not the phone remake — <strong>this</strong> one: colour, a covered wagon rolling right to left across the bottom of the screen, and a river you were never quite sure whether to ford.</p>\n<p>It is the 1991 MECC release for the Macintosh, running here on an emulated Macintosh IIfx under System 7. Nothing to install. It starts in a couple of seconds and it saves where it always saved — inside the emulated Mac, which lives in your own browser.</p>",
     "launchNote": "Boots straight to the title screen. Click through and pick a profession — banker is easy mode, farmer is hard mode with triple points.",
     "macControls": [
       {
@@ -62,7 +62,7 @@
     "sections": [
       {
         "h": "How it works & what to expect",
-        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Quadra 650, 16 MB RAM, 640×480 at 256 colours</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Basilisk II, compiled to WebAssembly</td></tr><tr><th>Sound</th><td>Yes — click once inside the screen first, browsers block audio until you do</td></tr><tr><th>Saves</th><td>Kept in your browser. Clearing site data wipes them.</td></tr><tr><th>Mobile</th><td>Playable, but the hunting screen wants a real mouse</td></tr></tbody></table><p>The emulator is a full Macintosh, not a re-implementation of the game, so what you get is exactly what shipped: the same fonts, the same slightly-too-slow dialogue boxes, the same music. The first load pulls a few megabytes of disk image; after that your browser has it cached and startup is close to instant.</p>"
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh IIfx, 16 MB RAM, 640×480 at 256 colours</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Basilisk II, compiled to WebAssembly</td></tr><tr><th>Sound</th><td>Yes — click once inside the screen first, browsers block audio until you do</td></tr><tr><th>Saves</th><td>Kept in your browser. Clearing site data wipes them.</td></tr><tr><th>Mobile</th><td>Playable, but the hunting screen wants a real mouse</td></tr></tbody></table><p>The emulator is a full Macintosh, not a re-implementation of the game, so what you get is exactly what shipped: the same fonts, the same slightly-too-slow dialogue boxes, the same music. The first load pulls a few megabytes of disk image; after that your browser has it cached and startup is close to instant.</p>"
       },
       {
         "h": "What you are actually playing",
@@ -169,7 +169,7 @@
       "Free & complete"
     ],
     "era": "system-7",
-    "machine": "Quadra-650",
+    "machine": "Mac-IIfx",
     "ramMB": 32,
     "screen": {
       "w": 640,
@@ -183,7 +183,7 @@
       "kind": "good",
       "text": "Free & legal"
     },
-    "intro": "<p>Before Halo, Bungie was a small Chicago company making games only for the Macintosh, and Marathon is the one that made their name. It came out in December 1994, six months after Doom shipped on DOS, and it did several things Doom did not: you could look up and down, the levels had real architecture, and — unusually for a shooter in 1994 — it had a plot worth reading.</p>\n<p>This is the original Macintosh release running on an emulated Quadra 650. Bungie put the whole trilogy into free redistribution in 2005, so there is nothing grey about it: the entire game is here, legally, at no cost.</p>",
+    "intro": "<p>Before Halo, Bungie was a small Chicago company making games only for the Macintosh, and Marathon is the one that made their name. It came out in December 1994, six months after Doom shipped on DOS, and it did several things Doom did not: you could look up and down, the levels had real architecture, and — unusually for a shooter in 1994 — it had a plot worth reading.</p>\n<p>This is the original Macintosh release running on an emulated Macintosh IIfx. Bungie put the whole trilogy into free redistribution in 2005, so there is nothing grey about it: the entire game is here, legally, at no cost.</p>",
     "launchNote": "Boots to the Marathon title screen. Pick Begin New Game, then Total Carnage if you have played a shooter before — the default difficulty is gentle.",
     "macControls": [
       {
@@ -222,7 +222,7 @@
     "sections": [
       {
         "h": "How it works & what to expect",
-        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Quadra 650, 32 MB RAM, 640×480 at 256 colours</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Basilisk II, compiled to WebAssembly</td></tr><tr><th>Speed</th><td>Comfortable on a desktop or laptop. A phone will struggle — this is the most demanding thing on the site.</td></tr><tr><th>Saves</th><td>Marathon saves at pattern buffers inside the level; those saves live in your browser</td></tr></tbody></table><p>Marathon ran on a 68040 Macintosh in 1994 and it wants roughly that much machine, which is a real ask for an interpreter running in a browser tab. On a modern desktop it is fine. On a phone it runs, but not at a framerate you would choose to fight in. Reduce the window size inside the game (the plus and minus keys) if it feels heavy.</p>"
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh IIfx, 32 MB RAM, 640×480 at 256 colours</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Basilisk II, compiled to WebAssembly</td></tr><tr><th>Speed</th><td>Comfortable on a desktop or laptop. A phone will struggle — this is the most demanding thing on the site.</td></tr><tr><th>Saves</th><td>Marathon saves at pattern buffers inside the level; those saves live in your browser</td></tr></tbody></table><p>Marathon ran on a 68040 Macintosh in 1994 and it wants roughly that much machine, which is a real ask for an interpreter running in a browser tab. On a modern desktop it is fine. On a phone it runs, but not at a framerate you would choose to fight in. Reduce the window size inside the game (the plus and minus keys) if it feels heavy.</p>"
       },
       {
         "h": "What Marathon actually is",
@@ -436,7 +436,7 @@
       "Apps & utilities"
     ],
     "era": "system-7",
-    "machine": "Quadra-650",
+    "machine": "Mac-IIfx",
     "ramMB": 16,
     "screen": {
       "w": 640,
@@ -468,7 +468,7 @@
     "sections": [
       {
         "h": "How it works & what to expect",
-        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Quadra 650, 16 MB RAM, 640×480 at 256 colours</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Basilisk II, compiled to WebAssembly</td></tr><tr><th>Sound</th><td>Yes. Several modules are largely about the sound.</td></tr></tbody></table><p>After Dark was not an application — it was a system extension and a control panel, which is why it needs a whole Macintosh around it rather than being something you could port to a web page. That is also why running it here means booting System 7 first. It takes a couple of seconds.</p>"
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh IIfx, 16 MB RAM, 640×480 at 256 colours</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Basilisk II, compiled to WebAssembly</td></tr><tr><th>Sound</th><td>Yes. Several modules are largely about the sound.</td></tr></tbody></table><p>After Dark was not an application — it was a system extension and a control panel, which is why it needs a whole Macintosh around it rather than being something you could port to a web page. That is also why running it here means booting System 7 first. It takes a couple of seconds.</p>"
       },
       {
         "h": "The modules worth your time",
@@ -554,7 +554,7 @@
       "Free & complete"
     ],
     "era": "system-7",
-    "machine": "Quadra-650",
+    "machine": "Mac-IIfx",
     "ramMB": 16,
     "screen": {
       "w": 640,
@@ -595,7 +595,7 @@
     "sections": [
       {
         "h": "How it works & what to expect",
-        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Quadra 650, 16 MB RAM, 640×480 at 256 colours</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Basilisk II, compiled to WebAssembly</td></tr><tr><th>Speed</th><td>Comfortable. Glider was written to run on modest hardware.</td></tr></tbody></table><p>If you want Glider PRO at a modern resolution with gamepad support and the level editor, there is a maintained port called Aerofoil built on Calhoun's released source. It is the better way to play seriously. What is here is the original, as it shipped.</p>"
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh IIfx, 16 MB RAM, 640×480 at 256 colours</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Basilisk II, compiled to WebAssembly</td></tr><tr><th>Speed</th><td>Comfortable. Glider was written to run on modest hardware.</td></tr></tbody></table><p>If you want Glider PRO at a modern resolution with gamepad support and the level editor, there is a maintained port called Aerofoil built on Calhoun's released source. It is the better way to play seriously. What is here is the original, as it shipped.</p>"
       },
       {
         "h": "The house, and everything in it",
@@ -681,7 +681,7 @@
       "Free & complete"
     ],
     "era": "system-7",
-    "machine": "Quadra-650",
+    "machine": "Mac-IIfx",
     "ramMB": 32,
     "screen": {
       "w": 640,
@@ -730,7 +730,7 @@
     "sections": [
       {
         "h": "How it works & what to expect",
-        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Quadra 650, 32 MB RAM, 640×480 at 256 colours</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Basilisk II, compiled to WebAssembly</td></tr><tr><th>Speed</th><td>Desktop comfortably; a phone will struggle</td></tr></tbody></table><p>Marathon 2 is slightly heavier than the first game because there is more going on in each room. If it feels sluggish, shrink the game window with the minus key — it renders fewer pixels and the framerate jumps immediately.</p>"
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh IIfx, 32 MB RAM, 640×480 at 256 colours</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Basilisk II, compiled to WebAssembly</td></tr><tr><th>Speed</th><td>Desktop comfortably; a phone will struggle</td></tr></tbody></table><p>Marathon 2 is slightly heavier than the first game because there is more going on in each room. If it feels sluggish, shrink the game window with the minus key — it renders fewer pixels and the framerate jumps immediately.</p>"
       },
       {
         "h": "What changed from Marathon",
@@ -816,7 +816,7 @@
       "Free & complete"
     ],
     "era": "system-7",
-    "machine": "Quadra-650",
+    "machine": "Mac-IIfx",
     "ramMB": 32,
     "screen": {
       "w": 640,
@@ -865,7 +865,7 @@
     "sections": [
       {
         "h": "How it works & what to expect",
-        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Quadra 650, 32 MB RAM, 640×480 at 256 colours</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Basilisk II, compiled to WebAssembly</td></tr><tr><th>Speed</th><td>Comparable to Marathon 2 — a desktop game here</td></tr></tbody></table>"
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh IIfx, 32 MB RAM, 640×480 at 256 colours</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Basilisk II, compiled to WebAssembly</td></tr><tr><th>Speed</th><td>Comparable to Marathon 2 — a desktop game here</td></tr></tbody></table>"
       },
       {
         "h": "The branching that is not branching",
@@ -1193,7 +1193,7 @@
       "Puzzle & strategy"
     ],
     "era": "system-7",
-    "machine": "Quadra-650",
+    "machine": "Mac-IIfx",
     "ramMB": 8,
     "screen": {
       "w": 640,
@@ -1225,7 +1225,7 @@
     "sections": [
       {
         "h": "How it works & what to expect",
-        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Quadra 650, 8 MB RAM, 640×480</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Basilisk II, compiled to WebAssembly</td></tr><tr><th>Speed</th><td>Light. Fine on a phone, though the arrow keys need a keyboard.</td></tr></tbody></table>"
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh IIfx, 8 MB RAM, 640×480</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Basilisk II, compiled to WebAssembly</td></tr><tr><th>Speed</th><td>Light. Fine on a phone, though the arrow keys need a keyboard.</td></tr></tbody></table>"
       },
       {
         "h": "The modes, and which one is hardest",

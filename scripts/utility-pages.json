@@ -8,7 +8,7 @@
     "ogDescription": "Drop a .sit, .hqx, .img or .dsk in and it opens on an emulated Macintosh. Nothing leaves your computer.",
     "crumb": "Open your own file",
     "h1": "Drop in an old Mac file and open it",
-    "machine": "Quadra-650",
+    "machine": "Mac-IIfx",
     "accepts": [
       ".sit",
       ".sea",
@@ -84,7 +84,8 @@
         "desc": "Titles that start in one click."
       }
     ],
-    "updated": "2026-09-13"
+    "updated": "2026-09-13",
+    "bootDisk": "system-7.5.3"
   },
   {
     "slug": "open-sit-file",
@@ -95,7 +96,7 @@
     "ogDescription": "StuffIt archives, expanded by the real StuffIt Expander on an emulated Mac.",
     "crumb": "Open a .sit file",
     "h1": "Open a StuffIt .sit file, without installing StuffIt",
-    "machine": "Quadra-650",
+    "machine": "Mac-IIfx",
     "accepts": [
       ".sit",
       ".sea",
@@ -164,7 +165,8 @@
         "desc": "Where the line is between classic Mac and OS X."
       }
     ],
-    "updated": "2026-09-13"
+    "updated": "2026-09-13",
+    "bootDisk": "system-7.5.3"
   },
   {
     "slug": "open-hqx-file",
@@ -175,7 +177,7 @@
     "ogDescription": "BinHex 4.0 decoded locally, with the resource fork intact, on an emulated Macintosh.",
     "crumb": "Open a .hqx file",
     "h1": "Decode a BinHex .hqx file",
-    "machine": "Quadra-650",
+    "machine": "Mac-IIfx",
     "accepts": [
       ".hqx",
       ".bin",
@@ -240,7 +242,8 @@
         "desc": "The era these files come from."
       }
     ],
-    "updated": "2026-09-13"
+    "updated": "2026-09-13",
+    "bootDisk": "system-7.5.3"
   },
   {
     "slug": "open-dsk-file",
@@ -251,7 +254,7 @@
     "ogDescription": "DiskCopy and raw Macintosh disk images, mounted on an emulated Mac.",
     "crumb": "Mount a disk image",
     "h1": "Mount a classic Mac disk image",
-    "machine": "Quadra-650",
+    "machine": "Mac-IIfx",
     "accepts": [
       ".img",
       ".dsk",
@@ -321,7 +324,8 @@
         "desc": "A plain Mac, no title loaded."
       }
     ],
-    "updated": "2026-09-13"
+    "updated": "2026-09-13",
+    "bootDisk": "system-7.5.3"
   },
   {
     "slug": "open-toast-file",
@@ -332,7 +336,7 @@
     "ogDescription": "Toast and ISO CD images, mounted on an emulated Mac.",
     "crumb": "Mount a CD image",
     "h1": "Open a .toast CD image",
-    "machine": "Quadra-650",
+    "machine": "Mac-IIfx",
     "accepts": [
       ".toast",
       ".iso",
@@ -398,7 +402,8 @@
         "desc": "No file needed."
       }
     ],
-    "updated": "2026-09-13"
+    "updated": "2026-09-13",
+    "bootDisk": "system-7.5.3"
   },
   {
     "slug": "open-dmg-file",
@@ -409,7 +414,7 @@
     "ogDescription": "Extract a DMG in your browser. Windows, Linux, Chromebook — no install.",
     "crumb": "Open a .dmg file",
     "h1": "Open a .dmg file without a Mac",
-    "machine": "Quadra-650",
+    "machine": "Mac-IIfx",
     "accepts": [
       ".dmg",
       ".smi",
@@ -476,7 +481,8 @@
         "desc": "Older Mac image formats."
       }
     ],
-    "updated": "2026-09-13"
+    "updated": "2026-09-13",
+    "bootDisk": "system-7.5.3"
   },
   {
     "slug": "classic-mac-emulator-online",
@@ -487,7 +493,7 @@
     "ogDescription": "System 6, System 7 and Mac OS 9, running in a tab. No download.",
     "crumb": "Mac emulator online",
     "h1": "A classic Macintosh, running in this tab",
-    "machine": "Quadra-650",
+    "machine": "Mac-IIfx",
     "accepts": [
       ".sit",
       ".hqx",
@@ -501,11 +507,11 @@
     "onHome": true,
     "cardTitle": "A plain Macintosh",
     "cardDesc": "System 7, nothing loaded. Do what you like.",
-    "intro": "<p>A Macintosh, emulated in WebAssembly, running in this page. No download, no install, no plugin, no account. It boots System 7 on a Quadra 650 in a couple of seconds, and you can drop your own software into it.</p>",
+    "intro": "<p>A Macintosh, emulated in WebAssembly, running in this page. No download, no install, no plugin, no account. It boots System 7 on a Macintosh IIfx in a couple of seconds, and you can drop your own software into it.</p>",
     "sections": [
       {
         "h": "Which Macintosh you are getting",
-        "html": "<table class=\"compat-table\"><thead><tr><th>Era</th><th>Machine</th><th>Emulator</th><th>Good for</th></tr></thead><tbody><tr><td>System 6</td><td>Macintosh Plus, 512×342 black and white</td><td>Mini vMac</td><td>Anything from 1984–1990. Fast enough for a phone.</td></tr><tr><td>System 7</td><td>Quadra 650, 640×480 in colour</td><td>Basilisk II</td><td>The bulk of the classic era: 1991–1997.</td></tr><tr><td>Mac OS 8–9</td><td>Power Macintosh G3</td><td>SheepShaver</td><td>PowerPC-only software. Heavier.</td></tr></tbody></table><p>The differences are real, not cosmetic. A Mac Plus is an eight-megahertz machine with a one-bit screen; a Quadra 650 is a 68040 with colour; a G3 is a different processor architecture entirely. Software from one will often not run on another, and picking the wrong machine is the single most common reason an old program refuses to start.</p>"
+        "html": "<table class=\"compat-table\"><thead><tr><th>Era</th><th>Machine</th><th>Emulator</th><th>Good for</th></tr></thead><tbody><tr><td>System 6</td><td>Macintosh Plus, 512×342 black and white</td><td>Mini vMac</td><td>Anything from 1984–1990. Fast enough for a phone.</td></tr><tr><td>System 7</td><td>Macintosh IIfx, 640×480 in colour</td><td>Basilisk II</td><td>The bulk of the classic era: 1991–1997.</td></tr><tr><td>Mac OS 8–9</td><td>Power Macintosh G3</td><td>SheepShaver</td><td>PowerPC-only software. Heavier.</td></tr></tbody></table><p>The differences are real, not cosmetic. A Mac Plus is an eight-megahertz machine with a one-bit screen; a Macintosh IIfx is a 68040 with colour; a G3 is a different processor architecture entirely. Software from one will often not run on another, and picking the wrong machine is the single most common reason an old program refuses to start.</p>"
       },
       {
         "h": "How the emulation works",
@@ -563,6 +569,7 @@
         "desc": "Where the limits are."
       }
     ],
-    "updated": "2026-09-13"
+    "updated": "2026-09-13",
+    "bootDisk": "system-7.5.3"
   }
 ]
