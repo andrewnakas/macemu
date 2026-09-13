@@ -1,0 +1,19 @@
+name = "macemu"
+compatibility_date = "2026-09-13"
+pages_build_output_dir = "public"
+
+# Disk chunks and ROMs are far too large for Pages (25 MB/file) and must not
+# enter git either. They live in R2 and are served same-origin by
+# functions/Disk/[chunk].js and functions/rom/[file].js — same-origin matters
+# because the /play/ routes are cross-origin isolated, and a cross-origin fetch
+# there would need CORP headers R2 does not set by default.
+[[r2_buckets]]
+binding = "DISK_BUCKET"
+bucket_name = "macemu-disk"
+
+# Newsletter list, mirroring exebrowser's SUBS binding. Create with:
+#   npx wrangler kv namespace create SUBS
+# then paste the id here.
+# [[kv_namespaces]]
+# binding = "SUBS"
+# id = ""

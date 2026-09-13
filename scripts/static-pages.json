@@ -1,0 +1,165 @@
+[
+  {
+    "slug": "guide",
+    "title": "What Classic Mac Software Actually Runs in a Browser — An Honest Guide",
+    "description": "Which Macintosh software runs in a browser and which cannot: System 6 through Mac OS 9 work, Mac OS X does not. Why, and what to do instead.",
+    "keywords": "run mac apps in browser, can you emulate mac os, classic mac emulator, mac os x emulator browser, basilisk ii sheepshaver",
+    "crumb": "What runs",
+    "h1": "What actually runs here, and what cannot",
+    "updated": "2026-09-13",
+    "sections": [
+      {
+        "h": null,
+        "html": "<p>Short version: <strong>classic Mac OS runs — System 6, System 7, Mac OS 8 and Mac OS 9. Mac OS X and macOS do not.</strong> That line is not a matter of effort or ambition; it is a line between two entirely different computers that happen to share a brand. This page explains where it falls and why, because the question gets asked constantly and most answers on the web are either hand-waving or wrong.</p>"
+      },
+      {
+        "h": "The three machines on this site",
+        "html": "<table class=\"compat-table\"><thead><tr><th>Emulated machine</th><th>Runs</th><th>Emulator</th><th>How it feels</th></tr></thead><tbody><tr><td>Macintosh Plus</td><td>System 1 – System 7.5</td><td>Mini vMac</td><td>Instant. 512×342 black and white. Runs happily on a phone.</td></tr><tr><td>Quadra 650 (68040)</td><td>System 7 – Mac OS 8.1</td><td>Basilisk II</td><td>Quick. 640×480 in 256 colours. The workhorse for most of the catalogue.</td></tr><tr><td>Power Macintosh G3</td><td>Mac OS 8.1 – 9.0.4</td><td>SheepShaver</td><td>Heavier. Needed only for PowerPC-only software.</td></tr></tbody></table><p>Picking the wrong machine is the most common reason a program refuses to start. Software from 1987 written for a Mac Plus will often not run under Mac OS 9; software compiled for PowerPC will not run on a 68k Quadra at all. Each title page on this site says which machine it uses and why.</p>"
+      },
+      {
+        "h": "Why Mac OS X is a different problem",
+        "html": "<p>In 2001 Apple replaced the Mac OS entirely. Mac OS X is a Unix system descended from NeXTSTEP, with a different kernel, a different API, a different binary format and — after 2006 and again after 2020 — different processor architectures. Emulating it is not an extension of emulating System 7; it is a separate project.</p><p>It has been done. The Infinite Mac project runs Mac OS X 10.1 through 10.4 in a browser using PowerPC emulators, and it is an impressive piece of work. It is also slow: minutes to boot, and sluggish once there. That is not a criticism of the implementation — a pure interpreter emulating a 1990s PowerPC in JavaScript-adjacent WebAssembly is simply working very hard.</p><p>Modern macOS on Intel or Apple Silicon is further out of reach again, and would require Apple's licence besides. If somebody promises you macOS in a browser tab, they are selling a remote desktop to a real Mac in a datacentre, which is a perfectly good product and a completely different thing.</p>"
+      },
+      {
+        "h": "What about a .app or a .dmg?",
+        "html": "<p>A <code>.app</code> is a folder holding a compiled macOS binary. It runs on macOS and nowhere else. No emulator on this site changes that.</p><p>A <code>.dmg</code> is a disk image, usually containing one of those. You can open it here and take out documents, images or data — see the <a href=\"/open-dmg-file/\">DMG page</a> — but an application inside will not run.</p><p>The files that <em>do</em> run here are from the earlier era: <code>.sit</code> archives, <code>.hqx</code> and <code>.bin</code> encoded files, and floppy or hard disk images in <code>.img</code>, <code>.dsk</code> or DiskCopy format. <a href=\"/load-mac-file/\">The loader</a> takes all of them.</p>"
+      },
+      {
+        "h": "The honest limitations",
+        "html": "<ul><li><strong>Speed.</strong> These are interpreters, not recompilers. A drawing program or a 2D game is fine. A 1994 first-person shooter on a phone is not.</li><li><strong>No printing.</strong> There is no printer attached to the emulated machine and no plan for one.</li><li><strong>No internet inside the Mac.</strong> The emulated machine has no network. Old Macintosh browsers cannot reach anything, which is a shame, because watching Netscape 3 fail to render a modern site is genuinely funny.</li><li><strong>Getting files back out is limited.</strong> Files go in easily. Getting them onto your real computer is not wired up yet.</li><li><strong>Saves are local.</strong> They live in your browser, not in an account. They do not follow you to another device, and clearing site data deletes them.</li><li><strong>Audio needs a click.</strong> Browsers refuse to play sound until you interact with the page. Click inside the emulated screen once.</li></ul>"
+      },
+      {
+        "h": "Where to go for more",
+        "html": "<p>This site is a catalogue with an emulator attached: one page per title, built to be findable and to start in one click. If what you want is the whole machine, other projects do it better and deserve the traffic:</p><ul><li><a href=\"https://infinitemac.org/\" rel=\"noopener\">Infinite Mac</a> — every system release from 1984 to Mac OS X, plus NeXTSTEP, with a large built-in library. The emulator builds used here come from it. <a href=\"https://infinitemac.org/donate\" rel=\"noopener\">Donate to it.</a></li><li><a href=\"https://macintoshgarden.org/\" rel=\"noopener\">Macintosh Garden</a> — the Mac abandonware archive, twenty thousand titles with screenshots and manuals.</li><li><a href=\"https://www.macintoshrepository.org/\" rel=\"noopener\">Macintosh Repository</a> — the other great archive, strong on later and PowerPC software.</li><li><a href=\"https://www.emaculation.com/\" rel=\"noopener\">E-Maculation</a> — the forum where people who actually maintain these emulators talk.</li><li><a href=\"https://exebrowser.com/\" rel=\"noopener\">exebrowser.com</a> — our sister site, which does the same job for DOS and Windows.</li></ul>"
+      }
+    ]
+  },
+  {
+    "slug": "about",
+    "title": "About macemu — Who Makes This and Why",
+    "description": "macemu runs classic Macintosh software in a browser. Who builds it, what it is built on, and what it is for.",
+    "keywords": "about macemu, classic mac emulator, who made macemu",
+    "crumb": "About",
+    "h1": "About macemu",
+    "updated": "2026-09-13",
+    "sections": [
+      {
+        "h": null,
+        "html": "<p>macemu puts classic Macintosh software one click away. Pick a title, it starts in a couple of seconds, and nothing is installed on your computer. That is the whole idea.</p><p>It is built and maintained by <strong>Andrew Nakas</strong>, a software developer with a long-running interest in software preservation, emulation and what the web platform can be made to do. It is the sister site to <a href=\"https://exebrowser.com/\" rel=\"noopener\">exebrowser.com</a>, which does the same for DOS and Windows programs, and it is open source.</p>"
+      },
+      {
+        "h": "What it is built on",
+        "html": "<p>The emulation is not ours and we do not pretend otherwise. macemu uses WebAssembly builds of three long-standing open-source emulators — <strong>Mini vMac</strong>, <strong>Basilisk II</strong> and <strong>SheepShaver</strong> — packaged by Mihai Parparita's <a href=\"https://infinitemac.org/\" rel=\"noopener\">Infinite Mac</a> project, which did the genuinely hard work of getting them running well in a browser.</p><p>What this site adds is the part Infinite Mac deliberately does not do: a page per title, written for someone who searched for that title by name, with the history, the controls, the licensing position and a button that starts it. Infinite Mac gives you a machine. This gives you a program.</p><p>If you find this site useful, <a href=\"https://infinitemac.org/donate\" rel=\"noopener\">donate to Infinite Mac</a>. It is the layer everything here stands on.</p>"
+      },
+      {
+        "h": "What is hosted, and on what footing",
+        "html": "<p>Every title page states plainly whether the software runs here or needs a copy you supply. There are no pages promising a game we do not have.</p><p>Three categories, and each title page says which it is:</p><ul><li><strong>Free and clear.</strong> Released by its author or publisher — Marathon, which Bungie put into free redistribution in 2005; Glider PRO, whose source John Calhoun published under the GPL; Kid Pix 1.0, which Craig Hickman gave away himself.</li><li><strong>Abandoned.</strong> Software whose publisher no longer exists or has not sold it in decades. It is preserved here for the same reason the Internet Archive and Macintosh Garden preserve it. This is not a claim that it is public domain, and the <a href=\"/takedown/\">takedown page</a> exists precisely because it is not.</li><li><strong>Still sold.</strong> Never hosted, under any circumstances. Those pages tell you where to buy it and run your own copy.</li></ul>"
+      },
+      {
+        "h": "Contact",
+        "html": "<p>Corrections, missing titles, broken things, rights questions: <a href=\"/contact/\">get in touch</a>. Rights holders should use the <a href=\"/takedown/\">takedown page</a>, which is a 48-hour promise, not a negotiation.</p>"
+      }
+    ]
+  },
+  {
+    "slug": "takedown",
+    "title": "Takedown Requests — macemu",
+    "description": "How to have software removed from macemu. If you hold the rights, it comes down within 48 hours, no argument.",
+    "keywords": "takedown, dmca, copyright, macemu",
+    "crumb": "Takedown",
+    "h1": "Taking something down",
+    "updated": "2026-09-13",
+    "noindexHint": false,
+    "sections": [
+      {
+        "h": null,
+        "html": "<p>If you hold the rights to something on this site and you want it gone, it goes. Within 48 hours of a request that identifies you and the work. There is no form to fill in, no counter-argument and no attempt to talk you out of it.</p>"
+      },
+      {
+        "h": "What to send",
+        "html": "<p>Email <a href=\"/contact/\">the address on the contact page</a> with:</p><ul><li>The page or pages, by URL.</li><li>The work concerned.</li><li>Who you are and what your relationship to the rights is. A company email or a link to a page that connects you to the work is plenty; notarised anything is not required.</li></ul><p>That is the whole process. A reply confirming removal follows.</p>"
+      },
+      {
+        "h": "Where this site stands",
+        "html": "<p>macemu hosts three kinds of thing. Software released by its author or publisher — Marathon, Glider PRO, Kid Pix 1.0 — is here with permission that is a matter of public record, and those are linked from the page in question.</p><p>Software whose publisher has ceased to exist, or which has not been commercially available for decades, is here on the same footing as the Internet Archive's software collections and Macintosh Garden: preserved because otherwise it disappears. That is a practical position, not a legal claim. Nobody here believes abandonment transfers copyright.</p><p>Software that is still sold is never hosted. If a title is commercially available today and you find it running here, that is a mistake — report it and it will be removed the same day.</p>"
+      },
+      {
+        "h": "System software and ROMs",
+        "html": "<p>The emulators need Apple's ROM code and system software to boot, exactly as the original hardware did. These are Apple's and are not claimed otherwise. The same files have been distributed by the Internet Archive, Macintosh Garden and the Infinite Mac project for years. If Apple asks, they come down and the site says so plainly on every affected page.</p>"
+      }
+    ]
+  },
+  {
+    "slug": "contact",
+    "title": "Contact — macemu",
+    "description": "How to reach macemu: corrections, requests, bugs and rights questions.",
+    "keywords": "contact macemu",
+    "crumb": "Contact",
+    "h1": "Get in touch",
+    "updated": "2026-09-13",
+    "sections": [
+      {
+        "h": null,
+        "html": "<p>Email <strong>hello@macemu.com</strong>. It is read by a person.</p><p>Useful things to send:</p><ul><li><strong>A title that should be here.</strong> Especially if you know its licensing position.</li><li><strong>Something broken.</strong> Tell us which browser and which page; a console error if you know how to get one.</li><li><strong>A correction.</strong> The history on these pages is written carefully but not infallibly. If something is wrong, say so and it gets fixed.</li><li><strong>A rights question.</strong> See the <a href=\"/takedown/\">takedown page</a> first — it is faster.</li></ul><p>The code is open source and issues and pull requests are welcome there too.</p>"
+      }
+    ]
+  },
+  {
+    "slug": "privacy",
+    "title": "Privacy — macemu",
+    "description": "What macemu stores and what it does not. Your files never leave your computer.",
+    "keywords": "privacy macemu",
+    "crumb": "Privacy",
+    "h1": "Privacy",
+    "updated": "2026-09-13",
+    "sections": [
+      {
+        "h": null,
+        "html": "<p>The short version: <strong>files you open here never leave your computer</strong>, and there is no account to make.</p>"
+      },
+      {
+        "h": "Your files",
+        "html": "<p>The emulator is WebAssembly running in your browser. When you drop a file in, it is read by JavaScript on your own machine and passed into the emulated Macintosh's memory. No upload happens. There is no server that could receive it.</p><p>Anything you save inside the emulated Mac is written to your browser's own storage on your own device. It is not synced, not backed up and not visible to this site's operators. Clearing site data for this domain deletes it permanently.</p>"
+      },
+      {
+        "h": "What is measured",
+        "html": "<p>Aggregate analytics: which pages are visited, roughly where from, whether an emulator booted successfully. No account, no profile, no cross-site tracking, and nothing that identifies you personally.</p><p>No advertising is served at the time of writing. If that changes, this page changes with it before it happens.</p>"
+      },
+      {
+        "h": "Third parties",
+        "html": "<p>Hosting is Cloudflare Pages, which sees request logs as any web host does. Disk images and ROMs are served from Cloudflare R2. Links out to archives such as the Internet Archive and Macintosh Garden are ordinary links; those sites have their own policies.</p>"
+      }
+    ]
+  },
+  {
+    "slug": "terms",
+    "title": "Terms — macemu",
+    "description": "Terms of use for macemu.",
+    "keywords": "terms macemu",
+    "crumb": "Terms",
+    "h1": "Terms of use",
+    "updated": "2026-09-13",
+    "sections": [
+      {
+        "h": null,
+        "html": "<p>macemu is free to use and provided as it is, with no warranty of any kind. It emulates hardware from the 1980s and 1990s; things will occasionally not work, and no guarantee is made that any particular piece of software will run.</p>"
+      },
+      {
+        "h": "Your responsibility",
+        "html": "<p>You are responsible for what you do with the software you run here and for what you drop into the loader. Do not upload anything you do not have the right to use.</p>"
+      },
+      {
+        "h": "Software on this site",
+        "html": "<p>Each title page records where the software came from and on what footing it is here. Nothing commercially available today is hosted. Rights holders: the <a href=\"/takedown/\">takedown page</a> is a 48-hour promise.</p>"
+      },
+      {
+        "h": "The site's own code",
+        "html": "<p>The site's code is open source. The emulators are separate projects under their own licences — Mini vMac, Basilisk II and SheepShaver are GPL, and their sources are linked from the repository. Apple's ROMs and system software are Apple's and are not licensed by this site to anybody.</p>"
+      },
+      {
+        "h": "Liability",
+        "html": "<p>To the fullest extent the law allows, no liability is accepted for any loss arising from use of this site — including the loss of anything you saved inside an emulated machine. Those saves live in your browser and are as durable as your browser's storage, which is to say: do not keep anything irreplaceable there.</p>"
+      }
+    ]
+  }
+]

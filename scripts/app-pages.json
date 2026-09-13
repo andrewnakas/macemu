@@ -1,0 +1,1290 @@
+[
+  {
+    "slug": "oregon-trail",
+    "title": "Play The Oregon Trail (Mac) Online — The 1991 Classroom Version",
+    "description": "The Macintosh Oregon Trail, the one from the school computer lab, running in your browser. Ford the river, shoot more bison than you can carry, die of dysentery.",
+    "keywords": "oregon trail online, play oregon trail, oregon trail mac, oregon trail 1991, oregon trail browser, mecc oregon trail",
+    "ogTitle": "The Oregon Trail (Mac, 1991) in your browser",
+    "ogDescription": "The classroom version, emulated. Choose a profession, stock up at Matt's General Store, and try to reach the Willamette Valley.",
+    "crumb": "The Oregon Trail",
+    "h1": "The Oregon Trail on a Macintosh, in a browser tab",
+    "appName": "The Oregon Trail",
+    "appType": "game",
+    "author": "MECC",
+    "year": 1991,
+    "genre": [
+      "Educational",
+      "Simulation",
+      "Strategy"
+    ],
+    "categories": [
+      "Classroom classics",
+      "Puzzle & strategy"
+    ],
+    "era": "system-7",
+    "machine": "Quadra-650",
+    "ramMB": 16,
+    "screen": {
+      "w": 640,
+      "h": 480,
+      "depth": 8
+    },
+    "provenance": "grey",
+    "licenseReason": "MECC was wound up in the late 1990s and the trail passed through The Learning Company to Houghton Mifflin Harcourt. The 1991 Macintosh release has not been sold in any form for over twenty-five years and no rights holder distributes it today. It is here because a piece of software that taught a generation to spell \"dysentery\" should not only exist inside a cardboard box in somebody's garage. If you hold the rights and disagree, <a href=\"/takedown/\">say so</a> and it goes within 48 hours.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs well"
+    },
+    "intro": "<p>Nearly everybody who sat in front of a school Macintosh between 1991 and about 1998 played this. Not the Apple II green-screen original, and not the phone remake — <strong>this</strong> one: colour, a covered wagon rolling right to left across the bottom of the screen, and a river you were never quite sure whether to ford.</p>\n<p>It is the 1991 MECC release for the Macintosh, running here on an emulated Quadra 650 under System 7. Nothing to install. It starts in a couple of seconds and it saves where it always saved — inside the emulated Mac, which lives in your own browser.</p>",
+    "launchNote": "Boots straight to the title screen. Click through and pick a profession — banker is easy mode, farmer is hard mode with triple points.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Everything in the menus, the store and the map"
+      },
+      {
+        "keys": "Arrow keys / mouse",
+        "does": "Move the rifle sight while hunting"
+      },
+      {
+        "keys": "Space",
+        "does": "Fire while hunting"
+      },
+      {
+        "keys": "Return",
+        "does": "Confirm the highlighted button"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit back to the Finder"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Quadra 650, 16 MB RAM, 640×480 at 256 colours</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Basilisk II, compiled to WebAssembly</td></tr><tr><th>Sound</th><td>Yes — click once inside the screen first, browsers block audio until you do</td></tr><tr><th>Saves</th><td>Kept in your browser. Clearing site data wipes them.</td></tr><tr><th>Mobile</th><td>Playable, but the hunting screen wants a real mouse</td></tr></tbody></table><p>The emulator is a full Macintosh, not a re-implementation of the game, so what you get is exactly what shipped: the same fonts, the same slightly-too-slow dialogue boxes, the same music. The first load pulls a few megabytes of disk image; after that your browser has it cached and startup is close to instant.</p>"
+      },
+      {
+        "h": "What you are actually playing",
+        "html": "<p>You start in Independence, Missouri, in the spring of 1848, and you have about two thousand miles to cover before the snow closes the Blue Mountains. First you pick a profession, and the choice is the whole difficulty setting: a banker from Boston starts with plenty of money and scores lowest, a carpenter from Ohio sits in the middle, and a farmer from Illinois starts poor and scores triple.</p><p>Then you spend at Matt's General Store — oxen, food, clothing, spare wagon parts, ammunition — and the first real lesson of the game is that you cannot afford everything and the thing you skipped is the thing that breaks.</p><p>After that it is a long, grinding series of small decisions. How fast to travel. How much to eat. Whether to ford a river, caulk the wagon and float it, or pay a ferryman you suspect is robbing you. Whether to spend three days hunting when you can only carry a hundred pounds of what you shoot. People in your party get cholera, measles, typhoid, a broken leg, and — famously — dysentery, and the game reports it in the same flat tone it uses for the weather.</p><p>It was written as a teaching tool and it never stopped being one. What it teaches, mostly, is that the frontier was a logistics problem and the logistics usually won.</p>"
+      },
+      {
+        "h": "Why the Mac version is the one people remember",
+        "html": "<p>The Oregon Trail had a long life before this. It began in 1971 as a text game typed into a teletype by three student teachers in Minnesota, ran on the Apple II through the 1980s in that famous green monochrome, and got a DOS release in 1990 that most people call Oregon Trail Deluxe.</p><p>The 1991 Macintosh version is the one that ended up in the school computer lab, because the school computer lab in the 1990s was a room full of Macs. It has the colour art, the hunting mini-game with the animated bison, the tombstones you could write yourself, and the ending where the game scores you on how many of your family survived.</p><p>If your memory of the game is a black-and-white screen and a keyboard-only interface, you are remembering the Apple II. If it is colour, a mouse, and a bison you could never carry, you are remembering this.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the version I played at school?",
+        "a": "Almost certainly, if you were at school in the 1990s and the lab had Macintoshes. This is the 1991 MECC Macintosh release with colour graphics and the mouse-driven hunting screen. The green-on-black keyboard-only game is the earlier Apple II version, and the one with 3D wagons is Oregon Trail II from 1995."
+      },
+      {
+        "q": "Do I need to install or download anything?",
+        "a": "No. The emulator is WebAssembly and runs inside the page. Nothing is installed on your computer and nothing you do is uploaded anywhere."
+      },
+      {
+        "q": "Will my game be saved if I close the tab?",
+        "a": "Yes. Saves are written to the emulated Mac's hard disk, which is stored in your own browser. They survive closing the tab and restarting the computer. They do not survive clearing site data, and they do not follow you to another browser or another device."
+      },
+      {
+        "q": "Why do I keep dying of dysentery?",
+        "a": "Dysentery in the game is driven mostly by how hard you are pushing the party: a grueling pace plus bare-bones rations plus bad weather is the combination that kills. Slow down to a steady pace and move to filling rations for a few days when someone gets ill, and rest when the game offers it."
+      },
+      {
+        "q": "Should I ford the river or take the ferry?",
+        "a": "Check the depth first — the game tells you. Under about two and a half feet, fording is usually safe. Deeper than that and you are gambling your oxen, your food and sometimes a person against the ferry fee. Caulking and floating is the middle option and it is riskier than it sounds in a fast current."
+      },
+      {
+        "q": "Can I play it on a phone?",
+        "a": "Yes, though it is fiddly. The menus and the store work fine with taps. The hunting screen expects a mouse you can move smoothly, and a touchscreen makes it much harder than it should be."
+      },
+      {
+        "q": "Is this legal?",
+        "a": "The game has not been sold in this form for more than twenty-five years and no rights holder distributes it. That is not the same as it being public domain, and this site does not pretend otherwise. There is a takedown page and a 48-hour promise behind it."
+      },
+      {
+        "q": "Where can I get my own copy?",
+        "a": "The Internet Archive and Macintosh Garden both carry MECC's Macintosh releases. Both are linked below. If you would rather run your own file than ours, the loader on this site will take it."
+      }
+    ],
+    "download": {
+      "heading": "Getting an original copy",
+      "html": "<p>If you would rather bring your own file — or you want the disk images for a real Macintosh — these are the two archives worth your time:</p><ul><li><a href=\"https://macintoshgarden.org/games/the-oregon-trail\" rel=\"noopener\">Macintosh Garden</a> — the Mac abandonware archive, with screenshots, manuals and multiple releases.</li><li><a href=\"https://archive.org/details/OregonTrailMacintosh\" rel=\"noopener\">Internet Archive</a> — the Macintosh version, preserved and playable there too.</li></ul><p>Drop whatever you get into <a href=\"/load-mac-file/\">the loader</a> and it opens on an emulated Mac here.</p>"
+    },
+    "related": [
+      {
+        "href": "/run/number-munchers/",
+        "title": "Number Munchers",
+        "desc": "The other MECC game that ate your maths lesson."
+      },
+      {
+        "href": "/run/kid-pix/",
+        "title": "Kid Pix",
+        "desc": "The drawing program from the same computer lab."
+      },
+      {
+        "href": "/collection/system-7/",
+        "title": "More System 7 software",
+        "desc": "Everything from the era this ran in."
+      }
+    ],
+    "byo": {
+      "accepts": [
+        ".sit",
+        ".hqx",
+        ".bin",
+        ".img",
+        ".dsk",
+        ".toast",
+        ".iso",
+        ".zip"
+      ],
+      "hint": "A .sit or .img of the Macintosh release works best."
+    },
+    "updated": "2026-09-13",
+    "addedDate": "2026-09-13",
+    "rank": 1
+  },
+  {
+    "slug": "marathon",
+    "title": "Play Marathon (1994) Online — Bungie's Mac Shooter, Free & Legal",
+    "description": "Bungie's Marathon, the Mac-only shooter that led to Halo, running free in your browser. Released for free redistribution by Bungie in 2005.",
+    "keywords": "marathon 1994, play marathon online, bungie marathon, marathon mac, marathon durandal, marathon free",
+    "ogTitle": "Marathon (1994) in your browser",
+    "ogDescription": "Bungie's Mac-only shooter, the one before Halo. Free and legal, running on an emulated Macintosh.",
+    "crumb": "Marathon",
+    "h1": "Marathon (1994) in your browser",
+    "appName": "Marathon",
+    "appType": "game",
+    "author": "Bungie Software",
+    "year": 1994,
+    "genre": [
+      "First-person shooter",
+      "Action",
+      "Science fiction"
+    ],
+    "categories": [
+      "Shooters",
+      "Action",
+      "Free & complete"
+    ],
+    "era": "system-7",
+    "machine": "Quadra-650",
+    "ramMB": 32,
+    "screen": {
+      "w": 640,
+      "h": 480,
+      "depth": 8
+    },
+    "provenance": "clean",
+    "fullyFree": "Bungie authorised free redistribution of the whole Marathon trilogy in 2005 — not a shareware first chapter, the entire game.",
+    "licenseReason": "Bungie released the Marathon trilogy for free redistribution in 2005 and has repeatedly blessed the community's continued distribution of it since, including the Aleph One bundles and the free Steam release. This is the original 1994 Macintosh build, not a port.",
+    "verdict": {
+      "kind": "good",
+      "text": "Free & legal"
+    },
+    "intro": "<p>Before Halo, Bungie was a small Chicago company making games only for the Macintosh, and Marathon is the one that made their name. It came out in December 1994, six months after Doom shipped on DOS, and it did several things Doom did not: you could look up and down, the levels had real architecture, and — unusually for a shooter in 1994 — it had a plot worth reading.</p>\n<p>This is the original Macintosh release running on an emulated Quadra 650. Bungie put the whole trilogy into free redistribution in 2005, so there is nothing grey about it: the entire game is here, legally, at no cost.</p>",
+    "launchNote": "Boots to the Marathon title screen. Pick Begin New Game, then Total Carnage if you have played a shooter before — the default difficulty is gentle.",
+    "macControls": [
+      {
+        "keys": "Arrow keys",
+        "does": "Move forward, back and turn"
+      },
+      {
+        "keys": "Space",
+        "does": "Fire"
+      },
+      {
+        "keys": "Tab",
+        "does": "Switch weapon"
+      },
+      {
+        "keys": "Shift",
+        "does": "Run"
+      },
+      {
+        "keys": "Z / X",
+        "does": "Sidestep left and right"
+      },
+      {
+        "keys": "Delete",
+        "does": "Action — open doors, use terminals, flip switches"
+      },
+      {
+        "keys": "M",
+        "does": "Map"
+      },
+      {
+        "keys": "Esc",
+        "does": "Pause and quit"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Quadra 650, 32 MB RAM, 640×480 at 256 colours</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Basilisk II, compiled to WebAssembly</td></tr><tr><th>Speed</th><td>Comfortable on a desktop or laptop. A phone will struggle — this is the most demanding thing on the site.</td></tr><tr><th>Saves</th><td>Marathon saves at pattern buffers inside the level; those saves live in your browser</td></tr></tbody></table><p>Marathon ran on a 68040 Macintosh in 1994 and it wants roughly that much machine, which is a real ask for an interpreter running in a browser tab. On a modern desktop it is fine. On a phone it runs, but not at a framerate you would choose to fight in. Reduce the window size inside the game (the plus and minus keys) if it feels heavy.</p>"
+      },
+      {
+        "h": "What Marathon actually is",
+        "html": "<p>You are a security officer aboard the UESC Marathon, a colony ship built out of the hollowed-out Martian moon Deimos, in orbit around Tau Ceti IV. An alien slave empire called the Pfhor attacks. That is the last simple sentence available about the plot.</p><p>What makes Marathon different is that the story is told through computer terminals scattered through the levels, and the three shipboard AIs talking to you through them do not agree with each other. Leela is helpful and straightforward. Durandal is rampant — a technical term in the game's fiction for an AI that has gone through anger and despair and out the other side into something like megalomania — and he is funny, unreliable, and by a distance the most memorable character in a 1994 shooter. Tycho is a third thing entirely.</p><p>Mechanically it holds up better than most of its generation. There is real verticality, oxygen management in vacuum levels, friendly BOBs you can accidentally shoot, dual-wielded pistols, and a physics model the community was modifying within months of release.</p>"
+      },
+      {
+        "h": "The trilogy, and where to go next",
+        "html": "<p>Marathon (1994) was followed by Marathon 2: Durandal in 1995 — which added liquid you could swim in, better level design and a Windows 95 port, the first Bungie game most PC owners saw — and Marathon Infinity in 1996, which shipped with the level editor and a story that deliberately fractures.</p><p>All three are free. If you want them at a modern resolution with mouselook, the community engine Aleph One is the way: it is open source, actively maintained, and runs on everything. What you get here instead is the 1994 experience exactly as it shipped, keyboard turning and all.</p><p>And the lineage is not subtle. Read Durandal's terminals, then think about Cortana.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this really free?",
+        "a": "Yes, and not in a wink-wink way. Bungie authorised free redistribution of the entire Marathon trilogy in 2005, has acknowledged the community's distribution of it repeatedly since, and the trilogy was published free on Steam in 2024 with Bungie's blessing."
+      },
+      {
+        "q": "Is this the full game or a demo?",
+        "a": "The full game. All of Marathon, every level, not a shareware chapter."
+      },
+      {
+        "q": "Why can't I look up and down with the mouse?",
+        "a": "Because it is 1994. Marathon does support mouse aiming, but the default configuration is keyboard turning, which is what most people used at the time. If you want modern controls, the Aleph One engine is the better route — it is linked below."
+      },
+      {
+        "q": "Is Marathon connected to Halo?",
+        "a": "Same studio, and the connections are deliberate. The rampant AI Durandal is the clear ancestor of Cortana, several weapons and ideas carry over, and Bungie has always treated them as part of one lineage. Marathon is not set in the Halo universe, but it is unmistakably the same people."
+      },
+      {
+        "q": "It runs slowly. What can I do?",
+        "a": "Shrink the game window with the minus key inside Marathon — it renders fewer pixels and the framerate jumps. Close other tabs. And use a desktop or laptop if you can: this is the heaviest title on the site."
+      },
+      {
+        "q": "Where do I save?",
+        "a": "At the pattern buffers — the glowing terminal-like devices inside levels. Marathon does not let you save anywhere you like, which takes some getting used to."
+      },
+      {
+        "q": "What are the BOBs?",
+        "a": "Born On Board — the civilian crew. They follow you, they shoot at the Pfhor, they are not very good at it, and they will absolutely walk into your line of fire. Shooting too many of them has consequences."
+      }
+    ],
+    "download": {
+      "heading": "Get the trilogy for yourself",
+      "html": "<ul><li><a href=\"https://alephone.lhowon.org/\" rel=\"noopener\">Aleph One</a> — the open-source engine, bundled with all three games, free, for macOS, Windows and Linux. This is what to use if you want mouselook and a modern resolution.</li><li><a href=\"https://github.com/Aleph-One-Marathon/data-marathon\" rel=\"noopener\">Original game data on GitHub</a> — Bungie's files, preserved.</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/marathon-2/",
+        "title": "Marathon 2: Durandal",
+        "desc": "The 1995 sequel, and the one that went to Windows."
+      },
+      {
+        "href": "/run/marathon-infinity/",
+        "title": "Marathon Infinity",
+        "desc": "1996, with the editor and a story that folds in on itself."
+      },
+      {
+        "href": "https://exebrowser.com/run/doom/",
+        "title": "DOOM, on our sister site",
+        "desc": "The other 1994 shooter, running in the same way."
+      }
+    ],
+    "updated": "2026-09-13",
+    "addedDate": "2026-09-13",
+    "rank": 2
+  },
+  {
+    "slug": "kid-pix",
+    "title": "Play Kid Pix Online — The Original 1989 Mac Version, Free",
+    "description": "Kid Pix as it first shipped: black and white, the dynamite eraser, the Wacky Brush and all the noises. Running free in your browser, no download.",
+    "keywords": "kid pix online, kid pix 1.0, original kid pix, kid pix mac, kid pix free, kid pix browser",
+    "ogTitle": "Kid Pix (1989) in your browser",
+    "ogDescription": "Craig Hickman's original, non-commercial Kid Pix — black and white, dynamite eraser, all the noises.",
+    "crumb": "Kid Pix",
+    "h1": "Kid Pix, the 1989 original, in your browser",
+    "appName": "Kid Pix",
+    "appType": "app",
+    "author": "Craig Hickman",
+    "year": 1989,
+    "genre": [
+      "Creative",
+      "Educational"
+    ],
+    "categories": [
+      "Classroom classics",
+      "Creative tools",
+      "Free & complete"
+    ],
+    "era": "system-6",
+    "machine": "Mac-Plus",
+    "ramMB": 4,
+    "screen": {
+      "w": 512,
+      "h": 342,
+      "depth": 1
+    },
+    "provenance": "clean",
+    "fullyFree": "Craig Hickman released version 1.0 himself, free and non-commercial, before Brøderbund published the commercial version.",
+    "licenseReason": "This is Kid Pix 1.0, the version Craig Hickman wrote for his son and released himself in 1989 as non-commercial software, before Brøderbund picked it up and published the commercial 1.1 in 1991. The later Brøderbund releases are not hosted here.",
+    "verdict": {
+      "kind": "good",
+      "text": "Free & complete"
+    },
+    "intro": "<p>Craig Hickman wrote Kid Pix because he watched his three-year-old son try to use MacPaint and fail. Everything in MacPaint punished a mistake; nothing in it made a noise. So he built a drawing program where every tool was obvious, every action made a sound, and nothing you did could be wrong.</p>\n<p>This is version 1.0 from 1989 — the one Hickman gave away himself, before Brøderbund published it commercially. It is black and white, it runs on an emulated Mac Plus, and it is the fastest thing on this site: the whole machine is 512 by 342 pixels and starts instantly.</p>",
+    "launchNote": "Opens straight into a blank page with the toolbar down the left. Try the stick of dynamite in the eraser menu.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Draw, and pick tools from the palette on the left"
+      },
+      {
+        "keys": "Click and hold a tool",
+        "does": "Opens that tool's variations along the bottom"
+      },
+      {
+        "keys": "Cmd-Z",
+        "does": "Undo — although the eraser is more fun"
+      },
+      {
+        "keys": "Cmd-S",
+        "does": "Save your picture inside the emulated Mac"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh Plus, 4 MB RAM, 512×342 black and white</td></tr><tr><th>System</th><td>System 6.0.8</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Speed</th><td>Instant. This runs comfortably on a phone.</td></tr><tr><th>Sound</th><td>Yes, and the sounds are half the point. Click inside the screen once to let the browser play audio.</td></tr></tbody></table><p>A Mac Plus is a tiny machine by any modern measure — eight megahertz, one megabyte of RAM as standard — which is why this is the lightest emulation on the site. It is also why the screen is black and white and rather small. That is not a limitation of the emulator; that was the computer.</p>"
+      },
+      {
+        "h": "The tools worth finding",
+        "html": "<p>Kid Pix's design principle was that a child should be able to discover everything by poking at it, so the descriptions below are slightly against the spirit of the thing. Poke at it first.</p><ul><li><strong>The Wacky Brush.</strong> Not one brush — a menu of them. Bubbles, dripping paint, a trail of little shapes, echoes of whatever you last drew.</li><li><strong>The stick of dynamite.</strong> One of the erasers. It blows the whole picture up, with a bang.</li><li><strong>The rubber stamps.</strong> A tray of small black-and-white icons — animals, vehicles, faces — that you stamp anywhere.</li><li><strong>The Electric Mixer.</strong> Takes whatever is on the page and scrambles it, in one of several increasingly alarming ways.</li><li><strong>The letter stamps.</strong> Type and each letter arrives with a sound.</li></ul><p>Everything makes a noise. The pencil squeaks, the paint can splats, the eraser goes <em>whoosh</em>. Hickman recorded a lot of these himself.</p>"
+      },
+      {
+        "h": "What happened next",
+        "html": "<p>Brøderbund published Kid Pix commercially in 1991 and it became one of the best-selling pieces of educational software of the decade. Kid Pix Companion followed in 1992 with the slideshow feature, then Kid Pix 2 in 1994 brought colour, and the line continued under Brøderbund, The Learning Company and Riverdeep for years afterwards.</p><p>The version here is the one before all of that: Hickman's own release, black and white, with the sounds he recorded and the tools he chose. Plenty of people who loved Kid Pix as children have never seen it. It holds up remarkably well, partly because a program built so that a three-year-old cannot get it wrong turns out to be a pleasant thing for an adult too.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the Kid Pix I remember?",
+        "a": "If you remember colour, it is not — you are remembering Kid Pix 2 from 1994 or later. This is the original 1989 black-and-white version, which is the direct ancestor: same tools, same sounds, same dynamite."
+      },
+      {
+        "q": "Is it really free?",
+        "a": "Yes. Craig Hickman released version 1.0 himself as non-commercial software before Brøderbund published the commercial version. The later Brøderbund releases are not hosted here."
+      },
+      {
+        "q": "Why is it black and white?",
+        "a": "Because the Macintosh Plus it was written for was black and white. Colour Macs existed in 1989 but were expensive, and Kid Pix was built to run on the cheap machine a school or a family actually had."
+      },
+      {
+        "q": "Can I save or print my picture?",
+        "a": "You can save it inside the emulated Mac and it will still be there next time. Getting it out to a real file on your computer is not wired up yet — it is on the list."
+      },
+      {
+        "q": "Does it work on a phone or tablet?",
+        "a": "Yes, and better than most things here. The emulated machine is small and simple, and drawing with a finger turns out to suit it."
+      },
+      {
+        "q": "Who made it?",
+        "a": "Craig Hickman, an art professor at the University of Oregon, who wrote it for his son Ben after watching him struggle with MacPaint. He has said the core idea was that a drawing program for a small child should have no wrong moves."
+      }
+    ],
+    "download": {
+      "heading": "Get a copy",
+      "html": "<ul><li><a href=\"https://archive.org/details/kid-pix-10\" rel=\"noopener\">Kid Pix 1.0 at the Internet Archive</a> — the non-commercial 1989 version.</li><li><a href=\"https://www.macintoshrepository.org/92-kid-pix-1-0\" rel=\"noopener\">Macintosh Repository</a> — the same version with the original disk layout.</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/macpaint/",
+        "title": "MacPaint",
+        "desc": "The 1984 program Kid Pix was a reaction to."
+      },
+      {
+        "href": "/run/oregon-trail/",
+        "title": "The Oregon Trail",
+        "desc": "The other thing on the computer-lab Mac."
+      },
+      {
+        "href": "/collection/system-6/",
+        "title": "More System 6 software",
+        "desc": "Black and white, 512×342, instant."
+      }
+    ],
+    "updated": "2026-09-13",
+    "addedDate": "2026-09-13",
+    "rank": 3
+  },
+  {
+    "slug": "after-dark",
+    "title": "After Dark Flying Toasters Online — The Real 1991 Screensaver",
+    "description": "The original After Dark screensaver with the Flying Toasters, running on an emulated Mac in your browser. Fish, Mowin' Man, Warp and the rest.",
+    "keywords": "flying toasters, after dark screensaver, after dark online, berkeley systems, flying toasters screensaver, after dark mac",
+    "ogTitle": "After Dark, with the Flying Toasters",
+    "ogDescription": "Berkeley Systems' 1991 screensaver, running on an emulated Macintosh. The toasters have wings.",
+    "crumb": "After Dark",
+    "h1": "After Dark and the Flying Toasters, running for real",
+    "appName": "After Dark",
+    "appType": "app",
+    "author": "Berkeley Systems",
+    "year": 1991,
+    "genre": [
+      "Screensaver",
+      "Utility"
+    ],
+    "categories": [
+      "Creative tools",
+      "Apps & utilities"
+    ],
+    "era": "system-7",
+    "machine": "Quadra-650",
+    "ramMB": 16,
+    "screen": {
+      "w": 640,
+      "h": 480,
+      "depth": 8
+    },
+    "provenance": "grey",
+    "licenseReason": "Berkeley Systems was absorbed in the late 1990s and After Dark has not been sold for a very long time; the trademark has drifted between owners and nobody distributes the Macintosh version. There are dozens of Flying Toasters tributes on the web made of CSS and JavaScript. This is not one of them — it is the actual software, running on an actual emulated Macintosh.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs well"
+    },
+    "intro": "<p>In 1989 Berkeley Systems shipped a utility that stopped your monitor from burning an image into its phosphor. In 1991 they added a module in which chrome toasters with flapping wings fly slowly across the screen accompanied by slices of toast, and that module became one of the most recognisable pieces of software of the decade.</p>\n<p>This is the real After Dark on a real emulated Macintosh, not a web re-creation. You get the control panel, the module list, the sliders, and the toasters as Berkeley Systems drew them.</p>",
+    "launchNote": "Opens the After Dark control panel. Pick Flying Toasters from the list on the left, then Demo to run it immediately.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Everything — the control panel is all sliders and lists"
+      },
+      {
+        "keys": "Demo button",
+        "does": "Run the selected module right now instead of waiting"
+      },
+      {
+        "keys": "Any key or mouse move",
+        "does": "Stop the screensaver, as it always did"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Quadra 650, 16 MB RAM, 640×480 at 256 colours</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Basilisk II, compiled to WebAssembly</td></tr><tr><th>Sound</th><td>Yes. Several modules are largely about the sound.</td></tr></tbody></table><p>After Dark was not an application — it was a system extension and a control panel, which is why it needs a whole Macintosh around it rather than being something you could port to a web page. That is also why running it here means booting System 7 first. It takes a couple of seconds.</p>"
+      },
+      {
+        "h": "The modules worth your time",
+        "html": "<ul><li><strong>Flying Toasters.</strong> The famous one. Chrome toasters, flapping wings, slices of toast, and a slider for how many.</li><li><strong>Fish!</strong> An aquarium. Berkeley Systems' first hit module and, for a lot of offices, the reason After Dark got bought.</li><li><strong>Mowin' Man.</strong> A small man mows your screen. When he finishes, it grows back.</li><li><strong>Warp.</strong> Stars streaking past. Simple, and the one that looked best on a big monitor.</li><li><strong>Boris.</strong> A cat that walks across your screen, and later got a whole product to himself.</li><li><strong>Rainstorm.</strong> Rain down the glass with thunder. Genuinely calming, thirty-five years on.</li></ul><p>There is also a Randomizer, which cycles modules, and a MultiModule that runs several at once — which on a 1991 Macintosh was showing off.</p>"
+      },
+      {
+        "h": "Why a screensaver mattered",
+        "html": "<p>The original justification was technical and real. Cathode-ray tubes with a static image left on them for weeks would retain a ghost of it permanently, and in an office full of terminals showing the same spreadsheet all day, that was a genuine hardware problem.</p><p>What Berkeley Systems worked out is that the fix could be entertainment. A screensaver is a piece of software with no job to do and complete freedom over the screen, running in an era when almost every other program was a grid of grey boxes. After Dark was one of the first pieces of software people bought for pleasure rather than for a task, and the toasters ended up on t-shirts, mugs and a lawsuit with Jefferson Airplane over whose flying toasters came first.</p><p>LCD panels do not burn in the way CRTs did, so the technical reason evaporated. The toasters outlived it comfortably.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the real After Dark or a web imitation?",
+        "a": "The real software. There are many Flying Toasters tributes built in CSS, JavaScript or as modern screensavers; this is Berkeley Systems' actual Macintosh release running inside an emulated Macintosh, control panel and all."
+      },
+      {
+        "q": "Which version is this?",
+        "a": "The Macintosh After Dark from the early 1990s, the version whose module set includes Flying Toasters, Fish!, Mowin' Man, Warp and Boris."
+      },
+      {
+        "q": "Can I use it as my actual screensaver?",
+        "a": "No — it runs inside the emulated Mac, in a browser tab, so it has no way to take over your real screen. What you get is the thing itself, on demand."
+      },
+      {
+        "q": "Why does it need a whole emulated Macintosh?",
+        "a": "Because After Dark was a system extension, not an application. It hooked into the Mac OS to take over the screen when the machine went idle, which means it only exists in the context of a running Mac OS."
+      },
+      {
+        "q": "Who owns After Dark now?",
+        "a": "It is genuinely murky. Berkeley Systems was acquired in the late 1990s and the After Dark name has changed hands more than once since, but nobody has sold the Macintosh version in decades. If you hold the rights, the takedown page is linked in the footer."
+      },
+      {
+        "q": "Were the Flying Toasters stolen from Jefferson Airplane?",
+        "a": "Jefferson Airplane sued over it in 1994, pointing at the cover of their 1973 album Thirty Seconds Over Winterland, which has flying toasters on it. The case did not go the band's way."
+      }
+    ],
+    "download": {
+      "heading": "Get a copy",
+      "html": "<ul><li><a href=\"https://macintoshgarden.org/apps/after-dark\" rel=\"noopener\">Macintosh Garden</a> carries the Macintosh releases and the expansion module sets.</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/kid-pix/",
+        "title": "Kid Pix",
+        "desc": "The other piece of software people remember by its sounds."
+      },
+      {
+        "href": "/collection/system-7/",
+        "title": "More System 7 software",
+        "desc": "The era After Dark ruled."
+      },
+      {
+        "href": "/load-mac-file/",
+        "title": "Run your own copy",
+        "desc": "Got the expansion modules? Drop them in."
+      }
+    ],
+    "updated": "2026-09-13",
+    "addedDate": "2026-09-13",
+    "rank": 5
+  },
+  {
+    "slug": "glider-pro",
+    "title": "Play Glider PRO Online — The Paper Aeroplane Mac Game, Free",
+    "description": "Glider PRO, John Calhoun's paper aeroplane game, flying through a house on furnace updrafts. Source released under the GPL. Free in your browser.",
+    "keywords": "glider pro, glider mac game, play glider online, john calhoun glider, paper airplane game mac, aerofoil",
+    "ogTitle": "Glider PRO in your browser",
+    "ogDescription": "Fly a paper aeroplane through a house on heating vents. John Calhoun's classic, free and open source.",
+    "crumb": "Glider PRO",
+    "h1": "Glider PRO — a paper aeroplane, a house, and a lot of updrafts",
+    "appName": "Glider PRO",
+    "appType": "game",
+    "author": "John Calhoun / Casady & Greene",
+    "year": 1994,
+    "genre": [
+      "Action",
+      "Puzzle",
+      "Platform"
+    ],
+    "categories": [
+      "Action",
+      "Puzzle & strategy",
+      "Free & complete"
+    ],
+    "era": "system-7",
+    "machine": "Quadra-650",
+    "ramMB": 16,
+    "screen": {
+      "w": 640,
+      "h": 480,
+      "depth": 8
+    },
+    "provenance": "clean",
+    "fullyFree": "John Calhoun released the Glider PRO source under the GPL in 2016, along with the artwork and the houses.",
+    "licenseReason": "John Calhoun published the full Glider PRO source code on GitHub in 2016 under the GNU General Public License version 2, together with the game's assets. It is one of the very few commercial Macintosh games of the era to be freed outright by its author.",
+    "verdict": {
+      "kind": "good",
+      "text": "Free & open source"
+    },
+    "intro": "<p>You are a paper aeroplane. You are indoors. Gravity is pulling you down and the only thing keeping you up is the hot air coming out of the heating vents, so the whole game is a slow negotiation with a house that is full of candles, drips, rubber bands and a cat.</p>\n<p>Glider PRO is the 1994 peak of a series John Calhoun had been refining since 1988, and in 2016 he put the whole thing — code and art — on GitHub under the GPL. It is free in every sense.</p>",
+    "launchNote": "Starts at the main menu. New Game drops you into the Slumberland house, which is the tutorial in disguise.",
+    "macControls": [
+      {
+        "keys": "Left / Right arrows",
+        "does": "Steer the glider"
+      },
+      {
+        "keys": "Down arrow",
+        "does": "Toggle the battery or helium when you have one"
+      },
+      {
+        "keys": "Space",
+        "does": "Pause"
+      },
+      {
+        "keys": "Cmd-N",
+        "does": "New game"
+      },
+      {
+        "keys": "Esc",
+        "does": "Back to the menu"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Quadra 650, 16 MB RAM, 640×480 at 256 colours</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Basilisk II, compiled to WebAssembly</td></tr><tr><th>Speed</th><td>Comfortable. Glider was written to run on modest hardware.</td></tr></tbody></table><p>If you want Glider PRO at a modern resolution with gamepad support and the level editor, there is a maintained port called Aerofoil built on Calhoun's released source. It is the better way to play seriously. What is here is the original, as it shipped.</p>"
+      },
+      {
+        "h": "The house, and everything in it",
+        "html": "<p>Each room is a single screen and the glider drifts through it left to right, or right to left, or up through a hole in the ceiling. The furniture is the level design:</p><ul><li><strong>Heating vents and air ducts.</strong> Your engine. Hover over one to climb; the entire skill of the game is learning to ride them.</li><li><strong>Candles.</strong> Fly through the flame and the paper burns. Obviously.</li><li><strong>Drips and steam.</strong> Wet paper does not fly.</li><li><strong>Rubber bands and paper clips.</strong> Fired at you by things that resent your presence.</li><li><strong>The cat.</strong> A problem.</li><li><strong>Batteries, helium, and the paper aeroplane power-ups.</strong> Temporary thrust, temporary lift, and extra lives.</li></ul><p>Glider PRO shipped with several houses and a built-in editor, and the community built hundreds more. That editor is the reason the game is still alive: there is far more Glider content made by players than by Casady &amp; Greene.</p>"
+      },
+      {
+        "h": "Why it was freed",
+        "html": "<p>John Calhoun wrote the first Glider in 1988 as shareware, and the series ran through Glider 3.1.4 and Glider 4.0 before Casady &amp; Greene published Glider PRO commercially in 1994. Casady &amp; Greene closed in 2003.</p><p>In 2016 Calhoun put the complete source on GitHub under the GPL — the Macintosh Programmer's Workshop project files, the resource forks, the artwork, everything. That is rarer than it sounds. Most Macintosh games of that era are stuck in limbo because the publisher dissolved and nobody is sure who inherited what. Glider PRO is simply free, because the person who wrote it decided it should be.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is Glider PRO free?",
+        "a": "Yes, genuinely. John Calhoun released the source code and the game assets on GitHub in 2016 under the GNU GPL version 2."
+      },
+      {
+        "q": "What is the goal?",
+        "a": "Get the paper aeroplane through the house to the end without burning, soaking or shredding it. Later houses add doors you have to find keys for and rooms that only open once you have done something elsewhere."
+      },
+      {
+        "q": "How do I stay in the air?",
+        "a": "Ride the updrafts. The vents and ducts blow upward — position yourself over one and you rise. Most deaths are from trying to cross a room with no lift in it."
+      },
+      {
+        "q": "Can I build my own houses?",
+        "a": "Glider PRO shipped with a level editor and it is in this version. The modern Aerofoil port has a better one and can import the hundreds of houses the community made."
+      },
+      {
+        "q": "Should I play this or Aerofoil?",
+        "a": "Aerofoil if you want to play a lot of it — modern resolution, gamepad support, the community houses. This one if you want the 1994 game exactly as it was, in one click, with nothing installed."
+      },
+      {
+        "q": "Is there an earlier version?",
+        "a": "Several. Glider 4.0 from 1991 is the direct predecessor and Calhoun released its source too. It is simpler, black and white, and charming in its own right."
+      }
+    ],
+    "download": {
+      "heading": "Source and modern ports",
+      "html": "<ul><li><a href=\"https://github.com/softdorothy/GliderPRO\" rel=\"noopener\">softdorothy/GliderPRO</a> — John Calhoun's original source, GPL-2.</li><li><a href=\"https://github.com/elasota/Aerofoil\" rel=\"noopener\">Aerofoil</a> — the maintained multiplatform port, with the level editor and the community houses.</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/glider-4/",
+        "title": "Glider 4.0",
+        "desc": "The 1991 predecessor, black and white."
+      },
+      {
+        "href": "/run/marathon/",
+        "title": "Marathon",
+        "desc": "The other great free Mac game."
+      },
+      {
+        "href": "/collection/system-7/",
+        "title": "More System 7 software",
+        "desc": "The era this shipped in."
+      }
+    ],
+    "updated": "2026-09-13",
+    "addedDate": "2026-09-13",
+    "rank": 4
+  },
+  {
+    "slug": "marathon-2",
+    "title": "Play Marathon 2: Durandal Online — Free, in Your Browser",
+    "description": "Marathon 2: Durandal, Bungie's 1995 sequel and the first to reach Windows. Free and legal, running on an emulated Macintosh in your browser.",
+    "keywords": "marathon 2 durandal, play marathon 2 online, bungie marathon 2, marathon durandal free",
+    "ogTitle": "Marathon 2: Durandal in your browser",
+    "ogDescription": "Bungie's 1995 sequel, free and legal, on an emulated Mac.",
+    "crumb": "Marathon 2: Durandal",
+    "h1": "Marathon 2: Durandal (1995)",
+    "appName": "Marathon 2: Durandal",
+    "appType": "game",
+    "author": "Bungie Software",
+    "year": 1995,
+    "genre": [
+      "First-person shooter",
+      "Action",
+      "Science fiction"
+    ],
+    "categories": [
+      "Shooters",
+      "Action",
+      "Free & complete"
+    ],
+    "era": "system-7",
+    "machine": "Quadra-650",
+    "ramMB": 32,
+    "screen": {
+      "w": 640,
+      "h": 480,
+      "depth": 8
+    },
+    "provenance": "clean",
+    "fullyFree": "Part of the Marathon trilogy Bungie released for free redistribution in 2005.",
+    "licenseReason": "Released for free redistribution by Bungie in 2005 along with the rest of the trilogy, and published free on Steam with Bungie's blessing in 2024.",
+    "verdict": {
+      "kind": "good",
+      "text": "Free & legal"
+    },
+    "intro": "<p>A year after Marathon, Bungie did what sequels rarely do and improved nearly everything. Marathon 2 added water and lava you could swim through, vastly better level architecture, friendly aliens, and a structure that sends you back and forth across the surface of Lh'owon rather than around one ship.</p>\n<p>It is also the first Bungie game most people outside the Macintosh world ever saw: a Windows 95 port followed in 1996. This is the original Mac release.</p>",
+    "launchNote": "Boots to the title screen. The story picks up directly from the end of Marathon, but it stands alone.",
+    "macControls": [
+      {
+        "keys": "Arrow keys",
+        "does": "Move and turn"
+      },
+      {
+        "keys": "Space",
+        "does": "Fire"
+      },
+      {
+        "keys": "Tab",
+        "does": "Switch weapon"
+      },
+      {
+        "keys": "Shift",
+        "does": "Run"
+      },
+      {
+        "keys": "Z / X",
+        "does": "Sidestep"
+      },
+      {
+        "keys": "Delete",
+        "does": "Action — doors, terminals, switches"
+      },
+      {
+        "keys": "M",
+        "does": "Map"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Quadra 650, 32 MB RAM, 640×480 at 256 colours</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Basilisk II, compiled to WebAssembly</td></tr><tr><th>Speed</th><td>Desktop comfortably; a phone will struggle</td></tr></tbody></table><p>Marathon 2 is slightly heavier than the first game because there is more going on in each room. If it feels sluggish, shrink the game window with the minus key — it renders fewer pixels and the framerate jumps immediately.</p>"
+      },
+      {
+        "h": "What changed from Marathon",
+        "html": "<p>The obvious addition is liquid. Marathon 2 lets you swim, and it uses that for whole levels of underwater navigation and for lava you have to cross quickly. It sounds small; it changes the shape of the level design completely.</p><p>Less obvious but more important: the levels are better. The first Marathon was corridors in a spaceship, which is what 1994 shooters were. Marathon 2 is set on a planet, with outdoor spaces, ruined architecture and rooms that look like places rather than arenas.</p><p>There are also allies. The S'pht'Kr fight alongside you, and the game is careful to make you notice when they die. Durandal is still in charge, still rampant, still funnier than a computer in a shooter has any right to be, and considerably more open about the fact that he is using you.</p>"
+      },
+      {
+        "h": "The Windows port, and why it matters",
+        "html": "<p>Bungie shipped Marathon 2 for Windows 95 in 1996 under the name Marathon 2: Durandal. It did not sell especially well against Quake, which arrived the same year, but it is the hinge between Bungie the Mac developer and Bungie the studio Microsoft bought in 2000.</p><p>If you want to play seriously, the Aleph One engine gives you all three games at a modern resolution with mouselook. What is here is the 1995 Macintosh release exactly as it shipped.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Do I need to play Marathon first?",
+        "a": "It helps — the story continues directly — but Marathon 2 opens with enough context to stand alone, and it is the better-designed game of the two."
+      },
+      {
+        "q": "Is it really free?",
+        "a": "Yes. Bungie released the whole trilogy for free redistribution in 2005 and published it free on Steam in 2024."
+      },
+      {
+        "q": "What is new compared to Marathon?",
+        "a": "Swimmable liquid, much stronger level design, allied aliens who fight beside you, and new weapons including the flamethrower and the alien weapon."
+      },
+      {
+        "q": "Can I swim?",
+        "a": "Yes, and you will need to. Several levels are built around it."
+      },
+      {
+        "q": "Why is it slow on my phone?",
+        "a": "It is a 1995 shooter written for a 68040 Macintosh, running in an interpreter in a browser. Shrink the window inside the game, or use a desktop."
+      },
+      {
+        "q": "Where do I save?",
+        "a": "At pattern buffers inside the levels, as in the first game."
+      }
+    ],
+    "download": {
+      "heading": "Get the trilogy",
+      "html": "<ul><li><a href=\"https://alephone.lhowon.org/\" rel=\"noopener\">Aleph One</a> — the open-source engine with all three games bundled, free.</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/marathon/",
+        "title": "Marathon",
+        "desc": "Where it starts, 1994."
+      },
+      {
+        "href": "/run/marathon-infinity/",
+        "title": "Marathon Infinity",
+        "desc": "1996, and stranger."
+      },
+      {
+        "href": "/collection/system-7/",
+        "title": "More System 7 software",
+        "desc": "The era all three shipped in."
+      }
+    ],
+    "updated": "2026-09-13",
+    "addedDate": "2026-09-13",
+    "rank": 6
+  },
+  {
+    "slug": "marathon-infinity",
+    "title": "Play Marathon Infinity Online — Bungie's 1996 Finale, Free",
+    "description": "Marathon Infinity, the strangest and last of Bungie's Mac trilogy, with the level editor that built a community. Free in your browser.",
+    "keywords": "marathon infinity, play marathon infinity online, bungie marathon 3, marathon infinity free, forge anvil",
+    "ogTitle": "Marathon Infinity in your browser",
+    "ogDescription": "The 1996 finale, free and legal, on an emulated Mac.",
+    "crumb": "Marathon Infinity",
+    "h1": "Marathon Infinity (1996)",
+    "appName": "Marathon Infinity",
+    "appType": "game",
+    "author": "Bungie Software",
+    "year": 1996,
+    "genre": [
+      "First-person shooter",
+      "Action",
+      "Science fiction"
+    ],
+    "categories": [
+      "Shooters",
+      "Action",
+      "Free & complete"
+    ],
+    "era": "system-7",
+    "machine": "Quadra-650",
+    "ramMB": 32,
+    "screen": {
+      "w": 640,
+      "h": 480,
+      "depth": 8
+    },
+    "provenance": "clean",
+    "fullyFree": "Part of the trilogy Bungie put into free redistribution in 2005.",
+    "licenseReason": "Released for free redistribution by Bungie in 2005 with the rest of the Marathon trilogy.",
+    "verdict": {
+      "kind": "good",
+      "text": "Free & legal"
+    },
+    "intro": "<p>Marathon Infinity is the one where the story stops behaving. You die, and wake up somewhere earlier. You change sides. Whole chapters turn out to be something other than what they appeared. It is a 1996 first-person shooter structured like a short story that folds back on itself, and it should not work as well as it does.</p>\n<p>It also shipped with Forge and Anvil — the level and resource editors — which is why the Marathon community outlived the games by decades.</p>",
+    "launchNote": "Boots to the title screen. Play Marathon 2 first if you can; Infinity assumes you know the shape of things.",
+    "macControls": [
+      {
+        "keys": "Arrow keys",
+        "does": "Move and turn"
+      },
+      {
+        "keys": "Space",
+        "does": "Fire"
+      },
+      {
+        "keys": "Tab",
+        "does": "Switch weapon"
+      },
+      {
+        "keys": "Shift",
+        "does": "Run"
+      },
+      {
+        "keys": "Z / X",
+        "does": "Sidestep"
+      },
+      {
+        "keys": "Delete",
+        "does": "Action"
+      },
+      {
+        "keys": "M",
+        "does": "Map"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Quadra 650, 32 MB RAM, 640×480 at 256 colours</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Basilisk II, compiled to WebAssembly</td></tr><tr><th>Speed</th><td>Comparable to Marathon 2 — a desktop game here</td></tr></tbody></table>"
+      },
+      {
+        "h": "The branching that is not branching",
+        "html": "<p>Infinity presents itself as a story with alternative paths, and the trick is that your choices are not what move you between them — dying is. Fail in particular ways and the game does not simply reload; it continues somewhere else, in a different version of events, sometimes on a different side of the war.</p><p>Because of that, the level list is not the story order, and two people who finish Infinity will describe different games. In 1996 this was genuinely novel and there was no walkthrough to spoil it.</p><p>It is also the hardest of the three by some distance. If you want the trilogy's best-paced game, that is Marathon 2. Infinity is the one to play afterwards, when you want it to be strange.</p>"
+      },
+      {
+        "h": "Forge, Anvil, and why Marathon never died",
+        "html": "<p>Bungie shipped Infinity with its own tools: Forge for building levels and Anvil for editing the sprites, sounds and physics. Nothing else in 1996 handed you the editors the developers had used, and the result was a modding community that produced hundreds of complete total conversions — some of them, like the Eternal and Rubicon projects, larger than the games they were built on.</p><p>That community is why all three games still run on modern machines through the Aleph One engine, which grew out of the Marathon 2 source Bungie released in 2000.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Should I play this before Marathon 2?",
+        "a": "No. Infinity assumes familiarity with the trilogy's world and is the hardest of the three. Marathon 2 is the best entry point."
+      },
+      {
+        "q": "Is it free?",
+        "a": "Yes, along with the rest of the trilogy, since 2005."
+      },
+      {
+        "q": "What are Forge and Anvil?",
+        "a": "The level editor and the resource editor Bungie used to make the game, shipped with it. They are the reason the Marathon modding community exists."
+      },
+      {
+        "q": "Does the story really branch?",
+        "a": "Yes, though not through dialogue choices. Failing in particular ways moves you to a different thread rather than restarting you."
+      },
+      {
+        "q": "Can I play community total conversions here?",
+        "a": "Not directly. Aleph One is the right tool for that — it is linked below."
+      },
+      {
+        "q": "Is this the last Marathon?",
+        "a": "The last of the original trilogy. Bungie returned to the name much later with a separate project."
+      }
+    ],
+    "download": {
+      "heading": "Get the trilogy",
+      "html": "<ul><li><a href=\"https://alephone.lhowon.org/\" rel=\"noopener\">Aleph One</a> — all three games, free, with the community's scenarios.</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/marathon-2/",
+        "title": "Marathon 2: Durandal",
+        "desc": "Play this one first."
+      },
+      {
+        "href": "/run/marathon/",
+        "title": "Marathon",
+        "desc": "Where it starts."
+      },
+      {
+        "href": "/collection/system-7/",
+        "title": "More System 7 software",
+        "desc": "The era it shipped in."
+      }
+    ],
+    "updated": "2026-09-13",
+    "addedDate": "2026-09-13",
+    "rank": 7
+  },
+  {
+    "slug": "glider-4",
+    "title": "Play Glider 4.0 Online — The Black-and-White Mac Classic",
+    "description": "Glider 4.0, John Calhoun's 1991 paper aeroplane game in black and white. Source released under the GPL. Free in your browser.",
+    "keywords": "glider 4.0, glider mac game, john calhoun glider, paper airplane game mac, glider shareware",
+    "ogTitle": "Glider 4.0 in your browser",
+    "ogDescription": "The 1991 black-and-white original, free and open source.",
+    "crumb": "Glider 4.0",
+    "h1": "Glider 4.0 (1991)",
+    "appName": "Glider 4.0",
+    "appType": "game",
+    "author": "John Calhoun",
+    "year": 1991,
+    "genre": [
+      "Action",
+      "Puzzle"
+    ],
+    "categories": [
+      "Action",
+      "Puzzle & strategy",
+      "Free & complete"
+    ],
+    "era": "system-6",
+    "machine": "Mac-Plus",
+    "ramMB": 4,
+    "screen": {
+      "w": 512,
+      "h": 342,
+      "depth": 1
+    },
+    "provenance": "clean",
+    "fullyFree": "John Calhoun published the Glider 4.0 source on GitHub, as he did with Glider PRO.",
+    "licenseReason": "John Calhoun released the original Glider sources publicly on GitHub. Glider 4.0 was shareware in its day and is freely available now with its author's blessing.",
+    "verdict": {
+      "kind": "good",
+      "text": "Free & open source"
+    },
+    "intro": "<p>Before the colour, the level editor and the CD-ROM, Glider was this: a paper aeroplane, a black-and-white house, and heating vents. Glider 4.0 is the 1991 shareware version that made the series' name, and on a Macintosh Plus it is as immediate as anything on this site — the whole machine starts faster than a modern web page.</p>",
+    "launchNote": "Starts at the title screen. New Game drops you into the house at once.",
+    "macControls": [
+      {
+        "keys": "Left / Right arrows",
+        "does": "Steer"
+      },
+      {
+        "keys": "Space",
+        "does": "Pause"
+      },
+      {
+        "keys": "Cmd-N",
+        "does": "New game"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh Plus, 4 MB RAM, 512×342 black and white</td></tr><tr><th>System</th><td>System 6.0.8</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Speed</th><td>Instant, including on a phone</td></tr></tbody></table>"
+      },
+      {
+        "h": "What is different from Glider PRO",
+        "html": "<p>Glider PRO, three years later, added colour, much larger houses, a level editor and a great deal of furniture. Glider 4.0 is smaller and purer: one house, one idea, black and white, and it is over quickly enough to play through in a sitting.</p><p>Because it targets a Macintosh Plus rather than a Quadra, it is also the version that runs best on modest hardware — including a phone. If you have never played any Glider, this is a good place to start and it costs you nothing to find out.</p>"
+      },
+      {
+        "h": "Shareware, and what that meant",
+        "html": "<p>Glider was shareware: you got the whole game, and if you liked it you sent the author money. That model carried an enormous share of Macintosh software through the late 1980s and early 1990s, distributed on bulletin boards, on disks passed around user groups, and later on the Info-Mac archive.</p><p>It also produced a strange kind of authorship. A shareware game had one name on it, usually a person rather than a company, and the registration notice often included their home address. John Calhoun was one of that generation who kept going: Glider ran from 1988 to 1994 through four major versions, ended up published commercially by Casady &amp; Greene, and was eventually released as open source by the same person who started it.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is Glider 4.0 free?",
+        "a": "Yes. John Calhoun has published the Glider sources on GitHub, and the game was shareware in its day."
+      },
+      {
+        "q": "How is it different from Glider PRO?",
+        "a": "Smaller, black and white, one house, no level editor. Glider PRO from 1994 is the bigger game; this is the one that made the series' reputation."
+      },
+      {
+        "q": "Why is it black and white?",
+        "a": "It was written for a Macintosh Plus, which had a one-bit screen. That is also why it runs so quickly here."
+      },
+      {
+        "q": "How do I stay up?",
+        "a": "Ride the heating vents. Everything else in the house is trying to end your flight."
+      },
+      {
+        "q": "Will it work on a phone?",
+        "a": "Yes, well. A Mac Plus is a tiny machine and the emulation is light."
+      },
+      {
+        "q": "Is there a modern port?",
+        "a": "Aerofoil ports Glider PRO rather than 4.0, but it is the best way to play the series seriously."
+      }
+    ],
+    "download": {
+      "heading": "Source and archives",
+      "html": "<ul><li><a href=\"https://github.com/softdorothy/Glider4\" rel=\"noopener\">softdorothy/Glider4</a> — John Calhoun's original sources.</li><li><a href=\"https://macintoshgarden.org/games/glider-40\" rel=\"noopener\">Macintosh Garden</a> — the shareware release.</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/glider-pro/",
+        "title": "Glider PRO",
+        "desc": "The 1994 colour sequel with the editor."
+      },
+      {
+        "href": "/run/kid-pix/",
+        "title": "Kid Pix",
+        "desc": "The other great black-and-white Mac program."
+      },
+      {
+        "href": "/collection/system-6/",
+        "title": "More System 6 software",
+        "desc": "Fast, small, and it runs on a phone."
+      }
+    ],
+    "updated": "2026-09-13",
+    "addedDate": "2026-09-13",
+    "rank": 8
+  },
+  {
+    "slug": "macpaint",
+    "title": "Use MacPaint Online — The 1984 Original, in Your Browser",
+    "description": "MacPaint, the program that showed the world what a mouse was for, running on an emulated Macintosh. Bill Atkinson's 1984 original.",
+    "keywords": "macpaint online, macpaint 1984, bill atkinson macpaint, original mac paint program, macpaint browser",
+    "ogTitle": "MacPaint (1984) in your browser",
+    "ogDescription": "Bill Atkinson's original, on an emulated Macintosh.",
+    "crumb": "MacPaint",
+    "h1": "MacPaint, the program that sold the Macintosh",
+    "appName": "MacPaint",
+    "appType": "app",
+    "author": "Apple Computer / Bill Atkinson",
+    "year": 1984,
+    "genre": [
+      "Creative"
+    ],
+    "categories": [
+      "Creative tools"
+    ],
+    "era": "system-6",
+    "machine": "Mac-Plus",
+    "ramMB": 4,
+    "screen": {
+      "w": 512,
+      "h": 342,
+      "depth": 1
+    },
+    "provenance": "grey",
+    "licenseReason": "MacPaint's source code was donated by Apple to the Computer History Museum in 2010 and published for non-commercial use. The application binary remains Apple's. It is here for the same reason the Museum published the source: it is a landmark, and it should be possible to actually use it.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs well"
+    },
+    "intro": "<p>In January 1984 almost nobody had used a mouse. MacPaint is the program that explained it. You pick up a brush, you drag, and paint appears — obvious now, astonishing then, and the single most effective demonstration Apple had of why a Macintosh was different from everything else on a desk.</p>\n<p>Bill Atkinson wrote it, and it is a remarkable piece of engineering as well as a remarkable piece of design: full-page bitmap editing with smooth interactive dragging, on a machine with 128 kilobytes of memory.</p>",
+    "launchNote": "Opens to a blank page with the tool palette down the left and the pattern palette along the bottom.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Everything. That is the point."
+      },
+      {
+        "keys": "Double-click a tool",
+        "does": "Opens its options, such as brush shape"
+      },
+      {
+        "keys": "Cmd-Z",
+        "does": "Undo"
+      },
+      {
+        "keys": "Shift-drag",
+        "does": "Constrain a line or a shape"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh Plus, 4 MB RAM, 512×342 black and white</td></tr><tr><th>System</th><td>System 6.0.8</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Speed</th><td>Instant</td></tr></tbody></table><p>Black and white is not a limitation of the emulation; the Macintosh had no colour until 1987, and MacPaint's entire visual vocabulary — the fifty-ish fill patterns along the bottom of the window — exists because black and white was all there was.</p>"
+      },
+      {
+        "h": "What to try",
+        "html": "<ul><li><strong>The fill patterns.</strong> Double-click one to edit it. A pattern editor, in 1984, in 128K.</li><li><strong>The lasso versus the marquee.</strong> The lasso shrinks to fit whatever you drew; the marquee takes a rectangle. Atkinson wrote the lasso because a rectangle was the wrong selection for a drawing.</li><li><strong>FatBits.</strong> Zoom to individual pixels while a small inset shows the drawing at normal size. Still the right design.</li><li><strong>The spray can and the paint bucket.</strong> Both arrived here first for most people who ever used them.</li></ul>"
+      },
+      {
+        "h": "Why it mattered",
+        "html": "<p>MacPaint shipped free with every Macintosh, alongside MacWrite, because a computer with a graphical interface and nothing graphical to do would have been a hard sell. It was written in Pascal and assembly and fitted into a machine with no hard disk, and the interactive performance it achieved on that hardware is the part programmers still find impressive.</p><p>Apple donated the source code to the Computer History Museum in 2010, and it can be read there. Almost every raster graphics program since owes it something: the tool palette down the left, the marquee, the lasso, the pixel zoom, the pattern fill. Photoshop's interface is a direct descendant.</p><p>Kid Pix, also on this site, was written explicitly as a reaction to it — Craig Hickman watched his three-year-old fail to use MacPaint and built something with no wrong moves.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the original MacPaint?",
+        "a": "Yes, the Macintosh application, running on an emulated Macintosh rather than re-implemented in JavaScript."
+      },
+      {
+        "q": "Why is everything black and white?",
+        "a": "The 1984 Macintosh had a one-bit display. Colour did not arrive until the Macintosh II in 1987."
+      },
+      {
+        "q": "Who wrote MacPaint?",
+        "a": "Bill Atkinson, who also wrote QuickDraw — the Mac's graphics engine — and later HyperCard."
+      },
+      {
+        "q": "Can I save my drawing?",
+        "a": "Inside the emulated Mac, yes. Getting it out to a file on your own computer is not wired up yet."
+      },
+      {
+        "q": "Is the source code available?",
+        "a": "Apple donated it to the Computer History Museum in 2010 and it is published there for non-commercial use."
+      },
+      {
+        "q": "What is FatBits?",
+        "a": "MacPaint's pixel zoom, with a small inset showing the drawing at normal size while you edit individual pixels. Every image editor since has a version of it."
+      }
+    ],
+    "download": {
+      "heading": "Read the source",
+      "html": "<ul><li><a href=\"https://computerhistory.org/blog/macpaint-and-quickdraw-source-code/\" rel=\"noopener\">Computer History Museum</a> — the original MacPaint and QuickDraw source, published with Apple's permission.</li><li><a href=\"https://macintoshgarden.org/apps/macpaint\" rel=\"noopener\">Macintosh Garden</a> — the application itself.</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/kid-pix/",
+        "title": "Kid Pix",
+        "desc": "Written as a reaction to this."
+      },
+      {
+        "href": "/run/glider-4/",
+        "title": "Glider 4.0",
+        "desc": "The other essential black-and-white Mac program."
+      },
+      {
+        "href": "/collection/system-6/",
+        "title": "More System 6 software",
+        "desc": "The compact Macintosh era."
+      }
+    ],
+    "updated": "2026-09-13",
+    "addedDate": "2026-09-13",
+    "rank": 9
+  },
+  {
+    "slug": "number-munchers",
+    "title": "Play Number Munchers Online — MECC's Maths Game, Free",
+    "description": "Number Munchers, MECC's maths arcade game from the school computer lab, running on an emulated Macintosh. Eat the multiples, avoid the Troggles.",
+    "keywords": "number munchers, play number munchers online, mecc number munchers, number munchers mac, munchers game",
+    "ogTitle": "Number Munchers in your browser",
+    "ogDescription": "MECC's maths arcade game, on an emulated Macintosh.",
+    "crumb": "Number Munchers",
+    "h1": "Number Munchers",
+    "appName": "Number Munchers",
+    "appType": "game",
+    "author": "MECC",
+    "year": 1990,
+    "genre": [
+      "Educational",
+      "Arcade"
+    ],
+    "categories": [
+      "Classroom classics",
+      "Puzzle & strategy"
+    ],
+    "era": "system-7",
+    "machine": "Quadra-650",
+    "ramMB": 8,
+    "screen": {
+      "w": 640,
+      "h": 480,
+      "depth": 8
+    },
+    "provenance": "grey",
+    "licenseReason": "MECC's catalogue passed through The Learning Company to Houghton Mifflin Harcourt and has not been sold in this form for decades. Same footing as The Oregon Trail, and the same <a href=\"/takedown/\">48-hour promise</a> applies.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs well"
+    },
+    "intro": "<p>A grid of numbers. A small green creature with a large mouth. A prompt at the top telling you to eat the multiples of seven, and four Troggles wandering in to eat you instead. Number Munchers is a maths drill dressed as an arcade game, and it is one of the few educational programs that children played voluntarily.</p>",
+    "launchNote": "Starts at the menu. Multiples is the classic mode; Factors is the one that actually teaches you something.",
+    "macControls": [
+      {
+        "keys": "Arrow keys",
+        "does": "Move the Muncher around the grid"
+      },
+      {
+        "keys": "Space",
+        "does": "Eat the number you are standing on"
+      },
+      {
+        "keys": "Esc",
+        "does": "Back to the menu"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Quadra 650, 8 MB RAM, 640×480</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Basilisk II, compiled to WebAssembly</td></tr><tr><th>Speed</th><td>Light. Fine on a phone, though the arrow keys need a keyboard.</td></tr></tbody></table>"
+      },
+      {
+        "h": "The modes, and which one is hardest",
+        "html": "<ul><li><strong>Multiples.</strong> Eat every multiple of the given number. The gentlest mode and the one everyone remembers.</li><li><strong>Factors.</strong> Eat the factors of the given number. Genuinely harder, because it requires you to think in the other direction.</li><li><strong>Primes.</strong> Eat the prime numbers. Fine until the grid fills with numbers in the eighties and nineties.</li><li><strong>Equality and Inequality.</strong> Eat the expressions that equal — or do not equal — the target. The ones that turn a maths drill into a reading-speed test.</li></ul><p>The Troggles are the pressure. They enter from the edges, move on their own schedule, and several varieties behave differently — some follow the grid, some cut across it, some eat numbers themselves and change the board under you.</p>"
+      },
+      {
+        "h": "Why MECC's games worked",
+        "html": "<p>The Minnesota Educational Computing Consortium was a state-funded body set up to put computers into Minnesota's schools, and it ended up making some of the most widely played software of the 1980s and 1990s almost by accident. The Oregon Trail is the famous one, but Number Munchers, Word Munchers, Odell Lake and Fraction Munchers were on every lab machine in North America.</p><p>What they got right was that the education had to be the mechanic rather than a reward attached to one. You do not answer a maths question to earn a turn at a game; eating the right number <em>is</em> the game, and the Troggle closing in is what makes you answer quickly. That is a harder design problem than it looks, and most educational software since has failed it.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the version from school?",
+        "a": "If your school had Macintoshes, yes. Number Munchers also ran on the Apple II and on DOS; this is the Macintosh release."
+      },
+      {
+        "q": "What are the Troggles?",
+        "a": "The purple creatures that wander onto the grid and eat you. Different varieties move differently, and some change the numbers on the board."
+      },
+      {
+        "q": "What is the hardest mode?",
+        "a": "Factors or Equality, depending on how you think. Multiples is the easiest by a distance."
+      },
+      {
+        "q": "Is there a Word Munchers?",
+        "a": "Yes, the same idea applied to spelling and grammar. It is on the list to add here."
+      },
+      {
+        "q": "Who made it?",
+        "a": "MECC, the Minnesota Educational Computing Consortium, the same state-funded body behind The Oregon Trail."
+      },
+      {
+        "q": "Can I play it on a phone?",
+        "a": "It runs, but it needs arrow keys, so a keyboard makes it much better."
+      }
+    ],
+    "download": {
+      "heading": "Get a copy",
+      "html": "<ul><li><a href=\"https://macintoshgarden.org/games/number-munchers\" rel=\"noopener\">Macintosh Garden</a> — the Macintosh release.</li><li><a href=\"https://archive.org/details/softwarelibrary_apple2_games\" rel=\"noopener\">Internet Archive</a> — MECC's catalogue across several platforms.</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/oregon-trail/",
+        "title": "The Oregon Trail",
+        "desc": "MECC's other one."
+      },
+      {
+        "href": "/run/kid-pix/",
+        "title": "Kid Pix",
+        "desc": "The drawing program from the same lab."
+      },
+      {
+        "href": "/collection/system-7/",
+        "title": "More System 7 software",
+        "desc": "The computer-lab era."
+      }
+    ],
+    "updated": "2026-09-13",
+    "addedDate": "2026-09-13",
+    "rank": 10
+  }
+]

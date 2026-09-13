@@ -1,0 +1,1369 @@
+:root {
+  --bg: #0e0d0b;
+  --bg-card: #1a1816;
+  --bg-elev: #232020;
+  --fg: #f1ece4;
+  --muted: #9c9183;
+  --accent: #b1281f;
+  --accent-hover: #d63326;
+  --accent-soft: rgba(177, 40, 31, 0.12);
+  --border: #2a2622;
+  --kbd-bg: #2d2722;
+  --good: #6abf6a;
+  --bad: #e57373;
+  --warn: #e6b35a;
+  --radius: 10px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", system-ui, sans-serif;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+header {
+  text-align: center;
+  padding: 2.5rem 1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.logo {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 1.6rem;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  letter-spacing: -0.05em;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.4rem;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+}
+
+.tagline {
+  color: var(--muted);
+  max-width: 640px;
+  margin: 0.75rem auto 0;
+  font-size: 1.05rem;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem 1.1rem;
+  margin: 1.1rem auto 0;
+  max-width: 720px;
+  font-size: 0.92rem;
+}
+.site-nav a {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.15rem 0;
+  border-bottom: 1px solid transparent;
+}
+.site-nav a:hover { color: var(--fg); border-bottom-color: var(--accent); }
+.site-nav a[aria-current="page"] { color: var(--fg); border-bottom-color: var(--accent); }
+
+/* Language switcher, under the primary nav. Only rendered on pages that exist
+   in more than one language, so it stays absent from most of the site. */
+.lang-switcher {
+  margin: .5rem auto 0;
+  text-align: center;
+  font-size: .88rem;
+  color: var(--muted);
+}
+.lang-switcher a { color: var(--muted); text-decoration: none; }
+.lang-switcher a:hover { color: var(--fg); text-decoration: underline; }
+.lang-current { color: var(--fg); font-weight: 600; }
+
+.footer-nav {
+  margin: 0.6rem auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.3rem 0.9rem;
+}
+.footer-nav a { color: var(--muted); text-decoration: none; }
+.footer-nav a:hover { color: var(--fg); }
+
+.prose p, .prose li { color: var(--fg); }
+.prose h3 { margin-top: 1.5rem; font-size: 1.05rem; }
+.prose .updated { color: var(--muted); font-size: 0.85rem; margin-top: 0; }
+.back-home { display: inline-block; margin-bottom: 1rem; color: var(--accent); text-decoration: none; }
+.back-home:hover { text-decoration: underline; }
+
+main {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.card.disabled { opacity: 0.45; pointer-events: none; }
+.card.disabled .primary { cursor: not-allowed; }
+
+h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.2rem;
+  color: var(--fg);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  background: var(--accent);
+  color: white;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.steps {
+  padding-left: 1.25rem;
+  margin: 0.5rem 0;
+}
+.steps li { margin-bottom: 0.4rem; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code {
+  background: var(--bg-elev);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+kbd {
+  background: var(--kbd-bg);
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  padding: 0.1em 0.45em;
+  border-radius: 4px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.85em;
+}
+
+button {
+  background: var(--bg-elev);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  padding: 0.6em 1.2em;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+  font-family: inherit;
+}
+button:hover:not(:disabled) { background: #2f2a25; }
+
+button.primary {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+button.primary:hover:not(:disabled) { background: var(--accent-hover); }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+button.link {
+  background: none;
+  border: none;
+  color: var(--accent);
+  padding: 0;
+  font-weight: 500;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.status {
+  margin-top: 0.75rem;
+  padding: 0.6rem 0.85rem;
+  background: #0a0908;
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.85rem;
+  white-space: pre-wrap;
+}
+
+progress {
+  width: 100%;
+  height: 6px;
+  margin-top: 0.5rem;
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  border-radius: 3px;
+  background: var(--bg-elev);
+  overflow: hidden;
+}
+progress::-webkit-progress-bar { background: var(--bg-elev); }
+progress::-webkit-progress-value { background: var(--accent); transition: width 0.2s; }
+progress::-moz-progress-bar { background: var(--accent); }
+
+.dropzone {
+  border: 2px dashed var(--border);
+  border-radius: 8px;
+  padding: 2rem 1rem;
+  text-align: center;
+  margin: 0.75rem 0;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+.dropzone:hover, .dropzone:focus { border-color: var(--accent); outline: none; }
+.dropzone.hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.dropzone p { margin: 0.25rem 0; }
+
+.muted { color: var(--muted); font-size: 0.9rem; }
+.center { text-align: center; }
+
+#screen-container {
+  margin-top: 0.75rem;
+  background: black;
+  border-radius: 6px;
+  overflow: hidden;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+#screen { width: 100%; }
+#canvas {
+  display: block;
+  max-width: 100%;
+  background: black;
+}
+#canvas:focus { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+#screen-empty-state {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  color: #555;
+  font-style: italic;
+}
+#screen-container.has-content #screen-empty-state { display: none; }
+
+#logOutput {
+  background: #08070a;
+  color: #d4ccbe;
+  padding: 1rem;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  max-height: 240px;
+  overflow-y: auto;
+  margin: 0;
+  white-space: pre-wrap;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  border: 1px solid var(--border);
+}
+
+details {
+  margin: 0.5rem 0;
+  padding: 0.6rem 0.85rem;
+  background: #100f0d;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+details summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--fg);
+  list-style: none;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before {
+  content: "›";
+  display: inline-block;
+  margin-right: 0.5rem;
+  transition: transform 0.15s ease;
+  color: var(--accent);
+}
+details[open] summary::before { transform: rotate(90deg); }
+details p, details ul { color: var(--muted); margin: 0.5rem 0 0; }
+details ul { padding-left: 1.25rem; }
+
+.boot-options {
+  margin: 1rem 0;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.02);
+}
+.boot-options label { display: block; margin-bottom: 0.4rem; }
+.boot-options select {
+  width: 100%;
+  padding: 0.5rem 0.6rem;
+  background: var(--bg);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: 0.35rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+.boot-options select:disabled { opacity: 0.6; cursor: not-allowed; }
+.small { font-size: 0.85rem; }
+.boot-options .muted { margin: 0.5rem 0 0; }
+
+.entry-picker,
+.embed-variant {
+  margin: 0.75rem 0 1rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.02);
+}
+.entry-picker label,
+.embed-variant label { display: block; margin-bottom: 0.4rem; }
+.entry-picker select,
+.embed-variant select {
+  width: 100%;
+  padding: 0.5rem 0.6rem;
+  background: var(--bg);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: 0.35rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.screen-actions {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+.screen-actions button {
+  background: transparent;
+  color: var(--fg);
+  border: 1px solid var(--border);
+  padding: 0.55rem 0.9rem;
+  border-radius: 0.4rem;
+  font-family: inherit;
+  font-size: 0.92rem;
+  cursor: pointer;
+}
+.screen-actions button:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.screen-actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.screen-actions .small { margin-top: 0.5rem; }
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.82rem;
+  padding: 2rem 1rem 2.5rem;
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+}
+
+/* Link-card grid for /run/ and /blog/ hubs */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.9rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.link-card {
+  display: block;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem 1.1rem;
+  text-decoration: none;
+  color: var(--fg);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.link-card:hover {
+  border-color: var(--accent);
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+.link-card .lc-title { font-weight: 700; display: block; margin-bottom: 0.25rem; }
+.link-card .lc-desc { color: var(--muted); font-size: 0.88rem; }
+
+/* Verdict badges for app pages */
+.verdict {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.15em 0.6em;
+  border-radius: 999px;
+  margin-left: 0.4rem;
+  vertical-align: middle;
+}
+.verdict.good, .verdict.works { background: rgba(106,191,106,0.15); color: var(--good); }
+.verdict.partial { background: rgba(230,179,90,0.15); color: var(--warn); }
+.verdict.bad { background: rgba(229,115,115,0.15); color: var(--bad); }
+
+.spec-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.92rem; }
+.spec-table th, .spec-table td { text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--border); }
+.spec-table th { color: var(--muted); font-weight: 600; width: 38%; vertical-align: top; }
+
+/* Screenshot of an app running in the browser (app-guide pages + blog posts). */
+.app-shot { margin: 1.25rem 0; }
+.app-shot img { display: block; width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--border); background: #000; }
+.app-shot figcaption { color: var(--muted); font-size: 0.85rem; margin-top: 0.4rem; text-align: center; }
+
+/* Full-width multi-column compatibility table (blog round-ups). */
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+.compat-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+.compat-table th, .compat-table td { text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+.compat-table th { color: var(--muted); font-weight: 600; white-space: nowrap; }
+.compat-table td:nth-child(2), .compat-table td:nth-child(3) { white-space: nowrap; }
+.compat-table tbody tr:hover { background: rgba(255,255,255,0.02); }
+
+.cta-row { margin: 1.25rem 0 0; }
+.cta-btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.7em 1.3em;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.cta-btn:hover { background: var(--accent-hover); text-decoration: none; }
+
+.breadcrumb { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+.breadcrumb a { color: var(--accent); }
+
+/* Highlighted download callout on app-guide pages (hosted, legal freeware). */
+.download-box {
+  border: 1px solid var(--accent);
+  background: var(--accent-soft);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  margin: 1.25rem 0;
+}
+.download-box h3 { margin-top: 0; }
+.download-box .small { font-size: 0.82rem; }
+
+/* Caution / licensing callout. */
+.warn-box {
+  border: 1px solid var(--warn);
+  background: rgba(230, 179, 90, 0.10);
+  border-radius: 10px;
+  padding: 0.9rem 1.1rem;
+  margin: 1.25rem 0;
+}
+.warn-box h3 { margin-top: 0; }
+
+/* ─── Instant-play embed (/run/<app>/ pages) ─────────────────────────────── */
+.embed-stage { position: relative; }
+.embed-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  text-align: center;
+  padding: 1.5rem;
+  background: radial-gradient(circle at 50% 40%, rgba(26,24,22,0.55), rgba(8,7,8,0.92));
+  border-radius: 6px;
+  z-index: 2;
+}
+.embed-overlay.hidden { display: none; }
+.embed-play {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.9em 1.8em;
+  font-size: 1.25rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(177,40,31,0.4);
+  transition: transform 0.12s ease, background 0.15s ease;
+}
+.embed-play:hover:not(:disabled) { background: var(--accent-hover); transform: translateY(-2px); }
+.embed-play:disabled { opacity: 0.7; cursor: default; box-shadow: none; }
+.embed-hint { max-width: 440px; margin: 0; }
+.embed-loader { margin-top: 1rem; }
+.embed-console-wrap { margin-top: 1rem; }
+.embed-console-wrap #logOutput { margin-top: 0.5rem; }
+
+@media (max-width: 540px) {
+  header { padding: 1.5rem 1rem 1rem; }
+  header h1 { font-size: 1.8rem; }
+  .card { padding: 1.1rem; }
+  h2 { font-size: 1.05rem; }
+  .embed-play { font-size: 1.05rem; padding: 0.8em 1.4em; }
+}
+
+/* ─── Mobile gamepad controls (/run/ instant-play pages) ─────────────────── */
+.mgp {
+  display: none;
+  max-width: 640px;
+  margin: 0.5rem auto 0;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+/* Show on touch/small screens */
+@media (hover: none) and (pointer: coarse) { .mgp { display: block; } }
+@media (max-width: 720px) { .mgp { display: block; } }
+
+.mgp-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+.mgp-dpad {
+  display: grid;
+  grid-template-areas: ". u ." "l . r" ". d .";
+  grid-template-columns: 2.8rem 2.8rem 2.8rem;
+  grid-template-rows: 2.8rem 2.8rem 2.8rem;
+  gap: 3px;
+}
+.mgp-btn {
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #1e2d47 0%, #111c2e 100%);
+  border: 1px solid #2e4470;
+  border-radius: 8px;
+  color: #9bbfe0;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 3px 0 #0a1220, inset 0 1px 0 rgba(120,180,255,.1);
+  transition: background 0.05s, transform 0.05s, box-shadow 0.05s;
+}
+.mgp-btn:active,
+.mgp-btn.pressed {
+  background: linear-gradient(180deg, #2a4068 0%, #1a2e50 100%);
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #0a1220;
+  color: #fff;
+}
+/* D-pad button placements */
+.mgp-up    { grid-area: u; }
+.mgp-left  { grid-area: l; }
+.mgp-right { grid-area: r; }
+.mgp-down  { grid-area: d; }
+
+/* Action buttons cluster */
+.mgp-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 2.8rem);
+  grid-template-rows: repeat(2, 2.8rem);
+  gap: 4px;
+}
+.mgp-wide {
+  width: 100%;
+  height: 2.5rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+.mgp-accent {
+  background: linear-gradient(180deg, #7a1a14 0%, #4d0f0b 100%);
+  border-color: #b8261d;
+  color: #ffd0cc;
+  box-shadow: 0 3px 0 #300806, inset 0 1px 0 rgba(255,160,150,.15);
+}
+.mgp-accent:active, .mgp-accent.pressed {
+  background: linear-gradient(180deg, #9e231a 0%, #6a1510 100%);
+  box-shadow: 0 1px 0 #300806;
+}
+.mgp-yellow {
+  background: linear-gradient(180deg, #5a4a10 0%, #3a2e08 100%);
+  border-color: #c8a020;
+  color: #ffe080;
+  box-shadow: 0 3px 0 #1e1804, inset 0 1px 0 rgba(255,220,80,.1);
+}
+.mgp-yellow:active, .mgp-yellow.pressed {
+  background: linear-gradient(180deg, #7a6418 0%, #5a4810 100%);
+  box-shadow: 0 1px 0 #1e1804;
+}
+.mgp-hint {
+  display: none;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin: 0.25rem 0 0;
+  text-align: center;
+}
+@media (hover: none) and (pointer: coarse) { .mgp-hint { display: block; } }
+@media (max-width: 720px) { .mgp-hint { display: block; } }
+
+/* ── Quick Play dropdown ── */
+.ql-row {
+  display: flex;
+  gap: 0.6rem;
+  align-items: stretch;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+}
+.ql-select {
+  flex: 1 1 260px;
+  min-width: 0;
+  background: var(--bg-elev);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.55rem 0.75rem;
+  font-size: 1rem;
+  cursor: pointer;
+  appearance: auto;
+}
+.ql-select:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.ql-btn {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+.ql-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* ── DOS embed: stage & fullscreen ────────────────────────────────────── */
+/* Base stage geometry lives here (not inline) so the fullscreen/maximise
+   rules below can actually override it — inline styles would always win. */
+#dos-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+}
+#dos-stage {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  background: #000;
+  aspect-ratio: 4 / 3;
+}
+/* The stage is normally capped at 640px; both fullscreen paths lift that cap
+   and letterbox the 4:3 canvas inside the available space. */
+#dos-stage:fullscreen {
+  max-width: none;
+  width: 100vw;
+  height: 100vh;
+  aspect-ratio: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#dos-stage:fullscreen #dos-canvas {
+  width: min(100vw, 133.333vh);
+  height: auto;
+  aspect-ratio: 4 / 3;
+}
+/* iOS Safari fallback — no element Fullscreen API there. */
+#dos-stage.dos-maximised {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  max-width: none;
+  width: 100vw;
+  height: 100dvh;
+  aspect-ratio: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+}
+#dos-stage.dos-maximised #dos-canvas {
+  width: min(100vw, 133.333dvh);
+  height: auto;
+  aspect-ratio: 4 / 3;
+}
+body.dos-playing { overflow: hidden; }
+
+/* ── Poster grid: visual game cards with screenshots ──────────────────── */
+.poster-grid {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+.poster-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--card, #12161d);
+  text-decoration: none;
+  color: inherit;
+  transition: transform .12s ease, border-color .12s ease;
+}
+.poster-card:hover,
+.poster-card:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--accent, #c0392b);
+}
+.pc-shot {
+  display: block;
+  width: 100%;
+  /* 16:10-ish tile keeps rows compact while still showing whole frames. */
+  aspect-ratio: 8 / 5;
+  /* contain, not cover: these are game screenshots and cropping them cuts
+     off HUDs and titles. Letterbox against black instead. */
+  object-fit: contain;
+  background: #000;
+  image-rendering: pixelated;
+}
+.pc-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 8 / 5;
+  font: 700 2.5rem/1 system-ui, sans-serif;
+  
+  color: #566;
+  background: linear-gradient(140deg, #1b2330, #0e131a);
+}
+.pc-body {
+  display: flex;
+  flex-direction: column;
+  gap: .15rem;
+  padding: .6rem .7rem .7rem;
+}
+.pc-title { font-weight: 600; line-height: 1.25; }
+.pc-play { color: var(--muted); font-size: .85rem; }
+.poster-card:hover .pc-play { color: var(--accent, #c0392b); }
+
+/* The one card in the shelf that isn't a title we host: the visitor's own
+   file. It stays pinned first and is exempt from the category filter (see
+   filter.js) — when a search finds nothing, "run your own" is precisely the
+   answer, so hiding it there would be backwards. Drawn as a dashed outline so
+   it reads as a slot to fill rather than a game with missing art. */
+.pc-byo .poster-card {
+  border-style: dashed;
+  background: linear-gradient(140deg, #171d27, #0e131a);
+}
+.pc-byo .pc-shot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 8 / 5;
+  background: none;
+  color: var(--accent, #c0392b);
+  font: 700 2.6rem/1 system-ui, sans-serif;
+}
+.pc-byo .pc-play { color: var(--accent, #c0392b); }
+
+.badge-new {
+  display: inline-block;
+  margin-left: .35rem;
+  padding: .05rem .35rem;
+  border-radius: 4px;
+  background: #1f7a3d;
+  color: #eafff0;
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  vertical-align: middle;
+}
+
+/* ── Mobile key palette: menus & name entry in DOS games ─────────────── */
+.mgp-keys {
+  display: none;
+  max-width: 640px;
+  margin: .5rem auto 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: .35rem .5rem;
+}
+.mgp-keys summary { color: var(--muted); font-size: .85rem; cursor: pointer; }
+.mgp-keygrid { margin-top: .5rem; display: flex; flex-direction: column; gap: .3rem; }
+.mgp-keyrow { display: flex; gap: .3rem; justify-content: center; }
+.mgp-key {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: .55rem .2rem;
+  font: 600 .8rem/1 system-ui, sans-serif;
+  color: #cfe8ff;
+  background: linear-gradient(#1b2a44, #0d1626);
+  border: 1px solid #3a5a8a;
+  border-radius: 6px;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+.mgp-key.pressed, .mgp-key:active {
+  background: linear-gradient(#284064, #16243c);
+  color: #fff;
+}
+.mgp-key-wide { flex: 1.8 1 0; font-size: .7rem; }
+@media (hover: none) and (pointer: coarse) { .mgp-keys { display: block; } }
+@media (max-width: 720px) { .mgp-keys { display: block; } }
+
+/* ── Controls panel: sits directly under the game ─────────────────────── */
+.controls-panel {
+  max-width: 640px;
+  margin: .75rem auto 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .015);
+}
+.controls-panel > summary {
+  cursor: pointer;
+  padding: .55rem .75rem;
+  font-size: .95rem;
+  list-style: none;
+}
+.controls-panel > summary::-webkit-details-marker { display: none; }
+.controls-panel > summary::before {
+  content: "▸ ";
+  color: var(--muted);
+}
+.controls-panel[open] > summary::before { content: "▾ "; }
+.controls-panel > summary strong { font-weight: 600; }
+.controls-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .9rem;
+}
+.controls-table th[scope="col"] {
+  text-align: left;
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--muted);
+  font-weight: 600;
+  padding: .3rem .75rem;
+  border-bottom: 1px solid var(--border);
+}
+.controls-table th[scope="row"] {
+  text-align: left;
+  font-weight: 500;
+  padding: .35rem .75rem;
+  white-space: nowrap;
+}
+.controls-table td {
+  padding: .35rem .75rem;
+  color: var(--muted);
+}
+.controls-table tbody tr + tr th,
+.controls-table tbody tr + tr td { border-top: 1px solid rgba(255,255,255,.05); }
+.controls-table kbd {
+  display: inline-block;
+  margin: 0 .1rem;
+  padding: .05rem .3rem;
+  font-size: .8em;
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background: rgba(255,255,255,.05);
+  color: var(--fg, #e6edf3);
+  white-space: nowrap;
+}
+@media (max-width: 560px) {
+  .controls-table th[scope="row"] { white-space: normal; }
+  .controls-table { font-size: .85rem; }
+}
+
+/* ── Mobile: hide desktop-only embed chrome ───────────────────────────── */
+/* On a phone the Fullscreen button, the mouse-capture hint and the console
+   box are all meaningless, and together they sit between the game and the
+   touch pad — pushing the d-pad below the fold. Hiding them puts the pad
+   directly under the canvas without reordering anything. */
+@media (hover: none) and (pointer: coarse), (max-width: 720px) {
+  #dos-fullscreen,
+  #dos-mouse-hint,
+  #dos-console { display: none; }
+}
+
+/* ── Grid filter: chips + search above the poster grid ────────────────── */
+.grid-filter { margin: 1rem 0 .25rem; }
+.gf-search { display: block; margin-bottom: .6rem; }
+.gf-search input {
+  width: 100%;
+  max-width: 420px;
+  padding: .5rem .7rem;
+  font: inherit;
+  font-size: .95rem;
+  color: inherit;
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.gf-search input:focus-visible { outline: 2px solid var(--accent, #c0392b); outline-offset: 1px; }
+.gf-chips { display: flex; flex-wrap: wrap; gap: .4rem; }
+.chip {
+  padding: .32rem .7rem;
+  font: inherit;
+  font-size: .85rem;
+  color: var(--muted);
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color .12s ease, border-color .12s ease, background .12s ease;
+}
+.chip:hover { color: inherit; border-color: var(--accent, #c0392b); }
+.chip.is-on {
+  color: #fff;
+  background: var(--accent, #c0392b);
+  border-color: var(--accent, #c0392b);
+}
+.chip-n { opacity: .65; font-size: .8em; margin-left: .15rem; }
+.gf-empty { margin: .75rem 0 0; color: var(--muted); font-size: .9rem; }
+
+/* The crawlable counterpart to the filter chips. The chips are buttons, which
+   a search engine cannot follow, so the categories that have a real page at
+   /play/<slug>/ are also linked here as ordinary anchors. */
+.gf-browse { margin: .6rem 0 0; color: var(--muted); font-size: .85rem; }
+.gf-browse a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.gf-browse a:hover { color: var(--accent, #c0392b); }
+
+/* "Where to start" list on the category pages: a title plus a sentence of
+   editorial, so the page carries prose the filter view never could. */
+.picks { list-style: none; padding: 0; margin: .5rem 0 0; }
+.picks li { margin: 0 0 .6rem; padding-left: 1rem; border-left: 2px solid var(--border, #333); }
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ── "Free & complete" badge ──────────────────────────────────────────── */
+.badge-free {
+  display: inline-block;
+  margin-left: .35rem;
+  padding: .05rem .35rem;
+  border-radius: 4px;
+  background: #1f4f7a;
+  color: #dbeeff;
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  vertical-align: middle;
+}
+.free-note {
+  max-width: 640px;
+  margin: .6rem auto 0;
+  padding: .5rem .7rem;
+  border: 1px solid var(--border);
+  border-left: 3px solid #1f4f7a;
+  border-radius: 6px;
+  font-size: .88rem;
+  color: var(--muted);
+}
+.free-note strong { color: inherit; }
+
+/* ── Download progress inside the play overlay ────────────────────────── */
+/* Large payloads (Freedoom is ~10 MB) can take minutes on a phone. The bar
+   lives in the overlay so the play area never looks frozen. */
+.dos-progress {
+  width: min(78%, 20rem);
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .14);
+  overflow: hidden;
+}
+.dos-progress-fill {
+  width: 0%;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--accent, #c0392b);
+  transition: width .18s linear;
+}
+/* When the server sends no content-length there's no percentage to show, so
+   sweep instead of implying a position we don't know. */
+.dos-progress.indeterminate .dos-progress-fill {
+  width: 40% !important;
+  animation: dos-sweep 1.1s ease-in-out infinite;
+}
+@keyframes dos-sweep {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(250%); }
+}
+
+/* Key rebinding panel under the DOS embed. A two-column list of
+   "what the game calls this key" → "which key on your keyboard sends it". */
+.dos-keys-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  gap: .35rem .75rem;
+}
+.dos-key-row {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: .5rem; font-size: .85rem;
+}
+.dos-key-btn {
+  min-width: 6.5rem; font-size: .8rem;
+  padding: .25rem .5rem; font-variant-numeric: tabular-nums;
+}
+
+/* Resume bar — a returning player's saved game, hoisted above everything else.
+   Hidden until recent.js finds a history entry, so first-timers never see it. */
+.resume-bar {
+  display: flex; align-items: center; flex-wrap: wrap; gap: .5rem;
+  margin: 0 0 1rem; padding: .6rem .9rem;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  font-size: .95rem;
+}
+.resume-bar[hidden] { display: none; }
+.resume-label { color: var(--muted); }
+.resume-link { font-weight: 600; }
+
+/* The resume affordance: a picture of where you actually left off, because a
+   thumbnail of your own game says "this is yours, click it" in a way no label
+   does. Everything below degrades to text if the shot is missing — a save made
+   before thumbnails existed, or a WebGL canvas that reads back blank. */
+.resume-bar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  vertical-align: middle;
+}
+.resume-bar-shot {
+  width: 64px;
+  height: 40px;
+  object-fit: contain;
+  background: #000;
+  border-radius: 4px;
+  image-rendering: pixelated;
+  flex: none;
+}
+.resume-card .pc-when { display: block; }
+.resume-card .pc-play { color: var(--accent, #c0392b); }
+
+/* The saves page hangs metadata and a delete control under each card, so its
+   rows size to content rather than stretching every card to the tallest one. */
+.saves-list { align-items: start; }
+.saves-list > li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .3rem;
+}
+.saves-list .poster-card { height: auto; width: 100%; }
+
+/* The play button on a game page, once it has a save behind it. */
+.embed-play-resume {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  padding: .55rem .55rem .7rem;
+}
+.embed-play-resume .resume-shot {
+  display: block;
+  width: 240px;
+  max-width: 60vw;
+  aspect-ratio: 8 / 5;
+  object-fit: contain;
+  background: #000;
+  border-radius: 4px;
+  image-rendering: pixelated;
+}
+
+/* "Play next" rail directly under a game. Text links, not posters — it has to
+   fit in one line right below the canvas without pushing the game off-screen. */
+.next-up {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .4rem .75rem;
+  margin: .85rem 0 0; font-size: .9rem;
+}
+.next-up-label { color: var(--muted); }
+.next-up a { border-bottom: 1px solid transparent; }
+.next-up a:hover { border-bottom-color: var(--accent); }
+.next-up-all { color: var(--muted); }
+
+/* Newsletter signup. One field — the only way this site can reach a visitor
+   again, since there are no accounts and almost everyone is a first-timer. */
+.newsletter-form {
+  display: flex; flex-wrap: wrap; gap: .5rem; margin: .75rem 0 0;
+}
+.newsletter-form input[type="email"] {
+  flex: 1 1 16rem; min-width: 0;
+  padding: .55rem .7rem;
+  background: var(--bg-elev); color: var(--fg);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  font: inherit;
+}
+.newsletter-form input[type="email"]:focus {
+  outline: none; border-color: var(--accent);
+}
+/* The result of a signup, filled in by newsletter.js. Hidden until there is
+   something to say, so the block doesn't reserve an empty line. */
+.newsletter-status { margin: .5rem 0 0; }
+.newsletter-status.is-error { color: var(--warn); }
+
+/* Sits under a self-saving game's frame. */
+.resume-note { margin: .5rem 0 0; }
+
+/* ── Embed offer ───────────────────────────────────────────────────────────
+   Shown only on the games written from scratch here. Every accepted embed puts
+   a real link to this domain on someone else's page, which is the constraint
+   the whole site is stuck behind. */
+#embed-offer textarea {
+  width: 100%; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .8rem; line-height: 1.45; padding: .6rem .7rem;
+  border-radius: 6px; resize: vertical;
+  background: var(--bg, #0d0d0f); color: var(--fg, #e8e8ea);
+  border: 1px solid var(--border, #333);
+}
+#embed-offer .cta-btn { cursor: pointer; }
+
+/* ── CJK typography ────────────────────────────────────────────────────────
+   The Japanese and Chinese trees were rendering with a Latin font stack at
+   Latin metrics, which is a real legibility problem rather than a cosmetic one:
+   kanji and hanzi carry far more strokes per glyph than a Latin letter, so at
+   the same size they turn to mud, and at the same line-height the lines crowd.
+
+   Scoped by :lang() so nothing here touches the English pages. */
+:lang(ja), :lang(zh-CN), :lang(zh) {
+  /* System faces first, in the order each platform actually ships them, then
+     Noto as the cross-platform fallback. Latin text inside a CJK page still
+     picks up the Latin faces because they are listed ahead of the CJK ones. */
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI",
+    "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo",
+    "PingFang SC", "Microsoft YaHei", "Noto Sans CJK JP", "Noto Sans CJK SC",
+    system-ui, sans-serif;
+  /* Slightly larger and noticeably looser than the Latin default of 1.55.
+     Dense scripts need the vertical room to stay readable. */
+  font-size: 1.03em;
+  line-height: 1.85;
+}
+
+/* The h2 is a flex row holding the heading text plus a verdict badge. In
+   English the heading is short enough that they sit side by side; in Japanese
+   the same heading is long enough that flex squeezes it to a narrow column and
+   breaks it mid-word ("プレ / イ"). Let the row wrap instead of compressing
+   the title. */
+:lang(ja) h2, :lang(zh-CN) h2 {
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+:lang(ja) h2 > :first-child, :lang(zh-CN) h2 > :first-child {
+  flex: 1 1 100%;
+}
+
+/* Japanese and Chinese are written without spaces between words, so the browser
+   will happily break a line mid-word unless told otherwise. keep-all plus
+   strict line-breaking applies kinsoku shori — the rules that stop a line
+   starting with a closing bracket or a small kana, or ending with an opener. */
+:lang(ja) p, :lang(ja) li, :lang(ja) h1, :lang(ja) h2, :lang(ja) h3,
+:lang(zh-CN) p, :lang(zh-CN) li, :lang(zh-CN) h1, :lang(zh-CN) h2, :lang(zh-CN) h3 {
+  line-break: strict;
+  overflow-wrap: break-word;
+}
+
+/* Headings in CJK do not need the tight tracking that suits Latin display type,
+   and negative letter-spacing on kanji actively hurts. */
+:lang(ja) h1, :lang(ja) h2, :lang(ja) h3,
+:lang(zh-CN) h1, :lang(zh-CN) h2, :lang(zh-CN) h3 {
+  letter-spacing: normal;
+  line-height: 1.5;
+}
+
+/* Latin-only UI bits inside a CJK page — code, keys, filenames — should keep
+   their monospace face and normal metrics rather than inherit the CJK ones. */
+:lang(ja) code, :lang(ja) kbd, :lang(zh-CN) code, :lang(zh-CN) kbd {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  line-height: 1.5;
+}
+
+/* Install offer. Shares the resume bar's shape on purpose: both are the same
+   kind of thing — a one-line route back to a game you already started. */
+.install-bar { justify-content: flex-start; }
+.install-bar .button.primary { padding: .3rem .8rem; font-size: .9rem; }
+.install-dismiss {
+  background: none; border: 0; padding: .3rem .4rem;
+  color: var(--muted); font: inherit; font-size: .9rem; cursor: pointer;
+  text-decoration: underline;
+}
+.install-dismiss:hover { color: var(--fg); }
+.linklike {
+  background: none; border: 0; padding: 0;
+  color: var(--accent); font: inherit; cursor: pointer; text-decoration: underline;
+}
+.continue-all { margin: .4rem 0 0; }
+
+/* ──────────────────────────────────────────────────────────────────────────
+   macemu theme.
+   The base stylesheet is inherited from exebrowser.com, which is a dark,
+   DOS-red site. This block redefines the tokens everything else is built on,
+   so the Mac site reads as Platinum-era Macintosh — warm paper, blue
+   highlight, hairline rules — without touching the 900 rules that use them.
+   ────────────────────────────────────────────────────────────────────────── */
+:root {
+  --bg: #d9d6ce;          /* the desktop grey, warmed slightly */
+  --bg-card: #f4f2ed;     /* paper */
+  --bg-elev: #e8e5dd;
+  --fg: #1b1a17;
+  --muted: #5f5b53;
+  --accent: #2b4fa2;      /* the System 7 selection blue */
+  --accent-hover: #1d3b83;
+  --accent-soft: rgba(43, 79, 162, 0.10);
+  --border: #b6b1a6;
+  --kbd-bg: #e2dfd7;
+  --good: #1f7a3d;
+  --bad: #a32020;
+  --warn: #8a6a12;
+  --radius: 6px;          /* classic Mac corners were tighter than this era's */
+}
+
+body { background-image: none; }
+
+header {
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  box-shadow: inset 0 -1px 0 #fff;
+}
+
+.logo {
+  /* The Happy Mac, in spirit: a rounded box with a face. */
+  display: inline-grid;
+  place-items: center;
+  width: 1.9rem; height: 1.9rem;
+  background: var(--fg);
+  color: var(--bg-card);
+  border-radius: 4px;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 0 #fff inset, 0 1px 2px rgba(0,0,0,.06);
+}
+
+kbd, .controls-table kbd {
+  background: var(--kbd-bg);
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: 3px;
+  color: var(--fg);
+}
+
+.spec-table, .compat-table, .controls-table { width: 100%; border-collapse: collapse; }
+.spec-table th, .spec-table td,
+.compat-table th, .compat-table td,
+.controls-table th, .controls-table td {
+  text-align: left;
+  padding: 0.45rem 0.6rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.spec-table th { width: 9rem; font-weight: 600; color: var(--muted); }
+.compat-table thead th { background: var(--bg-elev); }
+
+.warn-box {
+  background: #fdf6e3;
+  border: 1px solid #ddc98a;
+  border-left: 3px solid var(--warn);
+  padding: 0.7rem 0.9rem;
+  border-radius: var(--radius);
+}
+.free-note {
+  background: #eef5ee;
+  border: 1px solid #b9d3b9;
+  border-left: 3px solid var(--good);
+  padding: 0.7rem 0.9rem;
+  border-radius: var(--radius);
+}
+
+/* The dropzone: the whole point of the utility pages, so it should look like
+   the primary action rather than an afterthought at the bottom of a form. */
+.dropzone {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elev);
+  padding: 2rem 1rem;
+  text-align: center;
+  transition: border-color .15s, background .15s;
+}
+.dropzone.is-over { border-color: var(--accent); background: var(--accent-soft); }
+.dropzone.is-busy { opacity: .55; pointer-events: none; }
+.dz-title { font-size: 1.15rem; font-weight: 600; margin: 0 0 .2rem; }
+.dz-sub { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--muted); margin: 0 0 .9rem; font-size: .85rem; }
+.dz-note { margin: .7rem 0 0; }
+.dz-status { min-height: 1.4em; margin: .7rem 0 0; }
+.dz-stage:not(:empty) { margin-top: 1rem; }
+
+.embed-stage { position: relative; width: 100%; background: #000; border-radius: var(--radius); overflow: hidden; }
+.embed-console-wrap { width: 100%; height: 100%; }
+.embed-overlay {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .6rem;
+  background: radial-gradient(circle at 50% 45%, #3a3a3a, #111);
+  color: #f2f2f2;
+}
+.embed-play {
+  font: 600 1.05rem/1 -apple-system, system-ui, sans-serif;
+  padding: .75rem 1.4rem;
+  background: var(--accent); color: #fff;
+  border: 0; border-radius: var(--radius); cursor: pointer;
+}
+.embed-play:hover { background: var(--accent-hover); }
+.embed-play:disabled { opacity: .6; cursor: progress; }
+.embed-hint { margin: 0; font-size: .8rem; color: #bdbdbd; max-width: 34ch; text-align: center; }
+.dos-progress { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: rgba(255,255,255,.15); }
+.dos-progress-fill { height: 100%; width: 0; background: var(--accent); transition: width .2s; }
+
+.link-list { list-style: none; padding: 0; }
+.link-list li { padding: .35rem 0; border-bottom: 1px solid var(--border); }
+
+.poster-grid {
+  list-style: none; padding: 0; margin: 1rem 0 0;
+  display: grid; gap: .8rem;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}

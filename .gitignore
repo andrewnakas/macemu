@@ -1,0 +1,43 @@
+.DS_Store
+node_modules/
+.wrangler/
+.dev.vars
+*.log
+
+# Disk images, ROMs and the chunks built from them. Apple system software and
+# every third-party title stay out of git permanently: the repo is public, the
+# bits are not ours to redistribute from it, and they are served from R2.
+Images/
+
+# The built emulator IS committed, deliberately. It is about 8 MB, it makes a
+# fresh clone deployable without a toolchain, and the GPL source correspondence
+# is the pinned vendor/infinite-mac submodule rather than a promise to rebuild.
+# ROMs are a different matter: Apple's, and never in this repository.
+public/mac/*.rom
+
+# playwright, installed on demand by scripts/boot-test.mjs
+.playwright/
+
+# Generated site output. The generators are the source of truth; committing
+# their output means every content edit shows up twice in a diff and merge
+# conflicts land in HTML nobody wrote by hand.
+public/run/
+public/play/
+public/embed/
+public/collection/
+public/blog/*/index.html
+public/blog/index.html
+public/index.html
+public/404.html
+public/sitemap.xml
+public/feed.xml
+public/llms.txt
+public/about/
+public/contact/
+public/guide/
+public/takedown/
+public/privacy/
+public/terms/
+public/load-mac-file/
+public/open-*/
+public/classic-mac-emulator-online/

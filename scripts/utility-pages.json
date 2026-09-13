@@ -1,0 +1,568 @@
+[
+  {
+    "slug": "load-mac-file",
+    "title": "Open a Classic Mac File Online — .sit, .hqx, .img, .dsk, .bin",
+    "description": "Drop an old Macintosh file into your browser and open it on an emulated Mac. StuffIt archives, BinHex files, disk images. Nothing is uploaded.",
+    "keywords": "open mac file online, open sit file, run mac app in browser, classic mac file, open hqx, mount mac disk image online",
+    "ogTitle": "Open any classic Mac file in your browser",
+    "ogDescription": "Drop a .sit, .hqx, .img or .dsk in and it opens on an emulated Macintosh. Nothing leaves your computer.",
+    "crumb": "Open your own file",
+    "h1": "Drop in an old Mac file and open it",
+    "machine": "Quadra-650",
+    "accepts": [
+      ".sit",
+      ".sea",
+      ".hqx",
+      ".bin",
+      ".img",
+      ".dsk",
+      ".dmg",
+      ".toast",
+      ".iso",
+      ".smi",
+      ".cpt",
+      ".zip"
+    ],
+    "onHome": true,
+    "cardTitle": "Any Mac file",
+    "cardDesc": ".sit, .hqx, .img, .dsk, .bin — drop it in.",
+    "intro": "<p>You have found a file from an old Macintosh — in a backup, on a Zip disk you finally read, at the bottom of an FTP mirror — and nothing on your computer will open it. Drop it here. It opens on an emulated Macintosh running System 7, in this tab, with nothing installed and nothing uploaded.</p>",
+    "sections": [
+      {
+        "h": "What you can drop in",
+        "html": "<table class=\"compat-table\"><thead><tr><th>Extension</th><th>What it is</th><th>What happens</th></tr></thead><tbody><tr><td><code>.sit</code> <code>.sea</code></td><td>StuffIt archive, the standard Mac compression format from 1987 onward</td><td>Copied onto the emulated Mac and expanded there with StuffIt Expander</td></tr><tr><td><code>.hqx</code></td><td>BinHex — a Mac file turned into plain text so it could survive email and Usenet</td><td>Decoded in your browser, then handed to the Mac with its resource fork intact</td></tr><tr><td><code>.bin</code></td><td>MacBinary — both forks and the Finder info in one file</td><td>Decoded in your browser, then handed to the Mac</td></tr><tr><td><code>.img</code> <code>.dsk</code></td><td>A floppy or hard disk image</td><td>Mounted as a disk. It appears on the desktop.</td></tr><tr><td><code>.toast</code> <code>.iso</code></td><td>A CD-ROM image</td><td>Mounted as a CD</td></tr><tr><td><code>.cpt</code></td><td>Compact Pro archive, StuffIt's main rival</td><td>Copied across and expanded on the Mac</td></tr><tr><td><code>.zip</code></td><td>A zip, possibly with a <code>__MACOSX</code> folder holding the resource forks</td><td>Unpacked, forks reattached where they exist</td></tr><tr><td><code>.dmg</code> <code>.smi</code></td><td>Disk images from the Mac OS X era and self-mounting images</td><td>Older formats mount; newer compressed ones are extracted instead — see the <a href=\"/open-dmg-file/\">DMG page</a></td></tr></tbody></table>"
+      },
+      {
+        "h": "Why old Mac files are so awkward",
+        "html": "<p>Every other platform's idea of a file is a single stream of bytes. The classic Macintosh had two: a <strong>data fork</strong>, which is the stream everyone else has, and a <strong>resource fork</strong>, a small structured database holding icons, menus, dialogue layouts, sounds, and often the executable code itself.</p><p>This was elegant on a Mac and catastrophic everywhere else. Copy a Macintosh application to a DOS floppy, an FTP server or a Unix mail spool and the resource fork silently vanished, leaving a file that looked intact and did nothing at all. Worse, the Mac did not use file extensions — it identified a file by a four-character <em>type</em> and a four-character <em>creator</em> code stored outside the file entirely, so a file that crossed platforms lost the knowledge of what it even was.</p><p>Every classic Mac format you will run into exists to solve some part of that problem. MacBinary wraps both forks and the type and creator into one ordinary file. BinHex does the same and then encodes the result as printable text so it could be pasted into an email body. StuffIt compresses and archives while preserving all of it. Disk images sidestep the question by copying the whole filesystem.</p><p>Which is why the reliable way to open one of these files in 2026 is to give it back to a Macintosh. That is what this page does.</p>"
+      },
+      {
+        "h": "Where the file goes",
+        "html": "<p>Nowhere. The emulator is WebAssembly running in this tab, and your file is read by JavaScript on your own machine and passed straight into the emulated Mac's memory. There is no upload, no server round trip, and no copy kept anywhere.</p><p>Anything you then save inside the emulated Mac is stored in your browser's own storage. It survives closing the tab. It does not follow you to another browser or another device, and clearing site data for this site will delete it.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is my file uploaded anywhere?",
+        "a": "No. The emulator runs inside your browser as WebAssembly. Your file is read locally and passed into the emulated machine. Nothing is sent to a server."
+      },
+      {
+        "q": "What if my file has no extension?",
+        "a": "Drop it in anyway. The loader looks at the actual bytes rather than the name — MacBinary, BinHex, DiskCopy and StuffIt all have recognisable headers."
+      },
+      {
+        "q": "Can I get a file back out of the emulated Mac?",
+        "a": "Not yet. Getting files out is on the list; today the loader is one-way."
+      },
+      {
+        "q": "Why does my application launch and then immediately quit?",
+        "a": "Usually a missing resource fork — the file travelled through something that stripped it. Look for a .hqx, .bin or .sit version of the same thing, which will have the fork preserved."
+      },
+      {
+        "q": "It says the disk is unreadable.",
+        "a": "The image may be in a format the Mac does not recognise, or it may be a raw image with a DiskCopy header the loader did not strip. Try a .img or .dsk version if one exists."
+      },
+      {
+        "q": "Will a Mac OS X application work?",
+        "a": "No, and not because of anything here — an OS X .app is a PowerPC or Intel binary that needs a Unix system underneath it, which is a completely different machine from the ones emulated on this site. The <a href=\"/guide/\">what runs page</a> explains the line."
+      }
+    ],
+    "related": [
+      {
+        "href": "/open-sit-file/",
+        "title": "Open a .sit file",
+        "desc": "StuffIt archives specifically."
+      },
+      {
+        "href": "/open-hqx-file/",
+        "title": "Open a .hqx file",
+        "desc": "BinHex, the text-encoded format."
+      },
+      {
+        "href": "/run/",
+        "title": "Or just play something",
+        "desc": "Titles that start in one click."
+      }
+    ],
+    "updated": "2026-09-13"
+  },
+  {
+    "slug": "open-sit-file",
+    "title": "How to Open a .sit File Online — StuffIt Archives, No Download",
+    "description": "Open a StuffIt .sit archive in your browser. Drop it in and it expands on an emulated Macintosh with the real StuffIt Expander. Nothing installed.",
+    "keywords": "open sit file, .sit file opener, stuffit expander online, extract sit file, how to open sit file mac, sit archive",
+    "ogTitle": "Open a .sit file in your browser",
+    "ogDescription": "StuffIt archives, expanded by the real StuffIt Expander on an emulated Mac.",
+    "crumb": "Open a .sit file",
+    "h1": "Open a StuffIt .sit file, without installing StuffIt",
+    "machine": "Quadra-650",
+    "accepts": [
+      ".sit",
+      ".sea",
+      ".sitx",
+      ".hqx",
+      ".bin"
+    ],
+    "onHome": true,
+    "cardTitle": ".sit files",
+    "cardDesc": "StuffIt archives, expanded properly.",
+    "intro": "<p>A <code>.sit</code> file is a StuffIt archive, and it is the reason most Macintosh software from 1988 to about 2005 is unopenable on a modern computer. Drop one here and it expands on an emulated Macintosh using the real StuffIt Expander — which means the resource forks, the type and creator codes and the folder structure all come out intact, which a modern extractor will usually not manage.</p>",
+    "sections": [
+      {
+        "h": "What StuffIt was, and why it won",
+        "html": "<p>Raymond Lau wrote StuffIt in 1987, as a teenager, and it became the compression format of the Macintosh in the way ZIP became the format of the PC. If you downloaded Mac software in the 1990s, you downloaded a <code>.sit</code>. Bulletin boards, AOL, Info-Mac, the University of Michigan mirror — all StuffIt.</p><p>It won because it handled the Macintosh file system properly. A ZIP of a Mac application in 1992 was a broken Mac application: the resource fork did not survive the trip. StuffIt archived both forks, the Finder metadata and the folder hierarchy, and it did it well enough that Aladdin Systems built a business on the free Expander and the paid Deluxe.</p><p>The format was also revised repeatedly. StuffIt 1.x, 3.x, 5.x and the later StuffIt X (<code>.sitx</code>) are meaningfully different formats sharing a name, which is why a modern tool that claims to open <code>.sit</code> files will often open some of yours and not others.</p>"
+      },
+      {
+        "h": "Why modern tools struggle",
+        "html": "<p>There is no official StuffIt implementation left. Aladdin became Allume, Allume was bought by Smith Micro, and the desktop Expander was quietly discontinued. What remains are reverse-engineered readers — the best of them is The Unarchiver's XADMaster engine, which is genuinely good and handles most StuffIt 5 archives.</p><p>Two things still go wrong with a modern extractor. The first is coverage: the older StuffIt 1.x compression methods and some StuffIt X variants are patchy. The second, and more common, is that even a successful extraction on Windows or Linux gives you a file with no resource fork, because the host filesystem has nowhere to put one. The application comes out and does not run.</p><p>Handing the archive to an actual Macintosh sidesteps both problems. StuffIt Expander on System 7 reads every StuffIt version that existed up to its own, and it puts the forks where they belong because it is writing to an HFS volume that has them.</p>"
+      },
+      {
+        "h": "What happens when you drop a file in",
+        "html": "<p>The file is copied into a shared folder on the emulated Macintosh's desktop. StuffIt Expander is already on the boot disk. Double-click the archive and it expands beside itself, exactly as it did in 1995.</p><p>If what comes out is an application, double-click it and it runs. If it is a document, the Mac will open it in whatever application on the disk claims its creator code, or tell you it cannot find one.</p><p>Nothing is uploaded. The whole thing happens in your browser.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "What is a .sit file?",
+        "a": "A StuffIt archive — the standard compressed archive format of the classic Macintosh, comparable to a .zip but designed to preserve Macintosh resource forks and file metadata."
+      },
+      {
+        "q": "Can I open a .sit file on Windows or Linux?",
+        "a": "Partly. The Unarchiver and 7-Zip handle many StuffIt archives, but older StuffIt versions are hit and miss, and on a non-Mac filesystem the extracted Macintosh applications lose their resource fork and will not run anyway."
+      },
+      {
+        "q": "What is the difference between .sit and .sitx?",
+        "a": "StuffIt X is a later, incompatible format from around 2002 sharing the StuffIt name. Support for it in third-party tools is weaker than for classic .sit."
+      },
+      {
+        "q": "What is a .sea file?",
+        "a": "A self-extracting archive — a StuffIt archive with a small Macintosh application stapled to the front so the recipient did not need Expander. It needs a Mac to run, which is exactly what this page provides."
+      },
+      {
+        "q": "Is StuffIt Expander still available?",
+        "a": "Not meaningfully. The desktop Expander was discontinued after Smith Micro acquired the line. The reverse-engineered readers in The Unarchiver are the practical modern option."
+      },
+      {
+        "q": "Is my archive uploaded?",
+        "a": "No. It is read by JavaScript on your own machine and passed straight into the emulated Mac."
+      }
+    ],
+    "related": [
+      {
+        "href": "/load-mac-file/",
+        "title": "Open any Mac file",
+        "desc": "Disk images, BinHex, MacBinary and the rest."
+      },
+      {
+        "href": "/open-hqx-file/",
+        "title": "Open a .hqx file",
+        "desc": "The text-encoded sibling of MacBinary."
+      },
+      {
+        "href": "/guide/",
+        "title": "What actually runs",
+        "desc": "Where the line is between classic Mac and OS X."
+      }
+    ],
+    "updated": "2026-09-13"
+  },
+  {
+    "slug": "open-hqx-file",
+    "title": "How to Open a .hqx File — BinHex Decoder, Online and Free",
+    "description": "Decode a BinHex .hqx file in your browser and open what is inside on an emulated Mac. Resource fork preserved. Nothing uploaded, nothing installed.",
+    "keywords": "open hqx file, binhex decoder online, .hqx file, decode binhex, hqx to sit, binhex 4.0",
+    "ogTitle": "Decode a .hqx file in your browser",
+    "ogDescription": "BinHex 4.0 decoded locally, with the resource fork intact, on an emulated Macintosh.",
+    "crumb": "Open a .hqx file",
+    "h1": "Decode a BinHex .hqx file",
+    "machine": "Quadra-650",
+    "accepts": [
+      ".hqx",
+      ".bin",
+      ".sit"
+    ],
+    "onHome": false,
+    "intro": "<p>A <code>.hqx</code> file is BinHex: a complete Macintosh file — both forks, the type and creator codes, a checksum — converted into printable text so it could survive being pasted into an email or posted to Usenet. Drop one here. It is decoded in your browser and handed to an emulated Macintosh with everything still attached.</p>",
+    "sections": [
+      {
+        "h": "What BinHex is",
+        "html": "<p>Open a <code>.hqx</code> in a text editor and you will see this at the top:</p><pre><code>(This file must be converted with BinHex 4.0)\n\n:#R0KEA\"XC5j15%!!N!3!!!!!...</code></pre><p>That first line is literal, and it is the format's entire origin story. In the 1980s and early 1990s the way you sent someone a file was to put it in the body of an email or a Usenet post, and the systems it passed through were built for seven-bit text. Any byte with the high bit set could be mangled or dropped. So BinHex encodes the whole thing — data fork, resource fork, Finder metadata, and CRCs to catch damage — into a restricted alphabet of 64 safe characters, run-length compressed first to take the edge off the size penalty.</p><p>Version 4.0, by Yves Lempereur, is the one that stuck, and it is what essentially every <code>.hqx</code> you will encounter uses.</p>"
+      },
+      {
+        "h": "Why you cannot just rename it",
+        "html": "<p>People try. A <code>.hqx</code> is text, so it looks like something a text editor should be able to save out. It is not: the payload is encoded, not merely wrapped, and even after decoding you have a two-fork Macintosh file that a Windows or Linux filesystem has no way to store.</p><p>Very often the decoded contents are themselves a StuffIt archive — <code>.sit.hqx</code> was the canonical way to distribute Mac software by email for a decade. So the full journey is BinHex to StuffIt to application, and only the last step tells you whether the first two worked.</p><p>Decoding here happens in JavaScript in your browser, and what comes out is written into the emulated Mac's filesystem with its resource fork in the right place. If it is a StuffIt archive, Expander is on the disk waiting.</p>"
+      },
+      {
+        "h": "The other formats in the same family",
+        "html": "<p><strong>MacBinary</strong> (<code>.bin</code>) solves the same problem with a binary container rather than text: a 128-byte header holding the filename, type, creator and fork lengths, then the data fork, then the resource fork, each padded to 128 bytes. It is more efficient than BinHex and was preferred wherever the transport was eight-bit clean, such as FTP in binary mode.</p><p><strong>AppleSingle</strong> and <strong>AppleDouble</strong> do the same job again for A/UX and network filesystems; AppleDouble is why a Mac-made ZIP contains a <code>__MACOSX</code> folder full of files whose names start with a dot underscore. Those are the resource forks.</p><p>All of them are here for the same reason: a Macintosh file was never just a stream of bytes, and every other system in the world assumed it was.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "What is a .hqx file?",
+        "a": "A Macintosh file encoded with BinHex 4.0 — both forks and the file's metadata converted into plain printable text so it could be sent through email or Usenet without corruption."
+      },
+      {
+        "q": "Can I open a .hqx on a modern Mac?",
+        "a": "Not out of the box. Mac OS X dropped BinHex support along the way. The Unarchiver handles it, or you can decode it here."
+      },
+      {
+        "q": "Why is my .hqx bigger than the file inside it?",
+        "a": "Because encoding eight-bit data into a six-bit safe alphabet costs about a third in size. BinHex applies run-length compression first, which claws some of it back."
+      },
+      {
+        "q": "What do I do with what comes out?",
+        "a": "Very often the decoded file is a StuffIt archive. Double-click it on the emulated Mac and StuffIt Expander will expand it."
+      },
+      {
+        "q": "What is the difference between BinHex and MacBinary?",
+        "a": "Same purpose, different container. BinHex is text and survives anything; MacBinary is binary, smaller, and needs a transport that will not mangle high bytes."
+      },
+      {
+        "q": "Is my file uploaded?",
+        "a": "No. Decoding happens in your browser, in JavaScript."
+      }
+    ],
+    "related": [
+      {
+        "href": "/open-sit-file/",
+        "title": "Open a .sit file",
+        "desc": "What is usually inside a .hqx."
+      },
+      {
+        "href": "/load-mac-file/",
+        "title": "Open any Mac file",
+        "desc": "The general loader."
+      },
+      {
+        "href": "/collection/system-7/",
+        "title": "System 7 software",
+        "desc": "The era these files come from."
+      }
+    ],
+    "updated": "2026-09-13"
+  },
+  {
+    "slug": "open-dsk-file",
+    "title": "Mount a Mac Disk Image Online — .img, .dsk and DiskCopy Files",
+    "description": "Mount a classic Macintosh floppy or hard disk image in your browser. DiskCopy 4.2, raw .img and .dsk files open on an emulated Mac. Nothing uploaded.",
+    "keywords": "open dsk file, mount mac disk image, diskcopy 4.2, .img mac disk, open mac floppy image, hfv file",
+    "ogTitle": "Mount a Mac disk image in your browser",
+    "ogDescription": "DiskCopy and raw Macintosh disk images, mounted on an emulated Mac.",
+    "crumb": "Mount a disk image",
+    "h1": "Mount a classic Mac disk image",
+    "machine": "Quadra-650",
+    "accepts": [
+      ".img",
+      ".dsk",
+      ".hfv",
+      ".dc42",
+      ".image",
+      ".hda"
+    ],
+    "onHome": true,
+    "cardTitle": "Disk images",
+    "cardDesc": ".img, .dsk and DiskCopy files, mounted.",
+    "intro": "<p>Drop a Macintosh floppy or hard disk image in and it mounts on the desktop of an emulated Mac running System 7, exactly as if you had pushed the disk into the slot. DiskCopy 4.2 images, raw images and HFS volumes all work.</p>",
+    "sections": [
+      {
+        "h": "The formats, and how to tell them apart",
+        "html": "<p><strong>Raw images</strong> (<code>.img</code>, <code>.dsk</code>, <code>.hfv</code>) are a byte-for-byte copy of a disk with no wrapper at all. An 800K floppy image is exactly 819,200 bytes; a 1.4 MB image is 1,474,560. If your file is one of those sizes, it is almost certainly raw.</p><p><strong>DiskCopy 4.2 images</strong> are the same data behind an 84-byte header carrying the volume name, the data and tag lengths and a checksum. Apple's DiskCopy was the standard way to distribute a floppy in the 1990s, so a great deal of preserved software is in this format. The loader strips the header for you.</p><p><strong>NDIF and UDIF images</strong> (<code>.img</code> from the late 1990s, and <code>.dmg</code>) are compressed container formats and are a different problem — see the <a href=\"/open-dmg-file/\">DMG page</a>.</p><p><strong>Self-mounting images</strong> (<code>.smi</code>) are a raw image with a small Macintosh application stapled to the front. They need a Mac to open, which is the one thing this page has.</p>"
+      },
+      {
+        "h": "Floppy or hard disk?",
+        "html": "<p>The emulated Mac cares. An image at one of the standard floppy sizes — 400K, 800K, 1.4 MB — is offered to the machine as a floppy and appears with a floppy icon. Anything larger is attached as a hard disk.</p><p>This mostly matters if the disk is a bootable system disk. A floppy with a System Folder can be started from; a hard disk image with a System Folder can be too, but the emulator has to be told to boot from it rather than from the disk it is already running.</p><p>If your image will not mount at all, the usual reasons are that it is an Apple II or ProDOS disk rather than a Macintosh one, that it is a compressed container rather than a raw image, or that it is damaged. HFS and the older MFS both mount fine; HFS+ works on System 8.1 and later, which is not what this page boots.</p>"
+      },
+      {
+        "h": "Where the disk lives afterwards",
+        "html": "<p>Only in this tab. The image is read by JavaScript from your own machine and handed to the emulator. It is not uploaded, and it is not kept: reload the page and you will need to drop it in again.</p><p>Anything you copy off the disk onto the emulated Mac's own hard drive does persist, in your browser's storage, until you clear site data.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "What is a .dsk file?",
+        "a": "A raw disk image — a byte-for-byte copy of a floppy or hard disk, with no header. The Macintosh world uses .img, .dsk and .hfv fairly interchangeably for this."
+      },
+      {
+        "q": "What is DiskCopy 4.2?",
+        "a": "Apple's disk imaging tool and its format: an 84-byte header with the volume name and checksums, followed by the raw disk data. It was the standard way Apple and most publishers distributed floppies."
+      },
+      {
+        "q": "Can I mount a .dmg here?",
+        "a": "Older uncompressed .dmg files often work. Compressed UDIF images from Mac OS X do not mount on a classic Mac at all — the DMG page explains what to do instead."
+      },
+      {
+        "q": "Why does my image mount as read-only?",
+        "a": "Some images are marked read-only inside the image itself, and some are damaged in a way the Mac notices. Copy what you need onto the emulated hard disk."
+      },
+      {
+        "q": "My image will not mount at all.",
+        "a": "Check the size first — if it is not a multiple of 512 bytes it is probably not a raw image. It may be an Apple II disk, a compressed container, or truncated."
+      },
+      {
+        "q": "Can I boot from my own system disk?",
+        "a": "Not from the loader page yet. That is on the list."
+      }
+    ],
+    "related": [
+      {
+        "href": "/load-mac-file/",
+        "title": "Open any Mac file",
+        "desc": "Archives and encoded files too."
+      },
+      {
+        "href": "/open-toast-file/",
+        "title": "Mount a CD image",
+        "desc": ".toast and .iso from the CD-ROM era."
+      },
+      {
+        "href": "/classic-mac-emulator-online/",
+        "title": "The emulator itself",
+        "desc": "A plain Mac, no title loaded."
+      }
+    ],
+    "updated": "2026-09-13"
+  },
+  {
+    "slug": "open-toast-file",
+    "title": "Open a .toast File Online — Mount Toast CD Images in a Browser",
+    "description": "Mount a Roxio Toast .toast CD image, or an .iso, on an emulated Macintosh in your browser. The CD-ROM era, readable again. Nothing uploaded.",
+    "keywords": "open toast file, .toast file, roxio toast image, mount toast cd image, toast to iso, mac cd image",
+    "ogTitle": "Mount a .toast CD image in your browser",
+    "ogDescription": "Toast and ISO CD images, mounted on an emulated Mac.",
+    "crumb": "Mount a CD image",
+    "h1": "Open a .toast CD image",
+    "machine": "Quadra-650",
+    "accepts": [
+      ".toast",
+      ".iso",
+      ".cdr",
+      ".img"
+    ],
+    "onHome": false,
+    "intro": "<p>A <code>.toast</code> file is a CD image made by Toast, the Macintosh burning software that everyone with a CD writer owned. Drop one in and it mounts as a CD on an emulated Macintosh, which is generally the only thing that will read it properly — Toast images of Mac CDs use HFS, which Windows cannot mount at all.</p>",
+    "sections": [
+      {
+        "h": "What is actually in a .toast file",
+        "html": "<p>Usually, a plain track image with no wrapper — which is why renaming a <code>.toast</code> to <code>.iso</code> sometimes just works. Sometimes not: Toast could write multi-session discs, hybrid discs with both an HFS and an ISO 9660 filesystem, and images with a small header, and those need something that understands the format.</p><p>The hybrid case is the interesting one. A great many Mac CD-ROMs from the 1990s were hybrids so that one disc would work on both platforms, with the Mac files in an HFS volume and the PC files in ISO 9660, often sharing the same underlying data. Mount such a disc on Windows and you see the PC half and conclude the Mac half is missing. It is not; you are looking at the wrong filesystem.</p>"
+      },
+      {
+        "h": "Why the CD-ROM era matters here",
+        "html": "<p>Between roughly 1993 and 2000 the CD-ROM was how Macintosh software arrived: 650 megabytes when a hard disk was 250, which meant full-motion video, recorded speech, and enormous art. Myst, the Living Books, the Encarta-era reference discs, the shareware compilations that carried thousands of programs each.</p><p>That generation is the hardest to preserve and the hardest to run. The discs rot, the drives are gone, and the software inside frequently will not run on anything newer than Mac OS 9 because it depends on QuickTime 2 and a 256-colour screen. An emulated Macintosh with the disc mounted is often the only remaining way to look at them.</p>"
+      },
+      {
+        "h": "If your disc is on a real CD",
+        "html": "<p>Make an image of it before the disc degrades. On a modern Mac, <code>hdiutil</code> will do it from the Terminal:</p><pre><code>hdiutil create -srcdevice /dev/disk4 -format UDTO mydisc</code></pre><p>which writes <code>mydisc.cdr</code> — a raw track image you can rename to <code>.iso</code> and drop in here. On Linux, <code>dd if=/dev/sr0 of=mydisc.iso bs=2048</code> does the same job. Both preserve the HFS volume, which is what matters.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "What is a .toast file?",
+        "a": "A CD image created by Toast, the standard Macintosh CD burning application. Most are plain raw track images; some carry Toast-specific structure."
+      },
+      {
+        "q": "Can I just rename .toast to .iso?",
+        "a": "Often yes, for a single-session image. It will fail for multi-session images and for anything with a Toast header."
+      },
+      {
+        "q": "Why can't Windows read my Mac CD image?",
+        "a": "Because it is an HFS volume and Windows has no HFS driver. The data is there; Windows simply cannot see that filesystem."
+      },
+      {
+        "q": "What is a hybrid CD?",
+        "a": "A disc with two filesystems — HFS for the Mac and ISO 9660 for the PC — so one disc worked on both. Mounting it on the wrong platform shows you half the disc."
+      },
+      {
+        "q": "How do I make an image from a real disc?",
+        "a": "hdiutil on macOS or dd on Linux. Both are shown above."
+      },
+      {
+        "q": "Will CD audio tracks work?",
+        "a": "No. Only the data track is mounted; games that played music from audio tracks will be silent."
+      }
+    ],
+    "related": [
+      {
+        "href": "/open-dsk-file/",
+        "title": "Mount a disk image",
+        "desc": "Floppies and hard disks."
+      },
+      {
+        "href": "/load-mac-file/",
+        "title": "Open any Mac file",
+        "desc": "The general loader."
+      },
+      {
+        "href": "/run/",
+        "title": "Titles that just run",
+        "desc": "No file needed."
+      }
+    ],
+    "updated": "2026-09-13"
+  },
+  {
+    "slug": "open-dmg-file",
+    "title": "Open a DMG File Online Without a Mac — Extract .dmg in a Browser",
+    "description": "Open and extract a .dmg disk image in your browser, on Windows, Linux or Chromebook. Nothing installed, nothing uploaded. See what is inside.",
+    "keywords": "open dmg file, extract dmg, dmg file windows, open dmg online, dmg extractor, what is a dmg file",
+    "ogTitle": "Open a .dmg file without a Mac",
+    "ogDescription": "Extract a DMG in your browser. Windows, Linux, Chromebook — no install.",
+    "crumb": "Open a .dmg file",
+    "h1": "Open a .dmg file without a Mac",
+    "machine": "Quadra-650",
+    "accepts": [
+      ".dmg",
+      ".smi",
+      ".img"
+    ],
+    "onHome": true,
+    "cardTitle": ".dmg files",
+    "cardDesc": "Extract a Mac disk image anywhere.",
+    "intro": "<p>You have a <code>.dmg</code> and no Mac. Drop it in — it is opened in your browser, and you get to see and extract what is inside. Nothing is installed and nothing is uploaded.</p>\n<p>Be clear about what this can and cannot do: a DMG usually contains a Mac OS X or macOS application, and those cannot <em>run</em> anywhere but a Mac. Opening the image to get at documents, images, drivers or installers inside it is a different and very achievable thing, and that is what happens here.</p>",
+    "sections": [
+      {
+        "h": "What a DMG actually is",
+        "html": "<p>A disk image: a file containing a complete filesystem, which macOS mounts as though it were a physical disk. Apple has used several container formats under the name over the years, and which one you have decides how easy your life is.</p><p><strong>UDIF</strong> is the modern one, used since Mac OS X. It is a structured container — a compressed data fork holding the filesystem in blocks, with a trailer (the XML property list known as the <em>koly</em> block) at the end describing them. Inside is usually an HFS+ or APFS volume. Compression is zlib, bzip2 or LZFSE depending on how it was made.</p><p><strong>NDIF</strong> is the older Mac OS 8 and 9 format, and <strong>.smi</strong> is a self-mounting image — an NDIF image with a small Macintosh application attached so the recipient did not need any tools.</p><p>Some DMGs are also encrypted, and those genuinely cannot be opened without the password.</p>"
+      },
+      {
+        "h": "Why Windows cannot open one",
+        "html": "<p>Two reasons stacked on top of each other. Windows does not understand the UDIF container, and even after unpacking it, Windows cannot mount HFS+ or APFS. Both problems have to be solved, and most free tools that claim to open DMG files solve only the first, then present you with a raw volume nothing can read.</p><p>What works is a tool that unpacks the container <em>and</em> reads the enclosed filesystem — 7-Zip does a decent job on many DMGs for exactly this reason, and that same capability compiled to WebAssembly is what runs on this page.</p>"
+      },
+      {
+        "h": "And if it contains an application",
+        "html": "<p>Then you can see it, and you can extract it, and it will not run on Windows or Linux. A <code>.app</code> is a folder containing a compiled binary for macOS — Intel or Apple Silicon — plus its resources, and it needs macOS's frameworks underneath it. No emulator on this site or anywhere else makes that a Windows program.</p><p>This site emulates the <em>classic</em> Macintosh — System 6, System 7, Mac OS 8 and 9 — which is a completely different machine architecture from a modern Mac. If what you actually want is to run old Macintosh software, and the file you have is from that era, <a href=\"/load-mac-file/\">the classic loader</a> is the page you want. The <a href=\"/guide/\">what runs page</a> draws the line properly.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Can I open a DMG on Windows?",
+        "a": "You can open and extract one, yes — including on this page, with nothing installed. What you cannot do is run a macOS application that comes out of it."
+      },
+      {
+        "q": "Will this install the app for me?",
+        "a": "No. macOS applications only run on macOS. This extracts the contents so you can see and take what is inside."
+      },
+      {
+        "q": "My DMG will not open.",
+        "a": "It may be encrypted, in which case a password is required and there is no way around it. It may also be an APFS image, which is newer and less widely supported than HFS+."
+      },
+      {
+        "q": "What is the difference between .dmg and .iso?",
+        "a": "An ISO is a plain CD filesystem image with no compression or container. A DMG is an Apple container format, usually compressed, usually holding an HFS+ or APFS volume."
+      },
+      {
+        "q": "Is my file uploaded?",
+        "a": "No. The extractor is WebAssembly running in your browser."
+      },
+      {
+        "q": "Can I run old Mac software instead?",
+        "a": "Yes, that is most of this site. Classic Macintosh applications from the System 6 through Mac OS 9 era run here properly — start at the loader or the catalogue."
+      }
+    ],
+    "related": [
+      {
+        "href": "/load-mac-file/",
+        "title": "Open a classic Mac file",
+        "desc": "For software from the System 7 era."
+      },
+      {
+        "href": "/guide/",
+        "title": "What actually runs",
+        "desc": "Classic Mac versus OS X, honestly."
+      },
+      {
+        "href": "/open-dsk-file/",
+        "title": "Mount a disk image",
+        "desc": "Older Mac image formats."
+      }
+    ],
+    "updated": "2026-09-13"
+  },
+  {
+    "slug": "classic-mac-emulator-online",
+    "title": "Classic Mac Emulator Online — Run System 7 in Your Browser Free",
+    "description": "A classic Macintosh emulator that runs in your browser. System 6, System 7 and Mac OS 9 with no download, no install and no plugin. Free.",
+    "keywords": "classic mac emulator online, mac emulator browser, system 7 online, macintosh emulator, run mac os in browser, basilisk ii online",
+    "ogTitle": "A classic Mac emulator in your browser",
+    "ogDescription": "System 6, System 7 and Mac OS 9, running in a tab. No download.",
+    "crumb": "Mac emulator online",
+    "h1": "A classic Macintosh, running in this tab",
+    "machine": "Quadra-650",
+    "accepts": [
+      ".sit",
+      ".hqx",
+      ".bin",
+      ".img",
+      ".dsk",
+      ".toast",
+      ".iso",
+      ".zip"
+    ],
+    "onHome": true,
+    "cardTitle": "A plain Macintosh",
+    "cardDesc": "System 7, nothing loaded. Do what you like.",
+    "intro": "<p>A Macintosh, emulated in WebAssembly, running in this page. No download, no install, no plugin, no account. It boots System 7 on a Quadra 650 in a couple of seconds, and you can drop your own software into it.</p>",
+    "sections": [
+      {
+        "h": "Which Macintosh you are getting",
+        "html": "<table class=\"compat-table\"><thead><tr><th>Era</th><th>Machine</th><th>Emulator</th><th>Good for</th></tr></thead><tbody><tr><td>System 6</td><td>Macintosh Plus, 512×342 black and white</td><td>Mini vMac</td><td>Anything from 1984–1990. Fast enough for a phone.</td></tr><tr><td>System 7</td><td>Quadra 650, 640×480 in colour</td><td>Basilisk II</td><td>The bulk of the classic era: 1991–1997.</td></tr><tr><td>Mac OS 8–9</td><td>Power Macintosh G3</td><td>SheepShaver</td><td>PowerPC-only software. Heavier.</td></tr></tbody></table><p>The differences are real, not cosmetic. A Mac Plus is an eight-megahertz machine with a one-bit screen; a Quadra 650 is a 68040 with colour; a G3 is a different processor architecture entirely. Software from one will often not run on another, and picking the wrong machine is the single most common reason an old program refuses to start.</p>"
+      },
+      {
+        "h": "How the emulation works",
+        "html": "<p>Three separate emulators, all long-standing open-source projects, compiled to WebAssembly and running in a Web Worker in your browser:</p><ul><li><strong>Mini vMac</strong> emulates the early compact Macs precisely and is small and quick.</li><li><strong>Basilisk II</strong> emulates a 68k Macintosh capable of running System 7 through Mac OS 8.1.</li><li><strong>SheepShaver</strong> emulates a PowerPC Macintosh for Mac OS 8.1 through 9.0.4.</li></ul><p>They are interpreters, not recompilers, so they are slower than the same emulators running natively on your machine — perfectly fine for a drawing program or a 2D game, noticeably strained by a 1994 first-person shooter. They also need Apple's ROM and system software to boot, exactly as real hardware did.</p><p>The disk images are split into small chunks and fetched only as the emulated Mac reads them, which is why a machine with a two-hundred-megabyte hard disk starts in seconds rather than after a long download.</p>"
+      },
+      {
+        "h": "What you can do with it",
+        "html": "<p>Drop in a <code>.sit</code>, <code>.hqx</code>, <code>.bin</code> or disk image and it appears on the emulated Mac. Applications run. Documents open in whatever is on the disk. Files you save stay in your browser between visits.</p><p>What you cannot do: run Mac OS X or macOS software, print, or reach the internet from inside the emulated machine. The first is an architectural gap, the second and third are simply not wired up.</p><p>If you want the whole machine rather than one program — every system release from 1984 to Mac OS X, a large built-in software library, NeXTSTEP as well — <a href=\"https://infinitemac.org/\" rel=\"noopener\">Infinite Mac</a> is the project to use, and the emulator builds on this site come from it.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this a real Mac emulator or a simulation?",
+        "a": "Real emulation. Mini vMac, Basilisk II and SheepShaver are mature open-source emulators compiled to WebAssembly; they execute the actual 68k or PowerPC instructions and boot Apple's real system software."
+      },
+      {
+        "q": "Do I need to install anything?",
+        "a": "No. It is a web page. There is no plugin, no extension and no account."
+      },
+      {
+        "q": "Is it free?",
+        "a": "Yes, and there is nothing to buy."
+      },
+      {
+        "q": "Can I run Mac OS X software?",
+        "a": "No. Mac OS X is a different architecture and a different operating system. This site emulates the classic Mac OS, up to Mac OS 9."
+      },
+      {
+        "q": "Will it work on a Chromebook or an iPad?",
+        "a": "Yes. It is a web page, and the lighter machines run well on modest hardware. A 1994 shooter on a phone will be a struggle; a drawing program will be fine."
+      },
+      {
+        "q": "Where do my files go?",
+        "a": "Into your own browser's storage. Nothing is uploaded to any server at any point."
+      },
+      {
+        "q": "Why does it need a ROM?",
+        "a": "Because a real Macintosh did. A large part of the Mac's operating system lived in ROM chips on the motherboard, and the emulator needs that code to boot just as the hardware did."
+      }
+    ],
+    "related": [
+      {
+        "href": "/run/",
+        "title": "Titles that run in one click",
+        "desc": "No file needed."
+      },
+      {
+        "href": "/load-mac-file/",
+        "title": "Open your own file",
+        "desc": "The loader, with format notes."
+      },
+      {
+        "href": "/guide/",
+        "title": "What actually runs",
+        "desc": "Where the limits are."
+      }
+    ],
+    "updated": "2026-09-13"
+  }
+]

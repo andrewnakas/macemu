@@ -1,0 +1,44 @@
+# Cloudflare Pages header rules.
+#
+# IMPORTANT: _headers can only ADD headers. It cannot remove or replace one, and
+# two conflicting values of a policy header behave as neither. Anything that has
+# to override a rule here lives in a Pages Function middleware instead — see
+# functions/play/_middleware.js and functions/embed/_middleware.js.
+#
+# There is deliberately NO site-wide Cross-Origin-Embedder-Policy. COEP blocks
+# every cross-origin iframe that has not opted in, ad iframes included; setting
+# it globally is one of the things that sank exebrowser's AdSense application.
+# Isolation is applied only to /play/*, which never carries ads.
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
+  X-Frame-Options: SAMEORIGIN
+
+# The emulator runtime: fixed filenames with a ?v= query, so the bytes behind a
+# name can change on deploy. Short cache, revalidated.
+/mac/*
+  Cache-Control: public, max-age=3600, must-revalidate
+  Cross-Origin-Resource-Policy: same-origin
+
+# Disk manifests change whenever a title's image is rebuilt.
+/mac/disks/*
+  Cache-Control: public, max-age=300, must-revalidate
+
+# The emulator's service worker (fallback mode) must be able to claim the whole
+# origin, so it has to be served from the root with an unrestricted scope.
+/mac-sw.js
+  Service-Worker-Allowed: /
+  Cache-Control: public, max-age=0, must-revalidate
+
+/*.css
+  Cache-Control: public, max-age=86400
+/*.js
+  Cache-Control: public, max-age=86400
+
+/icons/*
+  Cache-Control: public, max-age=2592000, immutable
+
+/run/*/screenshot.png
+  Cache-Control: public, max-age=2592000

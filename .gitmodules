@@ -1,0 +1,4 @@
+[submodule "vendor/infinite-mac"]
+	path = vendor/infinite-mac
+	url = https://github.com/mihaip/infinite-mac.git
+	shallow = true
