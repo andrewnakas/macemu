@@ -56,3 +56,37 @@ pinned submodules of the vendored fork. Every hosted title carries a
 `NOTICE.md` recording where it came from and why it is here. If you hold rights
 to something on this site and want it gone, see `/takedown/` — it comes down
 within 48 hours, no argument.
+
+## DNS
+
+macemu.com is registered at Namecheap. Both `macemu.com` and `www.macemu.com`
+are already attached to the Pages project as custom domains and sit in
+`pending` until DNS points at Cloudflare.
+
+**If you move DNS to Cloudflare** (recommended — the apex works without an ALIAS
+record, and you get caching and analytics in front of the site): add the site at
+dash.cloudflare.com, which issues the nameserver pair, then set those two as
+Custom DNS at Namecheap. Pages creates the records for both custom domains by
+itself once the zone is active. Nameservers cannot be issued before the zone
+exists, and they are assigned per zone — this account already uses two different
+pairs, so they cannot be guessed from another domain.
+
+**If you keep Namecheap DNS**, set these on Namecheap's Advanced DNS tab:
+
+| Type | Host | Value |
+|---|---|---|
+| ALIAS Record | `@` | `macemu.pages.dev` |
+| CNAME Record | `www` | `macemu.pages.dev` |
+
+Namecheap's ALIAS record is what makes the apex work; a plain CNAME at `@` is
+not valid DNS. Certificates issue automatically once the records resolve.
+
+## Deploy
+
+```sh
+node scripts/gen-pages.mjs
+node scripts/check-consistency.mjs          # gate
+npx wrangler pages deploy public --project-name=macemu --branch=main
+bash scripts/smoke-test.sh https://macemu.com
+node scripts/indexnow.mjs
+```

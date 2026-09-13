@@ -1,41 +1,46 @@
 // The drop-your-own-file zone.
 //
-// Turns <div id="mac-loader" data-accepts="…"> into a dropzone that identifies
-// what a visitor gave it, boots a Macintosh, and puts the file where the Mac
-// will see it. On exebrowser.com the equivalent utility pages — "run exe
-// online", "open an exe file" — convert at around 27%, several times better
-// than any individual game page, because someone searching for a way to open a
-// file has a problem right now rather than a passing interest.
+// Turns <div id="mac-loader" data-accepts="…"> into a dropzone that works out
+// what the visitor gave it, boots a Macintosh, and hands the file over. On
+// exebrowser.com the equivalent utility pages — "run exe online", "open an exe
+// file" — convert at around 27%, several times better than any single game
+// page, because somebody searching for a way to open a file has a problem right
+// now rather than a passing interest.
 //
-// Needs macbin.js (format identification) and mac-player.js (the emulator).
+// Division of labour: macbin.js identifies the file from its bytes and strips a
+// DiskCopy header when there is one; the emulator runtime does the actual
+// mounting and copying. Decoding BinHex or expanding StuffIt in JavaScript
+// would be the wrong place to do it — StuffIt Expander is sitting on the boot
+// disk and reads every one of these formats natively, resource forks included.
 (function (global) {
   "use strict";
 
   document.addEventListener("DOMContentLoaded", function () {
-    const mount = document.getElementById("mac-loader");
+    var mount = document.getElementById("mac-loader");
     if (!mount) return;
 
-    const accepts = (mount.dataset.accepts || "").split(",").filter(Boolean);
-    const machine = mount.dataset.machine || "Quadra-650";
+    var accepts = (mount.dataset.accepts || "").split(",").filter(Boolean);
+    var machine = mount.dataset.machine || "Quadra-650";
+    var compact = machine === "Mac-Plus" || machine === "Mac-SE";
 
-    const zone = document.createElement("div");
+    var zone = document.createElement("div");
     zone.className = "dropzone";
     zone.innerHTML =
       '<p class="dz-title">Drop a file here</p>' +
       '<p class="dz-sub">' + (accepts.length ? accepts.join("  ") : "any classic Mac file") + "</p>" +
       '<button type="button" class="cta-btn dz-pick">Choose a file</button>' +
       '<p class="dz-note muted small">It is read on your own computer. Nothing is uploaded.</p>';
-    const input = document.createElement("input");
+    var input = document.createElement("input");
     input.type = "file";
     input.hidden = true;
     if (accepts.length) input.accept = accepts.join(",");
     zone.appendChild(input);
 
-    const status = document.createElement("p");
+    var status = document.createElement("p");
     status.className = "dz-status muted small";
     status.setAttribute("role", "status");
 
-    const stage = document.createElement("div");
+    var stage = document.createElement("div");
     stage.className = "dz-stage";
 
     mount.appendChild(zone);
@@ -43,8 +48,9 @@
     mount.appendChild(stage);
 
     zone.querySelector(".dz-pick").addEventListener("click", function () { input.click(); });
-    input.addEventListener("change", function () { if (input.files && input.files[0]) handle(input.files[0]); });
-
+    input.addEventListener("change", function () {
+      if (input.files && input.files[0]) handle(input.files[0]);
+    });
     ["dragenter", "dragover"].forEach(function (ev) {
       zone.addEventListener(ev, function (e) { e.preventDefault(); zone.classList.add("is-over"); });
     });
@@ -52,52 +58,52 @@
       zone.addEventListener(ev, function (e) { e.preventDefault(); zone.classList.remove("is-over"); });
     });
     zone.addEventListener("drop", function (e) {
-      const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+      var f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
       if (f) handle(f);
     });
 
-    // A visitor may reasonably drop a 600 MB CD image. Reading that into an
-    // ArrayBuffer is fine; saying so first is politer than a frozen tab.
-    const BIG = 64 * 1024 * 1024;
+    // Reading only the head is enough to identify every format here, and it
+    // means a 600 MB CD image does not have to sit in memory twice before the
+    // page can even say what it is.
+    var SNIFF = 1024 * 1024;
 
     function handle(file) {
-      status.textContent = "Reading " + file.name + "…" + (file.size > BIG ? " (large file, this takes a moment)" : "");
-      const reader = new FileReader();
+      status.textContent = "Reading " + file.name + "…";
+      var head = file.slice(0, Math.min(file.size, SNIFF));
+      var reader = new FileReader();
       reader.onerror = function () { status.textContent = "Could not read that file."; };
       reader.onload = function () {
-        let bytes;
+        var id;
         try {
-          bytes = new Uint8Array(reader.result);
+          id = global.MacBin.identify(new Uint8Array(reader.result), file.name);
         } catch (err) {
-          status.textContent = "Could not read that file.";
+          status.textContent = "That looks like a Macintosh file, but it would not decode: " +
+            err.message + " It was probably truncated or mangled in transit.";
           return;
         }
-        let id;
-        try {
-          id = global.MacBin.identify(bytes, file.name);
-        } catch (err) {
-          // A recognised format that failed to decode is worth saying out loud:
-          // it usually means the file was truncated or mangled in transit, and
-          // that is actionable information.
-          status.textContent = "That looks like a Macintosh file but it would not decode: " + err.message;
-          return;
+        // identify() only saw the first megabyte, so a large raw image can look
+        // like an unrecognised blob. Fall back to the file's real size, which
+        // is the only evidence a raw image ever offers.
+        if (id.kind === "opaque" && file.size > SNIFF && file.size % 512 === 0 && /\.(img|dsk|hfv|iso|toast|cdr|image|hda)$/i.test(file.name)) {
+          id = { kind: /\.(iso|toast|cdr)$/i.test(file.name) ? "cdrom" : "disk",
+                 isFloppy: global.MacBin.FLOPPY_SIZES.has(file.size), raw: true };
         }
         describe(id, file);
         launch(id, file);
       };
-      reader.readAsArrayBuffer(file);
+      reader.readAsArrayBuffer(head);
     }
 
     function describe(id, file) {
-      const what = {
-        macbinary: "MacBinary — both forks preserved",
-        binhex: "BinHex 4.0 — decoded here in your browser",
+      var what = {
+        macbinary: "a MacBinary file — both forks intact",
+        binhex: "a BinHex file",
         disk: id.isFloppy ? "a floppy disk image" : "a hard disk image",
         cdrom: "a CD-ROM image",
-        opaque: "an archive or document",
+        opaque: "an archive or a document",
       }[id.kind] || "a file";
-      const extra = id.file && id.file.name ? " (" + id.file.name + ", type " + id.file.type + ")" : "";
-      const vol = id.volumeName ? ' — volume "' + id.volumeName + '"' : "";
+      var extra = id.file && id.file.name ? ' holding "' + id.file.name + '"' : "";
+      var vol = id.volumeName ? ', volume "' + id.volumeName + '"' : "";
       status.textContent = file.name + " is " + what + extra + vol + ". Starting a Macintosh…";
     }
 
@@ -107,45 +113,48 @@
         return;
       }
       zone.classList.add("is-busy");
-      global.MacPlayer.start(stage, {
+
+      var opts = {
         machine: machine,
         appName: file.name,
-        width: machine === "Mac-Plus" ? 512 : 640,
-        height: machine === "Mac-Plus" ? 342 : 480,
-        onLoaded: function (emu) {
-          try {
-            if (id.kind === "disk" || id.kind === "cdrom") {
-              // Raw images go in as a disk the Mac mounts itself.
-              emu.mountDisk(new Blob([id.bytes]), {
-                name: file.name,
-                isFloppy: !!id.isFloppy,
-                isCDROM: id.kind === "cdrom",
-              });
-              status.textContent = "Mounted. Look for it on the desktop.";
-            } else if (id.kind === "macbinary" || id.kind === "binhex") {
-              // Decoded already: hand over both forks so the application keeps
-              // its icon, its type and creator, and its code.
-              emu.putFile({
-                name: id.file.name || file.name,
-                type: id.file.type,
-                creator: id.file.creator,
-                data: id.file.data,
-                rsrc: id.file.rsrc,
-              });
-              status.textContent = 'Copied to the Mac as "' + (id.file.name || file.name) + '". Open the Downloads folder on the desktop.';
-            } else {
-              emu.putFile({ name: file.name, data: id.bytes });
-              status.textContent = "Copied to the Mac. Open the Downloads folder on the desktop" +
-                (/\.(sit|sea|cpt)$/i.test(file.name) ? " and double-click it — StuffIt Expander is on the disk." : ".");
-            }
-          } catch (err) {
-            status.textContent = "The Macintosh started but the file would not go in: " + err.message;
-            if (global.console) console.error("[macemu]", err);
-          }
+        // Mini vMac's screen is fixed by the machine it emulates; Basilisk II
+        // and SheepShaver take whatever they are given.
+        width: compact ? 512 : 640,
+        height: compact ? 342 : 480,
+        onLoaded: function () {
+          status.textContent = (id.kind === "disk" || id.kind === "cdrom")
+            ? "Mounted. Look for it on the desktop."
+            : 'Copied across. Open the "Downloads" folder on the desktop' +
+              (/\.(sit|sea|cpt|hqx|bin)$/i.test(file.name)
+                ? " and double-click it — StuffIt Expander is on the disk and reads all of these."
+                : ".");
         },
+      };
+
+      if (id.kind === "disk" || id.kind === "cdrom") {
+        // A DiskCopy 4.2 header has to come off before the emulator sees the
+        // image, or it reads the header as the first sector and calls the disk
+        // unreadable. Stripping it means re-wrapping the bytes as a File.
+        var payload = file;
+        if (id.bytes && !id.raw && id.bytes.length !== file.size) {
+          payload = new File([id.bytes], file.name.replace(/\.(dc42|image)$/i, ".img"),
+            { type: "application/octet-stream" });
+        }
+        opts.diskFiles = [{ file: payload, isCDROM: id.kind === "cdrom", isFloppy: !!id.isFloppy }];
+        // A disk with a System Folder can boot on its own; one without needs a
+        // system disk underneath it or there is nothing to mount it into.
+        opts.disks = [];
+      }
+
+      global.MacPlayer.start(stage, opts).then(function (h) {
+        if (id.kind !== "disk" && id.kind !== "cdrom") {
+          return h.uploadFiles([file]).catch(function (err) {
+            status.textContent = "The Macintosh started, but the file would not go in: " + err.message;
+          });
+        }
       }).catch(function (err) {
         zone.classList.remove("is-busy");
-        status.textContent = "Could not start the emulator: " + err.message;
+        status.textContent = "Could not start the emulator: " + (err && err.message ? err.message : String(err));
       });
     }
   });

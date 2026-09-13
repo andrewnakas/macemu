@@ -2,93 +2,88 @@
 //
 // Everything the emulator needs is declared as data-* attributes by the page
 // generator, so the HTML stays static and this file stays generic. The actual
-// emulation lives in /mac/mac-runtime.js (a bundle of Mini vMac, Basilisk II
-// and SheepShaver compiled to WebAssembly, from the Infinite Mac project),
-// which is loaded lazily — nobody should pay a multi-megabyte download for
-// reading an article.
+// emulation lives in /mac/mac-runtime.js — Mini vMac, Basilisk II and
+// SheepShaver compiled to WebAssembly, from the Infinite Mac project — which is
+// loaded lazily. Nobody should pay an eight-megabyte download for reading an
+// article about a game they have not decided to play yet.
 //
-// Two speeds:
-//   isolated  SharedArrayBuffer available (the /play/ route sets COOP+COEP).
-//             Full speed.
-//   fallback  No SharedArrayBuffer. Slower, works anywhere, and is what an
-//             embed on somebody else's site gets, because that page will not be
-//             cross-origin isolated.
-// The mode is decided by what the browser actually grants, not by what the page
-// asked for — a page can request isolation and not get it.
+// Two speeds, chosen by what the browser actually grants rather than by what
+// the page asked for:
+//   SharedArrayBuffer available   full speed. The /play/ route sets COOP+COEP
+//                                 to earn this.
+//   not available                 a slower fallback path. What an embed on
+//                                 somebody else's site gets, because that page
+//                                 will not be cross-origin isolated.
 (function (global) {
   "use strict";
 
-  const RUNTIME_URL = "/mac/mac-runtime.js";
-  const state = { runtime: null, loading: null, instances: [] };
-
-  const T = (k, fallback) => (global.__I18N && global.__I18N[k]) || fallback;
+  var RUNTIME_URL = "/mac/mac-runtime.js";
+  var state = { loading: null, instances: [] };
 
   function loadRuntime() {
-    if (state.runtime) return Promise.resolve(state.runtime);
+    if (global.MacEmulator) return Promise.resolve(global.MacEmulator);
     if (state.loading) return state.loading;
     state.loading = new Promise(function (resolve, reject) {
-      if (global.MacEmulator) return resolve(global.MacEmulator);
-      const s = document.createElement("script");
+      var s = document.createElement("script");
       s.src = RUNTIME_URL;
       s.async = true;
       s.onload = function () {
-        if (!global.MacEmulator) return reject(new Error("runtime loaded but MacEmulator is not defined"));
-        state.runtime = global.MacEmulator;
-        resolve(global.MacEmulator);
+        if (!global.MacEmulator) reject(new Error("the runtime loaded but defined no MacEmulator"));
+        else resolve(global.MacEmulator);
       };
-      s.onerror = function () { reject(new Error("could not load the emulator runtime")); };
+      s.onerror = function () { reject(new Error("could not load /mac/mac-runtime.js")); };
       document.head.appendChild(s);
     });
     return state.loading;
   }
 
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  }
+
   // ── the poster / play overlay ────────────────────────────────────────────
-  // The emulator does not start on page load. It is several megabytes and a
-  // pinned CPU core, and most people who land on a title page from a search
-  // result are reading, not playing. One click starts it.
   function buildStage(mount, cfg) {
-    const stage = document.createElement("div");
+    var stage = document.createElement("div");
     stage.className = "embed-stage";
     stage.style.aspectRatio = cfg.width + " / " + cfg.height;
 
-    const overlay = document.createElement("div");
+    var screen = document.createElement("div");
+    screen.className = "embed-console-wrap";
+
+    var overlay = document.createElement("div");
     overlay.className = "embed-overlay";
-    const btn = document.createElement("button");
+    var btn = document.createElement("button");
     btn.type = "button";
     btn.className = "embed-play";
-    btn.innerHTML = "▶ " + T("play", "Play") + " " + escapeHtml(cfg.appName);
-    const hint = document.createElement("p");
+    btn.innerHTML = "▶ Start " + esc(cfg.appName);
+    var hint = document.createElement("p");
     hint.className = "embed-hint";
-    hint.textContent = cfg.emulator
-      ? cfg.emulator + " · " + cfg.width + "×" + cfg.height + " · nothing is installed or uploaded"
-      : "nothing is installed or uploaded";
+    hint.textContent = (cfg.emulator ? cfg.emulator + " · " : "") + cfg.width + "×" + cfg.height +
+      " · nothing is installed or uploaded";
     overlay.appendChild(btn);
     overlay.appendChild(hint);
 
-    const progress = document.createElement("div");
+    var progress = document.createElement("div");
     progress.className = "dos-progress";
     progress.hidden = true;
-    const fill = document.createElement("div");
+    var fill = document.createElement("div");
     fill.className = "dos-progress-fill";
     progress.appendChild(fill);
-
-    const screen = document.createElement("div");
-    screen.className = "embed-console-wrap";
 
     stage.appendChild(screen);
     stage.appendChild(overlay);
     stage.appendChild(progress);
     mount.appendChild(stage);
-    return { stage, overlay, btn, progress, fill, screen, hint };
+    return { stage: stage, overlay: overlay, btn: btn, progress: progress, fill: fill, screen: screen, hint: hint };
   }
 
-  const escapeHtml = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-
   function readConfig(mount) {
-    const d = mount.dataset;
+    var d = mount.dataset;
     return {
       slug: d.slug || "",
-      appName: d.appName || "this Macintosh",
+      appName: d.appName || "a Macintosh",
       machine: d.machine || "Quadra-650",
       emulator: d.emulator || "",
       disk: d.disk || "",
@@ -100,97 +95,101 @@
   }
 
   // ── boot ─────────────────────────────────────────────────────────────────
-  function boot(mount, cfg, ui, extra) {
+  function boot(cfg, ui, extra) {
+    extra = extra || {};
+    if (ui.booted) return ui.booted;
     ui.btn.disabled = true;
     ui.progress.hidden = false;
     ui.hint.textContent = "Starting…";
 
-    return loadRuntime().then(function (MacEmulator) {
-      const isolated = !!global.crossOriginIsolated && typeof SharedArrayBuffer !== "undefined";
-      if (!isolated && cfg.mode === "isolated") {
-        // Asked for full speed and did not get it. Say so rather than letting
-        // someone conclude the emulator is just slow.
-        ui.hint.textContent = "Running in compatibility mode — slower. Open the full-speed page for better performance.";
+    ui.booted = loadRuntime().then(function (MacEmulator) {
+      var disks = extra.disks || (cfg.disk ? [{ name: cfg.disk, persistent: true }] : []);
+      if (!disks.length && !(extra.diskFiles && extra.diskFiles.length)) {
+        // A machine with no disk boots to a blinking floppy icon, which looks
+        // exactly like a bug. Say what is actually wrong.
+        throw new Error("no disk image is configured for this title yet");
       }
-      const emu = MacEmulator.create({
+
+      var handle = MacEmulator.create({
         parent: ui.screen,
         machine: cfg.machine,
-        disks: (extra && extra.disks) || (cfg.disk ? [cfg.disk] : []),
+        disks: disks,
+        diskFiles: extra.diskFiles,
         screen: { width: cfg.width, height: cfg.height },
         ramMB: cfg.ramMB,
+        pixelated: true,
+        flags: { autoPause: true },
         onProgress: function (done, total) {
-          if (!total) return;
-          ui.fill.style.width = Math.round((done / total) * 100) + "%";
+          if (total) ui.fill.style.width = Math.round((done / total) * 100) + "%";
         },
-        onLoaded: function () {
+        onLoaded: function (h) {
           ui.overlay.hidden = true;
           ui.progress.hidden = true;
           global.__macBooted = true;
-          try { global.parent.postMessage({ type: "emulator_loaded" }, "*"); } catch (e) {}
-          if (extra && typeof extra.onLoaded === "function") extra.onLoaded(emu);
+          if (!h.useSharedMemory && cfg.mode === "isolated") {
+            // Asked for full speed and did not get it. Better to say so than to
+            // let someone conclude the emulator is simply slow.
+            showNote(ui, "Running in compatibility mode — this browser did not grant shared memory, so it is slower than it should be.");
+          }
+          if (typeof extra.onLoaded === "function") extra.onLoaded(h);
         },
-        onError: function (err) {
+        onError: function (message) {
           ui.progress.hidden = true;
           ui.btn.disabled = false;
-          ui.hint.textContent = "Could not start: " + (err && err.message ? err.message : String(err));
-          if (global.console) console.error("[macemu]", err);
+          ui.overlay.hidden = false;
+          ui.hint.textContent = "Could not start: " + message;
         },
       });
-      state.instances.push(emu);
-
-      // Stop burning a CPU core when the page is not being looked at. An
-      // emulator left running in a background tab is the single rudest thing a
-      // page like this can do to a laptop battery.
-      const onVisibility = function () {
-        if (document.hidden) { try { emu.pause(); } catch (e) {} }
-        else { try { emu.unpause(); } catch (e) {} }
-      };
-      document.addEventListener("visibilitychange", onVisibility);
-
-      if ("IntersectionObserver" in global) {
-        const io = new IntersectionObserver(function (entries) {
-          for (const en of entries) {
-            try { en.isIntersecting ? emu.unpause() : emu.pause(); } catch (e) {}
-          }
-        }, { threshold: 0.05 });
-        io.observe(ui.stage);
-      }
-
-      return emu;
+      state.instances.push(handle);
+      return handle.ready;
     }).catch(function (err) {
       ui.progress.hidden = true;
       ui.btn.disabled = false;
-      ui.hint.textContent = "Could not load the emulator: " + err.message;
+      ui.overlay.hidden = false;
+      ui.hint.textContent = "Could not start: " + (err && err.message ? err.message : String(err));
+      ui.booted = null;
       if (global.console) console.error("[macemu]", err);
       throw err;
     });
+    return ui.booted;
+  }
+
+  function showNote(ui, text) {
+    var p = document.createElement("p");
+    p.className = "muted small";
+    p.textContent = text;
+    ui.stage.parentNode.insertBefore(p, ui.stage.nextSibling);
   }
 
   // ── public API, used by mac-loader.js ────────────────────────────────────
-  const MacPlayer = {
-    /** Mount an emulator into an element, returning a promise for the handle. */
-    start: function (mount, overrides) {
-      const cfg = Object.assign(readConfig(mount), overrides || {});
-      const ui = buildStage(mount, cfg);
-      return boot(mount, cfg, ui, overrides);
+  global.MacPlayer = {
+    /**
+     * Mount an emulator into an element.
+     * opts may carry: machine, appName, width, height, ramMB, disks,
+     * diskFiles, onLoaded. Returns a promise for the MacEmulator handle.
+     */
+    start: function (mount, opts) {
+      opts = opts || {};
+      var cfg = readConfig(mount);
+      for (var k in opts) if (cfg.hasOwnProperty(k) && opts[k] !== undefined) cfg[k] = opts[k];
+      var ui = buildStage(mount, cfg);
+      ui.btn.addEventListener("click", function () { boot(cfg, ui, opts); });
+      return boot(cfg, ui, opts);
     },
-    /** Every running instance on this page. */
     instances: function () { return state.instances.slice(); },
     loadRuntime: loadRuntime,
   };
-  global.MacPlayer = MacPlayer;
 
-  // ── auto-start on title pages ────────────────────────────────────────────
+  // ── auto-wire the title pages ────────────────────────────────────────────
   document.addEventListener("DOMContentLoaded", function () {
-    const mount = document.getElementById("mac-embed");
+    var mount = document.getElementById("mac-embed");
     if (!mount) return;
-    const cfg = readConfig(mount);
-    const ui = buildStage(mount, cfg);
+    var cfg = readConfig(mount);
+    var ui = buildStage(mount, cfg);
+    ui.btn.addEventListener("click", function () { boot(cfg, ui, null); });
 
-    // In an embed on someone else's site there is no article to read, so start
-    // straight away rather than making the visitor click twice.
-    const autostart = cfg.mode === "fallback" && global.self !== global.top;
-    if (autostart) boot(mount, cfg, ui, null);
-    ui.btn.addEventListener("click", function () { boot(mount, cfg, ui, null); });
+    // Inside an embed on somebody else's page there is no article to read, so
+    // waiting for a second click is just friction.
+    if (cfg.mode === "fallback" && global.self !== global.top) boot(cfg, ui, null);
   });
 })(typeof window !== "undefined" ? window : globalThis);

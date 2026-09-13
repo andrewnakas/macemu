@@ -26,9 +26,12 @@
 /mac/disks/*
   Cache-Control: public, max-age=300, must-revalidate
 
-# The emulator's service worker (fallback mode) must be able to claim the whole
-# origin, so it has to be served from the root with an unrestricted scope.
-/mac-sw.js
+# The emulator's fallback mode registers a service worker to mediate its
+# synchronous reads. The script lives under /mac/, and a worker script may only
+# claim a scope at or below its own path — so without this header it could never
+# control /play/ or /load-mac-file/, and fallback mode would fail silently on
+# every page that needs it.
+/mac/emulator-service-worker.js
   Service-Worker-Allowed: /
   Cache-Control: public, max-age=0, must-revalidate
 
