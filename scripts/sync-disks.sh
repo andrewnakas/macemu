@@ -70,7 +70,7 @@ export -f upload_one
 # like a permanent failure and loop forever.
 missing() {
   BASE="$BASE" python3 - <<'PY'
-import json, os, glob, urllib.request, concurrent.futures, random, sys
+import json, os, glob, urllib.request, urllib.error, concurrent.futures, random, sys, time
 BASE=os.environ["BASE"]; UA={"User-Agent":"macemu-sync/1.0"}
 want=set()
 for mf in glob.glob("public/mac/disks/*.json"):
@@ -81,12 +81,21 @@ for r in glob.glob("Images/rom/*.rom"):
 def ck(item):
     kind, name = item
     p = f"/Disk/{name}.chunk" if kind=="chunk" else f"/rom/{name}.rom"
-    try:
-        urllib.request.urlopen(urllib.request.Request(
-            f"{BASE}{p}?cb={random.randint(0,10**9)}", headers=UA, method="HEAD"), timeout=40)
-        return None
-    except Exception:
-        return f"{kind} {name}"
+    # Three attempts before calling it missing. A single HEAD over a flaky link
+    # fails often enough that one-shot checking reported a different "missing"
+    # object on every run and sent the upload loop round again for nothing.
+    for attempt in range(3):
+        try:
+            urllib.request.urlopen(urllib.request.Request(
+                f"{BASE}{p}?cb={random.randint(0,10**9)}", headers=UA, method="HEAD"), timeout=40)
+            return None
+        except urllib.error.HTTPError as e:
+            if e.code == 404:
+                return f"{kind} {name}"   # a real 404 needs no retry
+        except Exception:
+            pass
+        time.sleep(0.6 * (attempt + 1))
+    return f"{kind} {name}"
 out=[]
 with concurrent.futures.ThreadPoolExecutor(12) as ex:
     for r in ex.map(ck, sorted(want)):

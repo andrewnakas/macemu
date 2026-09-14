@@ -57,6 +57,20 @@ section("Catalogue");
     for (const c of p.categories || []) {
       if (!CATEGORY_ORDER.includes(c)) fail(`${where}: category ${JSON.stringify(c)} is not in CATEGORY_ORDER`);
     }
+    const PROVENANCE = ["clean", "shareware", "grey", "byo-only"];
+    if (p.provenance && !PROVENANCE.includes(p.provenance)) {
+      fail(`${where}: provenance ${JSON.stringify(p.provenance)} is not one of ${PROVENANCE.join(", ")}`);
+    }
+    // Anything actually hosted must have a written provenance record. On a site
+    // that redistributes other people's software, "where did this come from and
+    // on what terms" needs an answer written down before it goes up, not after
+    // somebody asks.
+    if (isPlayable(p) && !p.iframeUrl) {
+      if (!existsSync(resolve(ROOT, "notices", `${p.slug}.md`))) {
+        fail(`${where}: hosted but has no notices/${p.slug}.md recording where it came from and why it may be here`);
+      }
+      if (!p.provenance) fail(`${where}: hosted with no provenance set`);
+    }
     // The one rule with teeth: nothing still sold is ever hosted.
     if (isSold(p) && isPlayable(p)) fail(`${where}: is marked as still sold (${p.sold}) but also has a bootDisk. Commercial software is never hosted.`);
     if (p.description && (p.description.length < 70 || p.description.length > 175)) {

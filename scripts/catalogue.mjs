@@ -51,6 +51,14 @@ export const unesc = (s) =>
 // deriving the signal from the payload instead of from a boolean.)
 export const isPlayable = (p) => !!(p.bootDisk || p.iframeUrl);
 
+// How a title came to be here. "shareware" is its own case and a large one:
+// shareware licences were written to encourage copying, and most of them
+// explicitly permit non-profit redistribution of the unregistered version. That
+// makes a sizeable chunk of the 1985-2000 Macintosh catalogue hostable on the
+// author's own stated terms — provided nothing is modified, which means leaving
+// the registration nag exactly where it is.
+export const PROVENANCE = ["clean", "shareware", "grey", "byo-only"];
+
 // Titles still sold today are never hosted, whatever else the catalogue says.
 // A `sold` URL turns the page into a bring-your-own-copy guide, and
 // check-consistency.mjs fails the build if one ever gains a bootDisk.

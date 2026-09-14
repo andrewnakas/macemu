@@ -49,8 +49,9 @@ plus an alias in System Folder:Startup Items so it launches at boot:
   node scripts/chunk-disk.mjs Images/titles/marathon.img marathon-v1
   scripts/sync-disks.sh
 
-Content-addressed chunks mean every title shares the base system's chunks, so
-the twentieth title costs the size of the game, not the size of a Macintosh.
+Budget a full disk per title in R2 — about 20 MB here. Writing an HFS volume
+moves its allocation blocks, so a per-title image shares essentially no chunks
+with the base it was built from, however similar the contents look.
 
 Finally add "bootDisk": "marathon-v1" to the entry in scripts/app-pages.json.
 Until that field exists the page is a bring-your-own-copy guide, which is

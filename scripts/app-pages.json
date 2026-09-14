@@ -1,5 +1,153 @@
 [
   {
+    "slug": "maelstrom",
+    "title": "Play Maelstrom Online — Ambrosia's Mac Classic, Free & Legal",
+    "description": "Maelstrom, the Asteroids game that made Ambrosia Software, running free in your browser. GPL engine, Creative Commons artwork, nothing to install.",
+    "keywords": "maelstrom game, play maelstrom online, ambrosia software maelstrom, maelstrom mac, asteroids mac game, andrew welch maelstrom",
+    "ogTitle": "Maelstrom (1992) in your browser",
+    "ogDescription": "Ambrosia's Asteroids, free and legal, booting straight into the game on an emulated Macintosh.",
+    "crumb": "Maelstrom",
+    "h1": "Maelstrom — Asteroids, taken far too seriously",
+    "appName": "Maelstrom",
+    "appType": "game",
+    "author": "Ambrosia Software",
+    "year": 1992,
+    "genre": [
+      "Arcade",
+      "Action",
+      "Shoot 'em up"
+    ],
+    "categories": [
+      "Action",
+      "Shooters",
+      "Free & complete"
+    ],
+    "era": "system-7",
+    "machine": "Mac-IIfx",
+    "ramMB": 32,
+    "screen": {
+      "w": 640,
+      "h": 480,
+      "depth": 8
+    },
+    "bootDisk": "maelstrom-v3",
+    "provenance": "shareware",
+    "fullyFree": "Ambrosia's own licence permits non-profit redistribution, and the company later released the engine under the GPL and the artwork under Creative Commons. The whole game is here — no crippled demo, no level lock.",
+    "licenseReason": "Maelstrom shipped as shareware, and shareware was <em>designed</em> to be copied. The licence file on this very disk says non-profit distribution is acceptable without asking, provided the software is unmodified and complete — which is why the registration notice you see on startup is still there, untouched. Ambrosia went further later: the engine became GPL in 1999 and the artwork Creative Commons in 2010. Full provenance is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/maelstrom.md\" rel=\"noopener\">notices/maelstrom.md</a>.",
+    "verdict": {
+      "kind": "good",
+      "text": "Shareware, freely redistributable"
+    },
+    "intro": "<p>In 1992 a Macintosh shareware author decided that Asteroids deserved better, and spent an unreasonable amount of effort proving it. Maelstrom has rendered 3D rock sprites, a proper soundtrack, screen-shaking explosions, power-ups, and a sense of weight that the 1979 original never had. It is still, more than thirty years on, one of the best arcade games written for any Macintosh.</p>\n<p>It boots straight into the game here, with nothing to install. Ambrosia later released the engine under the GPL and the artwork under Creative Commons, which is why it can be here at all — though the 1990s build you are playing still opens with the shareware notice it shipped with. Click <strong>Not Yet</strong> and play.</p>",
+    "launchNote": "Boots to the Macintosh desktop with the Maelstrom folder open — double-click Maelstrom to start it. The first thing it shows is Ambrosia's 1990s shareware notice; click “Not Yet” to get past it.",
+    "macControls": [
+      {
+        "keys": "Left / Right arrows",
+        "does": "Rotate the ship"
+      },
+      {
+        "keys": "Up arrow",
+        "does": "Thrust"
+      },
+      {
+        "keys": "Space",
+        "does": "Fire"
+      },
+      {
+        "keys": "Shift",
+        "does": "Shields, while you have them"
+      },
+      {
+        "keys": "Tab",
+        "does": "Autofire toggle on later versions"
+      },
+      {
+        "keys": "Esc",
+        "does": "Pause, and the menu"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh IIfx, 32 MB RAM, 640×480</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Basilisk II, compiled to WebAssembly</td></tr><tr><th>Version</th><td>Maelstrom 1.4.3, the last Macintosh release</td></tr><tr><th>Sound</th><td>Yes, and it matters. Click inside the screen once — browsers block audio until you do.</td></tr><tr><th>Mobile</th><td>It runs, but this is a keyboard game. Use a real keyboard.</td></tr></tbody></table><p>The machine takes about half a minute to start and opens the Maelstrom folder on the desktop; double-click <strong>Maelstrom</strong> to play. If the keys do nothing, click once on the game screen — the browser gives it the keyboard only after you have interacted with it.</p><p>Maelstrom's own Preferences dialog lists every key and lets you change them, which is worth doing if the defaults fight your keyboard.</p>"
+      },
+      {
+        "h": "What makes it more than a clone",
+        "html": "<p>The rocks are the giveaway. They are not vector outlines or flat polygons; they are pre-rendered 3D objects, tumbling in animation frames, and in 1992 on a Macintosh that was showing off. Shoot one and it breaks into smaller ones that are also properly rendered, and the screen jolts.</p><p>On top of that sits everything Asteroids did not have. Power-ups drift down and change your ship: multiple shots, autofire, shields, extra lives. Enemy ships arrive and actually aim. There are bonus levels. There is a two-player mode over AppleTalk, which is not much use here. And there is a high score table that Ambrosia ran as a genuine worldwide contest, which is the sort of thing a shareware author did when the alternative was nothing.</p><p>It is also hard in the way arcade games were hard: not unfair, but not interested in whether you are having a nice time.</p>"
+      },
+      {
+        "h": "Why this game matters beyond the Mac",
+        "html": "<p>Maelstrom is the reason SDL exists.</p><p>In 1995 Ambrosia gave the source to Sam Lantinga, who wanted to port it to Linux. The cross-platform layer he wrote to do that became the Simple DirectMedia Layer — the library that now underpins an enormous amount of game development, from indie projects to the Steam client and countless commercial ports. It started as scaffolding to get a Macintosh Asteroids game running on X11.</p><p>Ambrosia Software itself was one of the great shareware houses: Maelstrom, Escape Velocity, Apeiron, SketchFighter, and a registration system built on trust and good jokes. You can still see that model working in the notice this build opens with — pay if you keep playing, on your honour. The company wound down in the 2010s, but Maelstrom was set free first: GPL for the code in 1999, Creative Commons for the art in 2010.</p><p>If you want to play it at a modern resolution on a modern machine, the SDL port is maintained and packaged nearly everywhere. What is here is the 1990s Macintosh build, in its own habitat.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "The game says Maelstrom is not a free product. Should it be here?",
+        "a": "Yes, and by Ambrosia's own rules. That notice is the shareware pitch it shipped with in the 1990s: try it, and pay if you keep playing. Shareware was built to be passed around, and the licence file on this disk says non-profit distribution is acceptable without asking, so long as nothing is modified and the complete package is included. Both conditions hold here — the notice is deliberately left intact rather than patched out. Ambrosia also released the engine under the GPL in 1999 and the artwork under Creative Commons in 2010."
+      },
+      {
+        "q": "Is it legal to have this here?",
+        "a": "Yes. The engine is GPL and the artwork is Creative Commons Attribution, both by the decision of the people who made them. That is a firmer footing than most things preserved from this era, which survive only because nobody is left to object."
+      },
+      {
+        "q": "Do I need to install anything?",
+        "a": "No. The emulator is WebAssembly and runs in this page. Nothing is installed and nothing is uploaded."
+      },
+      {
+        "q": "The keys do nothing.",
+        "a": "Click once inside the game screen. Browsers do not hand keyboard input to a page element until the visitor has interacted with it, and the same click is what unlocks the sound."
+      },
+      {
+        "q": "Can I change the controls?",
+        "a": "Yes — Maelstrom has a Preferences dialog that lists every key and lets you rebind it. Worth a look if the defaults are awkward on your keyboard."
+      },
+      {
+        "q": "Will my high scores be saved?",
+        "a": "Not yet. This machine is rebuilt fresh each visit, so the score table resets. Persistent disks are on the list."
+      },
+      {
+        "q": "What is the connection to SDL?",
+        "a": "Sam Lantinga wrote the Simple DirectMedia Layer while porting Maelstrom from the Mac to Linux in the mid-1990s. SDL went on to become one of the most widely used game libraries there is."
+      },
+      {
+        "q": "Which version is this?",
+        "a": "Maelstrom 1.4.3, the last Macintosh release, which includes the documentation and the licence text."
+      },
+      {
+        "q": "Is there a modern version?",
+        "a": "Yes. The SDL port is maintained and packaged for Linux, macOS and Windows, and runs at modern resolutions. This page is for the original Macintosh build."
+      }
+    ],
+    "download": {
+      "heading": "Source, and a modern port",
+      "html": "<ul><li><a href=\"https://www.libsdl.org/projects/Maelstrom/\" rel=\"noopener\">Maelstrom at libsdl.org</a> — Sam Lantinga's SDL port, GPL, source and binaries.</li><li><a href=\"https://archive.org/details/maelstrom-68k\" rel=\"noopener\">Internet Archive</a> — the original Macintosh releases, 1.0 through 1.4.3.</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/glider-pro/",
+        "title": "Glider PRO",
+        "desc": "The other great freed Mac game."
+      },
+      {
+        "href": "/run/marathon/",
+        "title": "Marathon",
+        "desc": "Bungie's Mac shooter, also free."
+      },
+      {
+        "href": "/collection/system-7/",
+        "title": "More System 7 software",
+        "desc": "The era Maelstrom shipped in."
+      }
+    ],
+    "updated": "2026-09-14",
+    "addedDate": "2026-09-14",
+    "rank": 0
+  },
+  {
     "slug": "oregon-trail",
     "title": "Play The Oregon Trail (Mac) Online — The 1991 Classroom Version",
     "description": "The Macintosh Oregon Trail, the one from the school computer lab, running in your browser. Ford the river, shoot more bison than you can carry, die of dysentery.",
