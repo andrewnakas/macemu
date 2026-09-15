@@ -282,6 +282,9 @@ section("Page depth");
   const SHORT_BY_DESIGN = new Set([
     "contact/index.html", "privacy/index.html", "terms/index.html",
     "blog/index.html", "run/index.html", "404.html",
+    // A takedown promise should be short enough to read in full before acting
+    // on it. Padding it to clear a word count would make it worse.
+    "takedown/index.html",
   ]);
   for (const file of htmlFiles) {
     if (file.startsWith("play/") || file.startsWith("embed/") || SHORT_BY_DESIGN.has(file)) continue;
