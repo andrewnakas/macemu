@@ -95,6 +95,8 @@ def main():
     ap.add_argument("--startapp", help='"Folder:App" to launch at boot')
     ap.add_argument("--no-desktopdb", action="store_true",
                     help="skip the Desktop database (the Finder needs it to show the volume)")
+    ap.add_argument("--no-startup-alias", action="store_true",
+                    help="do not put an alias to --startapp in System Folder:Startup Items")
     args = ap.parse_args()
 
     # macOS filesystems are case-insensitive, so --source Maelstrom.img and
@@ -138,6 +140,37 @@ def main():
             sys.exit(f"--startapp target {startapp[-1]!r} has type "
                      f"{app.type.decode('mac_roman', 'replace')!r}, not APPL")
         print(f"startup application: {args.startapp}")
+
+    # Belt and braces for auto-launch. `startapp` sets the volume's startup
+    # application in the Finder's own record, but that alone has been seen to
+    # boot to the desktop instead — the Finder rebuilds its preferences on a
+    # freshly written volume and the setting does not always survive. An alias
+    # in System Folder:Startup Items is the mechanism a person would use by
+    # hand, and it is honoured unconditionally.
+    if startapp and not args.no_startup_alias:
+        sys_folder = base.get("System Folder")
+        if not isinstance(sys_folder, machfs.Folder):
+            sys.exit("no System Folder on the base image — cannot install a startup alias")
+        items = sys_folder.get("Startup Items")
+        if not isinstance(items, machfs.Folder):
+            items = machfs.Folder()
+            sys_folder["Startup Items"] = items
+        target = base
+        for part in startapp:
+            target = target[part]
+        alias = machfs.File()
+        # machfs resolves aliastarget by OBJECT IDENTITY (it keys an internal
+        # dict on id(obj)), not by path. Handing it a tuple of names looks
+        # plausible, resolves to nothing, and the alias is dropped from the
+        # written volume without a word — Startup Items ends up empty and the
+        # machine boots to the desktop.
+        alias.aliastarget = target
+        alias.crdate = alias.mddate = target.crdate
+        alias_name = startapp[-1]
+        if len(alias_name) > 27:
+            alias_name = alias_name[:27]
+        items[alias_name + " alias"] = alias
+        print(f"startup alias: System Folder:Startup Items:{alias_name} alias")
 
     total = args.size * 1024 * 1024
     # The Desktop database is not optional in practice. Written without one, the

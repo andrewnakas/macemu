@@ -30,7 +30,7 @@
       "h": 480,
       "depth": 8
     },
-    "bootDisk": "maelstrom-v3",
+    "bootDisk": "maelstrom-v5",
     "provenance": "shareware",
     "fullyFree": "Ambrosia's own licence permits non-profit redistribution, and the company later released the engine under the GPL and the artwork under Creative Commons. The whole game is here — no crippled demo, no level lock.",
     "licenseReason": "Maelstrom shipped as shareware, and shareware was <em>designed</em> to be copied. The licence file on this very disk says non-profit distribution is acceptable without asking, provided the software is unmodified and complete — which is why the registration notice you see on startup is still there, untouched. Ambrosia went further later: the engine became GPL in 1999 and the artwork Creative Commons in 2010. Full provenance is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/maelstrom.md\" rel=\"noopener\">notices/maelstrom.md</a>.",
@@ -39,7 +39,7 @@
       "text": "Shareware, freely redistributable"
     },
     "intro": "<p>In 1992 a Macintosh shareware author decided that Asteroids deserved better, and spent an unreasonable amount of effort proving it. Maelstrom has rendered 3D rock sprites, a proper soundtrack, screen-shaking explosions, power-ups, and a sense of weight that the 1979 original never had. It is still, more than thirty years on, one of the best arcade games written for any Macintosh.</p>\n<p>It boots straight into the game here, with nothing to install. Ambrosia later released the engine under the GPL and the artwork under Creative Commons, which is why it can be here at all — though the 1990s build you are playing still opens with the shareware notice it shipped with. Click <strong>Not Yet</strong> and play.</p>",
-    "launchNote": "Boots to the Macintosh desktop with the Maelstrom folder open — double-click Maelstrom to start it. The first thing it shows is Ambrosia's 1990s shareware notice; click “Not Yet” to get past it.",
+    "launchNote": "Boots straight into Maelstrom. The first thing you see is Ambrosia’s 1990s shareware notice — click “Not Yet”, then press a key to play.",
     "macControls": [
       {
         "keys": "Left / Right arrows",

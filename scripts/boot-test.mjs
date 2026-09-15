@@ -19,12 +19,17 @@
 //     floppy has "loaded" as far as the runtime is concerned.
 //   * nothing reached console.error.
 import { spawnSync } from "node:child_process";
-import { readFileSync, existsSync } from "node:fs";
-import { resolve } from "node:path";
+import { readFileSync, existsSync, mkdirSync } from "node:fs";
+import { resolve, dirname } from "node:path";
 
 const argv = process.argv.slice(2);
 const flag = (n, d) => { const i = argv.indexOf(`--${n}`); return i >= 0 ? argv[i + 1] : d; };
 const has = (n) => argv.includes(`--${n}`);
+// Capturing the emulated screen is the same job as booting it, so the boot test
+// doubles as the screenshot tool: --shot writes public/run/<slug>/screenshot.png
+// from the /play/ route once the machine has settled. A screenshot taken by the
+// test that proves the title runs cannot drift from what the title does.
+const shot = has("shot");
 const BASE = flag("base", "https://macemu.pages.dev").replace(/\/$/, "");
 const TIMEOUT = parseInt(flag("timeout", "120000"), 10);
 
@@ -85,6 +90,14 @@ for (const t of targets) {
 
   const t0 = Date.now();
   try {
+    // The runtime's paint loop begins with `if (document.hidden) return`, and a
+    // page under automation frequently reports itself hidden. Without this the
+    // machine boots perfectly and the canvas stays black, which looks exactly
+    // like a failure and is not one.
+    await page.addInitScript(() => {
+      Object.defineProperty(document, "hidden", { configurable: true, get: () => false });
+      Object.defineProperty(document, "visibilityState", { configurable: true, get: () => "visible" });
+    });
     await page.goto(t.url, { waitUntil: "domcontentloaded", timeout: 45000 });
 
     const isolated = await page.evaluate(() => !!globalThis.crossOriginIsolated);
@@ -106,7 +119,7 @@ for (const t of targets) {
 
     // A booted Mac has a desktop on it. A flat canvas means it stopped at the
     // blinking floppy, which the runtime still calls loaded.
-    await page.waitForTimeout(2500);
+    await page.waitForTimeout(shot ? 25000 : 6000);
     const distinct = await page.evaluate(() => {
       const c = document.querySelector("canvas");
       if (!c) return -1;
@@ -123,6 +136,14 @@ for (const t of targets) {
 
     const fatal = errors.filter((e) => !/favicon|adsbygoogle|gtag/i.test(e));
     if (fatal.length) throw new Error("console: " + fatal.slice(0, 2).join(" | "));
+
+    if (shot && t.isolated) {
+      const slug = t.label.split("/")[1];
+      const out = resolve(process.cwd(), "public", "run", slug, "screenshot.png");
+      mkdirSync(dirname(out), { recursive: true });
+      await (await page.$("canvas")).screenshot({ path: out });
+      console.log(`        screenshot -> public/run/${slug}/screenshot.png`);
+    }
 
     const sab = await page.evaluate(() => typeof SharedArrayBuffer !== "undefined");
     console.log(`  ok    ${t.label.padEnd(34)} booted in ${((Date.now() - t0) / 1000).toFixed(1)}s, ${distinct} colours, ${sab ? "shared memory" : "fallback"}`);
