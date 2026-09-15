@@ -45,6 +45,7 @@ NOTES THAT WILL SAVE YOU AN HOUR
 """
 import argparse
 import os
+import subprocess
 import sys
 
 try:
@@ -53,6 +54,52 @@ except ImportError:
     sys.exit("machfs is required: pip install machfs")
 
 FLORIN = "ƒ"
+
+
+def read_native_folder(host_path):
+    """Import a folder from the host filesystem into a machfs.Folder.
+
+    macOS keeps a file's resource fork and Finder metadata as extended
+    attributes, reachable as `<file>/..namedfork/rsrc` and the FinderInfo
+    xattr. machfs's own read_folder() expects the MPW convention instead —
+    `.rdump` and `.idump` sidecar files — so it silently imports every
+    application as a data fork with no code in it, which produces a volume full
+    of files the Finder shows as generic documents and refuses to open.
+
+    This reads the native forks, which is what `unar` writes when it expands a
+    StuffIt archive on a Mac.
+    """
+    folder = machfs.Folder()
+    for name in sorted(os.listdir(host_path)):
+        if name.startswith("."):
+            continue                      # .DS_Store and friends
+        full = os.path.join(host_path, name)
+        if os.path.isdir(full):
+            folder[name] = read_native_folder(full)
+            continue
+
+        f = machfs.File()
+        with open(full, "rb") as fh:
+            f.data = fh.read()
+        rsrc_path = full + "/..namedfork/rsrc"
+        if os.path.exists(rsrc_path):
+            with open(rsrc_path, "rb") as fh:
+                f.rsrc = fh.read()
+        try:
+            words = subprocess.run(
+                ["xattr", "-px", "com.apple.FinderInfo", full],
+                capture_output=True, text=True, check=True).stdout.split()
+            if len(words) >= 8:
+                raw = bytes(int(w, 16) for w in words[:8])
+                f.type, f.creator = raw[:4], raw[4:8]
+        except Exception:
+            pass
+        # A Desktop database copied from the host is stale the moment it lands
+        # on a volume with different file ids; the writer builds a fresh one.
+        if name in ("Desktop DB", "Desktop DF"):
+            continue
+        folder[name] = f
+    return folder
 
 
 def find_folder(volume, wanted):
@@ -86,8 +133,9 @@ def count(folder):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--base", required=True, help="bootable System image")
-    ap.add_argument("--source", required=True, help="image holding the title")
-    ap.add_argument("--folder", required=True, help="folder to copy out of --source")
+    ap.add_argument("--source", help="image holding the title")
+    ap.add_argument("--from-folder", help="host directory to import instead of --source")
+    ap.add_argument("--folder", help="folder to copy out of --source")
     ap.add_argument("--as", dest="as_name", help="rename the folder on the way in")
     ap.add_argument("--out", required=True)
     ap.add_argument("--size", type=int, default=32, help="output size in MB")
@@ -103,6 +151,8 @@ def main():
     # --out maelstrom.img are the SAME FILE and the build silently eats its own
     # input. Caught the hard way.
     for label, path in (("--base", args.base), ("--source", args.source)):
+        if not path:
+            continue
         if os.path.exists(args.out) and os.path.samefile(path, args.out):
             sys.exit(f"{label} and --out are the same file ({path}). "
                      f"Pick a different output name — note that filenames here are case-insensitive.")
@@ -111,10 +161,16 @@ def main():
 
     base = machfs.Volume()
     base.read(open(args.base, "rb").read())
-    source = machfs.Volume()
-    source.read(open(args.source, "rb").read())
 
-    found_name, folder = find_folder(source, args.folder)
+    if args.from_folder:
+        found_name = os.path.basename(args.from_folder.rstrip("/"))
+        folder = read_native_folder(args.from_folder)
+    else:
+        if not args.source or not args.folder:
+            sys.exit("give either --from-folder, or both --source and --folder")
+        source = machfs.Volume()
+        source.read(open(args.source, "rb").read())
+        found_name, folder = find_folder(source, args.folder)
     dest_name = args.as_name or found_name
     files, dirs, size = count(folder)
     print(f"copying {found_name!r} -> {dest_name!r}: {files} files, {dirs} folders, "

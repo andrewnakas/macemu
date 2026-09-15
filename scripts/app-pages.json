@@ -703,7 +703,7 @@
     ],
     "era": "system-7",
     "machine": "Mac-IIfx",
-    "ramMB": 16,
+    "ramMB": 32,
     "screen": {
       "w": 640,
       "h": 480,
@@ -717,7 +717,7 @@
       "text": "Free & open source"
     },
     "intro": "<p>You are a paper aeroplane. You are indoors. Gravity is pulling you down and the only thing keeping you up is the hot air coming out of the heating vents, so the whole game is a slow negotiation with a house that is full of candles, drips, rubber bands and a cat.</p>\n<p>Glider PRO is the 1994 peak of a series John Calhoun had been refining since 1988, and in 2016 he put the whole thing — code and art — on GitHub under the GPL. It is free in every sense.</p>",
-    "launchNote": "Starts at the main menu. New Game drops you into the Slumberland house, which is the tutorial in disguise.",
+    "launchNote": "Boots straight into Glider PRO. Pick New Game and it drops you into the Slumberland house — the tutorial in disguise.",
     "macControls": [
       {
         "keys": "Left / Right arrows",
@@ -801,9 +801,10 @@
         "desc": "The era this shipped in."
       }
     ],
-    "updated": "2026-09-13",
-    "addedDate": "2026-09-13",
-    "rank": 4
+    "updated": "2026-09-15",
+    "addedDate": "2026-09-15",
+    "rank": 1,
+    "bootDisk": "glider-pro-v1"
   },
   {
     "slug": "marathon-2",
