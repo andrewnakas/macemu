@@ -29,7 +29,20 @@ if (!urls.length) {
 
 // The key file has to be reachable, or the endpoint rejects the whole batch.
 const keyUrl = `${SITE}/${KEY}.txt`;
-const keyRes = await fetch(keyUrl);
+let keyRes;
+try {
+  keyRes = await fetch(keyUrl);
+} catch (e) {
+  // Almost always the same thing: the domain does not resolve yet. Say that,
+  // rather than throwing a connect timeout stack at whoever ran the deploy.
+  console.error(`Could not reach ${keyUrl}`);
+  console.error(`  ${e.cause?.code ?? e.message}`);
+  console.error("");
+  console.error("IndexNow submits URLs to Bing by having it fetch them back, so it");
+  console.error(`cannot run until ${HOST} resolves and serves this site. Nothing else`);
+  console.error("is affected — the deploy itself is fine.");
+  process.exit(0);   // not a deploy failure
+}
 const keyBody = (await keyRes.text()).trim();
 if (!keyRes.ok || keyBody !== KEY) {
   console.error(`key file check failed: ${keyUrl} → ${keyRes.status} "${keyBody.slice(0, 40)}"`);
