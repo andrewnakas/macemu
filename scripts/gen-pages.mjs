@@ -505,6 +505,7 @@ function homePage() {
     <p>Every page says plainly whether a title runs here or needs a copy you supply. There are no pages promising a game the site does not have.</p>
     <ul>
       <li><strong>Free and clear.</strong> Software released by the people who made it — Marathon, which Bungie put into free redistribution in 2005; Glider PRO, whose source John Calhoun published under the GPL; Kid Pix 1.0, which Craig Hickman gave away himself.</li>
+      <li><strong>Shareware.</strong> A model built on being copied. Most shareware licences explicitly permit non-profit redistribution of the unregistered version, provided nothing is modified and the whole package is included — which is why the registration notices these programs open with are left exactly where their authors put them.</li>
       <li><strong>Abandoned.</strong> Software whose publisher no longer exists or has not sold it in decades, preserved for the same reason the Internet Archive and Macintosh Garden preserve it. Not a claim that it is public domain — which is why the <a href="/takedown/">takedown page</a> is a 48-hour promise.</li>
       <li><strong>Still sold.</strong> Never hosted. Those pages tell you where to buy it and run your own copy in the same emulator.</li>
     </ul>

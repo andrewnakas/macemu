@@ -187,8 +187,12 @@ export const ERA_LABELS = {
 export function categoryCounts(pages) {
   const counts = new Map();
   for (const p of pages) {
-    for (const c of p.categories || []) counts.set(c, (counts.get(c) || 0) + 1);
-    if (p.fullyFree) counts.set("Free & complete", (counts.get("Free & complete") || 0) + 1);
+    // A set, not a running total: "Free & complete" is DERIVED from fullyFree,
+    // and a title that also listed it in categories[] was counted twice — so a
+    // grid of one title displayed "All 1" beside "Free & complete 2".
+    const cats = new Set(p.categories || []);
+    if (p.fullyFree) cats.add("Free & complete");
+    for (const c of cats) counts.set(c, (counts.get(c) || 0) + 1);
   }
   return counts;
 }
