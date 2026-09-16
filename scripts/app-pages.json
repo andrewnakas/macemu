@@ -869,11 +869,11 @@
   },
   {
     "slug": "after-dark",
-    "title": "After Dark and the Flying Toasters — How to Run the Real Thing",
-    "description": "Berkeley Systems' 1991 screensaver, not a web tribute: what it was, where to find it, and how to run it on an emulated Macintosh.",
+    "title": "After Dark Flying Toasters Online — The Real 1991 Screensaver",
+    "description": "The original After Dark with the Flying Toasters, running on an emulated Mac in your browser. Not a CSS tribute — the actual software, with all 71 modules.",
     "keywords": "flying toasters, after dark screensaver, after dark online, berkeley systems, flying toasters screensaver, after dark mac",
-    "ogTitle": "After Dark — a guide",
-    "ogDescription": "Berkeley Systems' 1991 screensaver, not a web tribute: what it was, where to find it, and how to run it on an emulated Macintosh.",
+    "ogTitle": "After Dark, with the Flying Toasters",
+    "ogDescription": "Berkeley Systems' 1991 screensaver, running on an emulated Macintosh. The toasters have wings.",
     "crumb": "After Dark",
     "h1": "After Dark and the Flying Toasters, running for real",
     "appName": "After Dark",
@@ -889,7 +889,7 @@
       "Apps & utilities"
     ],
     "era": "system-7",
-    "machine": "Mac-IIfx",
+    "machine": "Mac-II",
     "ramMB": 16,
     "screen": {
       "w": 640,
@@ -899,19 +899,23 @@
     "provenance": "grey",
     "licenseReason": "Berkeley Systems was absorbed in the late 1990s and After Dark has not been sold for a very long time; the trademark has drifted between owners and nobody distributes the Macintosh version. There are dozens of Flying Toasters tributes on the web made of CSS and JavaScript. This is not one of them — it is the actual software, running on an actual emulated Macintosh.",
     "verdict": {
-      "kind": "partial",
-      "text": "Bring your own copy"
+      "kind": "good",
+      "text": "Runs here"
     },
-    "intro": "<p>In 1989 Berkeley Systems shipped a utility that stopped your monitor from burning an image into its phosphor. In 1991 they added a module in which chrome toasters with flapping wings fly slowly across the screen accompanied by slices of toast, and that module became one of the most recognisable pieces of software of the decade.</p>\n<p>There are dozens of Flying Toasters tributes on the web built out of CSS and JavaScript. This page is about the actual software — the control panel, the module list, the sliders, and the toasters as Berkeley Systems drew them. It is not hosted here; bring a copy and the loader below will run it on an emulated Macintosh, which is the only way a system extension can run at all.</p>",
-    "launchNote": "Opens the After Dark control panel. Pick Flying Toasters from the list on the left, then Demo to run it immediately.",
+    "intro": "<p>In 1989 Berkeley Systems shipped a utility that stopped your monitor from burning an image into its phosphor. In 1991 they added a module in which chrome toasters with flapping wings fly slowly across the screen accompanied by slices of toast, and that module became one of the most recognisable pieces of software of the decade.</p>\n<p>There are dozens of Flying Toasters tributes on the web built out of CSS and JavaScript. This is not one of them. It is the actual software, on an emulated Macintosh running System 7.5.3, with the control panel, the sliders, and all seventy-one modules Berkeley Systems shipped.</p>",
+    "launchNote": "Boots to the desktop with After Dark already installed. Leave it alone for a minute and the screensaver starts by itself — or open the After Dark control panel (Apple menu › Control Panels) and press Demo to skip the wait.",
     "macControls": [
       {
-        "keys": "Mouse",
-        "does": "Everything — the control panel is all sliders and lists"
+        "keys": "Wait a minute",
+        "does": "After Dark starts on its own, exactly as it did"
+      },
+      {
+        "keys": "Apple › Control Panels › After Dark",
+        "does": "Pick a module and change its settings"
       },
       {
         "keys": "Demo button",
-        "does": "Run the selected module right now instead of waiting"
+        "does": "Run the selected module immediately"
       },
       {
         "keys": "Any key or mouse move",
@@ -921,7 +925,7 @@
     "sections": [
       {
         "h": "How it works & what to expect",
-        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh IIfx, 16 MB RAM, 640×480 at 256 colours</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Basilisk II, compiled to WebAssembly</td></tr><tr><th>Sound</th><td>Yes. Several modules are largely about the sound.</td></tr></tbody></table><p>After Dark was not an application — it was a system extension and a control panel, which is why it needs a whole Macintosh around it rather than being something you could port to a web page. That is also why running it here means booting System 7 first. It takes a couple of seconds.</p>"
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh II, 640×480 in colour</td></tr><tr><th>System</th><td>System 7.5.3, with After Dark 2.0 installed</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Modules</th><td>All 71, including Flying Toasters, Fish!, Boris, Mowin' Man and Lunatic Fringe</td></tr><tr><th>Sound</th><td>Yes, and several modules are mostly about the sound. Click inside the screen once to let the browser play audio.</td></tr></tbody></table><p>After Dark was not an application — it was a system extension and a control panel, which is why it needs a whole Macintosh around it rather than being something you could port to a web page. That is also why running it means booting System 7 first.</p><p>It behaves exactly as it did on a real machine: leave the Mac idle for about a minute and the screensaver takes over. If you would rather not wait, open the control panel from the Apple menu and press Demo.</p>"
       },
       {
         "h": "The modules worth your time",
@@ -934,16 +938,16 @@
     ],
     "faq": [
       {
+        "q": "How do I make the toasters appear?",
+        "a": "Either wait or skip the wait. Left alone for about a minute the emulated Mac goes idle and After Dark starts on its own, which is what it did on a real machine. To choose a module yourself, open Apple menu › Control Panels › After Dark, pick one from the list on the left, and press Demo."
+      },
+      {
         "q": "Is this the real After Dark or a web imitation?",
         "a": "The real software. There are many Flying Toasters tributes built in CSS, JavaScript or as modern screensavers; this is Berkeley Systems' actual Macintosh release running inside an emulated Macintosh, control panel and all."
       },
       {
         "q": "Which version is this?",
         "a": "The Macintosh After Dark from the early 1990s, the version whose module set includes Flying Toasters, Fish!, Mowin' Man, Warp and Boris."
-      },
-      {
-        "q": "Can I use it as my actual screensaver?",
-        "a": "No — it runs inside the emulated Mac, in a browser tab, so it has no way to take over your real screen. What you get is the thing itself, on demand."
       },
       {
         "q": "Why does it need a whole emulated Macintosh?",
@@ -956,6 +960,10 @@
       {
         "q": "Were the Flying Toasters stolen from Jefferson Airplane?",
         "a": "Jefferson Airplane sued over it in 1994, pointing at the cover of their 1973 album Thirty Seconds Over Winterland, which has flying toasters on it. The case did not go the band's way."
+      },
+      {
+        "q": "Can I use it as my actual screensaver?",
+        "a": "No — it runs inside the emulated Mac, in a browser tab, so it has no way to take over your real screen. What you get is the thing itself, on demand."
       }
     ],
     "download": {
@@ -979,9 +987,21 @@
         "desc": "Got the expansion modules? Drop them in."
       }
     ],
-    "updated": "2026-09-13",
-    "addedDate": "2026-09-13",
-    "rank": 5
+    "updated": "2026-09-16",
+    "addedDate": "2026-09-16",
+    "rank": 0,
+    "bootDisk": "after-dark-v1",
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "waitMs": 80000
+        }
+      ]
+    }
   },
   {
     "slug": "glider-pro",
