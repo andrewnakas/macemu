@@ -455,6 +455,133 @@
     "screenshot": true
   },
   {
+    "slug": "shufflepuck-cafe",
+    "title": "Play Shufflepuck Café Online — The 1988 Mac Air Hockey Classic",
+    "description": "Shufflepuck Café, Brøderbund's air hockey game against a bar full of aliens, running on an emulated Mac in your browser. Nothing to install.",
+    "keywords": "shufflepuck cafe, play shufflepuck online, shufflepuck mac, broderbund air hockey game, shufflepuck cafe 1988",
+    "ogTitle": "Shufflepuck Café (1988) in your browser",
+    "ogDescription": "Air hockey against a cantina of aliens, on an emulated Macintosh.",
+    "crumb": "Shufflepuck Café",
+    "h1": "Shufflepuck Café — air hockey, in a very strange bar",
+    "appName": "Shufflepuck Café",
+    "appType": "game",
+    "author": "Brøderbund Software",
+    "year": 1988,
+    "genre": [
+      "Sports",
+      "Action",
+      "Arcade"
+    ],
+    "categories": [
+      "Action"
+    ],
+    "era": "system-7",
+    "machine": "Mac-II",
+    "screen": {
+      "w": 640,
+      "h": 480,
+      "depth": 8
+    },
+    "bootDisk": "shufflepuck-v3",
+    "provenance": "grey",
+    "licenseReason": "Brøderbund published Shufflepuck Café in 1988 and was absorbed into The Learning Company a decade later; the catalogue has passed through several owners since and nobody has sold this title in about thirty-five years. It is preserved here on the same practical footing as the Internet Archive's software collections — not a claim that it is public domain. Full provenance is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/shufflepuck-cafe.md\" rel=\"noopener\">notices/shufflepuck-cafe.md</a>.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>It is air hockey. You are in a bar somewhere off the main sequence, and the person across the table from you is a lizard, or a robot, or a large hairy thing with a grudge. You win, someone else sits down, and they are better than the last one.</p>\n<p>Shufflepuck Café came out in 1988 and is one of the handful of games that defined what a Macintosh game looked like: black and white, beautifully drawn, mechanically tiny, and far more characterful than it had any need to be.</p>",
+    "launchNote": "Boots straight into Shufflepuck Café. Move the mouse to move your paddle — that is the whole control scheme.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Move your paddle. Everything is the mouse."
+      },
+      {
+        "keys": "Click",
+        "does": "Serve, and choose from the menus"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh II, 640×480</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Version</th><td>1.0, from the preserved 1988 floppies</td></tr><tr><th>Graphics</th><td>Black and white — the game was written for a compact Mac and never had colour</td></tr><tr><th>Mobile</th><td>It runs, but the paddle follows a mouse and a touchscreen fights you</td></tr></tbody></table><p>The game is one application file with everything in its resource fork, which is why the disk looks nearly empty next to the System Folder.</p>"
+      },
+      {
+        "h": "The opponents are the game",
+        "html": "<p>Mechanically there is almost nothing here: a table, two paddles, a puck, and a mouse. What makes it memorable is the bar.</p><p>Each opponent is a hand-drawn character with their own way of playing and their own reaction to losing, and they get steadily harder as you work along the line. Some cheat. Some sulk. The artwork is the best argument for one-bit graphics anyone made in the late 1980s — every character is built from dithered black and white and every one of them has a face you remember.</p><p>The difficulty curve is steep and the final opponents are genuinely hard, which in 1988 was the point: the game was small enough to fit on a floppy and had to stay interesting for months.</p>"
+      },
+      {
+        "h": "Brøderbund, and where this came from",
+        "html": "<p>Brøderbund published it — the same company behind Myst, The Print Shop, Where in the World is Carmen Sandiego and Kid Pix. In 1988 they were at their peak, and Shufflepuck Café is a good example of what they did well: take one idea, execute it beautifully, and let the art carry it.</p><p>The copy preserved here is a 4am crack, which matters practically rather than morally. The original shipped with copy protection that expected a real floppy drive reading a real disk, so an unmodified image simply will not run in an emulator. Removing that is what makes preservation possible at all.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "How do I play?",
+        "a": "Move the mouse; your paddle follows it. Click to serve. There is nothing else to learn, which is the point — the difficulty is in the opponents, not the controls."
+      },
+      {
+        "q": "Why is it black and white?",
+        "a": "It was written in 1988 for the compact Macintosh, which had a one-bit screen. The artwork is built entirely from dithering, and it is some of the best of its era."
+      },
+      {
+        "q": "Who are the opponents?",
+        "a": "A bar full of aliens, each hand-drawn, each with a different style and a different reaction to losing. They get harder as you go along the line."
+      },
+      {
+        "q": "Is it legal to have this here?",
+        "a": "Shufflepuck Café has not been sold by anyone for roughly thirty-five years and no rights holder distributes it. It is preserved here on the same footing as the Internet Archive's software collections — a practical position rather than a legal claim, and the takedown page is a 48-hour promise."
+      },
+      {
+        "q": "What is a 4am crack?",
+        "a": "A preserved copy with the original copy protection removed. The 1988 release checked for a specially formatted floppy, which no emulator can reproduce, so without that removal the game would not run from a disk image at all."
+      },
+      {
+        "q": "Does it work on a phone?",
+        "a": "It runs, but the paddle tracks a mouse pointer and a touchscreen makes that awkward. Use a real mouse or trackpad."
+      }
+    ],
+    "download": {
+      "heading": "Get a copy",
+      "html": "<ul><li><a href=\"https://archive.org/details/ShufflepuckCafe4amMacCrack\" rel=\"noopener\">Internet Archive</a> — the preserved floppies this copy came from.</li><li><a href=\"https://macintoshgarden.org/games/shufflepuck-cafe\" rel=\"noopener\">Macintosh Garden</a> — with box art and manuals.</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/glypha/",
+        "title": "Glypha",
+        "desc": "The other great black-and-white Mac arcade game."
+      },
+      {
+        "href": "/run/after-dark/",
+        "title": "After Dark",
+        "desc": "Flying Toasters, and the real software."
+      },
+      {
+        "href": "/collection/system-7/",
+        "title": "More System 7 software",
+        "desc": "The rest of the catalogue."
+      }
+    ],
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "waitMs": 14000
+        }
+      ]
+    },
+    "updated": "2026-09-16",
+    "addedDate": "2026-09-16",
+    "rank": 4
+  },
+  {
     "slug": "oregon-trail",
     "title": "The Oregon Trail (Mac, 1991) — How to Run the Classroom Version",
     "description": "The 1991 Macintosh Oregon Trail: what it was, where to find a copy, and how to run it on an emulated Mac in your browser. Not hosted here.",

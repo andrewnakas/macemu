@@ -180,6 +180,8 @@ def main():
                     help="skip the Desktop database (the Finder needs it to show the volume)")
     ap.add_argument("--no-startup-alias", action="store_true",
                     help="do not put an alias to --startapp in System Folder:Startup Items")
+    ap.add_argument("--volume-startapp", action="store_true",
+                    help="also set the volume's startup application (see the note below; usually not wanted)")
     args = ap.parse_args()
 
     # macOS filesystems are case-insensitive, so --source Maelstrom.img and
@@ -269,8 +271,15 @@ def main():
     # The Desktop database is not optional in practice. Written without one, the
     # volume boots but the Finder will not show it on the desktop and reports
     # that the disk "cannot be found" when anything refers to it by name.
+    # machfs's `startapp` writes a corrupt volume for some application names —
+    # "Shufflepuck Cafe" produces garbage where the HFS signature should be,
+    # while "Maelstrom" is fine, so it is length- or content-dependent. The
+    # Startup Items alias launches the title on its own anyway, so the volume
+    # startup application is off unless explicitly asked for, and the assertions
+    # below would catch it regardless.
     image = base.write(total, align=512, desktopdb=not args.no_desktopdb,
-                       bootable=True, startapp=startapp)
+                       bootable=True,
+                       startapp=startapp if args.volume_startapp else None)
     open(args.out, "wb").write(image)
 
     # Fail loudly rather than shipping an image that mounts but will not boot.
