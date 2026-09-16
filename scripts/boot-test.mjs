@@ -36,8 +36,12 @@ const TIMEOUT = parseInt(flag("timeout", "120000"), 10);
 // Build the list of {url, isolated} targets.
 const targets = [];
 const pageFlag = flag("page", null);
+const dropFile = flag("drop", null);
 if (pageFlag) {
-  targets.push({ url: BASE + pageFlag, isolated: false, label: pageFlag });
+  // A loader page has no title to launch; what it must prove is that a file a
+  // visitor drops in actually reaches the emulated Macintosh. --drop gives it
+  // one, and the same screen check then applies.
+  targets.push({ url: BASE + pageFlag, isolated: false, label: pageFlag, drop: dropFile });
 } else {
   const consumed = new Set(["--base", "--timeout", "--page"].flatMap((f) => {
     const i = argv.indexOf(f); return i >= 0 ? [i, i + 1] : [];
@@ -120,10 +124,14 @@ for (const t of targets) {
       throw new Error("not cross-origin isolated — the emulator would run at a fraction of full speed with nothing to say so");
     }
 
-    // /play/ and /run/ wait for a click; an embed starts itself; a loader page
-    // offers "or just start a Macintosh".
-    const start = await page.$(".embed-play") || await page.$(".dz-bare");
-    if (start) await start.click();
+    if (t.drop) {
+      await page.setInputFiles("#mac-loader input[type=file]", t.drop);
+    } else {
+      // /play/ and /run/ wait for a click; an embed starts itself; a loader page
+      // offers "or just start a Macintosh".
+      const start = await page.$(".embed-play") || await page.$(".dz-bare");
+      if (start) await start.click();
+    }
 
     await page.waitForFunction(
       () => globalThis.__macBooted === true || globalThis.__macBootError,
