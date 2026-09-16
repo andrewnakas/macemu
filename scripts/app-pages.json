@@ -490,7 +490,7 @@
       "kind": "partial",
       "text": "Bring your own copy"
     },
-    "intro": "<p>Nearly everybody who sat in front of a school Macintosh between 1991 and about 1998 played this. Not the Apple II green-screen original, and not the phone remake — <strong>this</strong> one: colour, a covered wagon rolling right to left across the bottom of the screen, and a river you were never quite sure whether to ford.</p>\n<p>It is the 1991 MECC release for the Macintosh, running here on an emulated Macintosh IIfx under System 7. Nothing to install. It starts in a couple of seconds and it saves where it always saved — inside the emulated Mac, which lives in your own browser.</p>",
+    "intro": "<p>Nearly everybody who sat in front of a school Macintosh between 1991 and about 1998 played this. Not the Apple II green-screen original, and not the phone remake — <strong>this</strong> one: colour, a covered wagon rolling right to left across the bottom of the screen, and a river you were never quite sure whether to ford.</p>\n<p>It is the 1991 MECC release for the Macintosh. This page is a guide to it — what it was, how it played, and where to find a copy — with a loader that will run the copy you bring on an emulated Macintosh under System 7.</p>",
     "launchNote": "Boots straight to the title screen. Click through and pick a profession — banker is easy mode, farmer is hard mode with triple points.",
     "macControls": [
       {
@@ -637,7 +637,7 @@
       "kind": "partial",
       "text": "Bring your own copy"
     },
-    "intro": "<p>Before Halo, Bungie was a small Chicago company making games only for the Macintosh, and Marathon is the one that made their name. It came out in December 1994, six months after Doom shipped on DOS, and it did several things Doom did not: you could look up and down, the levels had real architecture, and — unusually for a shooter in 1994 — it had a plot worth reading.</p>\n<p>This is the original Macintosh release running on an emulated Macintosh IIfx. Bungie put the whole trilogy into free redistribution in 2005, so there is nothing grey about it: the entire game is here, legally, at no cost.</p>",
+    "intro": "<p>Before Halo, Bungie was a small Chicago company making games only for the Macintosh, and Marathon is the one that made their name. It came out in December 1994, six months after Doom shipped on DOS, and it did several things Doom did not: you could look up and down, the levels had real architecture, and — unusually for a shooter in 1994 — it had a plot worth reading.</p>\n<p>Bungie put the whole trilogy into free redistribution in 2005, so there is nothing grey about playing it: the entire game is legally free to download. It is not hosted on this site, but the loader below will run your copy on an emulated Macintosh, and the links further down say where to get one.</p>",
     "launchNote": "Boots to the Marathon title screen. Pick Begin New Game, then Total Carnage if you have played a shooter before — the default difficulty is gentle.",
     "macControls": [
       {
@@ -778,7 +778,7 @@
       "kind": "partial",
       "text": "Bring your own copy"
     },
-    "intro": "<p>Craig Hickman wrote Kid Pix because he watched his three-year-old son try to use MacPaint and fail. Everything in MacPaint punished a mistake; nothing in it made a noise. So he built a drawing program where every tool was obvious, every action made a sound, and nothing you did could be wrong.</p>\n<p>This is version 1.0 from 1989 — the one Hickman gave away himself, before Brøderbund published it commercially. It is black and white, it runs on an emulated Mac Plus, and it is the fastest thing on this site: the whole machine is 512 by 342 pixels and starts instantly.</p>",
+    "intro": "<p>Craig Hickman wrote Kid Pix because he watched his three-year-old son try to use MacPaint and fail. Everything in MacPaint punished a mistake; nothing in it made a noise. So he built a drawing program where every tool was obvious, every action made a sound, and nothing you did could be wrong.</p>\n<p>This page is about version 1.0 from 1989 — the one Hickman gave away himself, before Brøderbund published it commercially. It is black and white and it was built for a Macintosh Plus, which is a tiny machine: 512 by 342 pixels, and an emulated one starts almost instantly. Bring a copy and the loader below will run it.</p>",
     "launchNote": "Opens straight into a blank page with the toolbar down the left. Try the stick of dynamite in the eraser menu.",
     "macControls": [
       {
@@ -902,7 +902,7 @@
       "kind": "partial",
       "text": "Bring your own copy"
     },
-    "intro": "<p>In 1989 Berkeley Systems shipped a utility that stopped your monitor from burning an image into its phosphor. In 1991 they added a module in which chrome toasters with flapping wings fly slowly across the screen accompanied by slices of toast, and that module became one of the most recognisable pieces of software of the decade.</p>\n<p>This is the real After Dark on a real emulated Macintosh, not a web re-creation. You get the control panel, the module list, the sliders, and the toasters as Berkeley Systems drew them.</p>",
+    "intro": "<p>In 1989 Berkeley Systems shipped a utility that stopped your monitor from burning an image into its phosphor. In 1991 they added a module in which chrome toasters with flapping wings fly slowly across the screen accompanied by slices of toast, and that module became one of the most recognisable pieces of software of the decade.</p>\n<p>There are dozens of Flying Toasters tributes on the web built out of CSS and JavaScript. This page is about the actual software — the control panel, the module list, the sliders, and the toasters as Berkeley Systems drew them. It is not hosted here; bring a copy and the loader below will run it on an emulated Macintosh, which is the only way a system extension can run at all.</p>",
     "launchNote": "Opens the After Dark control panel. Pick Flying Toasters from the list on the left, then Demo to run it immediately.",
     "macControls": [
       {
@@ -1417,7 +1417,7 @@
       "kind": "partial",
       "text": "Bring your own copy"
     },
-    "intro": "<p>Before the colour, the level editor and the CD-ROM, Glider was this: a paper aeroplane, a black-and-white house, and heating vents. Glider 4.0 is the 1991 shareware version that made the series' name, and on a Macintosh Plus it is as immediate as anything on this site — the whole machine starts faster than a modern web page.</p>",
+    "intro": "<p>Before the colour, the level editor and the CD-ROM, Glider was this: a paper aeroplane, a black-and-white house, and heating vents. Glider 4.0 is the 1991 shareware version that made the series' name, written for a Macintosh Plus — a machine so small that an emulated one starts faster than a modern web page. Bring a copy and the loader below will run it.</p>",
     "launchNote": "Starts at the title screen. New Game drops you into the house at once.",
     "macControls": [
       {

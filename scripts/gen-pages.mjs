@@ -280,7 +280,9 @@ function specLine(p) {
     p.year ? `${p.year}` : "",
     p.author || "",
     ERA_LABELS[p.era] || "",
-    emulatorFor(p) ? `${emulatorFor(p)} (${(p.machine || "").replace(/-/g, " ")})` : "",
+    // On a guide page the machine is what the loader WILL use, not what the
+    // page is running — say so, rather than implying something is live.
+    emulatorFor(p) ? `${isPlayable(p) ? "" : "runs under "}${emulatorFor(p)} (${(p.machine || "").replace(/-/g, " ")})` : "",
     `${s.w}×${s.h}${s.depth === 1 ? " black and white" : s.depth ? ` at ${s.depth}-bit colour` : ""}`,
   ].filter(Boolean);
   return `<p class="muted small" style="margin-top:0.25rem;">${bits.map(esc).join(" · ")}</p>`;
