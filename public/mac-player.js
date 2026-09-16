@@ -37,6 +37,37 @@
     return state.loading;
   }
 
+  // Fallback mode (no SharedArrayBuffer) works by having the emulator's Web
+  // Worker make synchronous requests that a service worker answers. If that
+  // service worker is not yet CONTROLLING when the worker starts, those
+  // requests go to the network instead, 404, and after a hundred of them the
+  // runtime gives up with "Too many fetch failures, disabling fallback
+  // endpoint" — a machine that sits at a black screen forever.
+  //
+  // It is a startup race, so it fails intermittently and on whichever title
+  // happens to lose it. Registering the worker and waiting for it to take
+  // control before starting the emulator closes it. A freshly installed service
+  // worker does not control the page that installed it until it claims those
+  // clients, which is why waiting on `ready` alone is not enough.
+  function serviceWorkerReady() {
+    if (!("serviceWorker" in navigator)) return Promise.resolve(false);
+    return navigator.serviceWorker
+      .register("/mac/emulator-service-worker.js", { scope: "/" })
+      .then(function () { return navigator.serviceWorker.ready; })
+      .then(function () {
+        if (navigator.serviceWorker.controller) return true;
+        return new Promise(function (resolve) {
+          var done = false;
+          var finish = function (v) { if (!done) { done = true; resolve(v); } };
+          navigator.serviceWorker.addEventListener("controllerchange", function () { finish(true); });
+          // Do not block the boot forever on this. Without control the emulator
+          // will still try, and may still succeed on a fast connection.
+          setTimeout(function () { finish(false); }, 8000);
+        });
+      })
+      .catch(function () { return false; });
+  }
+
   function esc(s) {
     return String(s).replace(/[&<>"]/g, function (c) {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
@@ -123,6 +154,18 @@
     }, 90000);
 
     ui.booted = loadRuntime().then(function (MacEmulator) {
+      // Only fallback mode depends on the service worker; with shared memory
+      // the emulator talks to its worker directly and waiting would be dead
+      // time on every boot.
+      var sab = !!global.crossOriginIsolated && typeof SharedArrayBuffer !== "undefined";
+      return sab ? MacEmulator : serviceWorkerReady().then(function (controlled) {
+        if (!controlled && global.console) {
+          console.warn("[macemu] the service worker is not controlling this page; " +
+            "the emulator may fail to load its disk");
+        }
+        return MacEmulator;
+      });
+    }).then(function (MacEmulator) {
       // Persistence is opt-in per page (data-persist="true"). It routes the
       // disk through an origin-private-file-system saver, which is what a
       // hosted game wants so progress survives, and which has been seen to stop
