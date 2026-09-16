@@ -292,6 +292,19 @@ for (const p of pages) {
   const hasPlayer = /id="mac-embed"/.test(html);
   if (isPlayable(p) && !p.iframeUrl && !hasPlayer) fail(`${p.slug}: marked playable but the page has no emulator mount`);
   if (!isPlayable(p) && !hasLoader) fail(`${p.slug}: not playable and the page has no file loader — that is a page with nothing to do, which is what a doorway page is`);
+  // The verdict badge is the first thing read on the page. On a title that
+  // hosts nothing it has to say so: "Runs well" beside no Play button is the
+  // misleading-functionality shape that cost the sister site three AdSense
+  // rejections, and it is a lie to the reader besides.
+  if (!isPlayable(p) && !/bring your own|not hosted|needs your own/i.test(p.verdict.text)) {
+    fail(`${p.slug}: verdict reads ${JSON.stringify(p.verdict.text)} but nothing is hosted — it must say the visitor needs their own copy`);
+  }
+  // A <title> that opens "Play X Online" on a page hosting nothing is a doorway
+  // page by the definition search engines and ad networks actually use. The
+  // sister site had forty-one of them and three AdSense rejections to match.
+  if (!isPlayable(p) && /\b(play|use)\b[^—|-]{0,40}\bonline\b/i.test(p.title)) {
+    fail(`${p.slug}: <title> promises play-online but nothing is hosted — ${JSON.stringify(p.title)}`);
+  }
   if (!isPlayable(p) && /\bPlay\b[^<]{0,30}(now|instantly|free online)/i.test(html) && !/your own copy/i.test(html)) {
     warn(`${p.slug}: page is not hosted but the copy reads like it is`);
   }

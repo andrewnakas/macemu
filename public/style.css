@@ -455,3 +455,14 @@ body.is-embed .embed-stage { border: 0; border-radius: 0; margin: 0; }
    Give the title its own line and let the badges sit together under it. */
 .pc-title { display: block; }
 .pc-title .badge-new, .pc-title .badge-free { vertical-align: 0.1em; margin-right: 0.2rem; }
+
+/* The one line a bring-your-own-copy page must not bury: this is not hosted,
+   here is what the page does instead. */
+.byo-lede {
+  margin: 1.2rem 0 0;
+  padding: 0.8rem 1rem;
+  background: var(--bg-elev);
+  border: 1px solid var(--border-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+}

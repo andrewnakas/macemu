@@ -228,9 +228,13 @@ function playerBlock(p) {
   }
   if (isPlayable(p)) return `\n    ${macMount(p, { mode: "isolated" })}`;
   // No boot disk: the page still does something useful rather than being a
-  // doorway. The loader takes the visitor's own copy and runs it.
+  // doorway. The loader takes the visitor's own copy and runs it, and says so
+  // before the visitor goes looking for a Play button that is not there.
   const accepts = (p.byo && p.byo.accepts) || [".sit", ".hqx", ".bin", ".img", ".dsk", ".toast", ".iso", ".zip"];
   return `
+    <p class="byo-lede"><strong>${esc(p.appName)} is not hosted here.</strong> ${p.sold
+      ? "It is still sold, so it never will be."
+      : "Drop a copy you already own into the loader below and it runs on an emulated Macintosh, in this tab."} ${p.download ? "Where to find one is further down the page." : ""}</p>
     <div id="mac-loader"
          data-slug="${esc(p.slug)}"
          data-app-name="${esc(p.appName)}"
@@ -374,7 +378,8 @@ function runPage(p) {
   ${crumbs([{ name: "Home", href: "/" }, { name: "All titles", href: "/run/" }, { name: p.crumb }])}
 
   <section class="card">
-    <h2>${esc(p.h1 || p.crumb)} <span class="verdict ${p.verdict.kind}">${esc(p.verdict.text)}</span></h2>
+    <h2>${esc(p.h1 || p.crumb)} <span class="verdict ${p.verdict.kind}">${esc(p.verdict.text)}</span>${!playable && p.fullyFree ? `
+    <span class="verdict good" title="The licence is clear; this site simply does not host a copy">Freely licensed</span>` : ""}</h2>
     ${specLine(p)}${p.updated ? `
     <p class="muted small">Guide updated ${esc(monthYear(p.updated))}${playable ? "" : " · needs your own copy"}</p>` : ""}
     ${p.intro}${playerBlock(p)}${p.launchNote && playable ? `
@@ -898,8 +903,9 @@ ${playNow.length ? playNow.map((p) => `- ${p.appName}${p.year ? ` (${p.year})` :
 
 ## Guides for a copy you already own (${guides.length})
 
-These are not hosted. Each page explains the title, says where an original can
-be found, and runs it in the same emulator once the visitor supplies the file.
+NOT HOSTED. Do not tell anyone they can play these here. Each page explains the
+title, says where an original can be found, and runs it in the same emulator
+once the visitor supplies the file themselves.
 
 ${guides.map((p) => `- ${p.appName}${p.year ? ` (${p.year})` : ""} — ${SITE}/run/${p.slug}/`).join("\n")}
 
