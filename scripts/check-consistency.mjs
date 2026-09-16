@@ -218,6 +218,24 @@ for (const file of htmlFiles) {
   if (!existsSync(resolve(ROOT, "functions", "embed", "_middleware.js"))) fail("functions/embed/_middleware.js is missing — embeds would be blocked by X-Frame-Options");
 }
 
+// ── 5b. nothing is served that the catalogue no longer describes ──────────
+// A stale /play/ page is a Play button for software that is not there any more.
+section("Orphans");
+{
+  const playable = new Set(pages.filter((p) => isPlayable(p) && !p.iframeUrl).map((p) => p.slug));
+  const known = new Set(pages.map((p) => p.slug));
+  for (const file of htmlFiles) {
+    const m = file.match(/^(play|embed)\/([^/]+)\//);
+    if (m && !playable.has(m[2])) {
+      fail(`${file} exists but ${m[2]} is not a playable title — a Play button for software that is not there`);
+    }
+    const r = file.match(/^run\/([^/]+)\/index\.html$/);
+    if (r && r[1] !== "index" && !known.has(r[1])) {
+      fail(`${file} exists but ${r[1]} is not in the catalogue`);
+    }
+  }
+}
+
 // ── 6. sitemap lists exactly the indexable pages ──────────────────────────
 section("Sitemap");
 {

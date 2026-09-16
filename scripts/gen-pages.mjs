@@ -55,7 +55,7 @@
 //   updated       YYYY-MM-DD — sitemap <lastmod> + "Guide updated" line
 //   addedDate     YYYY-MM-DD the title went live — drives the NEW badge
 //   rank          integer, lower sorts earlier in the grids
-import { writeFileSync, mkdirSync, readFileSync, existsSync } from "node:fs";
+import { writeFileSync, mkdirSync, readFileSync, existsSync, readdirSync, rmSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { createHash } from "node:crypto";
 import {
@@ -914,6 +914,37 @@ ${utils.map((u) => `- ${u.crumb} — ${SITE}/${u.slug}/`).join("\n")}
 - Nothing still sold commercially is hosted here.
 - Rights holders: ${SITE}/takedown/
 `;
+}
+
+// ── clean up what should no longer exist ───────────────────────────────────
+// The generator writes; without this it never unwrites. A title that stops
+// being playable — because its disk was withdrawn, or the entry was reverted to
+// a guide — leaves its /play/ and /embed/ pages on disk, and they get deployed,
+// indexed, and served with a Play button for software that is no longer there.
+// That is the exact promise this site refuses to make, so removal is part of
+// generating rather than something to remember.
+{
+  const shouldExist = new Set(pages.filter((p) => isPlayable(p) && !p.iframeUrl).map((p) => p.slug));
+  for (const route of ["play", "embed"]) {
+    const dir = resolve(ROOT, route);
+    if (!existsSync(dir)) continue;
+    for (const entry of readdirSync(dir, { withFileTypes: true })) {
+      if (!entry.isDirectory() || shouldExist.has(entry.name)) continue;
+      rmSync(resolve(dir, entry.name), { recursive: true, force: true });
+      console.log(`  removed stale /${route}/${entry.name}/`);
+    }
+  }
+  // Same for a screenshot left behind by a title that is no longer in the
+  // catalogue at all.
+  const runDir = resolve(ROOT, "run");
+  const known = new Set(pages.map((p) => p.slug));
+  if (existsSync(runDir)) {
+    for (const entry of readdirSync(runDir, { withFileTypes: true })) {
+      if (!entry.isDirectory() || known.has(entry.name)) continue;
+      rmSync(resolve(runDir, entry.name), { recursive: true, force: true });
+      console.log(`  removed stale /run/${entry.name}/`);
+    }
+  }
 }
 
 // ── run ────────────────────────────────────────────────────────────────────

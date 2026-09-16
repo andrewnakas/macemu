@@ -84,9 +84,40 @@ not valid DNS. Certificates issue automatically once the records resolve.
 ## Deploy
 
 ```sh
-node scripts/gen-pages.mjs
-node scripts/check-consistency.mjs          # gate
-npx wrangler pages deploy public --project-name=macemu --branch=main
-bash scripts/smoke-test.sh https://macemu.com
+scripts/deploy.sh          # generate, gate, deploy, sync disks, smoke test
+scripts/deploy.sh --dry    # generate and gate only
+```
+
+It stops at the first failure. Running the steps by hand is how a build that
+the gate had just rejected got deployed anyway.
+
+After a deploy that changed a disk image:
+
+```sh
+node scripts/boot-test.mjs --all --base https://macemu.pages.dev
 node scripts/indexnow.mjs
 ```
+
+## Adding a title
+
+```sh
+# 1. find a preserved copy and READ ITS LICENCE before anything else
+# 2. build a boot disk from it
+python3 scripts/build-title-image.py \
+  --base Images/system/hd1.img \
+  --source Images/titles/src-macsilverware.iso \
+  --folder "Games:Arcade:Arashi 1.1" --as "Arashi" \
+  --startapp "Arashi:Arashi 1.1" \
+  --out Images/titles/boot-arashi.img --size 32 --volume-name "Arashi"
+
+# 3. chunk it (the name must change whenever the image does)
+node scripts/chunk-disk.mjs Images/titles/boot-arashi.img arashi-v1 --name "Arashi v1"
+
+# 4. write notices/<slug>.md — the build fails without one
+# 5. add the entry to scripts/app-pages.json with bootDisk: "arashi-v1"
+scripts/deploy.sh
+node scripts/boot-test.mjs arashi --base https://macemu.pages.dev --shot
+```
+
+`build-title-image.py` needs `machfs` (`pip install machfs`); everything else is
+zero-dependency Node.
