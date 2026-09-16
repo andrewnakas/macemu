@@ -313,6 +313,146 @@
     "rank": 2
   },
   {
+    "slug": "glypha",
+    "title": "Play Glypha Online — John Calhoun's Joust for the Mac, Free",
+    "description": "Glypha III, the Macintosh answer to Joust, by the author of Glider. Freeware with published source, running free in your browser. Nothing to install.",
+    "keywords": "glypha mac game, play glypha online, joust mac, john calhoun glypha, glypha iii, mac freeware game",
+    "ogTitle": "Glypha III in your browser",
+    "ogDescription": "Joust, rebuilt for the Macintosh by the author of Glider. Freeware, source published.",
+    "crumb": "Glypha",
+    "h1": "Glypha — Joust, by the man who wrote Glider",
+    "appName": "Glypha",
+    "appType": "game",
+    "author": "John Calhoun / Soft Dorothy Software",
+    "year": 1995,
+    "genre": [
+      "Arcade",
+      "Action",
+      "Platform"
+    ],
+    "categories": [
+      "Action"
+    ],
+    "era": "system-7",
+    "machine": "Mac-II",
+    "screen": {
+      "w": 640,
+      "h": 480,
+      "depth": 8
+    },
+    "bootDisk": "glypha-v1",
+    "provenance": "clean",
+    "fullyFree": "John Calhoun released Glypha as freeware and later published its complete source code. No shareware portion, no nag, nothing held back.",
+    "licenseReason": "John Calhoun wrote Glypha and published its full source at <a href=\"https://github.com/softdorothy/Glypha3\" rel=\"noopener\">softdorothy/Glypha3</a>, having distributed the game as freeware. Soft Dorothy Software was his own imprint, so there is no publisher whose consent is in question. Full provenance is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/glypha.md\" rel=\"noopener\">notices/glypha.md</a>.",
+    "verdict": {
+      "kind": "good",
+      "text": "Freeware, source published"
+    },
+    "intro": "<p>You ride an ostrich. So does everyone else, except the ones riding buzzards, and the way you beat them is to be slightly higher than they are at the moment you collide. That is Joust, and Glypha is Joust rebuilt for the Macintosh by John Calhoun — the same person who wrote Glider — with Egyptian tomb art, a sphinx that spits, and a hand that comes out of the lava to take you if you linger.</p>\n<p>It is freeware, the source is published, and it boots straight into the game here.</p>",
+    "launchNote": "Boots straight into Glypha. Press a key at the title screen to start; flap with the arrow keys.",
+    "macControls": [
+      {
+        "keys": "Left / Right arrows",
+        "does": "Move"
+      },
+      {
+        "keys": "Up arrow or Space",
+        "does": "Flap — tap it, do not hold it"
+      },
+      {
+        "keys": "Esc",
+        "does": "Pause"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh II, 640×480 in colour</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Version</th><td>Glypha 3.0</td></tr><tr><th>Sound</th><td>Yes — click once inside the screen to let the browser play audio.</td></tr><tr><th>Mobile</th><td>Runs, but it is a keyboard game and wants real keys.</td></tr></tbody></table><p>Glypha is a small, light program and starts quickly. The whole thing is one application file with everything inside its resource fork, which is why the folder on the disk looks almost empty.</p>"
+      },
+      {
+        "h": "The one rule that matters",
+        "html": "<p>When two riders collide, the higher one wins. That is the whole combat system, and everything else follows from it: you spend the game trying to arrive at a fight from above, and your opponents are trying to do the same.</p><p>Flapping is a tap, not a hold. Each press gives one beat of lift, so altitude is something you build and spend rather than something you steer to. Players who hold the key fly into the ceiling and drop.</p><p>Kill an enemy and it leaves an egg. Collect it quickly or it hatches into a fresh rider, which is the pressure that stops the game becoming a stalemate. Wait too long anywhere and the hand comes out of the lava at the bottom of the screen, which is Calhoun's addition and is exactly as alarming as it sounds.</p>"
+      },
+      {
+        "h": "Calhoun's other game",
+        "html": "<p>John Calhoun is best known for Glider, the paper aeroplane game that ran through four versions between 1988 and 1994 and was published commercially by Casady &amp; Greene. Glypha is the other one: a Joust tribute he wrote for himself, gave away, and eventually published the source to.</p><p>Both are unmistakably his. The art is hand-drawn and slightly wry, the physics have weight, and the difficulty is set by someone who expected you to practise. He put the sources for most of his Macintosh work on GitHub under the <a href=\"https://github.com/softdorothy\" rel=\"noopener\">softdorothy</a> account, which is why ports keep appearing — <a href=\"https://github.com/kainjow/Glypha\" rel=\"noopener\">kainjow/Glypha</a> rebuilds this one for modern systems.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is Glypha free?",
+        "a": "Yes. It was distributed as freeware and John Calhoun has published the complete source code. There is no registration notice and nothing held back."
+      },
+      {
+        "q": "Is this Joust?",
+        "a": "It is a Joust tribute, written for the Macintosh, with its own art and its own additions — the Egyptian setting, the sphinx, and the hand that reaches out of the lava. The core rule, that the higher rider wins a collision, is Joust's."
+      },
+      {
+        "q": "How do I fly?",
+        "a": "Tap the flap key rather than holding it. Each press is one beat of lift. Holding it sends you into the ceiling, which is how most people lose their first few lives."
+      },
+      {
+        "q": "What are the eggs for?",
+        "a": "Every enemy you beat leaves one. Collect it for points before it hatches into a new rider — leaving eggs alone is how a level gets away from you."
+      },
+      {
+        "q": "Who wrote it?",
+        "a": "John Calhoun, under his own imprint Soft Dorothy Software. He also wrote Glider, the paper aeroplane game."
+      },
+      {
+        "q": "Is there a modern version?",
+        "a": "Yes, kainjow/Glypha rebuilds it from Calhoun's published source for current systems. It is linked above."
+      }
+    ],
+    "download": {
+      "heading": "Source and archives",
+      "html": "<ul><li><a href=\"https://github.com/softdorothy/Glypha3\" rel=\"noopener\">softdorothy/Glypha3</a> — John Calhoun's original source.</li><li><a href=\"https://github.com/kainjow/Glypha\" rel=\"noopener\">kainjow/Glypha</a> — a port for modern systems.</li><li><a href=\"https://archive.org/details/macsilverware\" rel=\"noopener\">MacSilverWare at the Internet Archive</a> — the shareware CD this copy came from.</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/glider-pro/",
+        "title": "Glider PRO",
+        "desc": "Calhoun's other game, and the better known one."
+      },
+      {
+        "href": "/run/arashi/",
+        "title": "Arashi",
+        "desc": "The other arcade conversion done properly."
+      },
+      {
+        "href": "/run/maelstrom/",
+        "title": "Maelstrom",
+        "desc": "Asteroids, taken far too seriously."
+      }
+    ],
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "waitMs": 10000
+        },
+        {
+          "key": "Space",
+          "waitMs": 6000
+        },
+        {
+          "key": "Space",
+          "waitMs": 8000
+        }
+      ]
+    },
+    "updated": "2026-09-16",
+    "addedDate": "2026-09-16",
+    "rank": 3
+  },
+  {
     "slug": "oregon-trail",
     "title": "Play The Oregon Trail (Mac) Online — The 1991 Classroom Version",
     "description": "The Macintosh Oregon Trail, the one from the school computer lab, running in your browser. Ford the river, shoot more bison than you can carry, die of dysentery.",
