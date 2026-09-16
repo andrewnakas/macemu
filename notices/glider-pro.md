@@ -1,6 +1,6 @@
 # Glider PRO — provenance and licence
 
-**Hosted:** yes, as `glider-pro-v1`.
+**Hosted:** not yet — see "Why this is not playable here" below.
 **Provenance:** released as open source by its author.
 
 ## Where the files came from
@@ -47,3 +47,35 @@ and there is nothing left to circumvent.
 
 Anyone with standing to object can have this removed within 48 hours — see
 `/takedown/`.
+
+
+## Why this is not playable here (2026-09-15)
+
+Glider PRO boots on the emulated Macintosh and reaches its title screen, then
+puts up its own dialog: *"There are no houses on this drive!"* The houses are
+present on the volume, in a folder beside the application, with the right type
+(`gliH`) and creator (`ozm5`) and byte-identical resource forks. The game
+cannot see them.
+
+What was ruled out, each by building an image and booting it:
+
+- **The folder name.** Tried both `Houses ƒ` as distributed and plain `Houses`.
+- **Lost resource forks.** Verified: 1,041,112 bytes for Slumberland on the
+  built volume, matching the host file exactly.
+- **Lost type and creator codes.** Verified on the written volume.
+- **The Desktop database.** Tried both machfs's generated one and omitting it
+  so the Finder rebuilds its own.
+- **Allocation block size.** Tried 512 and 1024 byte blocks.
+- **File dates.** Fixed separately — files were being written dated 1904 — and
+  it made no difference here.
+
+The remaining suspect is the **startup alias**. Without it the game does not
+launch at all, and with it the game launches but cannot find files sitting next
+to its real location. Glider PRO's message says "on this drive", which suggests
+a volume-wide search rather than a relative one, so this is not yet proven.
+
+The better long-term answer is probably not to fix this at all.
+[Aerofoil](https://github.com/elasota/Aerofoil) is a maintained port built from
+Calhoun's GPL release, it has a browser build, and it plays better than the
+1994 binary under emulation. That would make Glider PRO an `iframeUrl` title
+rather than a disk image.

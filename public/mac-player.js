@@ -144,6 +144,19 @@
         ramMB: cfg.ramMB,
         pixelated: true,
         flags: { autoPause: true },
+        // Register the emulator's service worker at the ROOT, not at the
+        // default scope derived from the page's first path segment.
+        //
+        // Fallback mode (no SharedArrayBuffer) works by having the emulator's
+        // Web Worker make synchronous requests that the service worker answers.
+        // The worker script is served from /mac/, while the page is /embed/ or
+        // /load-mac-file/ — and a service worker only controls clients under
+        // its own scope. Scoped to /embed/, it controls the page and not the
+        // worker, so every worker-commands request goes to the network and
+        // returns 404, and the machine sits at a black screen forever with no
+        // error. Only "/" covers both. public/_headers sends
+        // Service-Worker-Allowed: / on the script so this scope is permitted.
+        serviceWorker: { scope: "/" },
         onProgress: function (done, total) {
           if (total) ui.fill.style.width = Math.round((done / total) * 100) + "%";
         },

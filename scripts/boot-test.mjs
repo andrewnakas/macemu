@@ -51,9 +51,15 @@ if (pageFlag) {
     console.error("usage: boot-test.mjs (<slug>... | --all | --page /path/)  [--base URL] [--timeout MS]");
     process.exit(2);
   }
+  // A title may declare what to do once it has launched, so the screenshot is
+  // of the game rather than of whatever dialog it opens with. Coordinates are
+  // in the emulated machine's own pixels, which is the only frame of reference
+  // that stays true when the page layout changes.
+  const catalogue = JSON.parse(readFileSync(resolve(process.cwd(), "scripts", "app-pages.json"), "utf8"));
+  const setupFor = (slug) => (catalogue.find((p) => p.slug === slug) || {}).shotSetup || null;
   for (const s of slugs) {
-    targets.push({ url: `${BASE}/play/${s}/`, isolated: true, label: `play/${s}` });
-    targets.push({ url: `${BASE}/embed/${s}/`, isolated: false, label: `embed/${s}` });
+    targets.push({ url: `${BASE}/play/${s}/`, isolated: true, label: `play/${s}`, setup: setupFor(s) });
+    targets.push({ url: `${BASE}/embed/${s}/`, isolated: false, label: `embed/${s}`, setup: setupFor(s) });
   }
 }
 
@@ -74,7 +80,16 @@ try {
   }
 }
 
-const browser = await chromium.launch({ headless: !has("headed") });
+// Prefer Playwright's own Chromium; fall back to the Chrome already on the
+// machine. Downloading a browser is the slowest and least reliable part of
+// running this test, and a system Chrome does the job identically.
+let browser;
+try {
+  browser = await chromium.launch({ headless: !has("headed") });
+} catch (e) {
+  console.log("bundled chromium unavailable, using the system Chrome");
+  browser = await chromium.launch({ channel: "chrome", headless: !has("headed") });
+}
 let failures = 0;
 
 for (const t of targets) {
@@ -117,22 +132,85 @@ for (const t of targets) {
     const bootErr = await page.evaluate(() => globalThis.__macBootError || null);
     if (bootErr) throw new Error("runtime reported: " + bootErr);
 
-    // A booted Mac has a desktop on it. A flat canvas means it stopped at the
-    // blinking floppy, which the runtime still calls loaded.
-    await page.waitForTimeout(shot ? 25000 : 6000);
-    const distinct = await page.evaluate(() => {
+    // __macBooted means the RUNTIME started, not that the Macintosh finished
+    // booting — the machine still has a System to load, which takes another
+    // twenty to forty seconds. So poll the screen until the Finder is up.
+    //
+    // WHAT TO LOOK FOR, AND WHAT NOT TO.
+    //
+    // The obvious test — count distinct colours, call a flat screen a failure —
+    // is wrong, and wrong in the worst direction: it fails a machine that is
+    // working. A System 7 desktop in 1-bit black and white contains exactly two
+    // colours, so a perfectly booted Mac scores the same as a dead one. That
+    // cost an hour of chasing imaginary disk-image bugs before anyone looked at
+    // the actual screen.
+    //
+    // Brightness is no better: the "blinking floppy" screen and the desktop are
+    // both about half white, because both are that 50% dither pattern.
+    //
+    // What separates them is the MENU BAR. A booted Macintosh has a solid white
+    // strip across the top of the screen with black text in it. Nothing before
+    // the Finder loads draws one. So: sample the top rows, and call it booted
+    // when they are overwhelmingly white.
+    const menuBarWhite = () => page.evaluate(() => {
       const c = document.querySelector("canvas");
       if (!c) return -1;
       const off = document.createElement("canvas");
       off.width = c.width; off.height = c.height;
-      off.getContext("2d").drawImage(c, 0, 0);
-      const d = off.getContext("2d").getImageData(0, 0, off.width, off.height).data;
-      const seen = new Set();
-      for (let i = 0; i < d.length; i += 4 * 89) seen.add((d[i] << 16) | (d[i + 1] << 8) | d[i + 2]);
-      return seen.size;
+      const g = off.getContext("2d");
+      g.drawImage(c, 0, 0);
+      const rows = Math.min(14, c.height);
+      const d = g.getImageData(0, 0, c.width, rows).data;
+      let light = 0, total = 0;
+      for (let i = 0; i < d.length; i += 4) {
+        total++;
+        if (d[i] > 200 && d[i + 1] > 200 && d[i + 2] > 200) light++;
+      }
+      return total ? light / total : -1;
     });
-    if (distinct === -1) throw new Error("no canvas on the page");
-    if (distinct <= 2) throw new Error(`the screen is ${distinct} colour(s) — it probably stopped at the blinking floppy`);
+
+    const MENU_BAR_MIN = 0.75;
+    const deadline = Date.now() + TIMEOUT;
+    let white = await menuBarWhite();
+    while (white < MENU_BAR_MIN && Date.now() < deadline) {
+      await page.waitForTimeout(2000);
+      white = await menuBarWhite();
+    }
+    if (white === -1) throw new Error("no canvas on the page");
+    if (white < MENU_BAR_MIN) {
+      throw new Error(`no menu bar after ${Math.round(TIMEOUT / 1000)}s (top rows ${Math.round(white * 100)}% white) — the Finder never loaded`);
+    }
+
+    // Let whatever launched at startup paint its own first screen.
+    if (shot) await page.waitForTimeout(10000);
+
+    // Then run the title's own setup: dismissing a registration notice, or
+    // getting past a title screen, so the picture is of the software doing the
+    // thing the page says it does.
+    if (shot && t.setup) {
+      const canvas = await page.$("canvas");
+      const box = await canvas.boundingBox();
+      const scaleX = box.width / (t.setup.screen?.[0] || 640);
+      const scaleY = box.height / (t.setup.screen?.[1] || 480);
+      for (const step of t.setup.steps || []) {
+        if (step.click) {
+          // An emulated Mac polls the mouse rather than receiving events, so a
+          // synthetic click that moves and releases within the same frame is
+          // frequently never seen. Move first, let the guest notice where the
+          // pointer is, then press and release with real time in between.
+          const x = box.x + step.click[0] * scaleX;
+          const y = box.y + step.click[1] * scaleY;
+          await page.mouse.move(x, y);
+          await page.waitForTimeout(600);
+          await page.mouse.down();
+          await page.waitForTimeout(250);
+          await page.mouse.up();
+        } else if (step.key) {
+          await page.keyboard.press(step.key);
+        }
+        await page.waitForTimeout(step.waitMs || 2500);
+      }
+    }
 
     const fatal = errors.filter((e) => !/favicon|adsbygoogle|gtag/i.test(e));
     if (fatal.length) throw new Error("console: " + fatal.slice(0, 2).join(" | "));
@@ -146,7 +224,7 @@ for (const t of targets) {
     }
 
     const sab = await page.evaluate(() => typeof SharedArrayBuffer !== "undefined");
-    console.log(`  ok    ${t.label.padEnd(34)} booted in ${((Date.now() - t0) / 1000).toFixed(1)}s, ${distinct} colours, ${sab ? "shared memory" : "fallback"}`);
+    console.log(`  ok    ${t.label.padEnd(34)} booted in ${((Date.now() - t0) / 1000).toFixed(1)}s, ${sab ? "shared memory" : "fallback"}`);
   } catch (e) {
     failures++;
     console.log(`  FAIL  ${t.label.padEnd(34)} (${((Date.now() - t0) / 1000).toFixed(1)}s) ${e.message}`);

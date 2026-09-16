@@ -145,7 +145,27 @@
     ],
     "updated": "2026-09-14",
     "addedDate": "2026-09-14",
-    "rank": 0
+    "rank": 0,
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "click": [
+            411,
+            309
+          ],
+          "waitMs": 3500
+        },
+        {
+          "key": "p",
+          "waitMs": 9000
+        }
+      ]
+    },
+    "screenshot": true
   },
   {
     "slug": "oregon-trail",
@@ -711,13 +731,13 @@
     },
     "provenance": "clean",
     "fullyFree": "John Calhoun released the Glider PRO source under the GPL in 2016, along with the artwork and the houses.",
-    "licenseReason": "John Calhoun published the full Glider PRO source code on GitHub in 2016 under the GNU General Public License version 2, together with the game's assets. It is one of the very few commercial Macintosh games of the era to be freed outright by its author.",
+    "licenseReason": "John Calhoun published the full Glider PRO source code on GitHub in 2016 under the GNU General Public License version 2, together with the game's assets. It is one of the very few commercial Macintosh games of the era to be freed outright by its author. Glider PRO is not yet hosted here: it starts and shows its title screen on our emulated Macintosh, then reports that it cannot find its houses. Until that is solved it would be dishonest to put a Play button on this page, so the loader below runs a copy you supply.",
     "verdict": {
-      "kind": "good",
-      "text": "Free & open source"
+      "kind": "partial",
+      "text": "Not hosted yet"
     },
     "intro": "<p>You are a paper aeroplane. You are indoors. Gravity is pulling you down and the only thing keeping you up is the hot air coming out of the heating vents, so the whole game is a slow negotiation with a house that is full of candles, drips, rubber bands and a cat.</p>\n<p>Glider PRO is the 1994 peak of a series John Calhoun had been refining since 1988, and in 2016 he put the whole thing — code and art — on GitHub under the GPL. It is free in every sense.</p>",
-    "launchNote": "Boots straight into Glider PRO. Pick New Game and it drops you into the Slumberland house — the tutorial in disguise.",
+    "launchNote": "",
     "macControls": [
       {
         "keys": "Left / Right arrows",
@@ -755,6 +775,10 @@
       }
     ],
     "faq": [
+      {
+        "q": "Why can I not just click Play here?",
+        "a": "Because it does not work yet, and a button that says Play should mean it. Glider PRO boots on our emulated Mac and reaches its title screen, but then reports “there are no houses on this drive” — it cannot find the level files that sit right beside it. The files are present and byte-identical to the distribution, so the fault is in how the disk image is assembled rather than in the game. Until that is fixed this page runs a copy you supply, and the maintained <a href=\"https://github.com/elasota/Aerofoil\" rel=\"noopener\">Aerofoil</a> port is the better way to play Glider PRO today in any case."
+      },
       {
         "q": "Is Glider PRO free?",
         "a": "Yes, genuinely. John Calhoun released the source code and the game assets on GitHub in 2016 under the GNU GPL version 2."
@@ -803,8 +827,7 @@
     ],
     "updated": "2026-09-15",
     "addedDate": "2026-09-15",
-    "rank": 1,
-    "bootDisk": "glider-pro-v1"
+    "rank": 1
   },
   {
     "slug": "marathon-2",

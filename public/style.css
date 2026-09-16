@@ -422,3 +422,30 @@ footer p { max-width: 60ch; margin-inline: auto; }
   .card { border: 0; box-shadow: none; padding: 0; margin-bottom: 1rem; }
   a { color: #000; text-decoration: underline; }
 }
+
+/* ── the standalone player and embed routes ─────────────────────────────────
+ * These two pages are all machine and no article, so they set their own page
+ * frame. They used to carry an inline <style> block written before the
+ * stylesheet had rules for them, which meant two definitions of the same
+ * layout that quietly disagreed — and the disagreement put the stage on top of
+ * its own Play button, so the button could not be clicked at all. */
+body.is-play {
+  margin: 0; min-height: 100vh; background: #0c0c0c; color: #c9c5bd;
+  display: flex; flex-direction: column;
+}
+body.is-play .playstage {
+  flex: 1; min-height: 0;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1rem;
+}
+/* The mount is a plain block; the stage inside it carries the aspect ratio.
+ * Bounding BOTH dimensions is what keeps a 4:3 screen inside a wide short
+ * window instead of overflowing past the bottom of the page. */
+body.is-play #mac-embed { width: 100%; max-width: min(100%, 90vh * 4 / 3); }
+/* margin:0 here would undo the `margin-inline:auto` that centres the screen,
+ * leaving a 640-wide Macintosh pinned to the left of a 1080-wide mount. */
+body.is-play .embed-stage { margin-inline: auto; max-width: 100%; max-height: calc(100vh - 6rem); }
+
+body.is-embed { margin: 0; height: 100%; background: #0c0c0c; overflow: hidden; }
+body.is-embed #mac-embed, body.is-embed .embed-stage { width: 100%; height: 100%; max-width: none; }
+body.is-embed .embed-stage { border: 0; border-radius: 0; margin: 0; }

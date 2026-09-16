@@ -19,9 +19,22 @@ code() { curl -s -o /dev/null -w "%{http_code}" "$@"; }
 
 echo "Smoke testing $U"
 
-echo "Content pages must not be cross-origin isolated (COEP blocks ad iframes)"
+# Which mode the site is in is decided by ISOLATE_CONTENT in scripts/site.mjs,
+# not by what this script assumes. Read it, so the two cannot disagree — this
+# check failed for a while purely because the site had been isolated on purpose
+# and the test still believed the old arrangement.
+isolate=$(grep -oE 'ISOLATE_CONTENT = (true|false)' scripts/site.mjs | awk '{print $3}')
+echo "Content pages (ISOLATE_CONTENT = ${isolate:-unknown})"
 h=$(hdr "$U/run/marathon/")
-grep -qi "^cross-origin-embedder-policy" <<<"$h" && fail "/run/ COEP" "present; ads could never render here" || pass "/run/ has no COEP"
+if [ "$isolate" = "true" ]; then
+  grep -qi "^cross-origin-embedder-policy" <<<"$h" \
+    && pass "/run/ is isolated, as the flag says" \
+    || fail "/run/ COEP" "missing; the emulator would fall back to the slow path everywhere"
+else
+  grep -qi "^cross-origin-embedder-policy" <<<"$h" \
+    && fail "/run/ COEP" "present while ISOLATE_CONTENT is false; ads could never render here" \
+    || pass "/run/ has no COEP, as the flag says"
+fi
 [ "$(code "$U/run/marathon/")" = "200" ] && pass "/run/marathon/ 200" || fail "/run/marathon/" "not 200"
 
 echo "Isolated player"

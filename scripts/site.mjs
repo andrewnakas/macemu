@@ -133,12 +133,12 @@ export const footer = () => `<footer>
 </footer>`;
 
 /** A complete document. `body` is everything between <body> and the footer. */
-export const page = ({ headHtml, bodyHtml, scripts = "", lang = "en" }) => `<!DOCTYPE html>
+export const page = ({ headHtml, bodyHtml, scripts = "", lang = "en", bodyClass = "" }) => `<!DOCTYPE html>
 <html lang="${lang}">
 <head>
 ${headHtml}
 </head>
-<body>
+<body${bodyClass ? ` class="${bodyClass}"` : ""}>
 ${bodyHtml}
 ${scripts}
 </body>

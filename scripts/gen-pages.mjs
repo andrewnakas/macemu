@@ -383,7 +383,7 @@ function playPage(p) {
     description: `${p.appName} running in ${emulatorFor(p) || "an emulator"}.`,
     path: `/play/${p.slug}/`, kind: "play",
     canonical: `${SITE}/run/${p.slug}/`, ogImage: ogImage(p),
-    extraHead: `\n<style>body{margin:0;background:#000;color:#ddd;display:flex;flex-direction:column;min-height:100vh}.playbar{display:flex;gap:1rem;align-items:center;padding:0.4rem 0.8rem;background:#1a1816;font:13px/1.4 -apple-system,system-ui,sans-serif}.playbar a{color:#9cf}.playstage{flex:1;display:flex;align-items:center;justify-content:center}</style>`,
+    extraHead: `\n<meta name="theme-color" content="#131313" />`,
   });
   const body = `<div class="playbar">
   <a href="/run/${p.slug}/">‹ ${esc(p.appName)}</a>
@@ -395,7 +395,7 @@ function playPage(p) {
   ${macMount(p, { mode: "isolated" })}
 </div>`;
   return page({
-    headHtml, bodyHtml: body,
+    headHtml, bodyHtml: body, bodyClass: "is-play",
     scripts: `<script src="/mac-player.js?v=${av("mac-player.js")}"></script>`,
   });
 }
@@ -411,11 +411,11 @@ function embedPage(p) {
     description: `${p.appName} embedded from ${BRAND}.`,
     path: `/embed/${p.slug}/`, kind: "embed",
     canonical: `${SITE}/run/${p.slug}/`,
-    extraHead: `\n<style>html,body{margin:0;height:100%;background:#000;overflow:hidden}.embedbar{position:absolute;bottom:0;right:0;font:11px/1.6 system-ui,sans-serif;background:rgba(0,0,0,.6);padding:0 6px}.embedbar a{color:#9cf;text-decoration:none}</style>`,
+    extraHead: `\n<meta name="theme-color" content="#131313" />`,
   });
   const body = `${macMount(p, { mode: "fallback" })}
 <div class="embedbar"><a href="${SITE}/play/${p.slug}/" target="_blank" rel="noopener">▶ Full speed on ${BRAND}</a></div>`;
-  return page({ headHtml, bodyHtml: body, scripts: `<script src="/mac-player.js?v=${av("mac-player.js")}"></script>` });
+  return page({ headHtml, bodyHtml: body, bodyClass: "is-embed", scripts: `<script src="/mac-player.js?v=${av("mac-player.js")}"></script>` });
 }
 
 // ── grids and hubs ─────────────────────────────────────────────────────────

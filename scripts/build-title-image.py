@@ -56,7 +56,17 @@ except ImportError:
 FLORIN = "ƒ"
 
 
-def read_native_folder(host_path):
+# The classic Mac counts seconds from 1 January 1904; Unix counts from 1970.
+MAC_EPOCH_OFFSET = 2082844800
+
+
+def mac_time(unix_seconds, fallback):
+    """A host mtime as a classic Mac timestamp, or `fallback` if it predates 1904."""
+    t = int(unix_seconds) + MAC_EPOCH_OFFSET
+    return t if t > 0 else fallback
+
+
+def read_native_folder(host_path, date):
     """Import a folder from the host filesystem into a machfs.Folder.
 
     macOS keeps a file's resource fork and Finder metadata as extended
@@ -70,15 +80,22 @@ def read_native_folder(host_path):
     StuffIt archive on a Mac.
     """
     folder = machfs.Folder()
+    folder.crdate = folder.mddate = folder.bkdate = mac_time(os.path.getmtime(host_path), date)
     for name in sorted(os.listdir(host_path)):
         if name.startswith("."):
             continue                      # .DS_Store and friends
         full = os.path.join(host_path, name)
         if os.path.isdir(full):
-            folder[name] = read_native_folder(full)
+            folder[name] = read_native_folder(full, date)
             continue
 
         f = machfs.File()
+        # Every file needs a plausible date. machfs defaults them to 0, which is
+        # 1 January 1904, and a volume full of files from 1904 stops the Finder
+        # dead while it builds the desktop database at boot: the machine shows a
+        # grey screen forever, with no error from the emulator, no failed
+        # request, and a disk that reads normally. That cost an evening.
+        f.crdate = f.mddate = f.bkdate = mac_time(os.path.getmtime(full), date)
         with open(full, "rb") as fh:
             f.data = fh.read()
         rsrc_path = full + "/..namedfork/rsrc"
@@ -164,7 +181,9 @@ def main():
 
     if args.from_folder:
         found_name = os.path.basename(args.from_folder.rstrip("/"))
-        folder = read_native_folder(args.from_folder)
+        # Anything without a usable host mtime inherits the volume's own date,
+        # which is always sane because it came off a real disk image.
+        folder = read_native_folder(args.from_folder, base.crdate)
     else:
         if not args.source or not args.folder:
             sys.exit("give either --from-folder, or both --source and --folder")
@@ -242,6 +261,23 @@ def main():
     assert image[mdb:mdb+2] == b"BD", "not an HFS volume"
     blessed = int.from_bytes(image[mdb+92:mdb+96], "big")
     assert blessed, "no blessed System Folder — the Mac will show a blinking floppy"
+
+    # Re-read what was written and refuse to ship a file dated 1904.
+    check = machfs.Volume()
+    check.read(image)
+    def undated(folder, prefix=""):
+        bad = []
+        for name, item in folder.items():
+            path = prefix + name
+            if isinstance(item, machfs.Folder):
+                bad += undated(item, path + ":")
+            elif not item.crdate:
+                bad.append(path)
+        return bad
+    stale = undated(check)
+    if stale:
+        sys.exit(f"{len(stale)} file(s) have no creation date, e.g. {stale[:3]}. "
+                 f"The Finder hangs at boot on a volume like this.")
     print(f"wrote {args.out}: {len(image)/1048576:.1f} MB, volume {args.volume_name!r}, "
           f"blessed System Folder cnid {blessed}")
 
