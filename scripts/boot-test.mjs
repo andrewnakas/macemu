@@ -169,17 +169,43 @@ for (const t of targets) {
       return total ? light / total : -1;
     });
 
-    const MENU_BAR_MIN = 0.75;
+    // Deciding "has this actually booted" from pixels, in two phases.
+    //
+    // A Macintosh starting up shows a 50% checkerboard dither, so the top of
+    // the screen measures close to half white. When the Finder arrives it puts
+    // a solid white menu bar there; when a title launches itself it covers the
+    // menu bar with its own artwork, which for a game is usually dark. So both
+    // success states are FAR from one half, and the failure state is AT one
+    // half.
+    //
+    // The trap: before the emulator paints anything the canvas is pure black,
+    // which is also far from one half. Testing only "is it far from half" made
+    // every title pass in under four seconds without a Macintosh ever starting
+    // — a green test that proved nothing, which is worse than a red one. So
+    // phase one waits to actually see the startup dither, and only then does
+    // phase two wait for it to go away.
+    const BOOTED_LIGHT = 0.75;   // a Finder menu bar
+    const BOOTED_DARK = 0.25;    // a game covering the screen
+    const isStarting = (v) => v >= 0.3 && v <= 0.7;
+    const isSettled = (v) => v >= BOOTED_LIGHT || (v >= 0 && v <= BOOTED_DARK);
+
     const deadline = Date.now() + TIMEOUT;
     let white = await menuBarWhite();
-    while (white < MENU_BAR_MIN && Date.now() < deadline) {
-      await page.waitForTimeout(2000);
+    let sawStartup = false;
+    while (Date.now() < deadline) {
+      if (white === -1) throw new Error("no canvas on the page");
+      if (!sawStartup && isStarting(white)) sawStartup = true;
+      if (sawStartup && isSettled(white)) break;
+      await page.waitForTimeout(1500);
       white = await menuBarWhite();
     }
-    if (white === -1) throw new Error("no canvas on the page");
-    if (white < MENU_BAR_MIN) {
-      throw new Error(`no menu bar after ${Math.round(TIMEOUT / 1000)}s (top rows ${Math.round(white * 100)}% white) — the Finder never loaded`);
+    if (!sawStartup) {
+      throw new Error(`the emulated screen never showed a startup pattern within ${Math.round(TIMEOUT / 1000)}s (top rows ${Math.round(white * 100)}% white) — the machine never began booting`);
     }
+    if (!isSettled(white)) {
+      throw new Error(`the top of the screen is still ${Math.round(white * 100)}% white after ${Math.round(TIMEOUT / 1000)}s — that is the startup dither, so the Finder never loaded`);
+    }
+    const reached = white >= BOOTED_LIGHT ? "a Finder desktop" : "the title's own screen";
 
     // Let whatever launched at startup paint its own first screen.
     if (shot) await page.waitForTimeout(10000);
@@ -224,7 +250,7 @@ for (const t of targets) {
     }
 
     const sab = await page.evaluate(() => typeof SharedArrayBuffer !== "undefined");
-    console.log(`  ok    ${t.label.padEnd(34)} booted in ${((Date.now() - t0) / 1000).toFixed(1)}s, ${sab ? "shared memory" : "fallback"}`);
+    console.log(`  ok    ${t.label.padEnd(34)} reached ${reached} in ${((Date.now() - t0) / 1000).toFixed(1)}s, ${sab ? "shared memory" : "fallback"}`);
   } catch (e) {
     failures++;
     console.log(`  FAIL  ${t.label.padEnd(34)} (${((Date.now() - t0) / 1000).toFixed(1)}s) ${e.message}`);
