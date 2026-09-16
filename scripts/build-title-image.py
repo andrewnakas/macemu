@@ -119,19 +119,37 @@ def read_native_folder(host_path, date):
     return folder
 
 
-def find_folder(volume, wanted):
-    """Match a folder name, tolerating the trailing florin classic Mac uses."""
+def _match_one(parent, wanted):
+    """One path segment, tolerating the trailing florin classic Mac uses."""
     candidates = [wanted, wanted + " " + FLORIN, wanted + FLORIN,
                   wanted.rstrip() + " " + FLORIN]
     if wanted.endswith(" f"):
         stem = wanted[:-2]
         candidates += [stem + " " + FLORIN, stem + FLORIN, stem]
     for name in candidates:
-        item = volume.get(name)
+        item = parent.get(name)
         if isinstance(item, machfs.Folder):
             return name, item
-    available = sorted(n for n, i in volume.items() if isinstance(i, machfs.Folder))
-    sys.exit(f"no folder matching {wanted!r}. Volume contains: {available}")
+    return None, None
+
+
+def find_folder(volume, wanted):
+    """Find a folder by name, or by a colon-separated path into the volume.
+
+    Shareware CDs file their contents several folders deep — Games:Arcade:Arashi
+    1.1 — so matching only at the root finds nothing on exactly the sources that
+    carry the most titles.
+    """
+    parts = wanted.split(":")
+    parent, found_name, found = volume, None, None
+    for depth, part in enumerate(parts):
+        found_name, found = _match_one(parent, part)
+        if found is None:
+            where = ":".join(parts[:depth]) or "the volume root"
+            available = sorted(n for n, i in parent.items() if isinstance(i, machfs.Folder))
+            sys.exit(f"no folder matching {part!r} in {where}. Contains: {available[:24]}")
+        parent = found
+    return found_name, found
 
 
 def count(folder):

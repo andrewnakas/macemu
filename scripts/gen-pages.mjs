@@ -79,6 +79,23 @@ setAssetVersions(Object.fromEntries(ASSETS.map((f) => {
   return [f, existsSync(p) ? createHash("sha256").update(readFileSync(p)).digest("hex").slice(0, 8) : "0"];
 })));
 
+// CHOOSING A MACHINE FOR A TITLE
+//
+// Hosted titles run on a Macintosh II under Mini vMac. The loader pages run a
+// Macintosh IIfx under Basilisk II. They are different for one reason each.
+//
+// Mini vMac's Mac II boots the screen in COLOUR. Basilisk II boots it in black
+// and white, and nothing in the emulator's configuration changes that — the
+// depth lives in the Mac's parameter RAM, which starts zeroed every time. A
+// visitor would have to open the Monitors control panel before a colour game
+// would agree to start, and two of the first three titles tried here refused
+// outright: Arashi puts up "requires 256 colors to run" with its Start button
+// greyed out. Mini vMac simply comes up in colour.
+//
+// Basilisk II earns the loader pages because Mini vMac has no host file
+// sharing at all, so a dropped .sit has nowhere to go. Title pages never need
+// that, so they do not pay for it.
+
 // What the file loader boots, everywhere it appears.
 //
 // Always a Macintosh IIfx under Basilisk II, regardless of the era the

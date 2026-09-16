@@ -22,8 +22,7 @@
       "Shooters"
     ],
     "era": "system-7",
-    "machine": "Mac-IIfx",
-    "ramMB": 32,
+    "machine": "Mac-II",
     "screen": {
       "w": 640,
       "h": 480,
@@ -152,19 +151,166 @@
       ],
       "steps": [
         {
+          "waitMs": 12000
+        },
+        {
           "click": [
             411,
             309
           ],
-          "waitMs": 3500
+          "waitMs": 4000
         },
         {
           "key": "p",
-          "waitMs": 9000
+          "waitMs": 10000
         }
       ]
     },
     "screenshot": true
+  },
+  {
+    "slug": "arashi",
+    "title": "Play Arashi Online — The Mac's Tempest, Free in Your Browser",
+    "description": "Arashi, the 1993 Macintosh take on Tempest, running free in your browser. Freely distributable by its authors, source code included, nothing to install.",
+    "keywords": "arashi mac game, play arashi online, tempest mac, arashi 1.1, mac shareware arcade game",
+    "ogTitle": "Arashi (1993) in your browser",
+    "ogDescription": "The Mac's answer to Tempest, freely distributable, booting straight into the game.",
+    "crumb": "Arashi",
+    "h1": "Arashi — Tempest, rebuilt for the Macintosh",
+    "appName": "Arashi",
+    "appType": "game",
+    "author": "Juri Munkki and Mike Kelly",
+    "year": 1993,
+    "genre": [
+      "Arcade",
+      "Action",
+      "Shoot 'em up"
+    ],
+    "categories": [
+      "Action",
+      "Shooters"
+    ],
+    "era": "system-7",
+    "machine": "Mac-II",
+    "screen": {
+      "w": 640,
+      "h": 480,
+      "depth": 8
+    },
+    "bootDisk": "arashi-v1",
+    "provenance": "shareware",
+    "fullyFree": "The authors put the terms in one line of the ReadMe: freely distributable as long as it is not for profit. They shipped the C source with it too.",
+    "licenseReason": "Arashi's ReadMe, which is on the disk you are booting, says it plainly: <em>\"ARASHI is freely distributable as long as it is not for profit.\"</em> Nothing here is modified and this site carries no advertising, so both halves of that hold. The authors also included the C source, which is on the disk as they shipped it. Full provenance is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/arashi.md\" rel=\"noopener\">notices/arashi.md</a>.",
+    "verdict": {
+      "kind": "good",
+      "text": "Freely distributable"
+    },
+    "intro": "<p>Atari's Tempest put you on the rim of a tube and threw things up it at you. Arashi does the same, on a Macintosh, in 1993, with colour, a soundtrack and a level compiler its authors wrote so the game could be scripted. It is faster and stranger than the original, and it has the particular quality a lot of the best Mac shareware has: someone built it because they wanted it to exist.</p>\n<p>It boots straight into the game here. The name is Japanese for <em>storm</em>.</p>",
+    "launchNote": "Boots straight into Arashi's options panel. Click Start Game — or set the difficulty first.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Move around the rim — this is a mouse game first"
+      },
+      {
+        "keys": "Click",
+        "does": "Fire"
+      },
+      {
+        "keys": "Space",
+        "does": "Superzapper, when you have one"
+      },
+      {
+        "keys": "Esc",
+        "does": "Pause and the menu"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh IIfx, 32 MB RAM, 640×480</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Basilisk II, compiled to WebAssembly</td></tr><tr><th>Version</th><td>Arashi 1.1, June 1993 — the release with the scripting engine</td></tr><tr><th>Sound</th><td>Yes. Click once inside the screen first; browsers block audio until you do.</td></tr><tr><th>Mobile</th><td>It runs, but this is a mouse game and a touchscreen is a poor substitute.</td></tr></tbody></table><p>Arashi needs 256 colours, which the emulated machine has. The game takes a moment to build its first level after the splash screen.</p>"
+      },
+      {
+        "h": "What it added to Tempest",
+        "html": "<p>The shape is familiar: you run around the edge of a well, firing down it, while things climb up towards you. Let one reach the rim and it comes for you along it.</p><p>What Arashi adds is a decade of hardware. The wells are drawn in colour with proper shading rather than vectors. There is a soundtrack. There are power-ups, a save system, and what the ReadMe calls <em>doomsday levels</em> — the difficulty past the point where the game stops being reasonable.</p><p>The most interesting addition is invisible while you play. Juri Munkki wrote a game compiler and scripting language for the 1.1 release, so the levels are data rather than code. That is why the C source shipped alongside the game: the authors expected people to look.</p>"
+      },
+      {
+        "h": "Mac shareware as a culture",
+        "html": "<p>Arashi is a good example of a category that barely exists now. Two people wrote an arcade game to a standard that would have been commercial a few years earlier, put it on the Info-Mac archive, asked for nothing, and included the source.</p><p>The distribution model made that normal. A shareware author had no publisher, no shelf space and no marketing, so the software had to travel by being copied — which meant the licence had to permit copying, and most of them did, in a sentence written by the author rather than a lawyer. Arashi's is one line long.</p><p>That is why a site like this can exist at all. A large part of the Macintosh catalogue between 1985 and 2000 was released on terms that explicitly allow what you are doing right now.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is Arashi free?",
+        "a": "Yes, on its authors' own terms. The ReadMe on the disk says it is freely distributable as long as it is not for profit. It is not a demo or a crippled version — this is the whole game."
+      },
+      {
+        "q": "Is this just Tempest?",
+        "a": "It takes Tempest's shape and builds on it: colour, a soundtrack, power-ups, saved games, a scripting engine for the levels, and difficulty settings past anything the original attempted. Whether that makes it a clone or a successor is a matter of taste."
+      },
+      {
+        "q": "Do I need a mouse?",
+        "a": "Effectively yes. Arashi is played by moving around the rim of the well, and it maps that to the mouse. A trackpad works; a touchscreen is a struggle."
+      },
+      {
+        "q": "What does the name mean?",
+        "a": "Storm, in Japanese. The game was called something else for version 1.0 and the ReadMe notes the change in its first paragraph."
+      },
+      {
+        "q": "Is the source code really included?",
+        "a": "It is, in a folder on the disk you are booting. The authors shipped it with the game and it has been left exactly where they put it."
+      },
+      {
+        "q": "Who wrote it?",
+        "a": "Juri Munkki and Mike Kelly, released in June 1993. Munkki wrote the game compiler and scripting language for this version."
+      }
+    ],
+    "download": {
+      "heading": "Get a copy",
+      "html": "<ul><li><a href=\"https://archive.org/details/macsilverware\" rel=\"noopener\">MacSilverWare at the Internet Archive</a> — the shareware CD this copy came from, under Games:Arcade.</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/maelstrom/",
+        "title": "Maelstrom",
+        "desc": "The other great Mac arcade game of the period."
+      },
+      {
+        "href": "/collection/system-7/",
+        "title": "More System 7 software",
+        "desc": "The era Arashi shipped in."
+      },
+      {
+        "href": "/load-mac-file/",
+        "title": "Run your own copy",
+        "desc": "Got a shareware disk of your own?"
+      }
+    ],
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "waitMs": 10000
+        },
+        {
+          "click": [
+            257,
+            262
+          ],
+          "waitMs": 14000
+        }
+      ]
+    },
+    "updated": "2026-09-16",
+    "addedDate": "2026-09-16",
+    "rank": 2
   },
   {
     "slug": "oregon-trail",

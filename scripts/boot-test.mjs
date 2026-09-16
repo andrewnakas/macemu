@@ -207,8 +207,12 @@ for (const t of targets) {
     }
     const reached = white >= BOOTED_LIGHT ? "a Finder desktop" : "the title's own screen";
 
-    // Let whatever launched at startup paint its own first screen.
-    if (shot) await page.waitForTimeout(10000);
+    // Let the machine settle before photographing it. Reaching a desktop is not
+    // the end of the boot: System 7 often rebuilds its desktop file on a freshly
+    // written volume, which puts a progress bar up for a good while and delays
+    // whatever was meant to launch. Ten seconds caught that progress bar; this
+    // waits for the machine to stop being busy.
+    if (shot) await page.waitForTimeout(30000);
 
     // Then run the title's own setup: dismissing a registration notice, or
     // getting past a title screen, so the picture is of the software doing the
