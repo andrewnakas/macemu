@@ -449,3 +449,9 @@ body.is-play .embed-stage { margin-inline: auto; max-width: 100%; max-height: ca
 body.is-embed { margin: 0; height: 100%; background: #0c0c0c; overflow: hidden; }
 body.is-embed #mac-embed, body.is-embed .embed-stage { width: 100%; height: 100%; max-width: none; }
 body.is-embed .embed-stage { border: 0; border-radius: 0; margin: 0; }
+
+/* Badges sat inline with the title and wrapped onto their own line when a name
+   was long, which made one card in a row read as taller than its neighbours.
+   Give the title its own line and let the badges sit together under it. */
+.pc-title { display: block; }
+.pc-title .badge-new, .pc-title .badge-free { vertical-align: 0.1em; margin-right: 0.2rem; }

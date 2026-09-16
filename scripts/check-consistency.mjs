@@ -115,7 +115,14 @@ section("Playability claims");
 section("Screenshots");
 for (const p of pages) {
   const f = screenshotFile(p);
-  if (!f) continue;
+  if (!f) {
+    // The boot test writes these; forgetting to declare one costs the page its
+    // og:image and its poster tile, silently.
+    if (existsSync(resolve(PUB, "run", p.slug, "screenshot.png"))) {
+      warn(`${p.slug}: public/run/${p.slug}/screenshot.png exists but the entry does not set "screenshot": true, so nothing uses it`);
+    }
+    continue;
+  }
   if (!existsSync(resolve(PUB, "run", p.slug, f))) {
     fail(`${p.slug}: screenshot "${f}" is declared but public/run/${p.slug}/${f} does not exist — it is also the og:image, so social cards would 404`);
   }

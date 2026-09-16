@@ -310,7 +310,8 @@
     },
     "updated": "2026-09-16",
     "addedDate": "2026-09-16",
-    "rank": 2
+    "rank": 2,
+    "screenshot": true
   },
   {
     "slug": "glypha",
@@ -450,7 +451,8 @@
     },
     "updated": "2026-09-16",
     "addedDate": "2026-09-16",
-    "rank": 3
+    "rank": 3,
+    "screenshot": true
   },
   {
     "slug": "oregon-trail",
