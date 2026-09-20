@@ -1810,25 +1810,26 @@
   },
   {
     "slug": "macpaint",
-    "title": "MacPaint (1984) — The Program That Explained the Mouse",
-    "description": "Bill Atkinson's MacPaint: why it mattered, where the source and the application live now, and how to run a copy on an emulated Macintosh.",
-    "keywords": "macpaint online, macpaint 1984, bill atkinson macpaint, original mac paint program, macpaint browser",
-    "ogTitle": "MacPaint — a guide",
-    "ogDescription": "Bill Atkinson's MacPaint: why it mattered, where the source and the application live now, and how to run a copy on an emulated Macintosh.",
+    "title": "Use MacPaint Online — The 1984 Macintosh Paint Program",
+    "description": "Bill Atkinson's MacPaint, the program that taught the world what a computer drawing tool looks like, running in your browser on an emulated Mac.",
+    "keywords": "macpaint, macpaint online, bill atkinson macpaint, macpaint 1984, classic mac paint, original paint program",
+    "ogTitle": "MacPaint in your browser",
+    "ogDescription": "Bill Atkinson's 1984 paint program, running on an emulated Macintosh.",
     "crumb": "MacPaint",
-    "h1": "MacPaint, the program that sold the Macintosh",
+    "h1": "MacPaint — the original",
     "appName": "MacPaint",
     "appType": "app",
-    "author": "Apple Computer / Bill Atkinson",
+    "author": "Apple",
     "year": 1984,
     "genre": [
-      "Creative"
+      "Graphics",
+      "Painting"
     ],
     "categories": [
       "Creative tools"
     ],
     "era": "system-6",
-    "machine": "Mac-Plus",
+    "machine": "Mac-SE",
     "ramMB": 4,
     "screen": {
       "w": 512,
@@ -1836,99 +1837,109 @@
       "depth": 1
     },
     "provenance": "grey",
-    "licenseReason": "MacPaint's source code was donated by Apple to the Computer History Museum in 2010 and published for non-commercial use. The application binary remains Apple's. It is here for the same reason the Museum published the source: it is a landmark, and it should be possible to actually use it.",
+    "licenseReason": "MacPaint is Apple's. In 2010 Apple gave the MacPaint 1.3 source code to the Computer History Museum, which published it for non-commercial use — an unusually clear signal about how Apple regards this particular program today. The application itself has not been sold in over thirty-five years and is contained in no current product. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/macpaint.md\" rel=\"noopener\">notices/macpaint.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
     "verdict": {
-      "kind": "partial",
-      "text": "Bring your own copy"
+      "kind": "good",
+      "text": "Runs here"
     },
-    "intro": "<p>In January 1984 almost nobody had used a mouse. MacPaint is the program that explained it. You pick up a brush, you drag, and paint appears — obvious now, astonishing then, and the single most effective demonstration Apple had of why a Macintosh was different from everything else on a desk.</p>\n<p>Bill Atkinson wrote it, and it is a remarkable piece of engineering as well as a remarkable piece of design: full-page bitmap editing with smooth interactive dragging, on a machine with 128 kilobytes of memory.</p>",
-    "launchNote": "Opens to a blank page with the tool palette down the left and the pattern palette along the bottom.",
+    "intro": "<p>Open it and you will recognise everything. The tool palette down the left. The pencil, the brush, the paint bucket, the lasso, the eraser. The marching-ants selection. The patterns along the bottom. Forty years of drawing programs have copied this layout, and this is the one they copied.</p>\n<p>Bill Atkinson wrote it, it shipped with every Macintosh from 1984, and nothing else on the machine did more to explain what the machine was for.</p>",
+    "launchNote": "Opens straight into MacPaint on an emulated Macintosh SE, with a blank document. Pick a tool and draw — the pencil and the pattern strip along the bottom are the whole idea.",
     "macControls": [
       {
         "keys": "Mouse",
-        "does": "Everything. That is the point."
+        "does": "Everything. Pick a tool, then draw."
       },
       {
         "keys": "Double-click a tool",
-        "does": "Opens its options, such as brush shape"
+        "does": "Options — double-click the eraser to clear the page"
+      },
+      {
+        "keys": "Patterns strip",
+        "does": "Click a pattern, then fill or draw with it"
       },
       {
         "keys": "Cmd-Z",
-        "does": "Undo"
+        "does": "Undo, one level, which is all there is"
       },
       {
-        "keys": "Shift-drag",
-        "does": "Constrain a line or a shape"
+        "keys": "Goodies menu",
+        "does": "FatBits, the pixel-level zoom, and the brush and pattern editors"
       },
       {
         "keys": "Cmd-Q",
-        "does": "Quit"
+        "does": "Quit to the Finder"
       }
     ],
     "sections": [
       {
         "h": "How it works & what to expect",
-        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh Plus, 4 MB RAM, 512×342 black and white</td></tr><tr><th>System</th><td>System 6.0.8</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Speed</th><td>Instant</td></tr></tbody></table><p>Black and white is not a limitation of the emulation; the Macintosh had no colour until 1987, and MacPaint's entire visual vocabulary — the fifty-ish fill patterns along the bottom of the window — exists because black and white was all there was.</p>"
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh SE, 512×342 black and white</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Version</th><td>1.5</td></tr><tr><th>Canvas</th><td>One page, 576×720 pixels, exactly one bit deep</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser. Do not keep anything irreplaceable there.</td></tr></tbody></table><p>There is no colour, no layers, no alpha, and one level of undo. The canvas is a single page the size of a sheet of paper and it does not scroll beyond that.</p>\n<p>Those are not omissions. They are the machine: 128K of memory, a 512×342 one-bit screen, and a 400K floppy. What Atkinson did with that is the reason the program is still worth opening.</p>"
       },
       {
-        "h": "What to try",
-        "html": "<ul><li><strong>The fill patterns.</strong> Double-click one to edit it. A pattern editor, in 1984, in 128K.</li><li><strong>The lasso versus the marquee.</strong> The lasso shrinks to fit whatever you drew; the marquee takes a rectangle. Atkinson wrote the lasso because a rectangle was the wrong selection for a drawing.</li><li><strong>FatBits.</strong> Zoom to individual pixels while a small inset shows the drawing at normal size. Still the right design.</li><li><strong>The spray can and the paint bucket.</strong> Both arrived here first for most people who ever used them.</li></ul>"
+        "h": "The things in here that you use every day",
+        "html": "<p><strong>The lasso</strong> selects by shape rather than by rectangle, snapping tight around whatever you drew. Nobody had done that before.</p>\n<p><strong>FatBits</strong> zooms to individual pixels while showing the full-size image in a corner, so you can edit one pixel and see the result at actual size. Every pixel editor since has some version of this.</p>\n<p><strong>The paint bucket</strong> — flood fill, bounded by whatever lines you have drawn. Also new.</p>\n<p><strong>The patterns</strong> along the bottom are how a one-bit program gets greys. There are thirty-eight, and you can edit them, and the entire visual language of 1980s Macintosh graphics comes out of them.</p>\n<p><strong>Marching ants</strong>, the animated dashes around a selection, were invented here, because Atkinson needed a selection outline that stayed visible against both black and white.</p>"
       },
       {
-        "h": "Why it mattered",
-        "html": "<p>MacPaint shipped free with every Macintosh, alongside MacWrite, because a computer with a graphical interface and nothing graphical to do would have been a hard sell. It was written in Pascal and assembly and fitted into a machine with no hard disk, and the interactive performance it achieved on that hardware is the part programmers still find impressive.</p><p>Apple donated the source code to the Computer History Museum in 2010, and it can be read there. Almost every raster graphics program since owes it something: the tool palette down the left, the marquee, the lasso, the pixel zoom, the pattern fill. Photoshop's interface is a direct descendant.</p><p>Kid Pix, also on this site, was written explicitly as a reaction to it — Craig Hickman watched his three-year-old fail to use MacPaint and built something with no wrong moves.</p>"
+        "h": "Why it mattered so much",
+        "html": "<p>MacPaint shipped free with every Macintosh, alongside MacWrite, and the pair did the arguing for the machine. A mouse and a bitmapped screen sound like abstractions until somebody hands you a pencil tool and you draw a line by moving your hand.</p>\n<p>Atkinson also wrote QuickDraw, the graphics layer the whole Macintosh was built on, which is why MacPaint could be so fast on hardware that had no business being fast. He is the same person who invented the pull-down menu, the double-click, and later built HyperCard.</p>\n<p>In 2010, Apple gave the MacPaint 1.3 source to the Computer History Museum, which published it: around 5,800 lines of Pascal and assembly. It is worth looking at if you ever want to see what one very good programmer could do with 128K.</p>"
       }
     ],
     "faq": [
       {
-        "q": "Is this the original MacPaint?",
-        "a": "Yes, the Macintosh application, running on an emulated Macintosh rather than re-implemented in JavaScript."
+        "q": "Is this the real MacPaint?",
+        "a": "Yes — version 1.5, the Apple release, running as it shipped. Not a modern clone and not the later Claris MacPaint 2.0."
       },
       {
-        "q": "Why is everything black and white?",
-        "a": "The 1984 Macintosh had a one-bit display. Colour did not arrive until the Macintosh II in 1987."
+        "q": "Why is there no colour?",
+        "a": "The Macintosh it was written for had none. The screen was one bit per pixel, and the patterns along the bottom of the window are how the program makes greys out of black and white."
       },
       {
-        "q": "Who wrote MacPaint?",
-        "a": "Bill Atkinson, who also wrote QuickDraw — the Mac's graphics engine — and later HyperCard."
+        "q": "Can I save what I draw?",
+        "a": "Yes, into the emulated Mac, which lives in your browser. It survives closing the tab but not clearing site data, so save anything you care about by taking a screenshot too."
       },
       {
-        "q": "Can I save my drawing?",
-        "a": "Inside the emulated Mac, yes. Getting it out to a file on your own computer is not wired up yet."
+        "q": "How do I zoom in?",
+        "a": "Goodies → FatBits, or double-click the pencil. You get a pixel-level view with a full-size preview in the corner."
       },
       {
-        "q": "Is the source code available?",
-        "a": "Apple donated it to the Computer History Museum in 2010 and it is published there for non-commercial use."
+        "q": "How do I clear the page?",
+        "a": "Double-click the eraser in the tool palette."
       },
       {
-        "q": "What is FatBits?",
-        "a": "MacPaint's pixel zoom, with a small inset showing the drawing at normal size while you edit individual pixels. Every image editor since has a version of it."
+        "q": "Why only one undo?",
+        "a": "Because there were 128 kilobytes of memory and each undo step is a copy of the page. One was what would fit."
+      },
+      {
+        "q": "Where can I see the source code?",
+        "a": "The Computer History Museum published MacPaint 1.3's source in 2010, with Apple's permission, for non-commercial use. It is linked below."
       }
     ],
     "download": {
-      "heading": "Read the source",
-      "html": "<ul><li><a href=\"https://computerhistory.org/blog/macpaint-and-quickdraw-source-code/\" rel=\"noopener\">Computer History Museum</a> — the original MacPaint and QuickDraw source, published with Apple's permission.</li><li><a href=\"https://macintoshgarden.org/apps/macpaint\" rel=\"noopener\">Macintosh Garden</a> — the application itself.</li></ul>"
+      "heading": "Source and archives",
+      "html": "<ul><li><a href=\"https://computerhistory.org/blog/macpaint-and-quickdraw-source-code/\" rel=\"noopener\">Computer History Museum</a> — the MacPaint 1.3 and QuickDraw source, released by Apple in 2010.</li><li><a href=\"https://archive.org/details/mac_Paint_2\" rel=\"noopener\">Internet Archive</a> — the preserved Macintosh floppy this copy came from.</li></ul>"
     },
     "related": [
       {
         "href": "/run/kid-pix/",
         "title": "Kid Pix",
-        "desc": "Written as a reaction to this."
+        "desc": "MacPaint's descendant, for children."
       },
       {
-        "href": "/run/glider-4/",
-        "title": "Glider 4.0",
-        "desc": "The other essential black-and-white Mac program."
+        "href": "/run/dark-castle/",
+        "title": "Dark Castle",
+        "desc": "What the same screen could do in a game."
       },
       {
         "href": "/collection/system-6/",
-        "title": "More System 6 software",
-        "desc": "The compact Macintosh era."
+        "title": "More early Mac software",
+        "desc": "The black-and-white years."
       }
     ],
     "updated": "2026-09-13",
     "addedDate": "2026-09-13",
-    "rank": 9
+    "rank": 2,
+    "bootDisk": "macpaint-v1",
+    "screenshot": true
   },
   {
     "slug": "number-munchers",
@@ -3237,6 +3248,276 @@
     "updated": "2026-09-20",
     "addedDate": "2026-09-20",
     "rank": 4,
+    "screenshot": true
+  },
+  {
+    "slug": "dark-castle",
+    "title": "Play Dark Castle (1986) Online — The Macintosh Classic",
+    "description": "Silicon Beach Software's Dark Castle, the Macintosh game that proved the machine could do action, running in your browser.",
+    "keywords": "dark castle, play dark castle online, dark castle mac, silicon beach software, dark castle 1986, jonathan gay",
+    "ogTitle": "Dark Castle (1986) in your browser",
+    "ogDescription": "The Macintosh action classic, on an emulated Mac.",
+    "crumb": "Dark Castle",
+    "h1": "Dark Castle — throwing rocks at bats",
+    "appName": "Dark Castle",
+    "appType": "game",
+    "author": "Silicon Beach Software",
+    "year": 1986,
+    "genre": [
+      "Action",
+      "Platform"
+    ],
+    "categories": [
+      "Action"
+    ],
+    "era": "system-6",
+    "machine": "Mac-SE",
+    "screen": {
+      "w": 512,
+      "h": 342,
+      "depth": 1
+    },
+    "bootDisk": "dark-castle-v1",
+    "provenance": "grey",
+    "licenseReason": "Silicon Beach Software was bought by Aldus in 1990 and Aldus by Adobe in 1994. Z-Software later made Return to Dark Castle, a new game. The 1986 Macintosh original has not been sold by anyone in nearly forty years. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/dark-castle.md\" rel=\"noopener\">notices/dark-castle.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>In 1986 the Macintosh was an office machine with a small grey screen, and then Dark Castle arrived: a full-screen black-and-white castle drawn like a woodcut, bats that dive at your head, and rats, and a hunchback throwing rocks down a staircase at you.</p>\n<p>It looked like nothing else on any computer, and it sounded like nothing else either. It is still the game people name when they argue the Macintosh was a real games machine.</p>",
+    "launchNote": "Boots straight to the Dark Castle title screen on an emulated Macintosh SE. Click through, and start with the Trouble door — it is the easiest of the three.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Aim, and click to throw a rock"
+      },
+      {
+        "keys": "A / S / D / W",
+        "does": "Run left, crouch, run right, jump — the original key layout"
+      },
+      {
+        "keys": "Space",
+        "does": "Jump"
+      },
+      {
+        "keys": "Options menu",
+        "does": "Difficulty, and remapping the keys if the defaults fight you"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh SE, 512×342 black and white</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Version</th><td>1.2</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser.</td></tr></tbody></table><p>It is hard, and it was meant to be. The controls split between the keyboard and the mouse — you run and jump with your left hand and aim with your right — and that division takes a while to stop feeling wrong. Turn the difficulty down in the Options menu for the first few attempts; the game does not think less of you.</p>\n<p>The castle is three doors from the great hall, each leading to a short branch of rooms, and a fourth that opens onto the Black Knight at the end.</p>"
+      },
+      {
+        "h": "Why it looked like that",
+        "html": "<p>Mark Stephen Pierce drew it, and he drew it as though the one-bit screen were an engraving rather than a limitation. Everything is cross-hatched, stippled and heavy-lined, and the result has more depth than most colour games of the same year.</p>\n<p>The sound is the other half. Dark Castle used digitised audio at a time when nearly every game used beeps — the bats screech, the rocks knock, and your character makes a genuinely upsetting noise when he falls. Silicon Beach recorded that material and shipped it, which is why the game took two floppies when most took one.</p>\n<p>The programmer was Jonathan Gay, who was still in his teens. He went on to write the animation tool that became Macromedia Flash, so a reasonable share of the web's first decade traces back to the person who made these bats fly.</p>"
+      },
+      {
+        "h": "Getting anywhere",
+        "html": "<p><strong>Throw while moving.</strong> Standing still to aim is how you get hit. The mouse aims independently of which way you are running, which is the whole point of the control scheme.</p>\n<p><strong>Crouch under things.</strong> S drops you low, and a great deal of what is thrown at you passes over a crouching character.</p>\n<p><strong>Rocks are limited.</strong> You carry a finite number and you will run out. Picking up more is often the real objective of a room.</p>\n<p><strong>The Trouble door first.</strong> Of the three branches it is the gentlest, and it teaches the movement without the rooms that punish it.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the original Dark Castle?",
+        "a": "Yes — version 1.2 of the 1986 Macintosh release, in black and white, as it shipped. Not Return to Dark Castle and not any of the later console conversions, which look and play quite differently."
+      },
+      {
+        "q": "Why are the controls split between mouse and keyboard?",
+        "a": "Because you aim and move independently. The left hand runs, jumps and crouches; the right hand aims and throws. It is awkward for an hour and then it is the reason the game works."
+      },
+      {
+        "q": "It is too hard.",
+        "a": "Turn the difficulty down in the Options menu, and start with the Trouble door. The game was designed for people who would play it for weeks."
+      },
+      {
+        "q": "Is the sound really digitised?",
+        "a": "Yes, and in 1986 that was remarkable. It is most of why the game shipped on two disks and most of why people remember it."
+      },
+      {
+        "q": "Who made it?",
+        "a": "Silicon Beach Software. Mark Stephen Pierce did the art, Jonathan Gay wrote the code — Gay later created the tool that became Macromedia Flash."
+      },
+      {
+        "q": "Are saves kept?",
+        "a": "Inside the emulated Mac, in your own browser. They survive closing the tab but not clearing site data."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li><a href=\"https://archive.org/details/mac_DarkCastle_1_2\" rel=\"noopener\">Internet Archive</a> — the preserved Macintosh disk this copy came from.</li><li><a href=\"https://macintoshgarden.org/games/dark-castle\" rel=\"noopener\">Macintosh Garden</a> — other releases, Beyond Dark Castle, and documentation.</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/crystal-quest/",
+        "title": "Crystal Quest",
+        "desc": "The other Mac action game people name."
+      },
+      {
+        "href": "/run/glider-pro/",
+        "title": "Glider PRO",
+        "desc": "Paper aeroplanes, gentler."
+      },
+      {
+        "href": "/run/macpaint/",
+        "title": "MacPaint",
+        "desc": "The same screen, used differently."
+      }
+    ],
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "waitMs": 16000
+        }
+      ]
+    },
+    "updated": "2026-09-20",
+    "addedDate": "2026-09-20",
+    "rank": 2,
+    "screenshot": true
+  },
+  {
+    "slug": "crystal-quest",
+    "title": "Play Crystal Quest (1987) Online — The Macintosh Classic",
+    "description": "Patrick Buckland's Crystal Quest, the Macintosh arcade game with the mouse controls and the voices, running in your browser.",
+    "keywords": "crystal quest, play crystal quest online, crystal quest mac, casady greene, patrick buckland, crystal quest 1987",
+    "ogTitle": "Crystal Quest (1987) in your browser",
+    "ogDescription": "The Macintosh arcade classic, on an emulated Mac.",
+    "crumb": "Crystal Quest",
+    "h1": "Crystal Quest — collect, escape, repeat",
+    "appName": "Crystal Quest",
+    "appType": "game",
+    "author": "Casady & Greene",
+    "year": 1987,
+    "genre": [
+      "Action",
+      "Arcade"
+    ],
+    "categories": [
+      "Action"
+    ],
+    "era": "system-7",
+    "machine": "Mac-II",
+    "screen": {
+      "w": 640,
+      "h": 480,
+      "depth": 8
+    },
+    "bootDisk": "crystal-quest-v1",
+    "provenance": "grey",
+    "licenseReason": "Casady & Greene closed in 2003. A Crystal Quest remake appeared on Xbox Live Arcade in 2007, made by other people; it is a different program. This Macintosh original has not been sold in over twenty years. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/crystal-quest.md\" rel=\"noopener\">notices/crystal-quest.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>Gather the crystals, then fly to the exit. Do it while an increasing number of things that want to kill you fill the screen and learn your habits. There is no more to it than that, and Crystal Quest was one of the most-played Macintosh games ever released.</p>\n<p>It is controlled entirely with the mouse, which sounds like a compromise and is in fact the reason it feels so good.</p>",
+    "launchNote": "Boots to the Crystal Quest title screen on an emulated Macintosh II. Click to continue, and move with the mouse — your ship goes where you point.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Fly. The ship follows the pointer directly."
+      },
+      {
+        "keys": "Mouse button",
+        "does": "Fire, in the direction you are moving"
+      },
+      {
+        "keys": "Return",
+        "does": "Skip the instructions at the title screen"
+      },
+      {
+        "keys": "D",
+        "does": "Watch the demo"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh II, 640×480 colour</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Version</th><td>2.2.5</td></tr><tr><th>Saves</th><td>High scores live inside the emulated Mac, in your browser.</td></tr></tbody></table><p>Each wave drops a field of crystals and a set of enemies. Collect every crystal and the gate at the edge of the screen opens; fly through it and the next wave starts, harder.</p>\n<p>The mouse control is absolute rather than relative — the ship is where the pointer is — so you can cross the screen instantly if your hand can move that fast. That is the skill ceiling, and it is high.</p>"
+      },
+      {
+        "h": "The nasties",
+        "html": "<p>Enemies arrive by type and each behaves differently, which is the whole strategic layer. Some drift. Some home in. Some sit still and shoot. Some split when you kill them, and killing them at the wrong moment is worse than leaving them alone.</p>\n<p>Mines are the ones that get you. They do not chase — they simply sit in the path between you and the last crystal, and the game is very good at placing them where you were about to go.</p>\n<p>There is a bonus for finishing a wave quickly and a bigger one for not firing at all, which turns some waves into a pure evasion puzzle. Playing for score and playing to survive are genuinely different games.</p>"
+      },
+      {
+        "h": "The voices",
+        "html": "<p>Crystal Quest talks. It congratulates you, it insults you when you die, and the sampled voices — recorded by the developers, including a deadpan \"ooooh\" and a resigned \"that's nice\" — are the thing every person who played it remembers first.</p>\n<p>Patrick Buckland wrote the game; Casady & Greene, a Mac-only publisher with an unusually good ear for what the platform's users wanted, published it. Buckland later founded Rockstar Leeds. Casady & Greene closed in 2003, a Macintosh software house that outlived nearly all the others and is now mostly remembered for this and for Conflict Catcher.</p>\n<p>The sound files are still on the disk with their copyright notices in the filenames, which is a small and rather charming piece of 1994 housekeeping.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the original Crystal Quest?",
+        "a": "It is version 2.2.5, the Macintosh release by Casady & Greene. Not the 2007 Xbox Live Arcade remake, which is a different program by different people."
+      },
+      {
+        "q": "How do I control it?",
+        "a": "With the mouse alone. The ship goes exactly where you point, and the button fires in whatever direction you are moving."
+      },
+      {
+        "q": "Why can I not use the keyboard?",
+        "a": "The game was designed around the mouse, and the absolute positioning is the point — you can cross the screen as fast as your hand moves, which no keyboard would allow."
+      },
+      {
+        "q": "How do I score well?",
+        "a": "Finish waves quickly, and finish them without firing where you can. The no-shot bonus is large enough that some waves are best played as pure evasion."
+      },
+      {
+        "q": "Does it really talk?",
+        "a": "Yes. The sampled voices are the first thing most people remember about it, and the sound files are still sitting on the disk with their 1994 copyright notices in the filenames."
+      },
+      {
+        "q": "Are high scores kept?",
+        "a": "Inside the emulated Mac, in your own browser. They survive closing the tab but not clearing site data."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li><a href=\"https://archive.org/details/CrystalQuest_2_2_5M\" rel=\"noopener\">Internet Archive</a> — the preserved Macintosh disk this copy came from.</li><li><a href=\"https://macintoshgarden.org/games/crystal-quest\" rel=\"noopener\">Macintosh Garden</a> — other releases, Crystal Crazy, and documentation.</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/dark-castle/",
+        "title": "Dark Castle",
+        "desc": "The other Mac action classic."
+      },
+      {
+        "href": "/run/maelstrom/",
+        "title": "Maelstrom",
+        "desc": "Asteroids, later and prettier."
+      },
+      {
+        "href": "/run/arashi/",
+        "title": "Arashi",
+        "desc": "More of the same energy."
+      }
+    ],
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "waitMs": 16000
+        }
+      ]
+    },
+    "updated": "2026-09-20",
+    "addedDate": "2026-09-20",
+    "rank": 2,
     "screenshot": true
   }
 ]
