@@ -5,5 +5,9 @@
         "1a0720f53c357336e185d9e01ff98c17",
         "3f5f70021598ef52cdfc03e13905a7b8"
     ],
-    "chunkSize": 262144
+    "chunkSize": 262144,
+    "prefetchChunks": [
+        0,
+        1
+    ]
 }

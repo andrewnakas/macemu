@@ -720,54 +720,53 @@
   },
   {
     "slug": "oregon-trail",
-    "title": "The Oregon Trail (Mac, 1991) — How to Run the Classroom Version",
-    "description": "The 1991 Macintosh Oregon Trail: what it was, where to find a copy, and how to run it on an emulated Mac in your browser. Not hosted here.",
-    "keywords": "oregon trail online, play oregon trail, oregon trail mac, oregon trail 1991, oregon trail browser, mecc oregon trail",
-    "ogTitle": "The Oregon Trail — how to run it",
-    "ogDescription": "The 1991 Macintosh Oregon Trail: what it was, where to find a copy, and how to run it on an emulated Mac in your browser. Not hosted here.",
+    "title": "Play The Oregon Trail (Mac, 1990) Online in Your Browser",
+    "description": "The Macintosh Oregon Trail, the one from the school computer lab, running in your browser on an emulated Mac. Nothing to install.",
+    "keywords": "oregon trail online, play oregon trail, oregon trail mac, mecc oregon trail, oregon trail 1990, oregon trail browser",
+    "ogTitle": "The Oregon Trail in your browser",
+    "ogDescription": "MECC's Macintosh Oregon Trail, running on an emulated Mac.",
     "crumb": "The Oregon Trail",
-    "h1": "The Oregon Trail on a Macintosh, in a browser tab",
+    "h1": "The Oregon Trail — the computer-lab one",
     "appName": "The Oregon Trail",
     "appType": "game",
     "author": "MECC",
-    "year": 1991,
+    "year": 1990,
     "genre": [
-      "Educational",
       "Simulation",
+      "Educational",
       "Strategy"
     ],
     "categories": [
-      "Classroom classics",
-      "Puzzle & strategy"
+      "Classroom classics"
     ],
     "era": "system-7",
-    "machine": "Mac-SE",
+    "machine": "Mac-II",
     "ramMB": 16,
     "screen": {
-      "w": 512,
-      "h": 342,
-      "depth": 1
+      "w": 640,
+      "h": 480,
+      "depth": 8
     },
     "provenance": "grey",
-    "licenseReason": "MECC was wound up in the late 1990s and the trail passed through The Learning Company to Houghton Mifflin Harcourt. The 1991 Macintosh release has not been sold in any form for over twenty-five years and no rights holder distributes it today. It is here because a piece of software that taught a generation to spell \"dysentery\" should not only exist inside a cardboard box in somebody's garage. If you hold the rights and disagree, <a href=\"/takedown/\">say so</a> and it goes within 48 hours.",
+    "licenseReason": "MECC was a Minnesota state agency, then a company, then sold to SoftKey, then to The Learning Company, then to Mattel, and the trail eventually reached Houghton Mifflin Harcourt. The Macintosh release has not been sold in any form for more than twenty-five years, and no current product contains it — the 2021 mobile and Switch remakes are new software. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/oregon-trail.md\" rel=\"noopener\">notices/oregon-trail.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
     "verdict": {
       "kind": "good",
       "text": "Runs here"
     },
-    "intro": "<p>Nearly everybody who sat in front of a school Macintosh between 1991 and about 1998 played this. Not the Apple II green-screen original, and not the phone remake — <strong>this</strong> one: colour, a covered wagon rolling right to left across the bottom of the screen, and a river you were never quite sure whether to ford.</p>\n<p>It is the 1991 MECC release for the Macintosh. This page is a guide to it — what it was, how it played, and where to find a copy — with a loader that will run the copy you bring on an emulated Macintosh under System 7.</p>",
-    "launchNote": "Boots straight to the title screen. Click through and pick a profession — banker is easy mode, farmer is hard mode with triple points.",
+    "intro": "<p>Almost everyone who sat in front of a school Macintosh in the 1990s played this. Not the Apple II green-screen original, and not the phone remake — this one, with the drawn title screen, the general store at Independence, and the river you were never sure whether to ford.</p>\n<p>It is MECC's Macintosh release, and it runs here on an emulated Mac. You pick a profession, buy supplies with money you will immediately regret spending, and set out in April with five people in a wagon.</p>",
+    "launchNote": "Boots straight to the title screen on an emulated Macintosh II. Click Travel the Trail, choose a profession — banker is easy, farmer is hard and scores triple — and buy supplies before you leave.",
     "macControls": [
       {
         "keys": "Mouse",
-        "does": "Everything in the menus, the store and the map"
+        "does": "Everything: menus, the store, the map, the river crossing"
       },
       {
         "keys": "Arrow keys / mouse",
-        "does": "Move the rifle sight while hunting"
+        "does": "Move the sight while hunting"
       },
       {
         "keys": "Space",
-        "does": "Fire while hunting"
+        "does": "Fire, while hunting"
       },
       {
         "keys": "Return",
@@ -775,76 +774,72 @@
       },
       {
         "keys": "Cmd-Q",
-        "does": "Quit back to the Finder"
+        "does": "Quit to the Finder"
       }
     ],
     "sections": [
       {
         "h": "How it works & what to expect",
-        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh IIfx, 16 MB RAM, 640×480 at 256 colours</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Basilisk II, compiled to WebAssembly</td></tr><tr><th>Sound</th><td>Yes — click once inside the screen first, browsers block audio until you do</td></tr><tr><th>Saves</th><td>Kept in your browser. Clearing site data wipes them.</td></tr><tr><th>Mobile</th><td>Playable, but the hunting screen wants a real mouse</td></tr></tbody></table><p>The emulator is a full Macintosh, not a re-implementation of the game, so what you get is exactly what shipped: the same fonts, the same slightly-too-slow dialogue boxes, the same music. The first load pulls a few megabytes of disk image; after that your browser has it cached and startup is close to instant.</p>"
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh II, 640×480 colour</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Version</th><td>The MECC Macintosh release</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser. Do not keep anything irreplaceable there.</td></tr></tbody></table><p>This is the Macintosh build, so the art is the detailed pen-and-ink work the Mac version is known for rather than the blocky Apple II graphics. It uses a small palette — the title screen is essentially two-tone on parchment — which is what the machines of the day could manage and what the artists drew for.</p>\n<p>Everything is mouse-driven. The one thing worth knowing before you start is that the game does not warn you when you are making the decision that kills you; it just quietly notes it and lets you find out three weeks later.</p>"
       },
       {
-        "h": "What you are actually playing",
-        "html": "<p>You start in Independence, Missouri, in the spring of 1848, and you have about two thousand miles to cover before the snow closes the Blue Mountains. First you pick a profession, and the choice is the whole difficulty setting: a banker from Boston starts with plenty of money and scores lowest, a carpenter from Ohio sits in the middle, and a farmer from Illinois starts poor and scores triple.</p><p>Then you spend at Matt's General Store — oxen, food, clothing, spare wagon parts, ammunition — and the first real lesson of the game is that you cannot afford everything and the thing you skipped is the thing that breaks.</p><p>After that it is a long, grinding series of small decisions. How fast to travel. How much to eat. Whether to ford a river, caulk the wagon and float it, or pay a ferryman you suspect is robbing you. Whether to spend three days hunting when you can only carry a hundred pounds of what you shoot. People in your party get cholera, measles, typhoid, a broken leg, and — famously — dysentery, and the game reports it in the same flat tone it uses for the weather.</p><p>It was written as a teaching tool and it never stopped being one. What it teaches, mostly, is that the frontier was a logistics problem and the logistics usually won.</p>"
+        "h": "How not to die immediately",
+        "html": "<p><strong>Leave in April or May.</strong> Leave in March and you hit snow in the mountains. Leave in July and you hit snow in the mountains.</p>\n<p><strong>Buy more oxen than you think you need.</strong> A dead ox is a stopped wagon, and a stopped wagon in October is the end of the run. Two spare yoke is not excessive.</p>\n<p><strong>Do not shoot more than you can carry.</strong> Hunting is the most fun part of the game and the easiest way to waste a day: you can only haul a few hundred pounds back to the wagon, and everything else rots where it fell.</p>\n<p><strong>Slow the pace and raise the rations when people get sick.</strong> Grueling pace plus bare-bones rations is how a party of five becomes a party of one, and the game will let you do it all the way to the end.</p>\n<p><strong>Ford only shallow water.</strong> Under two and a half feet, ford it. Deeper than that, take the ferry or hire the guide and pay the money. Everyone learns this once, expensively.</p>"
       },
       {
-        "h": "Why the Mac version is the one people remember",
-        "html": "<p>The Oregon Trail had a long life before this. It began in 1971 as a text game typed into a teletype by three student teachers in Minnesota, ran on the Apple II through the 1980s in that famous green monochrome, and got a DOS release in 1990 that most people call Oregon Trail Deluxe.</p><p>The 1991 Macintosh version is the one that ended up in the school computer lab, because the school computer lab in the 1990s was a room full of Macs. It has the colour art, the hunting mini-game with the animated bison, the tombstones you could write yourself, and the ending where the game scores you on how many of your family survived.</p><p>If your memory of the game is a black-and-white screen and a keyboard-only interface, you are remembering the Apple II. If it is colour, a mouse, and a bison you could never carry, you are remembering this.</p>"
+        "h": "Why this version is the one people remember",
+        "html": "<p>The Oregon Trail started in 1971 as a text program written by three student teachers in Minnesota, typed into a mainframe and played over a teletype. MECC — the Minnesota Educational Computing Consortium — spent the next two decades rebuilding it for each new machine that arrived in schools.</p>\n<p>The Apple II version is the one with the historical claim; it is what put the game in classrooms in the first place. But the Macintosh release is the one most people picture, because it is what the school computer labs of the 1990s actually had, and because it is the first version that looked drawn rather than plotted.</p>\n<p>It is also a genuinely unusual piece of educational software: it teaches by killing you. There is no quiz and no score screen explaining what you should have learned. There is a long journey, a set of resources, and a river.</p>"
       }
     ],
     "faq": [
       {
         "q": "Is this the version I played at school?",
-        "a": "Almost certainly, if you were at school in the 1990s and the lab had Macintoshes. This is the 1991 MECC Macintosh release with colour graphics and the mouse-driven hunting screen. The green-on-black keyboard-only game is the earlier Apple II version, and the one with 3D wagons is Oregon Trail II from 1995."
+        "a": "If you were on a Macintosh, almost certainly. This is MECC's Macintosh release — the drawn artwork, the mouse-driven store, the ford-or-ferry decision. The Apple II original looks quite different."
       },
       {
-        "q": "Do I need to install or download anything?",
-        "a": "No. The emulator is WebAssembly and runs inside the page. Nothing is installed on your computer and nothing you do is uploaded anywhere."
-      },
-      {
-        "q": "Will my game be saved if I close the tab?",
-        "a": "Yes. Saves are written to the emulated Mac's hard disk, which is stored in your own browser. They survive closing the tab and restarting the computer. They do not survive clearing site data, and they do not follow you to another browser or another device."
+        "q": "Do I need to install anything?",
+        "a": "No. The emulated Mac and the disk both load in the page. There is nothing to download and no plugin."
       },
       {
         "q": "Why do I keep dying of dysentery?",
-        "a": "Dysentery in the game is driven mostly by how hard you are pushing the party: a grueling pace plus bare-bones rations plus bad weather is the combination that kills. Slow down to a steady pace and move to filling rations for a few days when someone gets ill, and rest when the game offers it."
+        "a": "Bad water and a hard pace. Slow down, raise the rations, and rest when someone falls ill. The game is happy to let you push a sick party until nobody is left."
       },
       {
         "q": "Should I ford the river or take the ferry?",
-        "a": "Check the depth first — the game tells you. Under about two and a half feet, fording is usually safe. Deeper than that and you are gambling your oxen, your food and sometimes a person against the ferry fee. Caulking and floating is the middle option and it is riskier than it sounds in a fast current."
+        "a": "Ford it if the depth is under about two and a half feet. Deeper than that and you are gambling your oxen, your supplies and usually a person against the cost of the ferry."
+      },
+      {
+        "q": "Which profession should I pick?",
+        "a": "Banker starts rich and scores single points. Carpenter is the middle. Farmer starts poor, scores triple, and is the one to pick once you have finished the trail at least once."
+      },
+      {
+        "q": "Will my game be saved if I close the tab?",
+        "a": "Saves live inside the emulated Mac, in your own browser. They survive closing the tab but not clearing site data, and they do not follow you to another device."
       },
       {
         "q": "Can I play it on a phone?",
-        "a": "Yes, though it is fiddly. The menus and the store work fine with taps. The hunting screen expects a mouse you can move smoothly, and a touchscreen makes it much harder than it should be."
-      },
-      {
-        "q": "Is this legal?",
-        "a": "The game has not been sold in this form for more than twenty-five years and no rights holder distributes it. That is not the same as it being public domain, and this site does not pretend otherwise. There is a takedown page and a 48-hour promise behind it."
-      },
-      {
-        "q": "Where can I get my own copy?",
-        "a": "The Internet Archive and Macintosh Garden both carry MECC's Macintosh releases. Both are linked below. If you would rather run your own file than ours, the loader on this site will take it."
+        "a": "It will load, but the game expects a mouse and a keyboard for hunting, so a desktop or laptop is much better."
       }
     ],
     "download": {
-      "heading": "Getting an original copy",
-      "html": "<p>If you would rather bring your own file — or you want the disk images for a real Macintosh — these are the two archives worth your time:</p><ul><li><a href=\"https://macintoshgarden.org/games/the-oregon-trail\" rel=\"noopener\">Macintosh Garden</a> — the Mac abandonware archive, with screenshots, manuals and multiple releases.</li><li><a href=\"https://archive.org/details/OregonTrailMacintosh\" rel=\"noopener\">Internet Archive</a> — the Macintosh version, preserved and playable there too.</li></ul><p>Drop whatever you get into <a href=\"/load-mac-file/\">the loader</a> and it opens on an emulated Mac here.</p>"
+      "heading": "Archives and originals",
+      "html": "<ul><li><a href=\"https://archive.org/details/OregonTrailMacintosh\" rel=\"noopener\">Internet Archive</a> — the preserved Macintosh disk this copy came from.</li><li><a href=\"https://macintoshgarden.org/games/the-oregon-trail\" rel=\"noopener\">Macintosh Garden</a> — other Macintosh releases, manuals and box scans.</li></ul>"
     },
     "related": [
       {
-        "href": "/run/number-munchers/",
-        "title": "Number Munchers",
-        "desc": "The other MECC game that ate your maths lesson."
+        "href": "/run/super-munchers/",
+        "title": "Super Munchers",
+        "desc": "The other MECC game from the same lab."
       },
       {
-        "href": "/run/kid-pix/",
-        "title": "Kid Pix",
-        "desc": "The drawing program from the same computer lab."
+        "href": "/run/carmen-sandiego-europe/",
+        "title": "Carmen Sandiego",
+        "desc": "The other one that taught geography by accident."
       },
       {
-        "href": "/collection/system-7/",
-        "title": "More System 7 software",
-        "desc": "Everything from the era this ran in."
+        "href": "/run/reader-rabbit/",
+        "title": "Reader Rabbit",
+        "desc": "The one from the year below."
       }
     ],
     "byo": {
@@ -864,7 +859,7 @@
     "addedDate": "2026-09-13",
     "rank": 1,
     "bootDisk": "oregon-trail-v1",
-    "draft": true
+    "screenshot": true
   },
   {
     "slug": "marathon",
@@ -2053,18 +2048,20 @@
   },
   {
     "slug": "lode-runner",
-    "title": "Play Lode Runner (1985) Online in Your Browser",
-    "description": "Lode Runner for the Macintosh, running in your browser on an emulated Mac. Nothing to install.",
-    "keywords": "lode runner, play lode runner online, lode runner mac",
+    "title": "Play Lode Runner (1985) Online — The Macintosh Version",
+    "description": "Broderbund's Lode Runner for the Macintosh, with the level editor, running in your browser. 150 levels and nothing to install.",
+    "keywords": "lode runner, play lode runner online, lode runner mac, broderbund lode runner, lode runner 1985",
     "ogTitle": "Lode Runner (1985) in your browser",
-    "ogDescription": "Lode Runner on an emulated Macintosh.",
+    "ogDescription": "Broderbund's ladder-and-gold classic on an emulated Macintosh.",
     "crumb": "Lode Runner",
-    "h1": "Lode Runner",
+    "h1": "Lode Runner — dig, drop, run",
     "appName": "Lode Runner",
     "appType": "game",
     "author": "Broderbund",
     "year": 1985,
     "genre": [
+      "Puzzle",
+      "Platform",
       "Action"
     ],
     "categories": [
@@ -2079,40 +2076,94 @@
     },
     "bootDisk": "lode-runner-v1",
     "provenance": "grey",
-    "licenseReason": "DRAFT — not yet written.",
+    "licenseReason": "Doug Smith sold Lode Runner to Broderbund in 1983; the property passed to Tozai Games, who still sell modern remakes under the name. Those remakes are new software. This is the 1985 Macintosh release, which no one has sold in forty years and which Tozai does not distribute in any form. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/lode-runner.md\" rel=\"noopener\">notices/lode-runner.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
     "verdict": {
       "kind": "good",
       "text": "Runs here"
     },
-    "intro": "<p>DRAFT.</p>",
-    "launchNote": "Boots straight into Lode Runner.",
+    "intro": "<p>You are a small figure in a lattice of brick and ladders. There is gold on the screen and guards chasing you, and your only weapon is the ability to dig a hole in the floor beside you. A guard falls in. The hole fills back up. You get on with it.</p>\n<p>That is the whole game, and Broderbund built 150 levels out of it. This is the Macintosh version, and it includes the level editor that turned a puzzle game into a thing people made things with.</p>",
+    "launchNote": "Boots straight into Lode Runner on an emulated Macintosh SE. The Game menu starts a new game; Editor opens the level designer.",
     "macControls": [
       {
-        "keys": "Mouse",
-        "does": "Everything"
+        "keys": "Arrow keys",
+        "does": "Run left and right, climb ladders, hang along ropes"
+      },
+      {
+        "keys": "Z / X, or comma / period",
+        "does": "Dig left, dig right"
+      },
+      {
+        "keys": "Game menu",
+        "does": "New game, choose a starting level, pause"
+      },
+      {
+        "keys": "Editor menu",
+        "does": "Build and save your own levels"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
       }
     ],
     "sections": [
       {
         "h": "How it works & what to expect",
-        "html": "<p>DRAFT.</p>"
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh SE, 512×342 black and white</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Version</th><td>1.0, the Macintosh release</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser. Do not keep anything irreplaceable there.</td></tr></tbody></table><p>The whole game is on one screen at a time, in black and white, which is all it ever needed. Collect every piece of gold on a level and a ladder appears that takes you to the next one.</p>\n<p>Digging is the entire trick. You cannot jump, you cannot fight, and you cannot outrun a guard forever. You can only remove a piece of floor next to you, which a guard will then fall into, and which will heal shut after a few seconds — with the guard inside it if you were fast enough, and with you inside it if you were not.</p>"
+      },
+      {
+        "h": "Why it is harder than it looks",
+        "html": "<p>Every level is a small logic problem wearing an action game's clothes. The gold is reachable, but usually only in one order, and often only if you have already trapped a guard somewhere useful — a guard standing in a hole is a platform you can run across.</p>\n<p>Guards also carry gold. A guard who picks up a piece drops it when he falls, which means some levels cannot be finished without deliberately letting one rob you first. Working that out is the moment the game stops being about reflexes.</p>\n<p>The later levels are pure trap design: a wrong dig walls you in permanently, and the game will happily let you stand in a sealed pocket of brick until you give up and restart the level.</p>"
+      },
+      {
+        "h": "The editor, and what it started",
+        "html": "<p>Lode Runner shipped with a level editor in 1983, which was close to unheard of. Not a hidden debug mode — a documented feature, on the menu, with a save command.</p>\n<p>The result was that people made levels and swapped them on disks and over bulletin boards, and a game with 150 levels effectively never ran out. It is one of the earliest mainstream examples of a game treating its own content as something players should be making, which is now such a normal idea that it is strange to point at.</p>\n<p>The editor is on the menu bar here, and the levels you build save into the emulated Mac.</p>"
       }
     ],
     "faq": [
       {
-        "q": "Is this the original?",
-        "a": "Yes."
+        "q": "Is this the original Lode Runner?",
+        "a": "It is the Macintosh release of it, version 1.0, in black and white with all 150 levels and the editor. Not Lode Runner Legacy or any of the later Tozai remakes, which are new games."
+      },
+      {
+        "q": "How do I dig?",
+        "a": "Z and X dig the floor to your left and right. You cannot dig the floor you are standing on, and you cannot dig solid stone — only the brick."
+      },
+      {
+        "q": "I have walled myself in. Now what?",
+        "a": "Restart the level. The game does not consider this a bug, and the later levels are designed so that a careless dig is fatal."
+      },
+      {
+        "q": "Can I make my own levels?",
+        "a": "Yes — the Editor menu is the original level designer, and it saves into the emulated Mac's disk. That disk lives in your browser, so treat anything you build there as temporary."
+      },
+      {
+        "q": "Why is it black and white?",
+        "a": "The Macintosh in 1985 was black and white. The game is drawn entirely in one-bit patterns and does not lose anything for it."
+      },
+      {
+        "q": "Why does it run on an emulated SE rather than something faster?",
+        "a": "It is a 1985 black-and-white build and a compact Mac is the machine it was written for. A faster colour Mac gains it nothing and risks the colour-screen problems that catch other titles from this era."
       }
     ],
     "download": {
       "heading": "Archives",
-      "html": "<ul><li>DRAFT</li></ul>"
+      "html": "<ul><li><a href=\"https://archive.org/details/LodeRunner_v10_4amMacCrack\" rel=\"noopener\">Internet Archive</a> — the preserved Macintosh floppy this copy came from.</li><li><a href=\"https://macintoshgarden.org/games/lode-runner\" rel=\"noopener\">Macintosh Garden</a> — other releases, manuals and box scans.</li></ul>"
     },
     "related": [
       {
-        "href": "/run/simcity/",
-        "title": "SimCity",
-        "desc": "The original."
+        "href": "/run/rogue/",
+        "title": "Rogue",
+        "desc": "The other 1985 floppy here."
+      },
+      {
+        "href": "/run/pipe-dream/",
+        "title": "Pipe Dream",
+        "desc": "The other one that is quietly a puzzle game."
+      },
+      {
+        "href": "/collection/system-6/",
+        "title": "More early Mac software",
+        "desc": "The black-and-white years."
       }
     ],
     "shotSetup": {
@@ -2128,24 +2179,25 @@
     },
     "updated": "2026-09-20",
     "addedDate": "2026-09-20",
-    "rank": 9,
-    "draft": true
+    "rank": 3,
+    "screenshot": true
   },
   {
     "slug": "shanghai",
-    "title": "Play Shanghai (1986) Online in Your Browser",
-    "description": "Shanghai for the Macintosh, running in your browser on an emulated Mac. Nothing to install.",
-    "keywords": "shanghai, play shanghai online, shanghai mac",
+    "title": "Play Shanghai (1986) Online — The Original Mahjong Solitaire",
+    "description": "Activision's Shanghai for the Macintosh, the game that invented mahjong solitaire, booting from its original floppy in your browser.",
+    "keywords": "shanghai 1986, play shanghai online, mahjong solitaire original, shanghai activision, shanghai mac, brodie lockard",
     "ogTitle": "Shanghai (1986) in your browser",
-    "ogDescription": "Shanghai on an emulated Macintosh.",
+    "ogDescription": "The original mahjong solitaire, on an emulated Macintosh.",
     "crumb": "Shanghai",
-    "h1": "Shanghai",
+    "h1": "Shanghai — where mahjong solitaire came from",
     "appName": "Shanghai",
     "appType": "game",
     "author": "Activision",
     "year": 1986,
     "genre": [
-      "Puzzle"
+      "Puzzle",
+      "Tile matching"
     ],
     "categories": [
       "Puzzle & strategy"
@@ -2159,40 +2211,86 @@
     },
     "bootDisk": "shanghai-floppy-v1",
     "provenance": "grey",
-    "licenseReason": "DRAFT — not yet written.",
+    "licenseReason": "Shanghai was written by Brodie Lockard and published by Activision in 1986. Activision still exists and has sold Shanghai games since, but not this one — the 1986 Macintosh release has not been distributed by anyone in nearly forty years. The tile layout it invented is now a public genre with hundreds of free implementations; this page is about the original artefact. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/shanghai.md\" rel=\"noopener\">notices/shanghai.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
     "verdict": {
       "kind": "good",
       "text": "Runs here"
     },
-    "intro": "<p>DRAFT.</p>",
-    "launchNote": "Boots straight into Shanghai.",
+    "intro": "<p>If you have ever cleared a pile of mahjong tiles by matching free pairs, you have played a copy of this. Shanghai is where that layout came from — not a folk game, not a traditional pastime, but a specific piece of software written by one person in 1986.</p>\n<p>This is the Macintosh version, booting from its own floppy, in black and white, with the tile set drawn small enough to fit a compact Mac's screen.</p>",
+    "launchNote": "Boots from the original floppy on an emulated Macintosh Plus. Click one free tile, then a matching free tile, and they both go.",
     "macControls": [
       {
         "keys": "Mouse",
-        "does": "Everything"
+        "does": "Click a tile, then its match. Both have to be free."
+      },
+      {
+        "keys": "Menus",
+        "does": "New game, layout, hints and the tournament mode"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit"
       }
     ],
     "sections": [
       {
         "h": "How it works & what to expect",
-        "html": "<p>DRAFT.</p>"
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh Plus, 512×342 black and white</td></tr><tr><th>System</th><td>The floppy's own — this disk boots itself</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Version</th><td>1.0, the Macintosh release</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser. Do not keep anything irreplaceable there.</td></tr></tbody></table><p>Like Rogue, this one boots from the original disk rather than from a System 7 hard disk, because the 1986 application does not survive System 7.5.3 — it takes the machine down with it. The floppy carries its own System and names Shanghai as the startup program, so the emulated Mac Plus comes up directly in the game.</p>\n<p>A tile is free if nothing sits on top of it and at least one of its left or right edges is clear. Click two free tiles that match and they are removed. Clear all 144 and you have won, which happens less often than you would think.</p>"
+      },
+      {
+        "h": "Not actually mahjong",
+        "html": "<p>Shanghai uses a mahjong tile set and almost nothing else from mahjong. The real game is a four-player game of draws and discards with scoring rules that take a while to learn. What Brodie Lockard built is a solitaire puzzle that happens to use the same 144 tiles.</p>\n<p>Lockard based the layout on a design he had read about — the \"turtle\" arrangement — and wrote the first version on the PLATO system while recovering from a gymnastics accident that had left him almost entirely paralysed. Activision picked it up and published it on the Macintosh in 1986.</p>\n<p>It is worth saying plainly because the misunderstanding is so widespread: this is a 1986 computer game with an inventor, not an ancient Chinese pastime. The confusion is itself a measure of how completely it took over.</p>"
+      },
+      {
+        "h": "Why it is not always winnable",
+        "html": "<p>The tiles are dealt into the layout at random, and the game does not check that the deal can be solved. Some deals cannot be. You can play perfectly and still reach a board with four tiles left where the only pair is stacked on itself.</p>\n<p>Later mahjong solitaire games usually guarantee a solvable deal, which makes them fairer and slightly less interesting. Here, part of the skill is reading the board early — clearing the tiles that unlock the most, and being careful about breaking up a set of four when the other two are buried.</p>"
       }
     ],
     "faq": [
       {
-        "q": "Is this the original?",
-        "a": "Yes."
+        "q": "Is this the original mahjong solitaire?",
+        "a": "Yes. Brodie Lockard wrote it, Activision published it in 1986, and every mahjong solitaire game since is a descendant of this layout."
+      },
+      {
+        "q": "Is it really mahjong?",
+        "a": "No. It borrows the tiles. Mahjong proper is a four-player game with draws, discards and scoring; this is a solitaire puzzle that uses the same tile set."
+      },
+      {
+        "q": "Why can I not always win?",
+        "a": "Because the deal is not checked for solvability. Some boards are dead from the start, which is a genuine property of the original and not a fault in the emulation."
+      },
+      {
+        "q": "Why does it boot straight into the game?",
+        "a": "The floppy names Shanghai as the startup program rather than the Finder, so the machine comes up in the game. The 1986 application will not run under System 7 at all, so this is also the only way it works."
+      },
+      {
+        "q": "How do I know if a tile is free?",
+        "a": "Nothing on top of it, and nothing immediately to its left or immediately to its right. A tile with neighbours on both sides is locked even if it is on the top layer."
+      },
+      {
+        "q": "Can I keep a game in progress?",
+        "a": "Only inside the emulated Mac, which lives in your browser. It survives closing the tab and does not survive clearing site data."
       }
     ],
     "download": {
       "heading": "Archives",
-      "html": "<ul><li>DRAFT</li></ul>"
+      "html": "<ul><li><a href=\"https://archive.org/details/ShanghaiSanIncCrack\" rel=\"noopener\">Internet Archive</a> — the preserved 1986 Macintosh floppy this copy boots from.</li><li><a href=\"https://macintoshgarden.org/games/shanghai\" rel=\"noopener\">Macintosh Garden</a> — other releases and documentation.</li></ul>"
     },
     "related": [
       {
-        "href": "/run/simcity/",
-        "title": "SimCity",
-        "desc": "The original."
+        "href": "/run/rogue/",
+        "title": "Rogue",
+        "desc": "The other self-booting floppy here."
+      },
+      {
+        "href": "/run/pipe-dream/",
+        "title": "Pipe Dream",
+        "desc": "Another puzzle that looks like an action game."
+      },
+      {
+        "href": "/collection/system-6/",
+        "title": "More early Mac software",
+        "desc": "The black-and-white years."
       }
     ],
     "shotSetup": {
@@ -2208,24 +2306,26 @@
     },
     "updated": "2026-09-20",
     "addedDate": "2026-09-20",
-    "rank": 9,
-    "draft": true
+    "rank": 4,
+    "screenshot": true
   },
   {
     "slug": "rogue",
-    "title": "Play Rogue (1985) Online in Your Browser",
-    "description": "Rogue for the Macintosh, running in your browser on an emulated Mac. Nothing to install.",
-    "keywords": "rogue, play rogue online, rogue mac",
+    "title": "Play Rogue (1985) Online — The Macintosh Version",
+    "description": "Epyx's Macintosh Rogue, the one with real graphics instead of letters, booting from its original 1985 floppy in your browser.",
+    "keywords": "rogue 1985, play rogue online, rogue macintosh, epyx rogue, roguelike original, rogue mac",
     "ogTitle": "Rogue (1985) in your browser",
-    "ogDescription": "Rogue on an emulated Macintosh.",
+    "ogDescription": "The Macintosh Rogue, booting from its original floppy on an emulated Mac Plus.",
     "crumb": "Rogue",
-    "h1": "Rogue",
+    "h1": "Rogue — the Macintosh one, with pictures",
     "appName": "Rogue",
     "appType": "game",
-    "author": "Epyx",
+    "author": "Epyx / A.I. Design",
     "year": 1985,
     "genre": [
-      "Roguelike"
+      "Roguelike",
+      "Dungeon crawl",
+      "RPG"
     ],
     "categories": [
       "Puzzle & strategy"
@@ -2239,40 +2339,94 @@
     },
     "bootDisk": "rogue-floppy-v1",
     "provenance": "grey",
-    "licenseReason": "DRAFT — not yet written.",
+    "licenseReason": "Rogue began in 1980 as a free game written by Michael Toy, Glenn Wichman and Ken Arnold, and the original BSD source has been freely available for decades. This is not that: it is the 1985 commercial Macintosh port A.I. Design made for Epyx, which redrew the whole game in icons. Epyx went bankrupt in 1993, its catalogue scattered, and no one has sold this version in forty years. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/rogue.md\" rel=\"noopener\">notices/rogue.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
     "verdict": {
       "kind": "good",
       "text": "Runs here"
     },
-    "intro": "<p>DRAFT.</p>",
-    "launchNote": "Boots straight into Rogue.",
+    "intro": "<p>Everyone who has played a roguelike has played a descendant of this. Rogue invented the whole shape of it in 1980 — a dungeon generated fresh every time, permanent death, and items whose identity you have to work out by using them and finding out.</p>\n<p>The original was letters on a terminal. This is the 1985 Macintosh version, where A.I. Design threw away the letters and drew everything. The dungeon is the same dungeon, and it still kills you.</p>",
+    "launchNote": "Boots from the original 1985 floppy on an emulated Macintosh Plus, exactly as it shipped: type a name, click Play Rogue, and go down.",
     "macControls": [
       {
+        "keys": "Arrow keys",
+        "does": "Move one square, or attack what is next to you"
+      },
+      {
         "keys": "Mouse",
-        "does": "Everything"
+        "does": "Click a square to move there; click an item to pick it up"
+      },
+      {
+        "keys": "Menus",
+        "does": "Inventory, wielding, wearing, reading, quaffing, throwing"
+      },
+      {
+        "keys": ">",
+        "does": "Go down the staircase"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit — which saves and ends the run"
       }
     ],
     "sections": [
       {
         "h": "How it works & what to expect",
-        "html": "<p>DRAFT.</p>"
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh Plus, 512×342 black and white</td></tr><tr><th>System</th><td>The floppy's own — this disk boots itself</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Version</th><td>The 1985 Epyx release for the Macintosh</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser. Do not keep anything irreplaceable there.</td></tr></tbody></table><p>This one runs differently from most of the catalogue, and the difference is worth explaining. Nearly every title here is copied onto a System 7 hard disk that boots and then launches it. Rogue will not tolerate that — launch it under System 7.5.3 and it takes the whole machine down hard enough that the Mac resets and asks for a startup disk.</p>\n<p>It does not need one. The original floppy names <em>Rogue itself</em> as the startup program, where a normal disk names the Finder. There is no desktop, no menu bar you did not ask for, no Finder at all: the machine boots directly into the game, which is exactly what a 1985 Epyx disk did. So that is how it runs here, on a Macintosh Plus, from the disk as it shipped.</p>"
+      },
+      {
+        "h": "What you are actually playing",
+        "html": "<p>You are in a dungeon of twenty-six levels looking for the Amulet of Yendor, which is on the bottom. Then you have to carry it back up. Almost nobody does.</p>\n<p>Every floor is generated when you arrive, so there is nothing to memorise and no map to look up. Potions and scrolls are unidentified — a potion is \"a blue potion\" until you drink one, and it might heal you or blind you. Monsters are lettered in the original and drawn here, and they get worse as you descend: the kestrel on level two is a nuisance, and the dragon on level twenty is not.</p>\n<p>Death is permanent. There is no reloading a good save, because the save is deleted when you resume it. That rule is the reason the genre exists, and it is the reason a run feels like it matters.</p>"
+      },
+      {
+        "h": "Why this version looks different",
+        "html": "<p>Rogue was written for terminals, so it was made of letters: @ was you, Z was a zombie, and a room was drawn in dashes and pipes. That constraint became the genre's signature, and plenty of modern roguelikes still choose it deliberately.</p>\n<p>A.I. Design ported Rogue to the IBM PC and then the Macintosh for Epyx, and on a Mac in 1985 you had a bitmapped screen and a mouse, so they used them. The monsters are little drawings. The dungeon is drawn in a tile set. You can click where you want to walk. It is the same game underneath — same generator, same identification puzzle, same permadeath — wearing the only interface the Macintosh had.</p>\n<p>It is also a small piece of history in its own right: one of the earliest examples of a text-only game being rebuilt around a graphical interface rather than simply given a font.</p>"
       }
     ],
     "faq": [
       {
-        "q": "Is this the original?",
-        "a": "Yes."
+        "q": "Is this the original Rogue?",
+        "a": "It is the original game in its 1985 Macintosh clothes. The 1980 original was letters on a terminal; this is the commercial Macintosh port A.I. Design made for Epyx, with the same dungeon generator and rules."
+      },
+      {
+        "q": "Why does it boot straight into the game with no desktop?",
+        "a": "Because the floppy names Rogue as the machine's startup program instead of the Finder. It was a self-booting game disk, and it still is."
+      },
+      {
+        "q": "Why a Macintosh Plus and not something newer?",
+        "a": "Because it does not survive anything newer. Under System 7.5.3 it crashes the machine outright. On the Mac Plus, with the System that shipped on the disk, it runs as it always did."
+      },
+      {
+        "q": "Can I save and come back?",
+        "a": "You can save, and resuming deletes the save — which is the rule the whole genre is built on. Saves also live inside your browser's copy of the emulated Mac, so treat them as temporary."
+      },
+      {
+        "q": "How far down is the Amulet?",
+        "a": "Level twenty-six. Getting there is the first half of the game; carrying it back up to the surface is the half nobody talks about because so few people see it."
+      },
+      {
+        "q": "What should I do first?",
+        "a": "Read the scrolls and drink the potions you find while you are still shallow and they cannot kill you. Learning what a blue potion does on level two is much cheaper than finding out on level fifteen."
       }
     ],
     "download": {
-      "heading": "Archives",
-      "html": "<ul><li>DRAFT</li></ul>"
+      "heading": "Source and archives",
+      "html": "<ul><li><a href=\"https://archive.org/details/RogueSanIncCrack\" rel=\"noopener\">Internet Archive</a> — the preserved 1985 Macintosh floppy this copy boots from.</li><li><a href=\"https://britzl.github.io/roguearchive/\" rel=\"noopener\">The Rogue Archive</a> — source and binaries for the original versions across every platform it reached.</li></ul>"
     },
     "related": [
       {
-        "href": "/run/simcity/",
-        "title": "SimCity",
-        "desc": "The original."
+        "href": "/run/shanghai/",
+        "title": "Shanghai",
+        "desc": "The other self-booting 1986 floppy here."
+      },
+      {
+        "href": "/run/lode-runner/",
+        "title": "Lode Runner",
+        "desc": "1985, and still difficult."
+      },
+      {
+        "href": "/collection/system-6/",
+        "title": "More early Mac software",
+        "desc": "The black-and-white years."
       }
     ],
     "shotSetup": {
@@ -2288,24 +2442,25 @@
     },
     "updated": "2026-09-20",
     "addedDate": "2026-09-20",
-    "rank": 9,
-    "draft": true
+    "rank": 4,
+    "screenshot": true
   },
   {
     "slug": "math-blaster",
-    "title": "Play Math Blaster (1986) Online in Your Browser",
-    "description": "Math Blaster for the Macintosh, running in your browser on an emulated Mac. Nothing to install.",
-    "keywords": "math blaster, play math blaster online, math blaster mac",
+    "title": "Play Math Blaster (1986) Online — The Macintosh Version",
+    "description": "Davidson's Math Blaster for the Macintosh, running in your browser. Addition through percentages, with the rocket, and nothing to install.",
+    "keywords": "math blaster, play math blaster online, math blaster mac, davidson math blaster, math blaster 1986",
     "ogTitle": "Math Blaster (1986) in your browser",
-    "ogDescription": "Math Blaster on an emulated Macintosh.",
+    "ogDescription": "The original Math Blaster on an emulated Macintosh.",
     "crumb": "Math Blaster",
-    "h1": "Math Blaster",
+    "h1": "Math Blaster — the original one",
     "appName": "Math Blaster",
     "appType": "game",
     "author": "Davidson & Associates",
     "year": 1986,
     "genre": [
-      "Educational"
+      "Educational",
+      "Arcade"
     ],
     "categories": [
       "Classroom classics"
@@ -2319,40 +2474,94 @@
     },
     "bootDisk": "math-blaster-v1",
     "provenance": "grey",
-    "licenseReason": "DRAFT — not yet written.",
+    "licenseReason": "Davidson & Associates was bought by CUC International in 1996, became part of Knowledge Adventure, and Math Blaster products are still sold under that name today. Those are new software. This 1986 Macintosh build has not been sold by anyone in nearly forty years. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/math-blaster.md\" rel=\"noopener\">notices/math-blaster.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
     "verdict": {
       "kind": "good",
       "text": "Runs here"
     },
-    "intro": "<p>DRAFT.</p>",
-    "launchNote": "Boots straight into Math Blaster.",
+    "intro": "<p>Jan Davidson was a teacher who could not find software she wanted to use with her students, so she wrote some. Math Blaster was the result, and it sold well enough to build a company that defined educational software for a decade.</p>\n<p>This is the Macintosh release, and it is more than a drill: six topics from addition to percentages, five difficulty levels each, an editor for putting in your own problems, and a rocket game at the end that is the reason anyone remembers it.</p>",
+    "launchNote": "Boots straight into Math Blaster on an emulated Macintosh SE. Pick a topic from the icons, choose a level, and work through it.",
     "macControls": [
       {
         "keys": "Mouse",
-        "does": "Everything"
+        "does": "Choose a topic, a level and an activity"
+      },
+      {
+        "keys": "Number keys",
+        "does": "Type answers"
+      },
+      {
+        "keys": "Return",
+        "does": "Submit an answer"
+      },
+      {
+        "keys": "Arrow keys / Space",
+        "does": "Fly and fire in the Blaster game"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
       }
     ],
     "sections": [
       {
         "h": "How it works & what to expect",
-        "html": "<p>DRAFT.</p>"
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh SE, 512×342 black and white</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Version</th><td>1.0, the Macintosh release</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser. Do not keep anything irreplaceable there.</td></tr></tbody></table><p>The opening screen is the whole program: six subject icons — addition, subtraction, multiplication, division, fractions, decimals and percentages — plus \"Your Data\", which is where progress is recorded. Each subject has five levels, and the levels are real levels, not cosmetic ones.</p>\n<p>The original shipped with saved records for three children named Zachary, Lou Anne and Jeremy, and they are still on the disk here. They belonged to whoever owned this copy in the 1980s.</p>"
+      },
+      {
+        "h": "The four activities, and the rocket",
+        "html": "<p>Each topic offers the same four ways in. <strong>Look and Learn</strong> shows worked examples. <strong>Build-a-Problem</strong> has you assemble the problem rather than only answer it, which catches the children who can compute but cannot read a question. <strong>Solve the Problem</strong> is straight drill against the clock.</p>\n<p>And then <strong>Math Blaster</strong>, which is the arcade game: answers drift past on a rocket, you fly to the right one and fire. It is not sophisticated — it is a shooting gallery with sums in it — but it is the part every ten-year-old played for, and the part that made the drill tolerable.</p>\n<p>The design underneath is the interesting bit. The game does not make the maths easier when you struggle; it makes the presentation change. That was an unusual idea in 1986 and it is the reason the series lasted.</p>"
+      },
+      {
+        "h": "Where this came from",
+        "html": "<p>Jan Davidson taught, tutored, and in 1982 started writing software on an Apple II at her kitchen table. She and her husband Bob sold the early programs themselves, mailing disks out of the house. Math Blaster was the one that broke through.</p>\n<p>By the early 1990s Davidson & Associates was one of the largest educational software publishers in the United States, and it was sold in 1996 for around a billion dollars. Reading Blaster, Science Blaster and a long line of sequels followed, and Math Blaster games are still made today.</p>\n<p>The 1986 Macintosh original is a much smaller thing than any of them: one screen, six topics, a rocket, and an editor so that a teacher could put in their own problems. It is also, unmistakably, software written by somebody who had actually taught.</p>"
       }
     ],
     "faq": [
       {
-        "q": "Is this the original?",
-        "a": "Yes."
+        "q": "Is this the original Math Blaster?",
+        "a": "It is the 1986 Macintosh release of it — the first generation, in black and white, before the series became Blaster Learning System and everything after."
+      },
+      {
+        "q": "What can it teach?",
+        "a": "Addition, subtraction, multiplication, division, fractions, decimals and percentages, at five levels each."
+      },
+      {
+        "q": "Who are Zachary, Lou Anne and Jeremy?",
+        "a": "Saved student records that were on this disk when it was preserved. They belonged to whoever owned the copy in the 1980s, and they have been left where they were."
+      },
+      {
+        "q": "Can I add my own problems?",
+        "a": "Yes — the Editor menu lets you build problem sets, which is how it was meant to be used in a classroom. They save into the emulated Mac, which lives in your browser."
+      },
+      {
+        "q": "Where is the rocket game?",
+        "a": "Pick a topic and a level, then choose the Math Blaster activity. It is the fourth option and the reason most people remember the program."
+      },
+      {
+        "q": "Is it any good for a child today?",
+        "a": "The drill is sound and the arcade game still works, but the presentation is black-and-white 1986. It holds up better as a curiosity for an adult than as this year's maths homework."
       }
     ],
     "download": {
       "heading": "Archives",
-      "html": "<ul><li>DRAFT</li></ul>"
+      "html": "<ul><li><a href=\"https://archive.org/details/MathBlaster4amMacCrack\" rel=\"noopener\">Internet Archive</a> — the preserved Macintosh floppy this copy came from.</li><li><a href=\"https://macintoshgarden.org/apps/math-blaster\" rel=\"noopener\">Macintosh Garden</a> — other releases and documentation.</li></ul>"
     },
     "related": [
       {
-        "href": "/run/simcity/",
-        "title": "SimCity",
-        "desc": "The original."
+        "href": "/run/reader-rabbit/",
+        "title": "Reader Rabbit",
+        "desc": "The reading half of the same shelf."
+      },
+      {
+        "href": "/run/super-munchers/",
+        "title": "Super Munchers",
+        "desc": "MECC's version of the same idea."
+      },
+      {
+        "href": "/run/oregon-trail/",
+        "title": "The Oregon Trail",
+        "desc": "The computer-lab classic."
       }
     ],
     "shotSetup": {
@@ -2368,24 +2577,25 @@
     },
     "updated": "2026-09-20",
     "addedDate": "2026-09-20",
-    "rank": 9,
-    "draft": true
+    "rank": 5,
+    "screenshot": true
   },
   {
     "slug": "simearth",
-    "title": "Play SimEarth (1990) Online in Your Browser",
-    "description": "SimEarth for the Macintosh, running in your browser on an emulated Mac. Nothing to install.",
-    "keywords": "simearth, play simearth online, simearth mac",
+    "title": "Play SimEarth (1990) Online — The Macintosh Version",
+    "description": "Will Wright's SimEarth for the Macintosh, running in your browser. Run a planet for ten billion years, nothing to install.",
+    "keywords": "simearth, play simearth online, simearth mac, will wright simearth, maxis simearth, gaia simulation game",
     "ogTitle": "SimEarth (1990) in your browser",
-    "ogDescription": "SimEarth on an emulated Macintosh.",
+    "ogDescription": "Will Wright's planet simulator on an emulated Macintosh.",
     "crumb": "SimEarth",
-    "h1": "SimEarth",
+    "h1": "SimEarth — the whole planet, for ten billion years",
     "appName": "SimEarth",
     "appType": "game",
     "author": "Maxis",
     "year": 1990,
     "genre": [
-      "Simulation"
+      "Simulation",
+      "Strategy"
     ],
     "categories": [
       "Puzzle & strategy"
@@ -2399,40 +2609,94 @@
     },
     "bootDisk": "simearth-v1",
     "provenance": "grey",
-    "licenseReason": "DRAFT — not yet written.",
+    "licenseReason": "Maxis was bought by Electronic Arts in 1997 and closed in 2015. SimEarth has not been sold in any form for many years — it is absent from every current storefront, including EA's own. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/simearth.md\" rel=\"noopener\">notices/simearth.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
     "verdict": {
       "kind": "good",
       "text": "Runs here"
     },
-    "intro": "<p>DRAFT.</p>",
-    "launchNote": "Boots straight into SimEarth.",
+    "intro": "<p>SimCity gave you a city. SimEarth gives you a planet, a molten one, and about ten billion years to do something with it. You adjust the atmosphere and the plate tectonics, wait for single-celled life to appear, and then wait a great deal longer.</p>\n<p>It is the strangest thing Maxis ever published and probably the most ambitious. This is the Macintosh release, running here in black and white.</p>",
+    "launchNote": "Boots to the SimEarth desktop on an emulated Macintosh SE, with the help window open. Use File → New Planet, and start with Aquarium or a random planet rather than Earth.",
     "macControls": [
       {
         "keys": "Mouse",
-        "does": "Everything"
+        "does": "Everything — pick a tool from the palette, then click the map"
+      },
+      {
+        "keys": "Windows menu",
+        "does": "Map, Edit, Graphs, Tutorial and the model panels"
+      },
+      {
+        "keys": "Speed menu",
+        "does": "How fast time runs, from slow to as fast as the machine allows"
+      },
+      {
+        "keys": "Models menu",
+        "does": "Atmosphere, climate, life and civilisation controls"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
       }
     ],
     "sections": [
       {
         "h": "How it works & what to expect",
-        "html": "<p>DRAFT.</p>"
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh SE, 512×342 black and white</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Version</th><td>1.0, the black-and-white Macintosh build</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser. Do not keep anything irreplaceable there.</td></tr></tbody></table><p>SimEarth opens with its help window on top of the world map, which is exactly how it shipped and a fair warning about what kind of program this is. Read it. There is no way to work this one out by clicking around, and the game does not pretend otherwise.</p>\n<p>Start with the Aquarium or StagNation scenario, or a random planet. Starting on Earth is the obvious move and the wrong one, because Earth is already finished and there is very little left for you to cause.</p>"
+      },
+      {
+        "h": "What you actually do",
+        "html": "<p>You are not building anything. You are turning dials on a planetary model and watching what it does over geological time.</p>\n<p>The dials are real ones: continental drift speed, solar input, atmospheric composition, the rate at which life mutates. Raise carbon dioxide and the planet warms, ice retreats, and oceans rise over the land your species was living on. Speed up plate tectonics and you get more volcanoes, more mountains, and a great deal more extinction.</p>\n<p>Life arrives on its own if the conditions allow it, evolves through the geological ages, and eventually — if you are lucky and patient — develops technology, at which point it starts changing the atmosphere without consulting you. The end state is a civilisation that leaves the planet. Most runs end in a dead rock instead.</p>"
+      },
+      {
+        "h": "The game that was really a model",
+        "html": "<p>SimEarth was built with James Lovelock, whose Gaia hypothesis argued that the Earth's biosphere and its physical systems regulate each other as a single self-correcting whole. That is the model under the game, and Lovelock consulted on it directly.</p>\n<p>It made for a commercially awkward product. There is no opponent, no score worth chasing, and the time scale means a decision you take now shows its consequences several hundred million years later. Reviewers at the time were split between calling it brilliant and calling it a screensaver with menus.</p>\n<p>What it does have is the clearest statement of Will Wright's actual interest, which was never cities: he wanted to build systems complicated enough to surprise the person running them. SimEarth is that idea with nothing else in the way.</p>"
       }
     ],
     "faq": [
       {
-        "q": "Is this the original?",
-        "a": "Yes."
+        "q": "Is this the original SimEarth?",
+        "a": "Yes — the 1990 Macintosh release, black and white, as it shipped."
+      },
+      {
+        "q": "How do I start?",
+        "a": "File → New Planet, then pick Aquarium or a random planet. Skip the Earth scenario at first; there is very little left to do on a planet that has already finished."
+      },
+      {
+        "q": "Why is nothing happening?",
+        "a": "The time scale is geological. Raise the speed from the Speed menu and give it a while — events that matter are separated by millions of simulated years."
+      },
+      {
+        "q": "Is there a way to win?",
+        "a": "The nearest thing is getting an intelligent species to leave the planet, which takes patience and a stable climate. Most runs end in extinction, which the game treats as a perfectly good outcome."
+      },
+      {
+        "q": "Do I need the manual?",
+        "a": "It helps a great deal. SimEarth shipped with a thick one and the built-in help window is what is left of it. Open the Tutorial from the Windows menu before anything else."
+      },
+      {
+        "q": "Why black and white?",
+        "a": "This is the black-and-white Macintosh build, which is what ran on the compact Macs most people owned. The map is drawn entirely in dither patterns."
       }
     ],
     "download": {
       "heading": "Archives",
-      "html": "<ul><li>DRAFT</li></ul>"
+      "html": "<ul><li><a href=\"https://archive.org/details/SimEarth4amMacCrack\" rel=\"noopener\">Internet Archive</a> — the preserved Macintosh floppies this copy came from.</li><li><a href=\"https://macintoshgarden.org/games/simearth-the-living-planet\" rel=\"noopener\">Macintosh Garden</a> — other releases, manuals and box scans.</li></ul>"
     },
     "related": [
       {
         "href": "/run/simcity/",
         "title": "SimCity",
-        "desc": "The original."
+        "desc": "The one that started Maxis."
+      },
+      {
+        "href": "/run/pipe-dream/",
+        "title": "Pipe Dream",
+        "desc": "Something you can finish in five minutes."
+      },
+      {
+        "href": "/collection/system-7/",
+        "title": "More System 7 software",
+        "desc": "The rest of the catalogue."
       }
     ],
     "shotSetup": {
@@ -2448,29 +2712,29 @@
     },
     "updated": "2026-09-20",
     "addedDate": "2026-09-20",
-    "rank": 9,
-    "draft": true
+    "rank": 3,
+    "screenshot": true
   },
   {
     "slug": "reader-rabbit",
-    "title": "Play Reader Rabbit (1991) Online in Your Browser",
-    "description": "Reader Rabbit for the Macintosh, running in your browser on an emulated Mac. Nothing to install.",
-    "keywords": "reader rabbit, play reader rabbit online, reader rabbit mac",
-    "ogTitle": "Reader Rabbit (1991) in your browser",
-    "ogDescription": "Reader Rabbit on an emulated Macintosh.",
+    "title": "Play Reader Rabbit (1987) Online — The Macintosh Version",
+    "description": "The Learning Company's Reader Rabbit for the Macintosh, with the talking version, running in your browser. Nothing to install.",
+    "keywords": "reader rabbit, play reader rabbit online, reader rabbit mac, the learning company, reader rabbit 1987",
+    "ogTitle": "Reader Rabbit (1987) in your browser",
+    "ogDescription": "The Learning Company's reading game on an emulated Macintosh.",
     "crumb": "Reader Rabbit",
-    "h1": "Reader Rabbit",
+    "h1": "Reader Rabbit — the original four games",
     "appName": "Reader Rabbit",
     "appType": "game",
     "author": "The Learning Company",
-    "year": 1991,
+    "year": 1987,
     "genre": [
       "Educational"
     ],
     "categories": [
       "Classroom classics"
     ],
-    "era": "system-7",
+    "era": "system-6",
     "machine": "Mac-SE",
     "screen": {
       "w": 512,
@@ -2479,40 +2743,86 @@
     },
     "bootDisk": "reader-rabbit-v1",
     "provenance": "grey",
-    "licenseReason": "DRAFT — not yet written.",
+    "licenseReason": "The Learning Company passed through SoftKey, Mattel, Gores Technology and Houghton Mifflin Harcourt, and Reader Rabbit products have been published under the name since. Those are new software. This Macintosh build has not been sold in over thirty years. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/reader-rabbit.md\" rel=\"noopener\">notices/reader-rabbit.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
     "verdict": {
       "kind": "good",
       "text": "Runs here"
     },
-    "intro": "<p>DRAFT.</p>",
-    "launchNote": "Boots straight into Reader Rabbit.",
+    "intro": "<p>A rabbit in dungarees, a word factory, and a train pulling three-letter words across the screen. Reader Rabbit taught a very large number of people to read, and it did it with four small games and no story at all.</p>\n<p>This is the Macintosh version — black and white, and it talks, which in 1987 was the part that made people stop and look.</p>",
+    "launchNote": "Boots straight into Reader Rabbit on an emulated Macintosh SE. Click the mouse at the title screen to begin, then pick one of the four games.",
     "macControls": [
       {
         "keys": "Mouse",
-        "does": "Everything"
+        "does": "Everything — click to choose a game, click to pick a letter or word"
+      },
+      {
+        "keys": "Return",
+        "does": "Confirm"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
       }
     ],
     "sections": [
       {
         "h": "How it works & what to expect",
-        "html": "<p>DRAFT.</p>"
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh SE, 512×342 black and white</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Version</th><td>2.0, the Macintosh release</td></tr><tr><th>Speech</th><td>MacinTalk, Apple's 1984 speech synthesiser</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser.</td></tr></tbody></table><p>The disk this came from carried MacinTalk beside the application — Apple's speech synthesiser, released in 1984 and quietly one of the reasons the Macintosh felt like the future. Reader Rabbit uses it to say the words aloud, and it has been installed into the System Folder here so that it does.</p>\n<p>It does not sound good. It sounded extraordinary at the time.</p>"
+      },
+      {
+        "h": "The four games",
+        "html": "<p><strong>Sorter</strong> puts words on a conveyor and asks the child to sort them by a shared letter, which is the quiet foundation the other three stand on.</p>\n<p><strong>Labeller</strong> shows an object and a set of words, and the child picks the one that names it.</p>\n<p><strong>Word Train</strong> is the one everybody remembers: carriages rolling past carrying three-letter words, each of which has to differ from the last by exactly one letter. <em>cat, cot, cog, dog.</em> It is a word ladder, and it is a genuinely elegant piece of teaching disguised as a train.</p>\n<p><strong>Matchup</strong> is a memory game played with words and pictures.</p>\n<p>All four use the same pool of two hundred or so three-letter words, so a child who has played one is not starting cold in the next.</p>"
+      },
+      {
+        "h": "Why this one mattered",
+        "html": "<p>The Learning Company was founded in 1980 by Ann McCormick, Leslie Grimm, Teri Perl and Warren Robinett — Robinett being the Atari programmer who had hidden his own name inside <em>Adventure</em> and invented the video game easter egg in the process.</p>\n<p>Their argument was that educational software should be built by people who understood how children actually learn, not by programmers adding a quiz to a game. Grimm, who wrote Reader Rabbit, had a doctorate and had taught reading.</p>\n<p>It shows. The four games are not four themes on one drill; they attack the same skill from four directions, and the one everyone remembers — the train — is the one that teaches the most. Reader Rabbit sold for twenty years and became the name an entire category was measured against.</p>"
       }
     ],
     "faq": [
       {
-        "q": "Is this the original?",
-        "a": "Yes."
+        "q": "Is this the original Reader Rabbit?",
+        "a": "It is the Macintosh release of the original, version 2.0, in black and white with all four games. Not the later CD-ROM Reader Rabbit titles, which are much bigger and quite different."
+      },
+      {
+        "q": "Does it really talk?",
+        "a": "Yes, through MacinTalk, Apple's 1984 speech synthesiser, which shipped on the same disk and is installed here. It sounds like 1984, because it is."
+      },
+      {
+        "q": "What age is it for?",
+        "a": "Roughly four to seven — children who know their letters and are starting to put them together into words."
+      },
+      {
+        "q": "Which game should we start with?",
+        "a": "Word Train. It is the most fun, and the one-letter-at-a-time word ladder is the idea the whole program is built around."
+      },
+      {
+        "q": "Why is it black and white?",
+        "a": "The Macintosh it was written for was. The artwork is drawn in one-bit patterns and is surprisingly expressive for it."
+      },
+      {
+        "q": "Is progress saved?",
+        "a": "Inside the emulated Mac, in your own browser. It survives closing the tab but not clearing site data."
       }
     ],
     "download": {
       "heading": "Archives",
-      "html": "<ul><li>DRAFT</li></ul>"
+      "html": "<ul><li><a href=\"https://archive.org/details/ReaderRabbit4amMacCrack\" rel=\"noopener\">Internet Archive</a> — the preserved Macintosh floppy this copy came from.</li><li><a href=\"https://macintoshgarden.org/games/reader-rabbit\" rel=\"noopener\">Macintosh Garden</a> — other releases and documentation.</li></ul>"
     },
     "related": [
       {
-        "href": "/run/simcity/",
-        "title": "SimCity",
-        "desc": "The original."
+        "href": "/run/math-blaster/",
+        "title": "Math Blaster",
+        "desc": "The maths half of the same shelf."
+      },
+      {
+        "href": "/run/oregon-trail/",
+        "title": "The Oregon Trail",
+        "desc": "The computer-lab classic."
+      },
+      {
+        "href": "/run/kid-pix/",
+        "title": "Kid Pix",
+        "desc": "The drawing program from the same lab."
       }
     ],
     "shotSetup": {
@@ -2528,24 +2838,26 @@
     },
     "updated": "2026-09-20",
     "addedDate": "2026-09-20",
-    "rank": 9,
-    "draft": true
+    "rank": 4,
+    "screenshot": true
   },
   {
     "slug": "carmen-sandiego-europe",
-    "title": "Play Where in Europe Is Carmen Sandiego? (1988) Online in Your Browser",
-    "description": "Where in Europe Is Carmen Sandiego? for the Macintosh, running in your browser on an emulated Mac. Nothing to install.",
-    "keywords": "where in europe is carmen sandiego?, play where in europe is carmen sandiego? online, where in europe is carmen sandiego? mac",
-    "ogTitle": "Where in Europe Is Carmen Sandiego? (1988) in your browser",
-    "ogDescription": "Where in Europe Is Carmen Sandiego? on an emulated Macintosh.",
-    "crumb": "Where in Europe Is Carmen Sandiego?",
+    "title": "Play Where in Europe Is Carmen Sandiego? (1989) Online",
+    "description": "Broderbund's Where in Europe Is Carmen Sandiego? for the Macintosh, running in your browser. Chase the thief across thirty countries.",
+    "keywords": "where in europe is carmen sandiego, play carmen sandiego online, carmen sandiego mac, broderbund carmen sandiego, carmen sandiego 1989",
+    "ogTitle": "Where in Europe Is Carmen Sandiego? (1989)",
+    "ogDescription": "Broderbund's detective game on an emulated Macintosh.",
+    "crumb": "Carmen Sandiego",
     "h1": "Where in Europe Is Carmen Sandiego?",
     "appName": "Where in Europe Is Carmen Sandiego?",
     "appType": "game",
     "author": "Broderbund",
-    "year": 1988,
+    "year": 1989,
     "genre": [
-      "Educational"
+      "Educational",
+      "Adventure",
+      "Detective"
     ],
     "categories": [
       "Classroom classics"
@@ -2559,40 +2871,90 @@
     },
     "bootDisk": "carmen-sandiego-europe-v1",
     "provenance": "grey",
-    "licenseReason": "DRAFT — not yet written.",
+    "licenseReason": "Broderbund was absorbed into The Learning Company in 1998 and the Carmen Sandiego property now belongs to Houghton Mifflin Harcourt, who have licensed it for a Netflix series and new games. Those are new software. This 1989 Macintosh build has not been sold in over thirty years. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/carmen-sandiego-europe.md\" rel=\"noopener\">notices/carmen-sandiego-europe.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
     "verdict": {
       "kind": "good",
       "text": "Runs here"
     },
-    "intro": "<p>DRAFT.</p>",
-    "launchNote": "Boots straight into Where in Europe Is Carmen Sandiego?.",
+    "intro": "<p>Someone has stolen something from a European capital, and you have a week to catch them. You fly between cities, interview witnesses who tell you the thief was asking about the local currency, and work out which country that points at.</p>\n<p>It is a detective game where the clues are geography, and it is the reason a generation of children could find Liechtenstein on a map.</p>",
+    "launchNote": "Boots straight into the game on an emulated Macintosh SE. Take the case, fly to the first city, and start interviewing.",
     "macControls": [
       {
         "keys": "Mouse",
-        "does": "Everything"
+        "does": "Everything — travel, interview, consult the dossier, issue a warrant"
+      },
+      {
+        "keys": "Police Dossiers menu",
+        "does": "Look up suspects by the details witnesses give you"
+      },
+      {
+        "keys": "Return",
+        "does": "Confirm the highlighted choice"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
       }
     ],
     "sections": [
       {
         "h": "How it works & what to expect",
-        "html": "<p>DRAFT.</p>"
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh SE, 512×342 black and white</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Version</th><td>1.0, the Macintosh release</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser.</td></tr></tbody></table><p>This one shipped on two floppies: the game on the first and a 653K file of graphics on the second. Both are here, which is worth saying because a copy missing the second disk starts up and then tells you the graphics cannot be found — a common state for this title in the wild.</p>\n<p>Everything is mouse-driven. You get a case, a destination and a deadline, and you spend the week flying, asking questions and narrowing down.</p>"
+      },
+      {
+        "h": "How the game actually works",
+        "html": "<p>Each city gives you three places to ask questions. The answers are geographical: the suspect changed money into drachmas, or asked about a fjord, or mentioned a country with a red and white flag. Each one is a clue to the <em>next</em> country, not the current one.</p>\n<p>Witnesses also describe the thief — hair colour, hobby, vehicle, and so on. Those go into the Police Dossiers, and once you have narrowed the suspect list to one person you issue a warrant. Catch the right thief without a warrant and they walk.</p>\n<p>The clock is the real opponent. Travel costs hours, interviews cost hours, and a wrong flight can cost you the case. Later ranks give you less time and vaguer clues.</p>"
+      },
+      {
+        "h": "The game that taught by not teaching",
+        "html": "<p>Broderbund shipped the World edition in 1985 with a copy of <em>The World Almanac</em> in the box, and that was the whole design: the game would not tell you which country used the drachma, but the book on your desk would. It made the reference material the interface.</p>\n<p>The Europe edition, from 1989, is the one that most rewards the trick. Thirty-odd countries in a small space, currencies and flags and languages that shade into each other, and clues that are only ever one step ahead of you. It is a geography lesson that never once announces itself as a geography lesson.</p>\n<p>The series ran to more than a dozen titles, a long-running game show on PBS, and a cartoon. It is one of the few cases where educational software became genuinely mainstream culture.</p>"
       }
     ],
     "faq": [
       {
-        "q": "Is this the original?",
-        "a": "Yes."
+        "q": "Which Carmen Sandiego is this?",
+        "a": "Where in Europe Is Carmen Sandiego?, the 1989 Macintosh release. Not the World or USA or Time editions, and not the modern remakes."
+      },
+      {
+        "q": "Do I need the almanac that came in the box?",
+        "a": "It helps, and it was the point. Any reference to European currencies, flags and languages will do — including the one in another browser tab."
+      },
+      {
+        "q": "What is a warrant for?",
+        "a": "You have to identify the thief as well as find them. Collect descriptions from witnesses, narrow the dossier to one suspect, and issue the warrant before you make the arrest, or they go free."
+      },
+      {
+        "q": "Why do I keep running out of time?",
+        "a": "Travel and interviews both cost hours. Do not fly on a hunch: ask in all three places in a city first, and only move when the clues agree."
+      },
+      {
+        "q": "Is the second disk included?",
+        "a": "Yes. The graphics file lives on a separate floppy in the original release, and a copy without it starts and then reports that it cannot find the graphics. Both disks are here."
+      },
+      {
+        "q": "Is progress saved?",
+        "a": "Inside the emulated Mac, in your own browser. It survives closing the tab but not clearing site data."
       }
     ],
     "download": {
       "heading": "Archives",
-      "html": "<ul><li>DRAFT</li></ul>"
+      "html": "<ul><li><a href=\"https://archive.org/details/WhereInEuropeIsCarmenSandiego4amMacCrack\" rel=\"noopener\">Internet Archive</a> — the preserved Macintosh floppies this copy came from.</li><li><a href=\"https://macintoshgarden.org/games/where-in-europe-is-carmen-sandiego\" rel=\"noopener\">Macintosh Garden</a> — other releases and documentation.</li></ul>"
     },
     "related": [
       {
-        "href": "/run/simcity/",
-        "title": "SimCity",
-        "desc": "The original."
+        "href": "/run/oregon-trail/",
+        "title": "The Oregon Trail",
+        "desc": "The other one from the same lab."
+      },
+      {
+        "href": "/run/super-munchers/",
+        "title": "Super Munchers",
+        "desc": "MECC's take on the same job."
+      },
+      {
+        "href": "/run/reader-rabbit/",
+        "title": "Reader Rabbit",
+        "desc": "For the year below."
       }
     ],
     "shotSetup": {
@@ -2608,24 +2970,25 @@
     },
     "updated": "2026-09-20",
     "addedDate": "2026-09-20",
-    "rank": 9,
-    "draft": true
+    "rank": 3,
+    "screenshot": true
   },
   {
     "slug": "pipe-dream",
-    "title": "Play Pipe Dream (1990) Online in Your Browser",
-    "description": "Pipe Dream for the Macintosh, running in your browser on an emulated Mac. Nothing to install.",
-    "keywords": "pipe dream, play pipe dream online, pipe dream mac",
+    "title": "Play Pipe Dream (1990) Online — The Macintosh Version",
+    "description": "LucasArts' Pipe Dream for the Macintosh, running in your browser. Lay the pipe before the flow catches up, nothing to install.",
+    "keywords": "pipe dream, play pipe dream online, pipe dream mac, pipe mania, lucasarts pipe dream, pipe dream 1990",
     "ogTitle": "Pipe Dream (1990) in your browser",
-    "ogDescription": "Pipe Dream on an emulated Macintosh.",
+    "ogDescription": "The pipe-laying puzzle classic on an emulated Macintosh.",
     "crumb": "Pipe Dream",
-    "h1": "Pipe Dream",
+    "h1": "Pipe Dream — lay it faster than it flows",
     "appName": "Pipe Dream",
     "appType": "game",
     "author": "LucasArts",
     "year": 1990,
     "genre": [
-      "Puzzle"
+      "Puzzle",
+      "Action"
     ],
     "categories": [
       "Puzzle & strategy"
@@ -2639,40 +3002,94 @@
     },
     "bootDisk": "pipe-dream-v1",
     "provenance": "grey",
-    "licenseReason": "DRAFT — not yet written.",
+    "licenseReason": "Pipe Dream was written by The Assembly Line and published in the United States by LucasArts in 1990. The concept has been remade many times — Pipe Mania and others — and those remakes are current products. This Macintosh build is not: no one has sold it in over thirty years. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/pipe-dream.md\" rel=\"noopener\">notices/pipe-dream.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
     "verdict": {
       "kind": "good",
       "text": "Runs here"
     },
-    "intro": "<p>DRAFT.</p>",
-    "launchNote": "Boots straight into Pipe Dream.",
+    "intro": "<p>A grid, a starting pipe, and a queue of random pieces you have to use in the order they arrive. In a few seconds the flow starts, and from then on you are laying track in front of a train you cannot stop.</p>\n<p>This is the Macintosh version, with the high score table, the two-player mode and the Trainer setting that lets you practise without the clock.</p>",
+    "launchNote": "Boots straight to the Pipe Dream title screen on an emulated Macintosh SE. Pick Basic, Expert or 2-Plumber and click Start Game.",
     "macControls": [
       {
         "keys": "Mouse",
-        "does": "Everything"
+        "does": "Click a square to place the next piece from the queue"
+      },
+      {
+        "keys": "Click an existing pipe",
+        "does": "Replaces it, at a time penalty — use this sparingly"
+      },
+      {
+        "keys": "Basic / Expert / 2-Plumber",
+        "does": "Difficulty, and the two-player mode"
+      },
+      {
+        "keys": "Trainer",
+        "does": "Practice without the flow starting"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
       }
     ],
     "sections": [
       {
         "h": "How it works & what to expect",
-        "html": "<p>DRAFT.</p>"
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh SE, 512×342 black and white</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Version</th><td>1.2, the Macintosh release</td></tr><tr><th>Saves</th><td>High scores live inside the emulated Mac, in your browser.</td></tr></tbody></table><p>You do not choose your pieces. A queue down the side of the screen shows what is coming, and you must place the next one somewhere before you can see past it. That single rule is what turns a simple idea into a real game: you are always building with the wrong piece and planning around the two you can see.</p>\n<p>The flow starts after a short delay and never stops. Reach the required length of pipe before it runs out and you go on to the next level, where it starts sooner and moves faster.</p>"
+      },
+      {
+        "h": "How to be good at it",
+        "html": "<p><strong>Build long, not direct.</strong> The target is a length of pipe, not a destination. A tight spiral in a corner scores the same as a sprawl and takes far less space.</p>\n<p><strong>Waste pieces deliberately.</strong> A piece you cannot use goes somewhere out of the way, not into your path. Placing a bad piece badly is the most common way to lose.</p>\n<p><strong>Use the crossover pieces.</strong> The one that carries flow in both directions is worth planning around — it lets your pipe cross its own run and is the basis of every long score.</p>\n<p><strong>Replacing costs time.</strong> You can drop a new piece on an existing one, and the flow keeps moving while you do. It is an emergency measure, not a strategy.</p>"
+      },
+      {
+        "h": "Where it came from, and where it went",
+        "html": "<p>The Assembly Line, a small British studio, wrote it for the Amiga in 1989 as <em>Pipe Mania</em>. LucasArts published it in the United States as <em>Pipe Dream</em>, which is the name most people know and the name on this build.</p>\n<p>It then spread further than almost any puzzle game of its generation, largely by being copied. The pipe-laying minigame that turns up in BioShock, in half the hacking sequences in games since, and in an enormous number of mobile titles is this, more or less unchanged. It became a piece of shared vocabulary rather than a game people remembered buying.</p>\n<p>The original is a tighter thing than any of its descendants: no story around it, no reward screen, just a grid, a queue, and water that is already moving.</p>"
       }
     ],
     "faq": [
       {
-        "q": "Is this the original?",
-        "a": "Yes."
+        "q": "Is this Pipe Mania?",
+        "a": "Same game. The Assembly Line released it as Pipe Mania in Europe; LucasArts published it in the United States as Pipe Dream, and this is that build."
+      },
+      {
+        "q": "Can I choose which piece to place?",
+        "a": "No, and that is the game. You get the next piece in the queue and can see a few ahead, so the skill is in building something that will accept whatever arrives."
+      },
+      {
+        "q": "How do I get a long score?",
+        "a": "Spiral. The goal is total pipe length, not reaching a particular spot, so a dense coil in one corner beats a neat run across the board."
+      },
+      {
+        "q": "What is Trainer mode?",
+        "a": "Practice with the flow switched off, so you can learn the pieces without the clock. It is on the title screen."
+      },
+      {
+        "q": "What is 2-Plumber?",
+        "a": "The two-player mode, taking turns on the same machine."
+      },
+      {
+        "q": "Are high scores kept?",
+        "a": "Inside the emulated Mac, which lives in your browser. They survive closing the tab and not clearing site data."
       }
     ],
     "download": {
       "heading": "Archives",
-      "html": "<ul><li>DRAFT</li></ul>"
+      "html": "<ul><li><a href=\"https://archive.org/details/PipeDream4amMacCrack\" rel=\"noopener\">Internet Archive</a> — the preserved Macintosh floppies this copy came from.</li><li><a href=\"https://macintoshgarden.org/games/pipe-dream\" rel=\"noopener\">Macintosh Garden</a> — other releases and documentation.</li></ul>"
     },
     "related": [
       {
-        "href": "/run/simcity/",
-        "title": "SimCity",
-        "desc": "The original."
+        "href": "/run/shanghai/",
+        "title": "Shanghai",
+        "desc": "The other puzzle that outlived its own name."
+      },
+      {
+        "href": "/run/lode-runner/",
+        "title": "Lode Runner",
+        "desc": "A puzzle game wearing an action game's clothes."
+      },
+      {
+        "href": "/run/glypha/",
+        "title": "Glypha",
+        "desc": "Something faster."
       }
     ],
     "shotSetup": {
@@ -2688,24 +3105,25 @@
     },
     "updated": "2026-09-20",
     "addedDate": "2026-09-20",
-    "rank": 9,
-    "draft": true
+    "rank": 5,
+    "screenshot": true
   },
   {
     "slug": "super-munchers",
-    "title": "Play Super Munchers (1991) Online in Your Browser",
-    "description": "MECC's Super Munchers for the Macintosh, running in your browser. The computer-lab classic, nothing to install.",
-    "keywords": "super munchers, play super munchers online, munchers mecc, number munchers mac",
+    "title": "Play Super Munchers (1991) Online — The Macintosh Version",
+    "description": "MECC's Super Munchers for the Macintosh, running in your browser. Eat the right answers, avoid the Troggles, nothing to install.",
+    "keywords": "super munchers, play super munchers online, munchers mecc, number munchers mac, word munchers, munchers game",
     "ogTitle": "Super Munchers (1991) in your browser",
     "ogDescription": "MECC's Munchers on an emulated Macintosh.",
     "crumb": "Super Munchers",
-    "h1": "Super Munchers",
+    "h1": "Super Munchers — eat the right answers",
     "appName": "Super Munchers",
     "appType": "game",
     "author": "MECC",
     "year": 1991,
     "genre": [
-      "Educational"
+      "Educational",
+      "Arcade"
     ],
     "categories": [
       "Classroom classics"
@@ -2719,40 +3137,90 @@
     },
     "bootDisk": "super-munchers-v1",
     "provenance": "grey",
-    "licenseReason": "DRAFT — not yet written.",
+    "licenseReason": "MECC was sold to SoftKey in 1995 and the catalogue eventually reached Houghton Mifflin Harcourt. Super Munchers has not been sold in any form for close to thirty years. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/super-munchers.md\" rel=\"noopener\">notices/super-munchers.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
     "verdict": {
       "kind": "good",
       "text": "Runs here"
     },
-    "intro": "<p>DRAFT.</p>",
-    "launchNote": "Boots straight into Super Munchers.",
+    "intro": "<p>A grid of answers, a little green creature with a large mouth, and the Troggles. You eat the squares that fit the category on the banner and avoid the ones that do not, and you avoid the Troggles entirely, because the purple one moves like it means it.</p>\n<p>This is Super Munchers, the 1991 entry in MECC's Munchers series, which widened the idea from arithmetic and spelling to trivia — geography, history, science, sport and the rest.</p>",
+    "launchNote": "Boots into Super Munchers on an emulated Macintosh SE. It asks you to personalise the program with a name first — type anything, click OK, and go.",
     "macControls": [
       {
         "keys": "Arrow keys",
-        "does": "Move the Muncher"
+        "does": "Move the Muncher one square"
+      },
+      {
+        "keys": "Space",
+        "does": "Eat the square you are standing on"
+      },
+      {
+        "keys": "Mouse",
+        "does": "Menus and setup"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
       }
     ],
     "sections": [
       {
         "h": "How it works & what to expect",
-        "html": "<p>DRAFT.</p>"
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh SE, 512×342 black and white</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Version</th><td>1.0, the Macintosh release</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser.</td></tr></tbody></table><p>The first thing it does is ask you to personalise the program with a name, which is how MECC software of this era identified a school's copy. Type anything and click OK.</p>\n<p>After that it is one screen: a category on the banner, a grid of possible answers, a Muncher you steer, and Troggles that wander in and eat you if they reach you. Clear the correct answers on the board and you move up.</p>"
+      },
+      {
+        "h": "What makes it harder than it looks",
+        "html": "<p>The categories are broad — European capitals, mammals, things that are liquid, US presidents — and the wrong answers are chosen to be plausible rather than silly. A board asking for mammals will have a shark on it somewhere.</p>\n<p>The Troggles are the pressure. They come in several kinds and they do not all behave the same: some patrol in straight lines, some head for you, and one of them changes the squares as it passes, so an answer that was safe when you looked at it is not safe when you get there.</p>\n<p>The result is a game where you cannot stand still and think. You have to know the answer before you are standing on it, which is a much better test than a quiz and the reason the series worked.</p>"
+      },
+      {
+        "h": "The Munchers, and MECC",
+        "html": "<p>Number Munchers came first, in 1986, and it is the one most people name — multiples and factors and primes, eaten off a grid. Word Munchers did the same for spelling patterns. Super Munchers, in 1991, opened it up to general knowledge and added the two-player mode.</p>\n<p>All of them come from MECC, the Minnesota Educational Computing Consortium, which also made The Oregon Trail and supplied a large share of the software in American school computer labs for two decades. The Munchers games were the other half of that shelf: the ones you were allowed to play when you had finished your work.</p>\n<p>A note on availability: Number Munchers itself is genuinely hard to find for the Macintosh. The Apple II and MS-DOS versions are well preserved; the one Macintosh-specific upload is a truncated disk image with its catalogue missing, and the SoftKey CD-ROM keeps the game on its PC partition and gives the Mac side nothing but a bundled AOL installer. Super Munchers is the Munchers game that survives intact on the Mac, and it is the same idea with a wider net.</p>"
       }
     ],
     "faq": [
       {
-        "q": "Is this the original?",
-        "a": "Yes."
+        "q": "Is this Number Munchers?",
+        "a": "No — it is Super Munchers, the 1991 trivia-based entry in the same series. The gameplay is identical; the categories are general knowledge instead of arithmetic."
+      },
+      {
+        "q": "Why not Number Munchers?",
+        "a": "Because a working Macintosh copy does not appear to survive. The only Mac-specific upload is a truncated image missing its catalogue, and the SoftKey hybrid CD keeps the game on the PC side. The Apple II and DOS versions are preserved and playable elsewhere."
+      },
+      {
+        "q": "Why does it ask for my name first?",
+        "a": "MECC software of this era asked each site to personalise its copy. Type anything and click OK."
+      },
+      {
+        "q": "What are the Troggles?",
+        "a": "The creatures that eat you. There are several kinds with different behaviour, and one of them changes the contents of squares as it moves across them."
+      },
+      {
+        "q": "Is there a two-player mode?",
+        "a": "Yes, taking turns on the same machine."
+      },
+      {
+        "q": "Is progress saved?",
+        "a": "Inside the emulated Mac, in your own browser. It survives closing the tab but not clearing site data."
       }
     ],
     "download": {
       "heading": "Archives",
-      "html": "<ul><li>DRAFT</li></ul>"
+      "html": "<ul><li><a href=\"https://archive.org/details/super-munchers-cdrom\" rel=\"noopener\">Internet Archive</a> — the hybrid Macintosh/PC disc this copy came from.</li><li><a href=\"https://macintoshgarden.org/games/super-munchers\" rel=\"noopener\">Macintosh Garden</a> — other releases and documentation.</li></ul>"
     },
     "related": [
       {
         "href": "/run/oregon-trail/",
         "title": "The Oregon Trail",
-        "desc": "The other computer-lab classic."
+        "desc": "The other MECC one."
+      },
+      {
+        "href": "/run/math-blaster/",
+        "title": "Math Blaster",
+        "desc": "Davidson's version of the same job."
+      },
+      {
+        "href": "/run/carmen-sandiego-europe/",
+        "title": "Carmen Sandiego",
+        "desc": "Geography by detective work."
       }
     ],
     "shotSetup": {
@@ -2768,7 +3236,7 @@
     },
     "updated": "2026-09-20",
     "addedDate": "2026-09-20",
-    "rank": 9,
-    "draft": true
+    "rank": 4,
+    "screenshot": true
   }
 ]
