@@ -95,6 +95,13 @@ setAssetVersions(Object.fromEntries(ASSETS.map((f) => {
 // Basilisk II earns the loader pages because Mini vMac has no host file
 // sharing at all, so a dropped .sit has nowhere to go. Title pages never need
 // that, so they do not pay for it.
+//
+// The Mac II is not automatically right either. Some titles ship as a
+// black-and-white build that refuses to start on a colour screen — SimCity 1.2
+// opens, finds a colour monitor and quits, leaving a bare desktop and no error.
+// Those run on a Macintosh SE (512x342, one bit), which is what they were
+// written for. So the rule is: match the machine to the build, and the way you
+// find out is to boot it and look.
 
 // What the file loader boots, everywhere it appears.
 //

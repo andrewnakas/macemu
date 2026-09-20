@@ -1,6 +1,6 @@
 # Glider PRO — provenance and licence
 
-**Hosted:** not yet — see "Why this is not playable here" below.
+**Hosted:** yes, as `glider-pro-v8`.
 **Provenance:** released as open source by its author.
 
 ## Where the files came from
@@ -48,34 +48,25 @@ and there is nothing left to circumvent.
 Anyone with standing to object can have this removed within 48 hours — see
 `/takedown/`.
 
+## The houses, and why they went missing for a while
 
-## Why this is not playable here (2026-09-15)
+Glider PRO spent several days on this site as a guide page because it booted,
+reached its title screen, and then reported *"There are no houses on this
+drive!"* — with the houses sitting beside it, right types, intact forks.
 
-Glider PRO boots on the emulated Macintosh and reaches its title screen, then
-puts up its own dialog: *"There are no houses on this drive!"* The houses are
-present on the volume, in a folder beside the application, with the right type
-(`gliH`) and creator (`ozm5`) and byte-identical resource forks. The game
-cannot see them.
+The cause was the launch mechanism, not the disk. An application started from
+an alias in System Folder:Startup Items resolves "the folder I am in" to
+Startup Items rather than to where it actually lives, so anything it expects to
+find beside itself is missing. SimCity 1.2 fails the same way with a different
+message (*File IO Error-39*).
 
-What was ruled out, each by building an image and booting it:
+The fix is to put the application and its data directly into Startup Items, so
+that "beside itself" becomes true — `--in-startup-items` in both builders.
+Documents are deliberately left out of that move, because the Finder opens
+every item in Startup Items at boot and a readme in there launches SimpleText
+on top of the running game.
 
-- **The folder name.** Tried both `Houses ƒ` as distributed and plain `Houses`.
-- **Lost resource forks.** Verified: 1,041,112 bytes for Slumberland on the
-  built volume, matching the host file exactly.
-- **Lost type and creator codes.** Verified on the written volume.
-- **The Desktop database.** Tried both machfs's generated one and omitting it
-  so the Finder rebuilds its own.
-- **Allocation block size.** Tried 512 and 1024 byte blocks.
-- **File dates.** Fixed separately — files were being written dated 1904 — and
-  it made no difference here.
+## Takedown
 
-The remaining suspect is the **startup alias**. Without it the game does not
-launch at all, and with it the game launches but cannot find files sitting next
-to its real location. Glider PRO's message says "on this drive", which suggests
-a volume-wide search rather than a relative one, so this is not yet proven.
-
-The better long-term answer is probably not to fix this at all.
-[Aerofoil](https://github.com/elasota/Aerofoil) is a maintained port built from
-Calhoun's GPL release, it has a browser build, and it plays better than the
-1994 binary under emulation. That would make Glider PRO an `iframeUrl` title
-rather than a disk image.
+Anyone with standing to object can have this removed within 48 hours — see
+`/takedown/`.

@@ -169,6 +169,142 @@
     "screenshot": true
   },
   {
+    "slug": "simcity",
+    "title": "Play SimCity (1989) Online — The Original Mac Version",
+    "description": "The original black-and-white SimCity for Macintosh, running in your browser. Will Wright's city builder as it first shipped, nothing to install.",
+    "keywords": "simcity 1989, play simcity online, simcity classic mac, original simcity, will wright simcity, simcity macintosh",
+    "ogTitle": "SimCity (1989) in your browser",
+    "ogDescription": "Will Wright's original city builder, black and white, on an emulated Macintosh.",
+    "crumb": "SimCity",
+    "h1": "SimCity — the original, in black and white",
+    "appName": "SimCity",
+    "appType": "game",
+    "author": "Maxis",
+    "year": 1989,
+    "genre": [
+      "Simulation",
+      "Strategy",
+      "City building"
+    ],
+    "categories": [
+      "Puzzle & strategy"
+    ],
+    "era": "system-6",
+    "machine": "Mac-SE",
+    "screen": {
+      "w": 512,
+      "h": 342,
+      "depth": 1
+    },
+    "bootDisk": "simcity-v5",
+    "provenance": "grey",
+    "licenseReason": "The 1989 Macintosh release has not been sold by anyone for over thirty years. Maxis was bought by Electronic Arts in 1997, and in 2008 EA released the SimCity Classic engine as open source under the GPL, renamed <em>Micropolis</em> because the trademark was retained. The code lineage is free; the brand is not; this particular artefact is long out of commerce. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/simcity.md\" rel=\"noopener\">notices/simcity.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>Nobody had asked for a game with no way to win. Will Wright built a city editor as a tool for another project, noticed he enjoyed the tool more than the project, and spent four years failing to convince a publisher that a toy about zoning and tax rates was worth selling. Maxis released it in 1989 and it created a genre.</p>\n<p>This is that original, on the Macintosh, in black and white. No 3D, no tutorial, no advisors — a grid, three zone types, and a budget you will get wrong.</p>",
+    "launchNote": "Boots straight into SimCity on a Macintosh SE — a 512×342 black-and-white screen, which is the machine this build was written for. Start a new city, lay a road, put down a power plant, then zone.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Everything — select a tool, then click or drag on the map"
+      },
+      {
+        "keys": "Tool palette",
+        "does": "Residential, commercial and industrial zones, roads, power, services"
+      },
+      {
+        "keys": "Cmd-S",
+        "does": "Save your city"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh SE, 512×342 black and white</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Version</th><td>1.2, the black-and-white Macintosh release</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, which lives in your browser. Do not keep anything irreplaceable there.</td></tr></tbody></table><p>The screen is small because the machine was. This is the black-and-white build, written for the compact Macs, and it will not start on a colour screen — which is why it runs here on an emulated SE rather than the Macintosh II the colour titles use.</p><p>This is the original, so a lot of what modern players expect is absent. There are no advisors telling you what is wrong, no tutorial, and no undo. The manual did the teaching, and the game assumed you would read it.</p>"
+      },
+      {
+        "h": "The whole game, in three zones",
+        "html": "<p>You paint three kinds of zone — residential, commercial, industrial — connect them with roads and power, and then watch what happens. Nothing grows unless it has power and a road. Industry pollutes and residents move away from pollution. Commerce needs residents to shop and workers to staff it. Raise taxes and growth slows; lower them and you cannot pay for the fire service, which matters more than it sounds.</p><p>That is the entire model, and it is enough to produce a city that surprises you. The famous part is that there is no win condition. You are not beating anything. You are running a place, and the only judgement is whether it works.</p><p>There are also disasters — fires, floods, tornadoes, and a monster — which exist mostly so that the simulation has something to recover from.</p>"
+      },
+      {
+        "h": "Why it took four years to publish",
+        "html": "<p>Wright built the city editor for <em>Raid on Bungeling Bay</em>, a 1984 Commodore 64 shooter, and found that laying out the cities was more interesting than bombing them. The game that resulted had no score, no opponent and no ending, and every publisher he showed it to explained that this was not a game.</p><p>Jeff Braun disagreed, and the two of them founded Maxis to publish it. SimCity came out in 1989 for the Macintosh and the Amiga, sold slowly, won awards, and then sold for a decade. It produced SimEarth, SimAnt, SimTower, The Sims — which became the best-selling PC game series ever made — and an entire category of software about running a system rather than defeating one.</p><p>In 2008 EA released the original engine as open source under the GPL, renamed Micropolis, for the One Laptop Per Child project. The code behind this game is free software; the name is not.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the real original SimCity?",
+        "a": "Yes — version 1.2 of the 1989 Macintosh release, in black and white, running as it shipped. Not SimCity Classic for Windows, not the 1993 SNES version, and not any of the remakes."
+      },
+      {
+        "q": "Why is it black and white?",
+        "a": "The Macintosh original was. Colour Macs existed by 1989 but the game targeted the compact machines most people owned, and the whole visual design is built from dither patterns."
+      },
+      {
+        "q": "Why a Macintosh SE and not something faster?",
+        "a": "Because this build will not run on anything else. It is the black-and-white release, and it refuses to start on a colour screen — it opens, finds a colour monitor, and quits. The SE gives it the 512×342 one-bit display it was written for."
+      },
+      {
+        "q": "How do I start?",
+        "a": "Begin a new city, choose a terrain, then lay a road, place a power plant, and zone a small residential area near it. Nothing grows without both power and road access, which is the first thing everyone gets wrong."
+      },
+      {
+        "q": "There is no tutorial. Is that right?",
+        "a": "That is right. The game shipped with a printed manual that did the teaching, and it assumes you will experiment. Keep the first city small and watch what the budget does."
+      },
+      {
+        "q": "Is EA going to mind?",
+        "a": "Possibly, which is why the reasoning is written down in full and the takedown promise is unconditional. The 1989 Macintosh release has not been sold by anyone in over thirty years, and EA released the original engine as open source in 2008 under the name Micropolis."
+      },
+      {
+        "q": "Can I keep my city?",
+        "a": "Saves live inside the emulated Mac, in your own browser. They survive closing the tab but not clearing site data, and they do not follow you to another device."
+      }
+    ],
+    "download": {
+      "heading": "Source and archives",
+      "html": "<ul><li><a href=\"https://github.com/SimHacker/micropolis\" rel=\"noopener\">Micropolis</a> — the original SimCity engine, released by EA under the GPL in 2008.</li><li><a href=\"https://archive.org/details/SimCity_v12_4amMacCrack\" rel=\"noopener\">Internet Archive</a> — the preserved Macintosh floppy this copy came from.</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/shufflepuck-cafe/",
+        "title": "Shufflepuck Café",
+        "desc": "The other great black-and-white Mac name."
+      },
+      {
+        "href": "/run/after-dark/",
+        "title": "After Dark",
+        "desc": "Flying Toasters, the actual software."
+      },
+      {
+        "href": "/collection/system-7/",
+        "title": "More System 7 software",
+        "desc": "The rest of the catalogue."
+      }
+    ],
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "waitMs": 16000
+        }
+      ]
+    },
+    "updated": "2026-09-16",
+    "addedDate": "2026-09-16",
+    "rank": 1,
+    "screenshot": true
+  },
+  {
     "slug": "arashi",
     "title": "Play Arashi Online — The Mac's Tempest, Free in Your Browser",
     "description": "Arashi, the 1993 Macintosh take on Tempest, running free in your browser. Freely distributable by its authors, source code included, nothing to install.",
@@ -579,7 +715,8 @@
     },
     "updated": "2026-09-16",
     "addedDate": "2026-09-16",
-    "rank": 4
+    "rank": 4,
+    "screenshot": true
   },
   {
     "slug": "oregon-trail",
@@ -1128,15 +1265,16 @@
           "waitMs": 80000
         }
       ]
-    }
+    },
+    "screenshot": true
   },
   {
     "slug": "glider-pro",
-    "title": "Glider PRO — How to Run John Calhoun's Mac Classic",
-    "description": "Glider PRO, GPL since 2016: the paper aeroplane game explained, where to get it, and how to run your copy on an emulated Mac.",
+    "title": "Play Glider PRO Online — John Calhoun's Mac Classic, Free",
+    "description": "Glider PRO, the paper aeroplane game, flying through a house on furnace updrafts. GPL since 2016 and running free in your browser. Nothing to install.",
     "keywords": "glider pro, glider mac game, play glider online, john calhoun glider, paper airplane game mac, aerofoil",
-    "ogTitle": "Glider PRO — how to run it",
-    "ogDescription": "Glider PRO, GPL since 2016: the paper aeroplane game explained, where to get it, and how to run your copy on an emulated Mac.",
+    "ogTitle": "Glider PRO in your browser",
+    "ogDescription": "Fly a paper aeroplane through a house on heating vents. Free, open source, in colour.",
     "crumb": "Glider PRO",
     "h1": "Glider PRO — a paper aeroplane, a house, and a lot of updrafts",
     "appName": "Glider PRO",
@@ -1153,7 +1291,7 @@
       "Puzzle & strategy"
     ],
     "era": "system-7",
-    "machine": "Mac-IIfx",
+    "machine": "Mac-II",
     "ramMB": 32,
     "screen": {
       "w": 640,
@@ -1162,13 +1300,13 @@
     },
     "provenance": "clean",
     "fullyFree": "John Calhoun released the Glider PRO source under the GPL in 2016, along with the artwork and the houses.",
-    "licenseReason": "John Calhoun published the full Glider PRO source code on GitHub in 2016 under the GNU General Public License version 2, together with the game's assets. It is one of the very few commercial Macintosh games of the era to be freed outright by its author. Glider PRO is not yet hosted here: it starts and shows its title screen on our emulated Macintosh, then reports that it cannot find its houses. Until that is solved it would be dishonest to put a Play button on this page, so the loader below runs a copy you supply.",
+    "licenseReason": "John Calhoun published the full Glider PRO source code on GitHub in 2016 under the GNU General Public License version 2, together with the game's artwork and houses. It is one of the very few commercial Macintosh games of the era to be freed outright by its author. Full provenance is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/glider-pro.md\" rel=\"noopener\">notices/glider-pro.md</a>.",
     "verdict": {
-      "kind": "partial",
-      "text": "Bring your own copy"
+      "kind": "good",
+      "text": "Free & open source"
     },
-    "intro": "<p>You are a paper aeroplane. You are indoors. Gravity is pulling you down and the only thing keeping you up is the hot air coming out of the heating vents, so the whole game is a slow negotiation with a house that is full of candles, drips, rubber bands and a cat.</p>\n<p>Glider PRO is the 1994 peak of a series John Calhoun had been refining since 1988, and in 2016 he put the whole thing — code and art — on GitHub under the GPL. It is free in every sense.</p>",
-    "launchNote": "",
+    "intro": "<p>You are a paper aeroplane. You are indoors. Gravity is pulling you down and the only thing keeping you up is the hot air coming out of the heating vents, so the whole game is a slow negotiation with a house that is full of candles, drips, rubber bands and a cat.</p>\n<p>Glider PRO is the 1994 peak of a series John Calhoun had been refining since 1988, and in 2016 he put the whole thing — code and art — on GitHub under the GPL. It is free in every sense, and it boots straight into the Slumberland house here.</p>",
+    "launchNote": "Boots straight into Glider PRO. It opens by asking for 256 colours — click 256 — then choose New Game from the Game menu to start in Slumberland.",
     "macControls": [
       {
         "keys": "Left / Right arrows",
@@ -1207,8 +1345,8 @@
     ],
     "faq": [
       {
-        "q": "Why can I not just click Play here?",
-        "a": "Because it does not work yet, and a button that says Play should mean it. Glider PRO boots on our emulated Mac and reaches its title screen, but then reports “there are no houses on this drive” — it cannot find the level files that sit right beside it. The files are present and byte-identical to the distribution, so the fault is in how the disk image is assembled rather than in the game. Until that is fixed this page runs a copy you supply, and the maintained <a href=\"https://github.com/elasota/Aerofoil\" rel=\"noopener\">Aerofoil</a> port is the better way to play Glider PRO today in any case."
+        "q": "It asks for 256 colours as soon as it starts. What do I pick?",
+        "a": "Pick 256. Glider PRO wants colour and offers to switch the screen for you; that dialog is the game's own, exactly as it shipped, and nothing here is patched to remove it. Choosing 16 greys also works and looks closer to how it ran on a cheaper Mac of the period."
       },
       {
         "q": "Is Glider PRO free?",
@@ -1256,9 +1394,32 @@
         "desc": "The era this shipped in."
       }
     ],
-    "updated": "2026-09-15",
-    "addedDate": "2026-09-15",
-    "rank": 1
+    "updated": "2026-09-20",
+    "addedDate": "2026-09-20",
+    "rank": 2,
+    "bootDisk": "glider-pro-v8",
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "waitMs": 10000
+        },
+        {
+          "click": [
+            419,
+            218
+          ],
+          "waitMs": 9000
+        },
+        {
+          "key": "n",
+          "waitMs": 11000
+        }
+      ]
+    }
   },
   {
     "slug": "marathon-2",

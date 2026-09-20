@@ -55,6 +55,34 @@ except ImportError:
 
 FLORIN = "ƒ"
 
+# Types the Finder will open in an editor if they are in Startup Items. A
+# readme sitting beside the game is harmless in a folder and, in Startup Items,
+# launches SimpleText on top of the running game.
+DOCUMENT_TYPES = (b"TEXT", b"ttro", b"PICT", b"MooV", b"GIFf", b"WORD")
+
+
+# LAUNCHING A TITLE AT BOOT: TWO WAYS, AND WHEN EACH BREAKS
+#
+# An alias in System Folder:Startup Items launches the application, and for most
+# titles that is the end of it. But an application launched from an alias
+# resolves "the folder I am in" to Startup Items, not to where it actually
+# lives, so anything it expects to find beside itself is missing. That failure
+# never says so plainly:
+#
+#   Glider PRO  -> "There are no houses on this drive!"
+#   SimCity 1.2 -> "File IO Error-39"
+#
+# Both files were present, in the right folder, with the right types.
+#
+# The fix is to stop pretending: put the application AND its data files
+# directly into Startup Items. The app launches, and "beside itself" is then
+# true. SimCity goes from an error dialog to its full scenario picker.
+#
+# So: --in-startup-items for any title that reads data files from its own
+# folder, and the alias for self-contained ones. The way to tell is to boot it
+# and look.
+
+
 
 # The classic Mac counts seconds from 1 January 1904; Unix counts from 1970.
 MAC_EPOCH_OFFSET = 2082844800
@@ -178,6 +206,9 @@ def main():
     ap.add_argument("--startapp", help='"Folder:App" to launch at boot')
     ap.add_argument("--no-desktopdb", action="store_true",
                     help="skip the Desktop database (the Finder needs it to show the volume)")
+    ap.add_argument("--in-startup-items", action="store_true",
+                    help="put the application and its data straight into Startup Items "
+                         "so it can find files beside itself (see the note at the top)")
     ap.add_argument("--no-startup-alias", action="store_true",
                     help="do not put an alias to --startapp in System Folder:Startup Items")
     ap.add_argument("--volume-startapp", action="store_true",
@@ -242,7 +273,32 @@ def main():
     # freshly written volume and the setting does not always survive. An alias
     # in System Folder:Startup Items is the mechanism a person would use by
     # hand, and it is honoured unconditionally.
-    if startapp and not args.no_startup_alias:
+    if startapp and args.in_startup_items:
+        sys_folder = base.get("System Folder")
+        items = sys_folder.get("Startup Items")
+        if not isinstance(items, machfs.Folder):
+            items = machfs.Folder()
+            sys_folder["Startup Items"] = items
+        moved = base[dest_name]
+        launched, kept = {}, {}
+        for name, item in moved.items():
+            if isinstance(item, machfs.Folder) or item.type not in DOCUMENT_TYPES:
+                launched[name] = item
+            else:
+                kept[name] = item
+        for name, item in launched.items():
+            items[name] = item
+        if kept:
+            leftovers = machfs.Folder()
+            leftovers.crdate = leftovers.mddate = leftovers.bkdate = base.crdate
+            for name, item in kept.items():
+                leftovers[name] = item
+            base[dest_name] = leftovers
+            print(f"  left on the desktop: {', '.join(sorted(kept))}")
+        else:
+            del base[dest_name]
+        print(f"  launching from Startup Items: {', '.join(sorted(launched))}")
+    elif startapp and not args.no_startup_alias:
         sys_folder = base.get("System Folder")
         if not isinstance(sys_folder, machfs.Folder):
             sys.exit("no System Folder on the base image — cannot install a startup alias")
