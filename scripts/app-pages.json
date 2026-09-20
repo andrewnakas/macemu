@@ -741,18 +741,18 @@
       "Puzzle & strategy"
     ],
     "era": "system-7",
-    "machine": "Mac-IIfx",
+    "machine": "Mac-SE",
     "ramMB": 16,
     "screen": {
-      "w": 640,
-      "h": 480,
-      "depth": 8
+      "w": 512,
+      "h": 342,
+      "depth": 1
     },
     "provenance": "grey",
     "licenseReason": "MECC was wound up in the late 1990s and the trail passed through The Learning Company to Houghton Mifflin Harcourt. The 1991 Macintosh release has not been sold in any form for over twenty-five years and no rights holder distributes it today. It is here because a piece of software that taught a generation to spell \"dysentery\" should not only exist inside a cardboard box in somebody's garage. If you hold the rights and disagree, <a href=\"/takedown/\">say so</a> and it goes within 48 hours.",
     "verdict": {
-      "kind": "partial",
-      "text": "Bring your own copy"
+      "kind": "good",
+      "text": "Runs here"
     },
     "intro": "<p>Nearly everybody who sat in front of a school Macintosh between 1991 and about 1998 played this. Not the Apple II green-screen original, and not the phone remake — <strong>this</strong> one: colour, a covered wagon rolling right to left across the bottom of the screen, and a river you were never quite sure whether to ford.</p>\n<p>It is the 1991 MECC release for the Macintosh. This page is a guide to it — what it was, how it played, and where to find a copy — with a loader that will run the copy you bring on an emulated Macintosh under System 7.</p>",
     "launchNote": "Boots straight to the title screen. Click through and pick a profession — banker is easy mode, farmer is hard mode with triple points.",
@@ -862,7 +862,9 @@
     },
     "updated": "2026-09-13",
     "addedDate": "2026-09-13",
-    "rank": 1
+    "rank": 1,
+    "bootDisk": "oregon-trail-v1",
+    "draft": true
   },
   {
     "slug": "marathon",
@@ -1419,7 +1421,8 @@
           "waitMs": 11000
         }
       ]
-    }
+    },
+    "screenshot": true
   },
   {
     "slug": "marathon-2",
@@ -2047,5 +2050,725 @@
     "updated": "2026-09-13",
     "addedDate": "2026-09-13",
     "rank": 10
+  },
+  {
+    "slug": "lode-runner",
+    "title": "Play Lode Runner (1985) Online in Your Browser",
+    "description": "Lode Runner for the Macintosh, running in your browser on an emulated Mac. Nothing to install.",
+    "keywords": "lode runner, play lode runner online, lode runner mac",
+    "ogTitle": "Lode Runner (1985) in your browser",
+    "ogDescription": "Lode Runner on an emulated Macintosh.",
+    "crumb": "Lode Runner",
+    "h1": "Lode Runner",
+    "appName": "Lode Runner",
+    "appType": "game",
+    "author": "Broderbund",
+    "year": 1985,
+    "genre": [
+      "Action"
+    ],
+    "categories": [
+      "Action"
+    ],
+    "era": "system-6",
+    "machine": "Mac-SE",
+    "screen": {
+      "w": 512,
+      "h": 342,
+      "depth": 1
+    },
+    "bootDisk": "lode-runner-v1",
+    "provenance": "grey",
+    "licenseReason": "DRAFT — not yet written.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>DRAFT.</p>",
+    "launchNote": "Boots straight into Lode Runner.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Everything"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<p>DRAFT.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the original?",
+        "a": "Yes."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li>DRAFT</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/simcity/",
+        "title": "SimCity",
+        "desc": "The original."
+      }
+    ],
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "waitMs": 16000
+        }
+      ]
+    },
+    "updated": "2026-09-20",
+    "addedDate": "2026-09-20",
+    "rank": 9,
+    "draft": true
+  },
+  {
+    "slug": "shanghai",
+    "title": "Play Shanghai (1986) Online in Your Browser",
+    "description": "Shanghai for the Macintosh, running in your browser on an emulated Mac. Nothing to install.",
+    "keywords": "shanghai, play shanghai online, shanghai mac",
+    "ogTitle": "Shanghai (1986) in your browser",
+    "ogDescription": "Shanghai on an emulated Macintosh.",
+    "crumb": "Shanghai",
+    "h1": "Shanghai",
+    "appName": "Shanghai",
+    "appType": "game",
+    "author": "Activision",
+    "year": 1986,
+    "genre": [
+      "Puzzle"
+    ],
+    "categories": [
+      "Puzzle & strategy"
+    ],
+    "era": "system-6",
+    "machine": "Mac-Plus",
+    "screen": {
+      "w": 512,
+      "h": 342,
+      "depth": 1
+    },
+    "bootDisk": "shanghai-floppy-v1",
+    "provenance": "grey",
+    "licenseReason": "DRAFT — not yet written.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>DRAFT.</p>",
+    "launchNote": "Boots straight into Shanghai.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Everything"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<p>DRAFT.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the original?",
+        "a": "Yes."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li>DRAFT</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/simcity/",
+        "title": "SimCity",
+        "desc": "The original."
+      }
+    ],
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "waitMs": 16000
+        }
+      ]
+    },
+    "updated": "2026-09-20",
+    "addedDate": "2026-09-20",
+    "rank": 9,
+    "draft": true
+  },
+  {
+    "slug": "rogue",
+    "title": "Play Rogue (1985) Online in Your Browser",
+    "description": "Rogue for the Macintosh, running in your browser on an emulated Mac. Nothing to install.",
+    "keywords": "rogue, play rogue online, rogue mac",
+    "ogTitle": "Rogue (1985) in your browser",
+    "ogDescription": "Rogue on an emulated Macintosh.",
+    "crumb": "Rogue",
+    "h1": "Rogue",
+    "appName": "Rogue",
+    "appType": "game",
+    "author": "Epyx",
+    "year": 1985,
+    "genre": [
+      "Roguelike"
+    ],
+    "categories": [
+      "Puzzle & strategy"
+    ],
+    "era": "system-6",
+    "machine": "Mac-Plus",
+    "screen": {
+      "w": 512,
+      "h": 342,
+      "depth": 1
+    },
+    "bootDisk": "rogue-floppy-v1",
+    "provenance": "grey",
+    "licenseReason": "DRAFT — not yet written.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>DRAFT.</p>",
+    "launchNote": "Boots straight into Rogue.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Everything"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<p>DRAFT.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the original?",
+        "a": "Yes."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li>DRAFT</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/simcity/",
+        "title": "SimCity",
+        "desc": "The original."
+      }
+    ],
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "waitMs": 16000
+        }
+      ]
+    },
+    "updated": "2026-09-20",
+    "addedDate": "2026-09-20",
+    "rank": 9,
+    "draft": true
+  },
+  {
+    "slug": "math-blaster",
+    "title": "Play Math Blaster (1986) Online in Your Browser",
+    "description": "Math Blaster for the Macintosh, running in your browser on an emulated Mac. Nothing to install.",
+    "keywords": "math blaster, play math blaster online, math blaster mac",
+    "ogTitle": "Math Blaster (1986) in your browser",
+    "ogDescription": "Math Blaster on an emulated Macintosh.",
+    "crumb": "Math Blaster",
+    "h1": "Math Blaster",
+    "appName": "Math Blaster",
+    "appType": "game",
+    "author": "Davidson & Associates",
+    "year": 1986,
+    "genre": [
+      "Educational"
+    ],
+    "categories": [
+      "Classroom classics"
+    ],
+    "era": "system-6",
+    "machine": "Mac-SE",
+    "screen": {
+      "w": 512,
+      "h": 342,
+      "depth": 1
+    },
+    "bootDisk": "math-blaster-v1",
+    "provenance": "grey",
+    "licenseReason": "DRAFT — not yet written.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>DRAFT.</p>",
+    "launchNote": "Boots straight into Math Blaster.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Everything"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<p>DRAFT.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the original?",
+        "a": "Yes."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li>DRAFT</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/simcity/",
+        "title": "SimCity",
+        "desc": "The original."
+      }
+    ],
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "waitMs": 16000
+        }
+      ]
+    },
+    "updated": "2026-09-20",
+    "addedDate": "2026-09-20",
+    "rank": 9,
+    "draft": true
+  },
+  {
+    "slug": "simearth",
+    "title": "Play SimEarth (1990) Online in Your Browser",
+    "description": "SimEarth for the Macintosh, running in your browser on an emulated Mac. Nothing to install.",
+    "keywords": "simearth, play simearth online, simearth mac",
+    "ogTitle": "SimEarth (1990) in your browser",
+    "ogDescription": "SimEarth on an emulated Macintosh.",
+    "crumb": "SimEarth",
+    "h1": "SimEarth",
+    "appName": "SimEarth",
+    "appType": "game",
+    "author": "Maxis",
+    "year": 1990,
+    "genre": [
+      "Simulation"
+    ],
+    "categories": [
+      "Puzzle & strategy"
+    ],
+    "era": "system-6",
+    "machine": "Mac-SE",
+    "screen": {
+      "w": 512,
+      "h": 342,
+      "depth": 1
+    },
+    "bootDisk": "simearth-v1",
+    "provenance": "grey",
+    "licenseReason": "DRAFT — not yet written.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>DRAFT.</p>",
+    "launchNote": "Boots straight into SimEarth.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Everything"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<p>DRAFT.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the original?",
+        "a": "Yes."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li>DRAFT</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/simcity/",
+        "title": "SimCity",
+        "desc": "The original."
+      }
+    ],
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "waitMs": 16000
+        }
+      ]
+    },
+    "updated": "2026-09-20",
+    "addedDate": "2026-09-20",
+    "rank": 9,
+    "draft": true
+  },
+  {
+    "slug": "reader-rabbit",
+    "title": "Play Reader Rabbit (1991) Online in Your Browser",
+    "description": "Reader Rabbit for the Macintosh, running in your browser on an emulated Mac. Nothing to install.",
+    "keywords": "reader rabbit, play reader rabbit online, reader rabbit mac",
+    "ogTitle": "Reader Rabbit (1991) in your browser",
+    "ogDescription": "Reader Rabbit on an emulated Macintosh.",
+    "crumb": "Reader Rabbit",
+    "h1": "Reader Rabbit",
+    "appName": "Reader Rabbit",
+    "appType": "game",
+    "author": "The Learning Company",
+    "year": 1991,
+    "genre": [
+      "Educational"
+    ],
+    "categories": [
+      "Classroom classics"
+    ],
+    "era": "system-7",
+    "machine": "Mac-SE",
+    "screen": {
+      "w": 512,
+      "h": 342,
+      "depth": 1
+    },
+    "bootDisk": "reader-rabbit-v1",
+    "provenance": "grey",
+    "licenseReason": "DRAFT — not yet written.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>DRAFT.</p>",
+    "launchNote": "Boots straight into Reader Rabbit.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Everything"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<p>DRAFT.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the original?",
+        "a": "Yes."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li>DRAFT</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/simcity/",
+        "title": "SimCity",
+        "desc": "The original."
+      }
+    ],
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "waitMs": 16000
+        }
+      ]
+    },
+    "updated": "2026-09-20",
+    "addedDate": "2026-09-20",
+    "rank": 9,
+    "draft": true
+  },
+  {
+    "slug": "carmen-sandiego-europe",
+    "title": "Play Where in Europe Is Carmen Sandiego? (1988) Online in Your Browser",
+    "description": "Where in Europe Is Carmen Sandiego? for the Macintosh, running in your browser on an emulated Mac. Nothing to install.",
+    "keywords": "where in europe is carmen sandiego?, play where in europe is carmen sandiego? online, where in europe is carmen sandiego? mac",
+    "ogTitle": "Where in Europe Is Carmen Sandiego? (1988) in your browser",
+    "ogDescription": "Where in Europe Is Carmen Sandiego? on an emulated Macintosh.",
+    "crumb": "Where in Europe Is Carmen Sandiego?",
+    "h1": "Where in Europe Is Carmen Sandiego?",
+    "appName": "Where in Europe Is Carmen Sandiego?",
+    "appType": "game",
+    "author": "Broderbund",
+    "year": 1988,
+    "genre": [
+      "Educational"
+    ],
+    "categories": [
+      "Classroom classics"
+    ],
+    "era": "system-6",
+    "machine": "Mac-SE",
+    "screen": {
+      "w": 512,
+      "h": 342,
+      "depth": 1
+    },
+    "bootDisk": "carmen-sandiego-europe-v1",
+    "provenance": "grey",
+    "licenseReason": "DRAFT — not yet written.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>DRAFT.</p>",
+    "launchNote": "Boots straight into Where in Europe Is Carmen Sandiego?.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Everything"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<p>DRAFT.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the original?",
+        "a": "Yes."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li>DRAFT</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/simcity/",
+        "title": "SimCity",
+        "desc": "The original."
+      }
+    ],
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "waitMs": 16000
+        }
+      ]
+    },
+    "updated": "2026-09-20",
+    "addedDate": "2026-09-20",
+    "rank": 9,
+    "draft": true
+  },
+  {
+    "slug": "pipe-dream",
+    "title": "Play Pipe Dream (1990) Online in Your Browser",
+    "description": "Pipe Dream for the Macintosh, running in your browser on an emulated Mac. Nothing to install.",
+    "keywords": "pipe dream, play pipe dream online, pipe dream mac",
+    "ogTitle": "Pipe Dream (1990) in your browser",
+    "ogDescription": "Pipe Dream on an emulated Macintosh.",
+    "crumb": "Pipe Dream",
+    "h1": "Pipe Dream",
+    "appName": "Pipe Dream",
+    "appType": "game",
+    "author": "LucasArts",
+    "year": 1990,
+    "genre": [
+      "Puzzle"
+    ],
+    "categories": [
+      "Puzzle & strategy"
+    ],
+    "era": "system-6",
+    "machine": "Mac-SE",
+    "screen": {
+      "w": 512,
+      "h": 342,
+      "depth": 1
+    },
+    "bootDisk": "pipe-dream-v1",
+    "provenance": "grey",
+    "licenseReason": "DRAFT — not yet written.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>DRAFT.</p>",
+    "launchNote": "Boots straight into Pipe Dream.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Everything"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<p>DRAFT.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the original?",
+        "a": "Yes."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li>DRAFT</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/simcity/",
+        "title": "SimCity",
+        "desc": "The original."
+      }
+    ],
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "waitMs": 16000
+        }
+      ]
+    },
+    "updated": "2026-09-20",
+    "addedDate": "2026-09-20",
+    "rank": 9,
+    "draft": true
+  },
+  {
+    "slug": "super-munchers",
+    "title": "Play Super Munchers (1991) Online in Your Browser",
+    "description": "MECC's Super Munchers for the Macintosh, running in your browser. The computer-lab classic, nothing to install.",
+    "keywords": "super munchers, play super munchers online, munchers mecc, number munchers mac",
+    "ogTitle": "Super Munchers (1991) in your browser",
+    "ogDescription": "MECC's Munchers on an emulated Macintosh.",
+    "crumb": "Super Munchers",
+    "h1": "Super Munchers",
+    "appName": "Super Munchers",
+    "appType": "game",
+    "author": "MECC",
+    "year": 1991,
+    "genre": [
+      "Educational"
+    ],
+    "categories": [
+      "Classroom classics"
+    ],
+    "era": "system-7",
+    "machine": "Mac-SE",
+    "screen": {
+      "w": 512,
+      "h": 342,
+      "depth": 1
+    },
+    "bootDisk": "super-munchers-v1",
+    "provenance": "grey",
+    "licenseReason": "DRAFT — not yet written.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>DRAFT.</p>",
+    "launchNote": "Boots straight into Super Munchers.",
+    "macControls": [
+      {
+        "keys": "Arrow keys",
+        "does": "Move the Muncher"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<p>DRAFT.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the original?",
+        "a": "Yes."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li>DRAFT</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/oregon-trail/",
+        "title": "The Oregon Trail",
+        "desc": "The other computer-lab classic."
+      }
+    ],
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "waitMs": 16000
+        }
+      ]
+    },
+    "updated": "2026-09-20",
+    "addedDate": "2026-09-20",
+    "rank": 9,
+    "draft": true
   }
 ]

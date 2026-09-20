@@ -32,12 +32,39 @@ try:
 except ImportError:
     sys.exit("machfs is required: pip install machfs")
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import mfs          # the 1984 filesystem machfs does not read
+import partitions   # the Apple Partition Map inside a Mac or hybrid CD
+
 UA = {"User-Agent": "macemu-import/1.0"}
 
 # Types the Finder will open in an editor if they are in Startup Items. A
 # readme sitting beside the game is harmless in a folder and, in Startup Items,
 # launches SimpleText on top of the running game.
 DOCUMENT_TYPES = (b"TEXT", b"ttro", b"PICT", b"MooV", b"GIFf", b"WORD")
+
+# A floppy's own System and Finder belong to the machine that booted it, not to
+# the title, and the boot disk already has better ones. Other files of the same
+# type are drivers the title may genuinely need — Reader Rabbit talks through
+# MacinTalk, which is also type ZSYS — so those are filed in the System Folder
+# rather than dropped or, worse, left in Startup Items for the Finder to open
+# at boot.
+BOOT_FILE_NAMES = ("system", "finder", "desktop")
+SYSTEM_FOLDER_TYPES = (b"ZSYS", b"FNDR", b"INIT", b"cdev", b"scri", b"appe",
+                       b"PRES", b"PRER", b"RDEV")   # printer and chooser drivers
+
+
+def split_off_system_files(items):
+    """(what the title keeps, what goes in the System Folder). Drops the boot files."""
+    keep, system = {}, {}
+    for name, item in items.items():
+        if isinstance(item, machfs.Folder) or item.type not in SYSTEM_FOLDER_TYPES:
+            keep[name] = item
+        elif name.strip().lower() in BOOT_FILE_NAMES:
+            print(f"  dropped {name!r}: the source floppy's own boot file")
+        else:
+            system[name] = item
+    return keep, system
 
 
 # LAUNCHING A TITLE AT BOOT: TWO WAYS, AND WHEN EACH BREAKS
@@ -94,11 +121,22 @@ def is_system_folder(name, folder):
     return any(getattr(i, "type", b"") == b"ZSYS" for i in folder.values())
 
 
-def find_app(volume):
-    """The application on a volume, wherever it is. Returns (path, File)."""
-    best = None
+def find_app(volume, wanted=None):
+    """The application on a volume, wherever it is. Returns (path, File).
+
+    Size picks the winner, because the small applications beside a game are
+    installers, readers and "Double Click to Read" stubs. Except when it does
+    not: Shanghai's floppy holds `Shanghai` at 15K and `P1` at 89K, and P1 is
+    the second half of the same program, launched by the first. Starting P1
+    directly gets you a board with no game around it. So a name that matches
+    the volume wins over a bigger one, which is how a person picking by eye
+    would do it too.
+    """
+    best = named = None
+    stem = (wanted or volume.name or "").split()
+    stem = stem[0].lower() if stem else ""
     def walk(folder, path):
-        nonlocal best
+        nonlocal best, named
         for name, item in folder.items():
             here = path + [name]
             if isinstance(item, machfs.Folder):
@@ -106,12 +144,18 @@ def find_app(volume):
                     continue
                 walk(item, here)
             elif item.type == b"APPL":
-                # The biggest application is the game; the small ones are
-                # installers, readers and "Double Click to Read" stubs.
                 size = len(item.data) + len(item.rsrc)
                 if best is None or size > best[2]:
                     best = (here, item, size)
+                if wanted and name.lower() == wanted.lower():
+                    named = (here, item, size)
+                elif stem and name.lower().startswith(stem) and named is None:
+                    named = (here, item, size)
     walk(volume, [])
+    if named and best and named[0] != best[0]:
+        print(f"    picking {':'.join(named[0])} over the larger "
+              f"{':'.join(best[0])}: it matches the volume name")
+        best = named
     return (best[0], best[1]) if best else (None, None)
 
 
@@ -147,6 +191,18 @@ def main():
     ap.add_argument("--in-startup-items", action="store_true",
                     help="put the application and its data straight into Startup Items "
                          "so it can find files beside itself (see the note at the top)")
+    ap.add_argument("--app", metavar="NAME",
+                    help="the application to launch, by name. Needed on the SoftKey-era "
+                         "CDs, which bundled an AOL installer and Acrobat Reader that are "
+                         "both several times the size of the game.")
+    ap.add_argument("--file", action="append", metavar="NAME",
+                    help="a file in the item to read instead of its 00playable*.dc42 "
+                         "floppies — a .iso or .img of a Mac or hybrid CD, say. "
+                         "Repeatable.")
+    ap.add_argument("--no-launch", action="store_true",
+                    help="build the disk but do not launch anything at startup, which is "
+                         "how you find out whether a title is crashing the Mac or never "
+                         "reaching it")
     ap.add_argument("--app-only", action="store_true",
                     help="copy only the application, not the files beside it (see the note on --app-only)")
     args = ap.parse_args()
@@ -155,33 +211,70 @@ def main():
     meta_url = f"https://archive.org/metadata/{args.item}"
     with urllib.request.urlopen(urllib.request.Request(meta_url, headers=UA), timeout=120) as r:
         meta = json.load(r)
-    names = [f["name"] for f in meta.get("files", [])
-             if f["name"].startswith("00playable") and f["name"].endswith(".dc42")]
+    if args.file:
+        have = {f["name"] for f in meta.get("files", [])}
+        missing = [n for n in args.file if n not in have]
+        if missing:
+            sys.exit(f"{args.item} has no file named {missing[0]!r}")
+        names = list(args.file)
+    else:
+        names = [f["name"] for f in meta.get("files", [])
+                 if f["name"].startswith("00playable") and f["name"].endswith(".dc42")]
     if not names:
-        sys.exit(f"{args.item} has no 00playable*.dc42 images")
-    print(f"{args.item}: {len(names)} playable image(s)")
+        sys.exit(f"{args.item} has no 00playable*.dc42 images "
+                 f"(pass --file to name one yourself)")
+    print(f"{args.item}: {len(names)} image(s)")
 
     app_path = app = app_volume = None
-    for name in sorted(names):
-        local = f"Images/titles/src-{args.slug}-{name}"
-        fetch(f"https://archive.org/download/{args.item}/{urllib.parse.quote(name)}", local)
-        raw = strip_dc42(open(local, "rb").read())
-        if raw[1024:1026] != b"BD":
-            # MFS, the 1984 filesystem used on 400K single-sided floppies.
-            # machfs reads HFS only, and the titles still on MFS are the very
-            # earliest ones — Lode Runner, MacGolf, Chessmaster 2000.
-            kind = "MFS (400K, pre-1986)" if raw[1024:1026] == b"\xd2\xd7" else f"unknown {raw[1024:1026]!r}"
-            print(f"    {name}: {kind}, cannot read — skipped")
-            continue
-        v = machfs.Volume(); v.read(raw)
-        path, found = find_app(v)
+    loose = {}
+
+    def consider(name, v):
+        """Keep this volume's application if it beats the best one so far.
+
+        A disk with no application on it is not always the boot floppy. A title
+        that shipped on two disks often put the application on one and its data
+        on the other, and Carmen Sandiego is the clean example: disk two holds
+        nothing but `Carmen Europe Graphics`, 653K of it, and without that file
+        the game starts and immediately says so. So the files on such a disk are
+        kept and folded in beside the application later.
+        """
+        nonlocal app_path, app, app_volume
+        path, found = find_app(v, args.app)
         if found is None:
-            print(f"    {name}: no application (probably the boot floppy)")
-            continue
+            spare = {n: i for n, i in v.items()
+                     if not (isinstance(i, machfs.Folder) and is_system_folder(n, i))}
+            spare, _ = split_off_system_files(spare)
+            if spare:
+                loose.update(spare)
+                print(f"    {name}: no application, kept {', '.join(sorted(spare))}")
+            else:
+                print(f"    {name}: no application (probably the boot floppy)")
+            return
         size = len(found.data) + len(found.rsrc)
         print(f"    {name}: {':'.join(path)} ({size // 1024} KB)")
         if app is None or size > len(app.data) + len(app.rsrc):
             app_path, app, app_volume = path, found, v
+
+    for name in sorted(names):
+        local = f"Images/titles/src-{args.slug}-{name}"
+        fetch(f"https://archive.org/download/{args.item}/{urllib.parse.quote(name)}", local)
+        raw = strip_dc42(open(local, "rb").read())
+        # A disc can hold several volumes, a floppy holds exactly one, and a
+        # hybrid CD hides the Mac one behind an ISO 9660 filesystem meant for
+        # the PC. hfs_volumes() returns whichever applies.
+        blobs = partitions.hfs_volumes(raw)
+        if len(blobs) > 1:
+            print(f"    {name}: {len(blobs)} Macintosh partitions")
+        for blob in blobs:
+            if mfs.looks_like_mfs(blob):
+                v = mfs.read(blob)      # a 400K floppy from before HFS existed
+            elif blob[1024:1026] == b"BD":
+                v = machfs.Volume(); v.read(blob)
+            else:
+                print(f"    {name}: unknown filesystem {blob[1024:1026]!r} — skipped")
+                continue
+            consider(name, v)
+        continue
     if app is None:
         sys.exit("no application found on any disk")
 
@@ -198,7 +291,21 @@ def main():
     # own runs perfectly. Presumably it is a fragment the original installer
     # would have finished writing. So --app-only exists, and the way you find
     # out which you need is to boot it and look.
+    # An application is not an alias, whatever its Finder flags say. Reader
+    # Rabbit's shipped with kIsAlias set — harmless on a floppy that booted
+    # straight into it, and fatal under System 7, whose Finder looks at the
+    # flag first and answers "this item is really not an alias (oops!)".
+    if app.flags & 0x8000:
+        app.flags &= ~0x8000
+        print(f"  cleared the alias bit on {app_name!r}, which is an application")
+
     extras = {} if args.app_only else siblings_of(app_volume, app_path)
+    extras, system_files = split_off_system_files(extras)
+    for name, item in loose.items():
+        if name not in extras and name != app_name:
+            extras[name] = item
+    if loose:
+        print(f"  from the other disk(s): {', '.join(sorted(loose))}")
     for name, item in extras.items():
         folder[name] = item
     if extras:
@@ -215,15 +322,33 @@ def main():
     if not isinstance(items, machfs.Folder):
         items = machfs.Folder(); sysf["Startup Items"] = items
 
-    if args.in_startup_items:
+    for name, item in system_files.items():
+        sysf[name] = item
+    if system_files:
+        print(f"  into the System Folder: {', '.join(sorted(system_files))}")
+
+    if args.no_launch:
+        print("  --no-launch: nothing will open at startup")
+    elif args.in_startup_items:
         launched, kept = {}, {}
         for name, item in folder.items():
             if isinstance(item, machfs.Folder) or item.type not in DOCUMENT_TYPES:
                 launched[name] = item
             else:
                 kept[name] = item
+        # The Finder opens every VISIBLE item in Startup Items, so a title with
+        # a lot of data beside it cannot simply be poured in here: Shanghai
+        # brings 24 tile layouts and a second application, P1, which it loads
+        # itself when it needs it. Left visible, the Finder would open all 25 on
+        # top of the game. Invisible, they are skipped by the startup scan and
+        # still found by the application, which asks for them by name.
         for name, item in launched.items():
+            if name != app_name:
+                item.flags |= 0x4000        # kIsInvisible
             items[name] = item
+        hidden = [n for n in launched if n != app_name]
+        if hidden:
+            print(f"  hidden from the startup scan: {len(hidden)} item(s) beside the application")
         if kept:
             leftovers = machfs.Folder()
             leftovers.crdate = leftovers.mddate = leftovers.bkdate = base.crdate

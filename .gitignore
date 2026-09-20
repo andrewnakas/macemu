@@ -46,3 +46,6 @@ public/terms/
 public/load-mac-file/
 public/open-*/
 public/classic-mac-emulator-online/
+
+# python venv for the disk builders (machfs)
+.venv/
