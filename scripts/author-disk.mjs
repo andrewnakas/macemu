@@ -27,7 +27,7 @@
 //
 // The worker holds an exclusive lock on those files while the machine is
 // running, so it is stopped first.
-import {readFileSync, writeFileSync, mkdirSync, existsSync} from "node:fs";
+import {readFileSync, writeFileSync, mkdirSync, existsSync, appendFileSync, rmSync} from "node:fs";
 import {resolve, join} from "node:path";
 import {spawnSync} from "node:child_process";
 
@@ -165,55 +165,65 @@ await page.evaluate(async () => {
 await page.waitForTimeout(3000);
 
 console.log("reading the disk out of the origin private file system");
-const result = await page.evaluate(async (nameIn) => {
-  let name = nameIn;
+
+// The chunks are fetched in batches and encoded as base64 on the way across.
+// Handing them over as an array of numbers instead — one JS number per byte —
+// works for a ten megabyte install and runs the Node heap out of memory on a
+// thirty megabyte one, which is a silent truncation waiting to happen.
+const info = await page.evaluate(async (nameIn) => {
   const root = await navigator.storage.getDirectory();
-  const read = async (n) => {
-    try { return new Uint8Array(await (await (await root.getFileHandle(n)).getFile()).arrayBuffer()); }
-    catch { return null; }
-  };
-  // The saver names its files after the manifest's "name" field, which is the
-  // title as it appears on the Mac desktop, not the manifest's filename. So the
-  // directory is listed rather than guessed.
   const present = [];
   for await (const entry of root.keys()) present.push(entry);
   let stem = present.filter((n) => n.endsWith(".dirtychunks")).map((n) => n.slice(0, -12));
-  if (stem.includes(name)) stem = [name];
+  if (stem.includes(nameIn)) stem = [nameIn];
   if (!stem.length) return {error: "nothing persistent in OPFS. Present: " + JSON.stringify(present)};
   if (stem.length > 1) return {error: "several persistent disks in OPFS: " + JSON.stringify(stem)};
-  name = stem[0];
-  const dirty = await read(name + ".dirtychunks");
-  if (!dirty) return {error: `no ${name}.dirtychunks in OPFS`};
+  const name = stem[0];
+  const dirtyFile = await (await root.getFileHandle(name + ".dirtychunks")).getFile();
+  const dirty = new Uint8Array(await dirtyFile.arrayBuffer());
   const dataHandle = await root.getFileHandle(name + ".data").catch(() => null);
   if (!dataHandle) return {error: `no ${name}.data in OPFS`};
-  const file = await dataHandle.getFile();
   const indices = [];
   for (let i = 0; i < dirty.length; i++) {
     if (!dirty[i]) continue;
     for (let b = 0; b < 8; b++) if (dirty[i] & (1 << b)) indices.push(i * 8 + b);
   }
-  // Only the chunks that were actually written come back across the wire.
-  const out = [];
-  for (const idx of indices) {
-    const at = idx * 262144;
-    const slice = await file.slice(at, at + 262144).arrayBuffer();
-    // A chunk can be flagged dirty and still lie past the end of the sparse
-    // data file, or run off it — the saver only extends the file as far as it
-    // has actually written. Only the bytes that really exist are carried back,
-    // so assembly leaves the rest of the base image alone instead of zeroing
-    // a region nothing was ever written to.
-    if (!slice.byteLength) continue;
-    out.push([idx, Array.from(new Uint8Array(slice))]);
-  }
-  return {name, chunkSize: 262144, dataSize: file.size, chunks: out};
+  return {name, indices, dataSize: (await dataHandle.getFile()).size, chunkSize: 262144};
 }, diskName);
+if (info.error) throw new Error(info.error);
+console.log(`  ${info.indices.length} dirty chunk(s) to fetch`);
 
-if (result.error) throw new Error(result.error);
-console.log(`  ${result.chunks.length} dirty chunk(s), ${(result.chunks.length * 262144 / 1048576).toFixed(1)} MB changed`);
-const manifest = {disk: result.name, chunkSize: result.chunkSize, dataSize: result.dataSize,
-                  chunks: result.chunks.map(([i, b]) => [i, b.length])};
-writeFileSync(join(outDir, "dirty.json"), JSON.stringify(manifest, null, 2) + "\n");
-const blob = Buffer.concat(result.chunks.map(([, bytes]) => Buffer.from(bytes)));
-writeFileSync(join(outDir, "dirty.bin"), blob);
-console.log(`  wrote ${join(outDir, "dirty.json")} and dirty.bin`);
+const binPath = join(outDir, "dirty.bin");
+if (existsSync(binPath)) rmSync(binPath);
+const lengths = [];
+const BATCH = 12;
+for (let i = 0; i < info.indices.length; i += BATCH) {
+  const want = info.indices.slice(i, i + BATCH);
+  const parts = await page.evaluate(async ({name, want, size}) => {
+    const root = await navigator.storage.getDirectory();
+    const file = await (await root.getFileHandle(name + ".data")).getFile();
+    const out = [];
+    for (const idx of want) {
+      const buf = await file.slice(idx * size, idx * size + size).arrayBuffer();
+      if (!buf.byteLength) { out.push(null); continue; }
+      const bytes = new Uint8Array(buf);
+      let bin = "";
+      for (let k = 0; k < bytes.length; k += 8192)
+        bin += String.fromCharCode.apply(null, bytes.subarray(k, k + 8192));
+      out.push(btoa(bin));
+    }
+    return out;
+  }, {name: info.name, want, size: info.chunkSize});
+  parts.forEach((b64, n) => {
+    if (b64 === null) return;           // flagged dirty but past the end of the file
+    const buf = Buffer.from(b64, "base64");
+    appendFileSync(binPath, buf);
+    lengths.push([want[n], buf.length]);
+  });
+  process.stdout.write(`\r  fetched ${Math.min(i + BATCH, info.indices.length)}/${info.indices.length}`);
+}
+process.stdout.write("\n");
+writeFileSync(join(outDir, "dirty.json"), JSON.stringify(
+  {disk: info.name, chunkSize: info.chunkSize, dataSize: info.dataSize, chunks: lengths}, null, 2) + "\n");
+console.log(`  wrote ${lengths.length} chunk(s), ${(lengths.reduce((n, [, l]) => n + l, 0) / 1048576).toFixed(1)} MB`);
 await (browser ? browser.close() : ctx.close());

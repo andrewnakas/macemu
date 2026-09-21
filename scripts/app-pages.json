@@ -4759,5 +4759,143 @@
     "addedDate": "2026-09-21",
     "rank": 4,
     "screenshot": true
+  },
+  {
+    "slug": "ferazels-wand",
+    "title": "Play Ferazel's Wand Online — Ambrosia's Macintosh Platformer",
+    "description": "Ferazel's Wand, Ambrosia Software's great Macintosh platformer, running in your browser on an emulated Power Macintosh.",
+    "keywords": "ferazel's wand, play ferazels wand online, ambrosia software, mac platformer, ferazel mac",
+    "ogTitle": "Ferazel's Wand in your browser",
+    "ogDescription": "Ambrosia's platformer on an emulated Power Macintosh.",
+    "crumb": "Ferazel's Wand",
+    "h1": "Ferazel's Wand — dig, climb, cast",
+    "appName": "Ferazel's Wand (Demo)",
+    "appType": "game",
+    "author": "Ambrosia Software",
+    "year": 1999,
+    "genre": [
+      "Action",
+      "Platform"
+    ],
+    "categories": [
+      "Action"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "ferazels-wand-title"
+    ],
+    "provenance": "shareware",
+    "licenseReason": "This is the demo build, and its licence is unusually plain: \"Ambrosia Software, Inc. grants a free license for use of this software (Ferazel's Wand Demo) for an unlimited period.\" The same agreement permits non-profit distribution provided the software is unmodified and the complete works are included — both true here. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/ferazels-wand.md\" rel=\"noopener\">notices/ferazels-wand.md</a>.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>A hand-drawn platformer with a genuinely beautiful look, built by one of the last great Macintosh shareware houses. You are Ferazel, an elf with a wand, digging through soil, climbing vines and casting spells across a world that is considerably larger than it first appears.</p>\n<p>This is the demo version, which is what Ambrosia distributed freely and is licensed for use without a time limit.</p>",
+    "launchNote": "Boots Mac OS 8.6 and opens Ferazel's Wand by itself. It offers to switch the screen to 640×480 for play — click OK for the intended size, or Don't Switch to stay at 800×600.",
+    "macControls": [
+      {
+        "keys": "Arrow keys",
+        "does": "Run, and climb when you are on something climbable"
+      },
+      {
+        "keys": "Down arrow",
+        "does": "Dig through soil, which is most of how you get around"
+      },
+      {
+        "keys": "Space",
+        "does": "Jump"
+      },
+      {
+        "keys": "Option / Command",
+        "does": "Cast the spell you currently hold"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh 9500, 800×600 in colour</td></tr><tr><th>System</th><td>Mac OS 8.6, shared with every other title of this era</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Version</th><td>Demo 1.0.3</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser.</td></tr></tbody></table><p>Ferazel's Wand does not carry its own operating system. Mac OS 8.6 is mounted from one shared image identical for every title of this era, and the game sits on a small disk beside it — so the system is downloaded once and shared with Avara and MacBrickout.</p>\n<p>The first thing it does is ask whether to switch to 640×480. The game was drawn for that size and looks right there; saying no leaves it in a window on the larger desktop.</p>\n<p>This is the demo: the opening section of the game rather than the whole thing. Ambrosia licensed it for free use without a time limit, which is why it is the build here.</p>"
+      },
+      {
+        "h": "What makes it worth playing",
+        "html": "<p><strong>Digging.</strong> Most platformers give you solid ground and ask you to go over it. Ferazel digs through it, so the levels are a solid mass you tunnel into rather than a set of ledges, and the route is something you make.</p>\n<p><strong>The art.</strong> Every sprite and background is hand-drawn, and the palette is warm and specific in a way very little else from 1999 is. It is the reason people still bring the game up.</p>\n<p><strong>Spells.</strong> You collect and hold one at a time — fire, ice, a shield — and choosing which to carry into a room is a real decision rather than an inventory chore.</p>\n<p><strong>It is not short of secrets.</strong> The digging means whole areas can be hidden behind an ordinary-looking wall, and the demo already has several.</p>"
+      },
+      {
+        "h": "Ambrosia, at the end",
+        "html": "<p>Ferazel's Wand came out in 1999, near the end of the Macintosh shareware era that Ambrosia Software had defined: Maelstrom in 1992, Apeiron, Escape Velocity, Avara, and a business built on letting you download the whole game and pay if you kept it.</p>\n<p>It was written by Ben Spees, who drew it as well, and it is the kind of thing that only really happens when one person has control of every part. Ambrosia kept selling it into the Mac OS X years before winding down in 2017.</p>\n<p>Two other Ambrosia titles are on this site: <a href=\"/run/maelstrom/\">Maelstrom</a> from 1992 and <a href=\"/run/avara/\">Avara</a> from 1996. Between them they cover most of what that house was.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the full game?",
+        "a": "No — it is the demo build, which covers the opening section. Ambrosia distributed it freely and licensed it for use without a time limit, which is why it is the version here."
+      },
+      {
+        "q": "Should I click OK on the resolution question?",
+        "a": "Yes, if you want the game at the size it was drawn for. Don't Switch leaves it in a window on the 800×600 desktop, which also works."
+      },
+      {
+        "q": "How do I dig?",
+        "a": "Press down while standing on soil. It is the core mechanic rather than a special move — most routes through a level are dug rather than jumped."
+      },
+      {
+        "q": "Who made it?",
+        "a": "Ben Spees wrote and drew it, and Ambrosia Software published it in 1999."
+      },
+      {
+        "q": "Why does it take a while to start?",
+        "a": "It boots a whole Mac OS 8.6 system first. That image is shared with Avara and MacBrickout, so once you have loaded it the others start much faster."
+      },
+      {
+        "q": "Are saves kept?",
+        "a": "Inside the emulated Mac, in your own browser. They survive closing the tab but not clearing site data."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li><a href=\"https://archive.org/details/tucows_205573_Ferazel_s_Wand\" rel=\"noopener\">Internet Archive</a> — the Ambrosia demo installer this copy was produced from, via the Tucows Mac archive.</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/avara/",
+        "title": "Avara",
+        "desc": "Ambrosia's strangest."
+      },
+      {
+        "href": "/run/maelstrom/",
+        "title": "Maelstrom",
+        "desc": "Where Ambrosia started."
+      },
+      {
+        "href": "/run/macbrickout/",
+        "title": "MacBrickout",
+        "desc": "Also on the shared Mac OS 8.6 disk."
+      }
+    ],
+    "shotSetup": {
+      "screen": [
+        800,
+        600
+      ],
+      "steps": [
+        {
+          "waitMs": 45000
+        }
+      ]
+    },
+    "updated": "2026-09-21",
+    "addedDate": "2026-09-21",
+    "rank": 2,
+    "screenshot": true
   }
 ]

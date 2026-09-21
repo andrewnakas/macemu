@@ -6,7 +6,9 @@
     { "doubleClick": [321, 153], "waitMs": 28000, "note": "run Ferazel installer" },
     { "click": [398, 447], "waitMs": 14000, "note": "continue past the splash" },
     { "click": [648, 473], "waitMs": 14000, "note": "accept the licence" },
-    { "click": [558, 420], "waitMs": 200000, "note": "install and wait for it to finish" },
-    { "click": [565, 339], "waitMs": 12000, "note": "quit the installer" }
+    { "click": [558, 420], "waitMs": 210000, "note": "install and wait" },
+    { "click": [565, 339], "waitMs": 15000, "note": "quit the installer" },
+    { "click": [181, 9], "waitMs": 4000, "note": "Special menu" },
+    { "click": [206, 120], "waitMs": 60000, "note": "Shut Down and let the cache flush" }
   ]
 }
