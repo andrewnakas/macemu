@@ -52,12 +52,21 @@ catch {
   spawnSync("npx", ["--yes", "playwright@1.49.0", "install", "chromium"], {stdio: "inherit"});
   ({chromium} = await import("playwright"));
 }
-let browser;
-try { browser = await chromium.launch({headless: !has("headed")}); }
-catch { browser = await chromium.launch({channel: "chrome", headless: !has("headed")}); }
-
+// A profile directory keeps the origin private file system between runs, so a
+// disk can be built up over several short sessions — install one thing, come
+// back, install the next — instead of one long fragile chain of clicks.
+const profile = flag("profile");
 mkdirSync(outDir, {recursive: true});
-const ctx = await browser.newContext();
+let browser, ctx;
+if (profile) {
+  mkdirSync(profile, {recursive: true});
+  try { ctx = await chromium.launchPersistentContext(profile, {headless: !has("headed")}); }
+  catch { ctx = await chromium.launchPersistentContext(profile, {channel: "chrome", headless: !has("headed")}); }
+} else {
+  try { browser = await chromium.launch({headless: !has("headed")}); }
+  catch { browser = await chromium.launch({channel: "chrome", headless: !has("headed")}); }
+  ctx = await browser.newContext();
+}
 const page = await ctx.newPage();
 // The emulator's paint loop returns early when the document is hidden, and an
 // automated tab is always hidden, so it would render nothing at all.
@@ -120,6 +129,35 @@ for (const step of steps.steps || []) {
   await snap(step.note ? step.note.replace(/[^a-z0-9]+/gi, "-").toLowerCase() : "step");
 }
 
+// ALWAYS SHUT THE MACHINE DOWN BEFORE TAKING THE DISK AWAY
+//
+// Killing the emulator with the volume still mounted leaves HFS half-written,
+// and the next boot runs Disk First Aid and reports damage it cannot repair —
+// which, with --profile, means the disk you have been building up over several
+// sessions is gone. So the shutdown is done here rather than left to whoever
+// wrote the steps file to remember.
+if (!has("no-shutdown")) {
+  console.log("shutting the Mac down (Special \u25b8 Shut Down)");
+  // Shut Down lives on the Finder's menu bar, so whatever is frontmost has to
+  // go first — the menu click lands on the running application's menus
+  // otherwise and the machine is killed dirty. Command-Q twice is enough: the
+  // Finder cannot be quit, so it is harmless once we are back at it.
+  for (let i = 0; i < 2; i++) {
+    await page.keyboard.press("Meta+q");
+    await page.waitForTimeout(3500);
+  }
+  await page.waitForTimeout(3000);
+  const menu = [181, 9], item = [206, 120];
+  for (const [mx, my] of [menu, item]) {
+    await page.mouse.move(box.x + mx * sx, box.y + my * sy);
+    await page.waitForTimeout(700);
+    await page.mouse.down(); await page.waitForTimeout(250); await page.mouse.up();
+    await page.waitForTimeout(2500);
+  }
+  await page.waitForTimeout(20000);
+  await snap("shut-down");
+}
+
 console.log("stopping the machine so the disk files unlock");
 await page.evaluate(async () => {
   for (const h of window.__macInstances || []) { try { await h.destroy(); } catch {} }
@@ -178,4 +216,4 @@ writeFileSync(join(outDir, "dirty.json"), JSON.stringify(manifest, null, 2) + "\
 const blob = Buffer.concat(result.chunks.map(([, bytes]) => Buffer.from(bytes)));
 writeFileSync(join(outDir, "dirty.bin"), blob);
 console.log(`  wrote ${join(outDir, "dirty.json")} and dirty.bin`);
-await browser.close();
+await (browser ? browser.close() : ctx.close());

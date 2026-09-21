@@ -4621,5 +4621,143 @@
     "addedDate": "2026-09-21",
     "rank": 2,
     "screenshot": true
+  },
+  {
+    "slug": "macbrickout",
+    "title": "Play MacBrickout Online — The Mac Breakout Shareware Classic",
+    "description": "Leapfrog Software's MacBrickout, the Mac's definitive brick-breaker, running in your browser on an emulated Power Macintosh.",
+    "keywords": "macbrickout, play macbrickout online, mac breakout game, brick breaker mac, leapfrog software, arkanoid mac",
+    "ogTitle": "MacBrickout in your browser",
+    "ogDescription": "The Mac's brick-breaking shareware classic, on an emulated Power Macintosh.",
+    "crumb": "MacBrickout",
+    "h1": "MacBrickout — bricks, capsules, evil bubbles",
+    "appName": "MacBrickout",
+    "appType": "game",
+    "author": "Leapfrog Software",
+    "year": 1999,
+    "genre": [
+      "Action",
+      "Arcade"
+    ],
+    "categories": [
+      "Action"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "macbrickout-title"
+    ],
+    "provenance": "shareware",
+    "licenseReason": "MacBrickout is shareware from Leapfrog Software, distributed freely and fully playable with a registration prompt on startup. The copy here is exactly as it was distributed, unmodified and unregistered — the shareware notice it shows is part of the program and has been left alone. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/macbrickout.md\" rel=\"noopener\">notices/macbrickout.md</a>.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>A paddle, a ball, and a wall of bricks — and then everything else. Falling capsules that give you a wider paddle, a laser, a sticky bat or three balls at once. Bricks that need several hits. Evil bubbles that drift down and knock your ball off course.</p>\n<p>MacBrickout is the Macintosh's definitive take on Breakout, and it is far more generous than it needs to be: a hundred-odd levels across three packs, all included here.</p>",
+    "launchNote": "Boots Mac OS 8.6 and opens MacBrickout by itself. It shows its shareware notice first — click OK and the paddle is yours.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Move the paddle. That is the whole control scheme."
+      },
+      {
+        "keys": "Click",
+        "does": "Launch the ball, and fire when you have the laser capsule"
+      },
+      {
+        "keys": "Options menu",
+        "does": "Sound, difficulty, and which level pack to play"
+      },
+      {
+        "keys": "High Scores menu",
+        "does": "The table, kept inside the emulated Mac"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh 9500, 800×600 in colour</td></tr><tr><th>System</th><td>Mac OS 8.6, shared with every other title of this era</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Version</th><td>4.1</td></tr><tr><th>Saves</th><td>High scores inside the emulated Mac, in your browser.</td></tr></tbody></table><p>Like the other Mac OS 8 titles here, MacBrickout does not carry its own operating system. Mac OS 8.6 is mounted from one shared image identical for every title of this era, and MacBrickout sits on a small disk of its own beside it.</p>\n<p>It is mouse-only and it wants a real mouse or trackpad — the paddle follows your hand directly, so a touchscreen is not much use.</p>"
+      },
+      {
+        "h": "The capsules are the game",
+        "html": "<p>Breakout on its own is a 1976 idea. What made the genre survive is Arkanoid's contribution in 1986: bricks that drop power-ups, so the board is constantly changing what you are able to do.</p>\n<p>MacBrickout takes that seriously. There are capsules for a wider paddle, a laser, a slower ball, a catch-and-aim sticky bat, extra lives, and multiball. There are also capsules you do not want, which look much like the ones you do, and deciding whether to move under a falling capsule while a ball is in play is most of the skill.</p>\n<p>The evil bubbles are the other half. They drift down the screen, they are not destroyed by your ball, and they deflect it — so a clean shot set up three seconds ago arrives somewhere else entirely.</p>"
+      },
+      {
+        "h": "Three packs, and a development log",
+        "html": "<p>The game ships with Standard Levels, Mania Levels and the 3.0 Levels from the previous version, all installed here. Mania is the one that assumes you have finished the others.</p>\n<p>It also ships with something unusual: a plain-text development log, kept daily from 1996 to 1999, recording what its author did each day. It opens with an explanation that he had picked up the habit writing weekly progress reports while working on Sega Saturn and PlayStation games, and could not break it.</p>\n<p>It is a genuinely interesting document — a complete record of one person building a shareware game in their own time, including the rewrites, the collision-detection problems and the long break in the middle. That kind of thing is almost never preserved, and it is on the disk here.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is it free?",
+        "a": "It is shareware: freely distributed and fully playable, with a registration prompt at startup asking for $25 if you keep it. The copy here is unregistered and unmodified."
+      },
+      {
+        "q": "Why does it ask me to register?",
+        "a": "Because that notice is part of the program. Removing it would mean distributing modified software, which the shareware terms do not allow. Click OK."
+      },
+      {
+        "q": "How do I control the paddle?",
+        "a": "With the mouse, directly — the paddle goes where your hand goes. Click to launch the ball and to fire the laser when you have it."
+      },
+      {
+        "q": "What are the bubbles?",
+        "a": "Hazards that drift down the screen and deflect your ball. You cannot destroy them, so you play around them."
+      },
+      {
+        "q": "How many levels are there?",
+        "a": "Three packs are installed — Standard, Mania, and the 3.0 levels from the previous version. Mania assumes you have already finished the others."
+      },
+      {
+        "q": "Are high scores kept?",
+        "a": "Inside the emulated Mac, in your own browser. They survive closing the tab but not clearing site data."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li><a href=\"https://archive.org/details/tucows_205650_MacBrickout\" rel=\"noopener\">Internet Archive</a> — the shareware distribution this copy came from, via the Tucows Mac archive.</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/avara/",
+        "title": "Avara",
+        "desc": "Ambrosia's strangest."
+      },
+      {
+        "href": "/run/maelstrom/",
+        "title": "Maelstrom",
+        "desc": "The Mac shareware everyone remembers."
+      },
+      {
+        "href": "/run/mac-os-8/",
+        "title": "Mac OS 8.6",
+        "desc": "The system it runs on."
+      }
+    ],
+    "shotSetup": {
+      "screen": [
+        800,
+        600
+      ],
+      "steps": [
+        {
+          "waitMs": 35000
+        }
+      ]
+    },
+    "updated": "2026-09-21",
+    "addedDate": "2026-09-21",
+    "rank": 4,
+    "screenshot": true
   }
 ]

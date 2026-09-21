@@ -45,6 +45,7 @@ NOTES THAT WILL SAVE YOU AN HOUR
 """
 import argparse
 import os
+import unicodedata
 import subprocess
 import sys
 
@@ -113,8 +114,14 @@ def read_native_folder(host_path, date):
         if name.startswith("."):
             continue                      # .DS_Store and friends
         full = os.path.join(host_path, name)
+        # macOS stores filenames decomposed: "Français" is an F, an r, an a, an
+        # n, a c, a COMBINING CEDILLA, and so on. MacRoman has no code point for
+        # a combining mark, so machfs refuses the name outright. Composing it
+        # first turns the pair back into the single ç MacRoman does have, which
+        # is how the name was written on the Mac this came from.
+        mac_name = unicodedata.normalize("NFC", name)
         if os.path.isdir(full):
-            folder[name] = read_native_folder(full, date)
+            folder[mac_name] = read_native_folder(full, date)
             continue
 
         f = machfs.File()
@@ -143,7 +150,7 @@ def read_native_folder(host_path, date):
         # on a volume with different file ids; the writer builds a fresh one.
         if name in ("Desktop DB", "Desktop DF"):
             continue
-        folder[name] = f
+        folder[mac_name] = f
     return folder
 
 
