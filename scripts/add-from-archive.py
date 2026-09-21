@@ -202,6 +202,30 @@ def siblings_of(volume, app_path):
     return out
 
 
+# SHARED SYSTEM DISKS
+#
+# A Mac OS 8 title used to cost about 180 MB, nearly all of it a second copy of
+# Mac OS 8, because building it rewrote the whole 500 MB volume and machfs does
+# not preserve where file data sits — adding one five-byte file leaves only 163
+# of 678 non-empty chunks intact. Content-addressed chunking, which would make
+# the duplication free, has nothing to match.
+#
+# --title-disk builds the game on a disk of its own instead, to be mounted after
+# a shared system image that is byte identical for every title. The visitor
+# downloads the operating system once.
+#
+# Launching it needs one trick. The shared image cannot hold a title-specific
+# alias, so it holds a generic one pointing at "Title:Start", and every title
+# disk is built to match it: the same volume name, the same volume creation date
+# as the shared image, the application created first so its catalogue id is
+# always the same, and an alias named "Start" beside it. One alias in the shared
+# image therefore resolves on every title disk.
+#
+# machfs writes an alias without kIsAlias set and the Finder ignores it, so the
+# bit is set by hand — the same trap Reader Rabbit's application shipped with,
+# in reverse.
+
+
 # SELF-BOOTING DISKS, AND WHY A TITLE SOMETIMES NEEDS ONE
 #
 # Most titles are happiest copied onto a System 7.5.3 hard disk. Some are not,
@@ -240,6 +264,13 @@ def main():
     ap.add_argument("--in-startup-items", action="store_true",
                     help="put the application and its data straight into Startup Items "
                          "so it can find files beside itself (see the note at the top)")
+    ap.add_argument("--title-disk", action="store_true",
+                    help="build a small disk holding only the title, to be mounted beside a "
+                         "shared operating-system image rather than carrying its own copy "
+                         "of one (see the note on shared system disks)")
+    ap.add_argument("--shared-base", default="Images/system/macos8-shared.img",
+                    help="the shared system image --title-disk is built to sit beside; read "
+                         "only for its volume creation date, which the alias must match")
     ap.add_argument("--use-source-system", action="store_true",
                     help="keep the source disk's own System instead of copying the title "
                          "onto a System 7.5.3 boot disk, and patch the boot blocks so it "
@@ -334,6 +365,33 @@ def main():
 
     app_name = app_path[-1]
     folder_name = args.folder_name or args.volume_name
+
+    if args.title_disk:
+        shared = machfs.Volume()
+        shared.read(open(args.shared_base, "rb").read())
+        t = machfs.Volume()
+        t.name = "Title"
+        t.crdate = t.mddate = t.bkdate = shared.crdate
+        t["Start App"] = app                 # first, so its catalogue id is fixed
+        alias = machfs.File()
+        alias.aliastarget = t["Start App"]
+        alias.crdate = alias.mddate = alias.bkdate = t.crdate
+        t["Start"] = alias
+        extras = {} if args.app_only else siblings_of(app_volume, app_path)
+        extras, _ = split_off_system_files(extras)
+        for name, item in loose.items():
+            extras.setdefault(name, item)
+        for name, item in extras.items():
+            if name not in ("Start", "Start App"):
+                t[name] = item
+        out = f"Images/titles/title-{args.slug}.img"
+        image = t.write(args.size * 1024 * 1024, align=512, desktopdb=True, bootable=False)
+        assert image[1024:1026] == b"BD", "not an HFS volume"
+        open(out, "wb").write(image)
+        print(f"\nwrote {out}: {len(image) / 1048576:.0f} MB holding {app_name!r} "
+              f"and {len(extras)} file(s) beside it, to mount after the shared system disk")
+        print(f"\nnext:\n  node scripts/chunk-disk.mjs {out} {args.slug}-title --name \"{args.volume_name}\"")
+        return
 
     if args.use_source_system:
         vol = app_volume
