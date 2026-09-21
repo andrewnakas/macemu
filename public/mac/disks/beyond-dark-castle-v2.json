@@ -1,0 +1,29 @@
+{
+    "name": "Beyond Dark Castle v2",
+    "totalSize": 4194304,
+    "chunks": [
+        "135de5a6a39b510536f99478e7217307",
+        "aad448c39761280ce442679ab2f373cb",
+        "80d37df9d5ae7fa2d2c023112a5ea5d0",
+        "a2f7456e1697faa696560d20475836de",
+        "40ef71913977770b708d40e01acfb7a0",
+        "772369a464fb4916048bd610f856915e",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "4d62bf8da949efc3a5a8bf38ad502945"
+    ],
+    "chunkSize": 262144,
+    "prefetchChunks": [
+        0,
+        1,
+        2,
+        5
+    ]
+}

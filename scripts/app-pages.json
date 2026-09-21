@@ -3519,5 +3519,411 @@
     "addedDate": "2026-09-20",
     "rank": 2,
     "screenshot": true
+  },
+  {
+    "slug": "macwrite",
+    "title": "Use MacWrite Online — The 1984 Macintosh Word Processor",
+    "description": "MacWrite, the program that showed the world what a word processor on a screen could look like, running in your browser on an emulated Mac.",
+    "keywords": "macwrite, macwrite online, macwrite 1984, classic mac word processor, wysiwyg word processor, apple macwrite",
+    "ogTitle": "MacWrite in your browser",
+    "ogDescription": "Apple's 1984 word processor, running on an emulated Macintosh.",
+    "crumb": "MacWrite",
+    "h1": "MacWrite — what you see is what you get",
+    "appName": "MacWrite",
+    "appType": "app",
+    "author": "Apple",
+    "year": 1984,
+    "genre": [
+      "Word processing",
+      "Productivity"
+    ],
+    "categories": [
+      "Creative tools"
+    ],
+    "era": "system-6",
+    "machine": "Mac-SE",
+    "screen": {
+      "w": 512,
+      "h": 342,
+      "depth": 1
+    },
+    "bootDisk": "macwrite-v1",
+    "provenance": "grey",
+    "licenseReason": "MacWrite is Apple's. It was discontinued in the 1990s, has not been sold in over thirty years, and is contained in no current product. Apple's 2010 release of the MacPaint source to the Computer History Museum covers its sibling rather than this program, so the argument here rests on abandonment alone. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/macwrite.md\" rel=\"noopener\">notices/macwrite.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>A blank page, a ruler with tab stops you drag, and text that appears on screen in the typeface and size it will print in. That sounds like nothing. In 1984 it was the argument.</p>\n<p>Every other word processor showed you a monospaced screen full of markup and asked you to imagine the result. MacWrite showed you the result. The phrase \"what you see is what you get\" stopped being a research demo and became something you could buy.</p>",
+    "launchNote": "Opens straight into MacWrite on an emulated Macintosh SE with a blank document. Type something, then change the font and size from the menus and watch the page reflow.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Place the cursor, select text, drag tab stops on the ruler"
+      },
+      {
+        "keys": "Font / FontSize / Style menus",
+        "does": "Change the type — and see it change on the page"
+      },
+      {
+        "keys": "Ruler",
+        "does": "Drag the markers to set margins, indents and tabs"
+      },
+      {
+        "keys": "Cmd-X / C / V",
+        "does": "Cut, copy, paste — these shortcuts were new here"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh SE, 512×342 black and white</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Version</th><td>The Apple release, as it shipped with the Macintosh</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser. Do not keep anything irreplaceable there.</td></tr></tbody></table><p>It is small. There is no spell check, no styles, no tables, no footnotes, and early versions capped a document at around eight pages because the whole thing had to fit in memory alongside the system.</p>\n<p>What it has is the part that mattered: proportional type on screen, multiple fonts in one document, a ruler you manipulate directly, and a printed page that matches what you were looking at.</p>"
+      },
+      {
+        "h": "The things you stopped noticing",
+        "html": "<p><strong>The ruler.</strong> Margins, indents and tab stops as objects you drag, rather than commands you type. Every word processor since has this and none of them invented it.</p>\n<p><strong>Cut, copy and paste on Cmd-X, C and V.</strong> Those three keys are next to each other at the bottom left of the keyboard for the same reason they always have been: so your left hand can reach them while your right hand stays on the mouse.</p>\n<p><strong>Mixed type in one document.</strong> Ordinary now. In 1984, on a machine most people were comparing to a typewriter, being able to put a heading in one face and the body in another was the demo that sold the computer.</p>\n<p><strong>Select by dragging, and by double-clicking a word.</strong> Also from here.</p>"
+      },
+      {
+        "h": "Why a free word processor mattered",
+        "html": "<p>MacWrite and MacPaint shipped free with every Macintosh, which was a deliberate and expensive decision. The machine was new, it had almost no software, and nobody had used anything like it. Two good programs in the box meant that the first thing a buyer did was something the machine was unusually good at.</p>\n<p>It also set a trap Apple later had to climb out of. Giving away a competent word processor made it hard for anyone else to sell one, until Microsoft Word arrived with the features MacWrite deliberately lacked and took the market permanently. Apple spun MacWrite out to Claris, which shipped MacWrite II and MacWrite Pro before discontinuing the line in the 1990s.</p>\n<p>What survives is the interface. Open any word processor today and the ruler is still along the top, the fonts are still on a menu, and the page still shows you what you are going to get.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the real MacWrite?",
+        "a": "Yes — Apple's release, the one that shipped with the Macintosh, running as it did in 1984."
+      },
+      {
+        "q": "Can I save a document?",
+        "a": "Yes, into the emulated Mac, which lives in your browser. It survives closing the tab but not clearing site data, so do not keep anything you need there."
+      },
+      {
+        "q": "Why is my document limited in length?",
+        "a": "Early MacWrite held the whole document in memory alongside the system, which on a 128K machine meant a practical limit of around eight pages. It is a property of the program, not the emulation."
+      },
+      {
+        "q": "Where is the spell check?",
+        "a": "There isn't one. No styles, tables or footnotes either. The point of MacWrite was that the screen matched the page, and almost everything else was left out to make that fit."
+      },
+      {
+        "q": "Why do Cmd-X, C and V work?",
+        "a": "Because this is where they come from. They are clustered at the bottom left of the keyboard so your left hand can reach them without leaving the mouse."
+      },
+      {
+        "q": "Can I get text out of it?",
+        "a": "Only by retyping or screenshotting — the emulated Mac's disk lives in your browser and nothing is shared with your real machine."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li><a href=\"https://archive.org/details/mac_MacWrite\" rel=\"noopener\">Internet Archive</a> — the preserved Macintosh floppy this copy came from.</li><li><a href=\"https://macintoshgarden.org/apps/macwrite\" rel=\"noopener\">Macintosh Garden</a> — later releases including MacWrite II and Pro.</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/macpaint/",
+        "title": "MacPaint",
+        "desc": "The other program in the box."
+      },
+      {
+        "href": "/load-mac-file/",
+        "title": "Bring your own file",
+        "desc": "Open a disk image of your own."
+      },
+      {
+        "href": "/collection/system-6/",
+        "title": "More early Mac software",
+        "desc": "The black-and-white years."
+      }
+    ],
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "waitMs": 16000
+        }
+      ]
+    },
+    "updated": "2026-09-20",
+    "addedDate": "2026-09-20",
+    "rank": 2,
+    "screenshot": true
+  },
+  {
+    "slug": "beyond-dark-castle",
+    "title": "Play Beyond Dark Castle (1987) Online — The Macintosh Sequel",
+    "description": "Silicon Beach Software's Beyond Dark Castle, bigger and harder than the original, booting from its own 1987 disk in your browser.",
+    "keywords": "beyond dark castle, play beyond dark castle online, dark castle sequel, silicon beach software, beyond dark castle mac",
+    "ogTitle": "Beyond Dark Castle (1987) in your browser",
+    "ogDescription": "The Dark Castle sequel, on an emulated Macintosh.",
+    "crumb": "Beyond Dark Castle",
+    "h1": "Beyond Dark Castle — the one with the jetpack",
+    "appName": "Beyond Dark Castle",
+    "appType": "game",
+    "author": "Silicon Beach Software",
+    "year": 1987,
+    "genre": [
+      "Action",
+      "Platform",
+      "Adventure"
+    ],
+    "categories": [
+      "Action"
+    ],
+    "era": "system-6",
+    "machine": "Mac-Plus",
+    "screen": {
+      "w": 512,
+      "h": 342,
+      "depth": 1
+    },
+    "bootDisk": "beyond-dark-castle-v2",
+    "provenance": "grey",
+    "licenseReason": "Silicon Beach Software was acquired by Aldus in 1990 and Aldus by Adobe in 1994. Neither has ever published it. The 1987 Macintosh original has not been sold by anyone in nearly forty years. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/beyond-dark-castle.md\" rel=\"noopener\">notices/beyond-dark-castle.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>The sequel to the game that proved the Macintosh could do action, and it is bigger in every direction: more rooms, a map to get lost in, an actual objective beyond surviving, and a jetpack.</p>\n<p>It is also harder, which in the context of Dark Castle is a substantial claim.</p>",
+    "launchNote": "Boots from the original 1987 disk on an emulated Macintosh Plus, straight into the title screen. Same split controls as Dark Castle: left hand moves, right hand aims and throws.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Aim, and click to throw"
+      },
+      {
+        "keys": "A / S / D / W",
+        "does": "Run left, crouch, run right, jump"
+      },
+      {
+        "keys": "Space",
+        "does": "Jump"
+      },
+      {
+        "keys": "Options menu",
+        "does": "Difficulty and key remapping"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh Plus, 512×342 black and white</td></tr><tr><th>System</th><td>The disk's own — this one boots itself</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Version</th><td>The 1987 Silicon Beach release, both disks merged onto one volume</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser.</td></tr></tbody></table><p>This is one of the handful of titles here that runs on its own System rather than on the System 7.5.3 disk the rest use. Copied onto System 7 it boots to a black screen and stays there — no error, no bomb, just black. Its own 1987 System runs it perfectly.</p>\n<p>The game shipped on two disks, the program and half its data on one and the rest on the other. Both have been merged onto a single bootable volume here, and the disk's own boot blocks were kept and pointed at the game, which is how a self-booting disk of that era launched straight into a title with no Finder in the way.</p>"
+      },
+      {
+        "h": "What is different from Dark Castle",
+        "html": "<p><strong>There is a goal.</strong> Dark Castle was a set of rooms to survive. Beyond has you collecting five orbs scattered through the castle and using them to reach the Black Knight, which means navigating rather than simply enduring.</p>\n<p><strong>The jetpack.</strong> A limited-fuel flight pack that opens up vertical routes and is entirely capable of flying you into something that kills you.</p>\n<p><strong>A map screen</strong>, because the castle is now large enough to get lost in.</p>\n<p><strong>More to do with the mouse.</strong> There are shields, bombs and a fireball weapon, on top of the rocks.</p>\n<p>The engine, the art style and the punishing physics are all carried straight over, so anyone who has played the original will be immediately at home and immediately dying.</p>"
+      },
+      {
+        "h": "The same two people",
+        "html": "<p>Jonathan Gay wrote it and Mark Stephen Pierce drew it, the pair who made the original. Gay was barely out of his teens at this point and would go on to build FutureSplash Animator, which Macromedia bought and renamed Flash — so the person responsible for these bats and this jetpack is also responsible for a decade of the animated web.</p>\n<p>Pierce's art does more here than in the first game because there is more of it: the castle has genuine geography, and the cross-hatched one-bit style holds up across a much larger set of rooms than it was originally asked to.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Do I need to play Dark Castle first?",
+        "a": "No, but it helps. Beyond assumes you already know the movement and the throwing, and it is not gentle about teaching them again."
+      },
+      {
+        "q": "Why does it boot with no desktop?",
+        "a": "It runs from its own 1987 disk rather than the System 7 disk most titles here use, because under System 7 it comes up to a black screen and stays there. The disk's boot blocks name the game as the startup program, so the machine comes up in it."
+      },
+      {
+        "q": "Was this two floppies originally?",
+        "a": "Yes — the program and part of its data on one, the rest on the other. Both have been merged onto a single volume here so nothing asks you to swap disks."
+      },
+      {
+        "q": "What is the actual objective?",
+        "a": "Collect five orbs from around the castle and use them to reach and defeat the Black Knight."
+      },
+      {
+        "q": "How does the jetpack work?",
+        "a": "Limited fuel, and it opens vertical routes you cannot reach on foot. It will also happily fly you into a hazard, so it is not a way out of trouble."
+      },
+      {
+        "q": "It is extremely hard.",
+        "a": "It is. Turn the difficulty down in the Options menu — the game was built for people who would spend weeks on it."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li><a href=\"https://archive.org/details/beyonddarkcastle_202004\" rel=\"noopener\">Internet Archive</a> — the two preserved Macintosh disks this copy came from.</li><li><a href=\"https://macintoshgarden.org/games/beyond-dark-castle\" rel=\"noopener\">Macintosh Garden</a> — other releases and documentation.</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/dark-castle/",
+        "title": "Dark Castle",
+        "desc": "Start here."
+      },
+      {
+        "href": "/run/crystal-quest/",
+        "title": "Crystal Quest",
+        "desc": "The other Mac action name."
+      },
+      {
+        "href": "/run/glider-pro/",
+        "title": "Glider PRO",
+        "desc": "Considerably kinder."
+      }
+    ],
+    "shotSetup": {
+      "screen": [
+        512,
+        342
+      ],
+      "steps": [
+        {
+          "waitMs": 24000
+        }
+      ]
+    },
+    "updated": "2026-09-20",
+    "addedDate": "2026-09-20",
+    "rank": 3,
+    "screenshot": true
+  },
+  {
+    "slug": "crystal-crazy",
+    "title": "Play Crystal Crazy (1993) Online — The Crystal Quest Sequel",
+    "description": "Casady & Greene's Crystal Crazy, the sequel to Crystal Quest, running in your browser on an emulated Mac.",
+    "keywords": "crystal crazy, play crystal crazy online, crystal quest sequel, casady greene, patrick buckland, crystal crazy mac",
+    "ogTitle": "Crystal Crazy (1993) in your browser",
+    "ogDescription": "The Crystal Quest sequel, on an emulated Macintosh.",
+    "crumb": "Crystal Crazy",
+    "h1": "Crystal Crazy — the quest continues",
+    "appName": "Crystal Crazy",
+    "appType": "game",
+    "author": "Casady & Greene",
+    "year": 1993,
+    "genre": [
+      "Action",
+      "Arcade"
+    ],
+    "categories": [
+      "Action"
+    ],
+    "era": "system-7",
+    "machine": "Mac-SE",
+    "screen": {
+      "w": 512,
+      "h": 342,
+      "depth": 1
+    },
+    "bootDisk": "crystal-crazy-v1",
+    "provenance": "grey",
+    "licenseReason": "Casady & Greene closed in 2003 and several of its titles reverted to their authors. Crystal Crazy has not been sold in over twenty years and is contained in no current product. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/crystal-crazy.md\" rel=\"noopener\">notices/crystal-crazy.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>Six years after Crystal Quest, the same people made it again with more of everything: more enemies, more weapons, jigsaw pieces to collect, and objectives that change what a wave is actually asking of you.</p>\n<p>The mouse control is untouched, because it was already right.</p>",
+    "launchNote": "Boots to the Crystal Crazy title screen on an emulated Macintosh SE. Click to start, Return for instructions, H for high scores. The ship follows your mouse.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Fly. The ship goes where you point."
+      },
+      {
+        "keys": "Mouse button",
+        "does": "Fire"
+      },
+      {
+        "keys": "Return",
+        "does": "Instructions"
+      },
+      {
+        "keys": "H",
+        "does": "High scores"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh SE, 512×342 black and white</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Version</th><td>1.0.6</td></tr><tr><th>Saves</th><td>High scores live inside the emulated Mac, in your browser.</td></tr></tbody></table><p>It runs in black and white here on the game's own advice. Start it on a colour screen without its MegaDraw acceleration and Crystal Crazy itself puts up a dialog explaining that it will not manage anything like full speed and would be more fun in black and white. Taking the game at its word gives a clean, fast title screen and no warning.</p>\n<p>The structure is Crystal Quest's: clear the board, reach the gate, next wave, harder. What changes is what \"clear the board\" means from wave to wave.</p>"
+      },
+      {
+        "h": "What the sequel added",
+        "html": "<p><strong>Objectives that vary.</strong> Some waves want the crystals, some want you to smash objects, some want jigsaw pieces assembled. The folders on the disk are literally named Basics, Goodies, Nasties and Objectives, which is a fair summary of the design.</p>\n<p><strong>More weapons.</strong> The original gave you a gun and your reflexes. This adds a set of pickups that change how a wave can be approached.</p>\n<p><strong>More nasties, with more behaviour.</strong> The enemy roster is considerably larger and the patterns are less predictable.</p>\n<p><strong>More voices.</strong> The sampled commentary that made the first game memorable is back and there is more of it.</p>\n<p>Whether it improves on Crystal Quest is genuinely contested. It is unambiguously bigger; the original's severity is part of what people liked.</p>"
+      },
+      {
+        "h": "Casady & Greene at the end of the Mac's middle age",
+        "html": "<p>By 1993 Casady & Greene had been publishing Mac-only software for a decade — Crystal Quest, Conflict Catcher, Spell Catcher, and later the first version of SoundJam MP, which Apple bought and turned into iTunes.</p>\n<p>Crystal Crazy is what that house looked like at its most confident: a sequel nobody strictly needed, made carefully, shipped with its own accelerated drawing engine, and carrying a dialog that politely tells you your machine is not good enough for the colour mode.</p>\n<p>The company closed in 2003. Patrick Buckland, who wrote both games, went on to found Rockstar Leeds.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the sequel to Crystal Quest?",
+        "a": "Yes — Crystal Crazy, 1993, by the same author and publisher. Version 1.0.6."
+      },
+      {
+        "q": "Why is it in black and white?",
+        "a": "Because the game asks for it. On a colour screen without MegaDraw acceleration it warns that it cannot run at anything like full speed and suggests black and white. It is right."
+      },
+      {
+        "q": "How is it different from Crystal Quest?",
+        "a": "More enemies, more weapons, and waves with varying objectives — crystals, smashing objects, assembling jigsaws — instead of the single collect-and-escape goal."
+      },
+      {
+        "q": "Is it better than the original?",
+        "a": "Opinions differ. It is bigger and more varied; the original is leaner and more severe, and plenty of people prefer that."
+      },
+      {
+        "q": "How do I control it?",
+        "a": "The mouse alone. The ship goes exactly where you point and the button fires — unchanged from Crystal Quest, because it was already right."
+      },
+      {
+        "q": "Are high scores kept?",
+        "a": "Inside the emulated Mac, in your own browser. They survive closing the tab but not clearing site data."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li><a href=\"https://archive.org/details/crystalcrazy\" rel=\"noopener\">Internet Archive</a> — the preserved Macintosh disk this copy came from.</li><li><a href=\"https://macintoshgarden.org/games/crystal-crazy\" rel=\"noopener\">Macintosh Garden</a> — other releases and documentation.</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/crystal-quest/",
+        "title": "Crystal Quest",
+        "desc": "The original, and leaner."
+      },
+      {
+        "href": "/run/maelstrom/",
+        "title": "Maelstrom",
+        "desc": "Asteroids, in colour."
+      },
+      {
+        "href": "/run/beyond-dark-castle/",
+        "title": "Beyond Dark Castle",
+        "desc": "The other Mac sequel here."
+      }
+    ],
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "waitMs": 26000
+        }
+      ]
+    },
+    "updated": "2026-09-20",
+    "addedDate": "2026-09-20",
+    "rank": 3,
+    "screenshot": true
   }
 ]

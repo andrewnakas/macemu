@@ -50,6 +50,18 @@ DOCUMENT_TYPES = (b"TEXT", b"ttro", b"PICT", b"MooV", b"GIFf", b"WORD")
 # rather than dropped or, worse, left in Startup Items for the Finder to open
 # at boot.
 BOOT_FILE_NAMES = ("system", "finder", "desktop")
+
+# Litter left by the modern Mac that made the disk image, not by the title.
+# A dot-file means nothing to System 7 and everything to the Finder that wrote
+# it, and "Icon\r" is how macOS stores a custom folder icon. Copying them
+# across puts invisible junk on a 1987 desktop.
+HOST_LITTER = (".ds_store", ".trashes", ".fseventsd", ".spotlight-v100",
+               ".apiddisk", ".vol", "icon\r", ".hidden")
+
+
+def is_host_litter(name):
+    n = name.strip().lower()
+    return n in HOST_LITTER or n.startswith("._")
 SYSTEM_FOLDER_TYPES = (b"ZSYS", b"FNDR", b"INIT", b"cdev", b"scri", b"appe",
                        b"PRES", b"PRER", b"RDEV")   # printer and chooser drivers
 
@@ -58,7 +70,9 @@ def split_off_system_files(items):
     """(what the title keeps, what goes in the System Folder). Drops the boot files."""
     keep, system = {}, {}
     for name, item in items.items():
-        if isinstance(item, machfs.Folder) or item.type not in SYSTEM_FOLDER_TYPES:
+        if is_host_litter(name):
+            print(f"  dropped {name!r}: litter from the Mac that imaged the disk")
+        elif isinstance(item, machfs.Folder) or item.type not in SYSTEM_FOLDER_TYPES:
             keep[name] = item
         elif name.strip().lower() in BOOT_FILE_NAMES:
             print(f"  dropped {name!r}: the source floppy's own boot file")
@@ -180,6 +194,33 @@ def siblings_of(volume, app_path):
     return out
 
 
+# SELF-BOOTING DISKS, AND WHY A TITLE SOMETIMES NEEDS ONE
+#
+# Most titles are happiest copied onto a System 7.5.3 hard disk. Some are not,
+# and they do not say so politely: Rogue and Shanghai reset the machine, and
+# Beyond Dark Castle comes up to a black screen and stays there.
+#
+# Those titles shipped on disks that carry their own System, from the era they
+# were written for. Booting that instead of ours fixes them. The only piece
+# missing is the launch: a 1987 disk has no Startup Items folder, because that
+# is a System 7 idea. What it has is a field in the boot blocks naming the
+# program the machine should start — normally "Finder", and on a self-booting
+# game disk the game itself. Rogue's disk says "Rogue" there. So we write the
+# title's name into the same field and the machine comes up in the game.
+SHELL_OFFSET = 0x1A          # boot block: the program the Finder's job is given to
+STARTUP_OFFSET = 0x5A        # boot block: the startup program
+
+
+def patch_boot_shell(image, app_name):
+    """Name `app_name` as the disk's startup program, the way a game disk does."""
+    name = app_name.encode("mac_roman")[:15]
+    field = bytes([len(name)]) + name + b"\0" * (15 - len(name))
+    out = bytearray(image)
+    for off in (SHELL_OFFSET, STARTUP_OFFSET):
+        out[off:off + 16] = field
+    return bytes(out)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("item", help="Internet Archive identifier")
@@ -191,6 +232,11 @@ def main():
     ap.add_argument("--in-startup-items", action="store_true",
                     help="put the application and its data straight into Startup Items "
                          "so it can find files beside itself (see the note at the top)")
+    ap.add_argument("--use-source-system", action="store_true",
+                    help="keep the source disk's own System instead of copying the title "
+                         "onto a System 7.5.3 boot disk, and patch the boot blocks so it "
+                         "launches the title directly. For anything that will not survive "
+                         "System 7 — see the note on self-booting disks.")
     ap.add_argument("--app", metavar="NAME",
                     help="the application to launch, by name. Needed on the SoftKey-era "
                          "CDs, which bundled an AOL installer and Acrobat Reader that are "
@@ -225,10 +271,10 @@ def main():
                  f"(pass --file to name one yourself)")
     print(f"{args.item}: {len(names)} image(s)")
 
-    app_path = app = app_volume = None
+    app_path = app = app_volume = app_blob = None
     loose = {}
 
-    def consider(name, v):
+    def consider(name, v, blob=None):
         """Keep this volume's application if it beats the best one so far.
 
         A disk with no application on it is not always the boot floppy. A title
@@ -238,7 +284,7 @@ def main():
         the game starts and immediately says so. So the files on such a disk are
         kept and folded in beside the application later.
         """
-        nonlocal app_path, app, app_volume
+        nonlocal app_path, app, app_volume, app_blob
         path, found = find_app(v, args.app)
         if found is None:
             spare = {n: i for n, i in v.items()
@@ -253,7 +299,7 @@ def main():
         size = len(found.data) + len(found.rsrc)
         print(f"    {name}: {':'.join(path)} ({size // 1024} KB)")
         if app is None or size > len(app.data) + len(app.rsrc):
-            app_path, app, app_volume = path, found, v
+            app_path, app, app_volume, app_blob = path, found, v, blob
 
     for name in sorted(names):
         local = f"Images/titles/src-{args.slug}-{name}"
@@ -273,13 +319,45 @@ def main():
             else:
                 print(f"    {name}: unknown filesystem {blob[1024:1026]!r} — skipped")
                 continue
-            consider(name, v)
+            consider(name, v, blob)
         continue
     if app is None:
         sys.exit("no application found on any disk")
 
     app_name = app_path[-1]
     folder_name = args.folder_name or args.volume_name
+
+    if args.use_source_system:
+        vol = app_volume
+        added = []
+        for name, item in loose.items():
+            if name not in vol and not is_host_litter(name):
+                vol[name] = item
+                added.append(name)
+        if added:
+            print(f"  merged from the other disk(s): {', '.join(sorted(added))}")
+        vol.name = args.volume_name
+        out = f"Images/titles/boot-{args.slug}.img"
+        image = vol.write(args.size * 1024 * 1024, align=512, desktopdb=True, bootable=True)
+        # machfs writes boot blocks only when it can bless a System *Folder*, and
+        # a 1987 game disk keeps System and Finder at the root instead. Its own
+        # boot blocks already work, so carry those across rather than synthesise
+        # new ones, and bless the root directory (ID 2), which is where its
+        # System actually lives.
+        if image[0:2] != b"LK" and app_blob and app_blob[0:2] == b"LK":
+            image = app_blob[:1024] + image[1024:]
+            print("  kept the source disk's own boot blocks")
+        if not struct.unpack(">I", image[1024 + 92:1024 + 96])[0]:
+            image = (image[:1024 + 92] + struct.pack(">I", 2) + image[1024 + 96:])
+            print("  blessed the root directory, where this disk's System lives")
+        image = patch_boot_shell(image, app_name)
+        assert image[0:2] == b"LK", "boot blocks missing"
+        assert image[1024:1026] == b"BD", "not an HFS volume"
+        open(out, "wb").write(image)
+        print(f"\nwrote {out}: {len(image) / 1048576:.0f} MB on the source disk's own "
+              f"System, booting straight into {app_name!r}")
+        return
+
     base = machfs.Volume(); base.read(open(args.base, "rb").read())
     folder = machfs.Folder()
     folder.crdate = folder.mddate = folder.bkdate = base.crdate
