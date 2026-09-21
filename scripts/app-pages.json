@@ -1441,8 +1441,8 @@
       "Shooters",
       "Action"
     ],
-    "era": "system-7",
-    "machine": "Mac-IIfx",
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
     "ramMB": 32,
     "screen": {
       "w": 640,
@@ -1551,7 +1551,18 @@
     ],
     "updated": "2026-09-13",
     "addedDate": "2026-09-13",
-    "rank": 6
+    "rank": 6,
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "waitMs": 40000
+        }
+      ]
+    }
   },
   {
     "slug": "marathon-infinity",
@@ -3918,6 +3929,549 @@
       "steps": [
         {
           "waitMs": 26000
+        }
+      ]
+    },
+    "updated": "2026-09-20",
+    "addedDate": "2026-09-20",
+    "rank": 3,
+    "screenshot": true
+  },
+  {
+    "slug": "mac-os-8",
+    "title": "Run Mac OS 8 Online — A Full Classic Mac Desktop in Your Browser",
+    "description": "A complete Mac OS 8 desktop running in your browser on an emulated Power Macintosh. Open the Finder, poke at the control panels, nothing to install.",
+    "keywords": "mac os 8, run mac os 8 online, mac os 8 emulator, classic mac os in browser, powerpc mac emulator, sheepshaver online",
+    "ogTitle": "Mac OS 8 in your browser",
+    "ogDescription": "A full Mac OS 8 desktop on an emulated Power Macintosh.",
+    "crumb": "Mac OS 8",
+    "h1": "Mac OS 8 — the whole desktop",
+    "appName": "Mac OS 8",
+    "appType": "app",
+    "author": "Apple",
+    "year": 1997,
+    "genre": [
+      "Operating system"
+    ],
+    "categories": [
+      "Apps & utilities"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-v2",
+    "provenance": "grey",
+    "licenseReason": "Mac OS 8 is Apple's and Apple is very much still in business. It has not been sold in over twenty-five years, runs on no machine Apple makes, and is contained in no current product. Classic Apple system software has been distributed openly by the Internet Archive, Macintosh Garden and Infinite Mac for many years without objection. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/mac-os-8.md\" rel=\"noopener\">notices/mac-os-8.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>Not a game and not an application — the whole machine. This is a complete Mac OS 8 system booting on an emulated Power Macintosh, with the Finder, the control panels, the Apple menu, and the desktop pattern of little Mac faces that everybody who used one remembers.</p>\n<p>Most of this site runs black-and-white software from the 1980s on compact Macs. This is the other end: 1997, colour, 800×600, and a PowerPC underneath.</p>",
+    "launchNote": "Boots to a Mac OS 8 desktop on an emulated Power Macintosh 9500. Give it a minute — it is loading a real operating system, not a single application.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Everything. It is a Mac."
+      },
+      {
+        "keys": "Apple menu",
+        "does": "Control panels, the Chooser, recent items"
+      },
+      {
+        "keys": "Double-click the hard disk",
+        "does": "Open the Finder window and look around"
+      },
+      {
+        "keys": "Cmd-N",
+        "does": "New folder in the Finder"
+      },
+      {
+        "keys": "Special menu",
+        "does": "Restart and Shut Down"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh 9500, 800×600 in colour</td></tr><tr><th>Processor</th><td>PowerPC 604 — a real RISC chip, emulated</td></tr><tr><th>System</th><td>Mac OS 8</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Changes</th><td>Live inside the emulated Mac, in your browser. Do not keep anything irreplaceable there.</td></tr></tbody></table><p>This is a considerably bigger thing to start than the rest of the catalogue. A black-and-white game from 1986 is a few hundred kilobytes; this is a 500 MB disk with an entire operating system on it, so the first boot takes rather longer than a title does.</p>\n<p>It is a real install and you can break it. Drag things to the Trash, rearrange the System Folder, change the desktop pattern — it is your copy, it lives in your browser, and reloading with fresh site data gives you a clean one.</p>"
+      },
+      {
+        "h": "What to actually look at",
+        "html": "<p><strong>The Appearance control panel.</strong> Mac OS 8 introduced Platinum, the grey three-dimensional look that replaced the flat black-and-white Finder of the previous thirteen years. This is where it is configured, and it was a genuinely new idea at the time.</p>\n<p><strong>Spring-loaded folders.</strong> Drag a file onto a folder and hold still — the folder springs open so you can drop it deeper. It came in with this release and it is still in macOS today.</p>\n<p><strong>Pop-up windows.</strong> Drag a window to the bottom of the screen and it becomes a tab. This one did not survive.</p>\n<p><strong>The Extensions folder.</strong> Open System Folder → Extensions and look at the size of it. Every one of those loaded at startup, in alphabetical order, and any one of them could bring the machine down. This is what \"extension conflict\" meant, and it is why Mac OS 8 machines had a folder called Extensions (Disabled).</p>\n<p><strong>Sherlock and the Internet folder</strong>, which is 1997's idea of what going online looked like — including Internet Explorer and Outlook Express, which Apple shipped in the box.</p>"
+      },
+      {
+        "h": "Where Mac OS 8 sits in the story",
+        "html": "<p>Mac OS 8 shipped in July 1997, and the timing is the interesting part. Apple was close to failing. Copland, the ground-up modern operating system that was supposed to replace the classic Mac OS, had collapsed after years of work. Apple had just bought NeXT, Steve Jobs was back, and the operating system that would actually solve the problem — Mac OS X — was still four years away.</p>\n<p>Mac OS 8 is what Apple shipped in the meantime: the salvageable parts of Copland bolted onto the existing system. A multithreaded Finder, the Platinum appearance, spring-loaded folders, a rewritten networking stack. Underneath it was still the cooperative multitasking, memory-unprotected system that had been growing since 1984, and a single misbehaving application could still take the whole machine down.</p>\n<p>It sold extraordinarily well — around 1.2 million copies in two weeks, which for a paid OS upgrade in 1997 was remarkable — and it bought Apple the time it needed. It is the last version of the classic Mac OS that feels confident rather than transitional.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this a real Mac OS 8?",
+        "a": "Yes — a complete install, booting on an emulated Power Macintosh 9500 with a PowerPC 604. Not a mock-up or a simulation of the interface."
+      },
+      {
+        "q": "Why does it take so long to start?",
+        "a": "Because it is a 500 MB disk with an operating system on it rather than a single small application. The chunks it needs first are prefetched, but it is still a real boot."
+      },
+      {
+        "q": "Can I break it?",
+        "a": "Yes, freely. It is your own copy living in your browser. Clearing site data gives you a fresh one."
+      },
+      {
+        "q": "Can I put my own software on it?",
+        "a": "Not directly from this page — but the file loader will open a disk image you bring, on an emulated Mac of its own."
+      },
+      {
+        "q": "Why a Power Macintosh and not a Quadra?",
+        "a": "Mac OS 8 wants a fairly capable machine, and SheepShaver emulates a PowerPC 604, which is what this release was built for. The 68k machines elsewhere on this site run System 6 and 7."
+      },
+      {
+        "q": "Does the internet work?",
+        "a": "No. The emulated Mac has no network connection, so Internet Explorer and Outlook Express are there to look at rather than to use."
+      },
+      {
+        "q": "Is this legal?",
+        "a": "Apple has not sold Mac OS 8 in over twenty-five years and it runs on no machine Apple makes. Classic Apple system software has been distributed openly by major archives for years. The reasoning is written out in full and the takedown promise is unconditional."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li><a href=\"https://archive.org/details/mac-os-86\" rel=\"noopener\">Internet Archive</a> — the preserved Mac OS 8 disk this copy is built from.</li><li><a href=\"https://infinitemac.org\" rel=\"noopener\">Infinite Mac</a> — every version of the classic Mac OS, from the project whose emulator builds this site uses.</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/macpaint/",
+        "title": "MacPaint",
+        "desc": "The same company, thirteen years earlier."
+      },
+      {
+        "href": "/run/prince-of-persia/",
+        "title": "Prince of Persia",
+        "desc": "What colour Macs were for."
+      },
+      {
+        "href": "/collection/system-7/",
+        "title": "System 7 software",
+        "desc": "The era before this one."
+      }
+    ],
+    "shotSetup": {
+      "screen": [
+        800,
+        600
+      ],
+      "steps": [
+        {
+          "waitMs": 30000
+        }
+      ]
+    },
+    "updated": "2026-09-20",
+    "addedDate": "2026-09-20",
+    "rank": 1,
+    "screenshot": true
+  },
+  {
+    "slug": "prince-of-persia",
+    "title": "Play Prince of Persia (1992) Online — The Macintosh Version",
+    "description": "Jordan Mechner's Prince of Persia for the Macintosh, in colour, running in your browser. Sixty minutes to save the princess.",
+    "keywords": "prince of persia, play prince of persia online, prince of persia mac, jordan mechner, prince of persia 1992, rotoscoping game",
+    "ogTitle": "Prince of Persia (1992) in your browser",
+    "ogDescription": "The Macintosh Prince of Persia, in colour, on an emulated Mac.",
+    "crumb": "Prince of Persia",
+    "h1": "Prince of Persia — sixty minutes",
+    "appName": "Prince of Persia",
+    "appType": "game",
+    "author": "Broderbund",
+    "year": 1992,
+    "genre": [
+      "Action",
+      "Platform"
+    ],
+    "categories": [
+      "Action"
+    ],
+    "era": "system-7",
+    "machine": "Mac-II",
+    "screen": {
+      "w": 640,
+      "h": 480,
+      "depth": 8
+    },
+    "bootDisk": "prince-of-persia-v1",
+    "provenance": "grey",
+    "licenseReason": "Jordan Mechner created Prince of Persia and Broderbund published it; Ubisoft has owned the property since 2001 and actively sells games under the name. Those are new software. Mechner released the original Apple II source code himself in 2012. The 1992 Macintosh port has not been sold in over thirty years. This is a live rights holder, so the reasoning is set out carefully in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/prince-of-persia.md\" rel=\"noopener\">notices/prince-of-persia.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>You wake in a dungeon. The princess is in a tower. The vizier Jaffar has given her an hour to marry him or die, and the clock is the real one — sixty minutes of wall time for the entire game, and it keeps running while you fall on spikes.</p>\n<p>This is the Macintosh version, in colour, and it moves like nothing else from its era because the animation was traced frame by frame from film of a real person.</p>",
+    "launchNote": "Boots straight to the title screen on an emulated Macintosh II. Press a key to start. The clock begins when you do.",
+    "macControls": [
+      {
+        "keys": "Arrow keys",
+        "does": "Walk, turn, climb up, crouch"
+      },
+      {
+        "keys": "Shift",
+        "does": "Walk carefully — essential near edges and spikes"
+      },
+      {
+        "keys": "Shift + arrow",
+        "does": "Grab a ledge, or pick something up"
+      },
+      {
+        "keys": "Up arrow while running",
+        "does": "Running jump, which is how you cross the wide gaps"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh II, 640×480 colour</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Version</th><td>The 1992 Macintosh release</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser.</td></tr></tbody></table><p>The controls take a few minutes because the prince has weight. He does not stop when you release the key — he skids, and he falls off ledges you thought you had cleared. Holding Shift makes him move carefully, and learning when to use it is most of the game.</p>\n<p>The sixty-minute limit runs across the whole game, not per level, and it persists through deaths. Dying restarts the level but not the clock, which is why the game is really about learning routes rather than surviving them.</p>"
+      },
+      {
+        "h": "Why the animation looks like that",
+        "html": "<p>Mechner filmed his younger brother David running, jumping and climbing in a car park, then traced the footage frame by frame — a technique borrowed from animation called rotoscoping, and almost unheard of in games in 1989.</p>\n<p>The result is a character who moves with real momentum: he leans into a run, catches himself on a ledge with his feet swinging, and staggers when he lands badly. Every platform game since has been compared to it, and games as recent as the Ori and Celeste lineage are working in a tradition this started.</p>\n<p>It also cost enormously in memory — each frame of that animation had to be stored — which is why the levels are so spare. The trade was deliberate: fewer things on screen, and the one thing that is there moves like a person.</p>"
+      },
+      {
+        "h": "Getting further than the first ten minutes",
+        "html": "<p><strong>Hold Shift near edges.</strong> Walking carefully stops you skidding off, and the majority of early deaths are skids.</p>\n<p><strong>Take a run-up for wide gaps.</strong> A standing jump clears very little. Back up, run, and press up as you reach the edge.</p>\n<p><strong>The guards are a rhythm, not a race.</strong> Parry, strike, step back. Attacking wildly loses every time.</p>\n<p><strong>Drink the small potions, avoid the ones that look wrong.</strong> Red restores health, blue is usually poison, and the tall ones raise your maximum.</p>\n<p><strong>The clock does not stop.</strong> Sixty minutes for the whole game. If you are exploring carefully you are losing, which is a genuinely unusual thing for a game of this age to demand.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the original Prince of Persia?",
+        "a": "It is the 1992 Macintosh port of it, in colour. The Apple II original from 1989 came first and looks rather different; this is the version Mac owners played."
+      },
+      {
+        "q": "Is the sixty-minute limit real?",
+        "a": "Completely. It covers the whole game, it keeps running while you are dead, and it is the reason the game is about learning routes rather than exploring them."
+      },
+      {
+        "q": "Why is it so hard to control?",
+        "a": "The prince has momentum, deliberately. Hold Shift to move carefully, and take a run-up before any jump that looks long."
+      },
+      {
+        "q": "How do I fight?",
+        "a": "It is a rhythm. Parry with back, strike with forward, and wait for the opening rather than pressing constantly."
+      },
+      {
+        "q": "Why does the animation look so smooth?",
+        "a": "Because it was rotoscoped — Jordan Mechner filmed his brother running and jumping, then traced the footage frame by frame."
+      },
+      {
+        "q": "Can I save?",
+        "a": "The game saves to the emulated Mac's disk, which lives in your browser. It survives closing the tab but not clearing site data."
+      }
+    ],
+    "download": {
+      "heading": "Source and archives",
+      "html": "<ul><li><a href=\"https://github.com/jmechner/Prince-of-Persia-Apple-II\" rel=\"noopener\">The original source</a> — Jordan Mechner published the Apple II source code in 2012.</li><li><a href=\"https://archive.org/details/PrinceOfPersia_img\" rel=\"noopener\">Internet Archive</a> — the preserved Macintosh disk this copy came from.</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/lemmings/",
+        "title": "Lemmings",
+        "desc": "The other 1991 name everyone knows."
+      },
+      {
+        "href": "/run/dark-castle/",
+        "title": "Dark Castle",
+        "desc": "Mac action, five years earlier."
+      },
+      {
+        "href": "/run/lode-runner/",
+        "title": "Lode Runner",
+        "desc": "Platforms and ladders, 1985."
+      }
+    ],
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "waitMs": 20000
+        }
+      ]
+    },
+    "updated": "2026-09-20",
+    "addedDate": "2026-09-20",
+    "rank": 1,
+    "screenshot": true
+  },
+  {
+    "slug": "lemmings",
+    "title": "Play Lemmings (1991) Online — The Macintosh Version",
+    "description": "DMA Design's Lemmings for the Macintosh, in colour, running in your browser. Dig, build, block and bash — nothing to install.",
+    "keywords": "lemmings, play lemmings online, lemmings mac, dma design lemmings, psygnosis lemmings, lemmings 1991",
+    "ogTitle": "Lemmings (1991) in your browser",
+    "ogDescription": "The Macintosh Lemmings, on an emulated Mac.",
+    "crumb": "Lemmings",
+    "h1": "Lemmings — save a percentage of them",
+    "appName": "Lemmings",
+    "appType": "game",
+    "author": "Psygnosis",
+    "year": 1991,
+    "genre": [
+      "Puzzle",
+      "Strategy"
+    ],
+    "categories": [
+      "Puzzle & strategy"
+    ],
+    "era": "system-7",
+    "machine": "Mac-II",
+    "screen": {
+      "w": 640,
+      "h": 480,
+      "depth": 8
+    },
+    "bootDisk": "lemmings-v1",
+    "provenance": "grey",
+    "licenseReason": "DMA Design created Lemmings and Psygnosis published it; both ended up inside Sony, which has re-released Lemmings on its own platforms. Those are new software. The 1991 Macintosh port has not been sold in over thirty years. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/lemmings.md\" rel=\"noopener\">notices/lemmings.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>Small green-haired creatures walk out of a trapdoor and keep walking until something stops them, and what stops them is usually fatal. You cannot control them. You can only give a few of them jobs — dig, build, block, climb — and hope the arrangement gets enough of the rest to the exit.</p>\n<p>This is the Macintosh version, in colour, with all the levels and the music.</p>",
+    "launchNote": "Boots straight to the Lemmings title screen on an emulated Macintosh II. Click LETS GO! to start, or NEW LEVEL to pick a difficulty.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Select a skill from the bar, then click a lemming to assign it"
+      },
+      {
+        "keys": "Skill bar",
+        "does": "Climber, floater, bomber, blocker, builder, basher, miner, digger"
+      },
+      {
+        "keys": "Pause button",
+        "does": "Stop the clock and think, which you will need"
+      },
+      {
+        "keys": "Nuke button",
+        "does": "Blow them all up and start again — click it twice"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh II, 640×480 colour</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Version</th><td>The Macintosh release</td></tr><tr><th>Saves</th><td>Level codes and progress inside the emulated Mac, in your browser.</td></tr></tbody></table><p>Each level gives you a fixed number of each skill, a time limit, and a percentage you have to save. The lemmings walk, turn at walls, fall, and die if the fall is too far. Everything else is you.</p>\n<p>The difficulty tiers — Fun, Tricky, Taxing, Mayhem — are not a gentle curve. Fun teaches you the skills; Mayhem assumes you have internalised them and starts removing the ones you want.</p>"
+      },
+      {
+        "h": "The eight jobs, and what they are really for",
+        "html": "<p><strong>Blocker</strong> stops everyone walking past, which is how you buy time. It also strands that lemming permanently unless you bomb him.</p>\n<p><strong>Builder</strong> lays a short staircase. Almost every level is really a question about where to put staircases.</p>\n<p><strong>Basher</strong> tunnels horizontally, <strong>miner</strong> diagonally down, <strong>digger</strong> straight down. Picking the wrong one of the three is the most common way to ruin a level.</p>\n<p><strong>Climber</strong> and <strong>floater</strong> are permanent upgrades to one lemming rather than actions — give them early to the one who will lead.</p>\n<p><strong>Bomber</strong> kills a lemming after five seconds and blows a hole in whatever he is standing on. It is both a demolition tool and the only way to undo a blocker.</p>"
+      },
+      {
+        "h": "Where it came from",
+        "html": "<p>Lemmings started as a throwaway experiment at DMA Design in Dundee: Mike Dailly drew a tiny sprite to see how small a recognisable walking character could be, and it turned out to be about eight pixels tall. Someone said you could make a game out of a lot of those, and Russell Kay said something to the effect that it would take about a year — which it did.</p>\n<p>It sold in enormous numbers on the Amiga and was ported to nearly everything with a screen. DMA Design later became Rockstar North and made Grand Theft Auto, which is a fairly wide arc from small green creatures walking off cliffs.</p>\n<p>The design idea that made it work is that you never control a lemming directly. You alter the environment and the rules, and the population does what populations do. It is closer to SimCity than to a platform game, dressed up as slapstick.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the original Lemmings?",
+        "a": "It is the Macintosh port, in colour, with the full level set. The Amiga version came first and is the one usually shown in screenshots."
+      },
+      {
+        "q": "How do I assign a skill?",
+        "a": "Click the skill in the bar at the bottom, then click the lemming you want to do it. The number above each skill is how many you have left."
+      },
+      {
+        "q": "What are the difficulty tiers?",
+        "a": "Fun, Tricky, Taxing and Mayhem. Fun teaches the skills; Mayhem assumes you know them and takes away the ones you would rather use."
+      },
+      {
+        "q": "How do I get rid of a blocker?",
+        "a": "Make him a bomber. It is the only way, it kills him, and the hole he leaves is often the point."
+      },
+      {
+        "q": "What is the nuke button?",
+        "a": "It blows up every lemming on the level. Click it twice to confirm. It is how you concede."
+      },
+      {
+        "q": "Is progress saved?",
+        "a": "Inside the emulated Mac, in your own browser. It survives closing the tab but not clearing site data."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li><a href=\"https://archive.org/details/mac_lemmings_1\" rel=\"noopener\">Internet Archive</a> — the preserved Macintosh disk this copy came from.</li><li><a href=\"https://macintoshgarden.org/games/lemmings\" rel=\"noopener\">Macintosh Garden</a> — other releases and documentation.</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/oh-no-more-lemmings/",
+        "title": "Oh No! More Lemmings",
+        "desc": "A hundred more levels."
+      },
+      {
+        "href": "/run/prince-of-persia/",
+        "title": "Prince of Persia",
+        "desc": "The other one everyone remembers."
+      },
+      {
+        "href": "/run/pipe-dream/",
+        "title": "Pipe Dream",
+        "desc": "Puzzles against a clock."
+      }
+    ],
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "waitMs": 20000
+        }
+      ]
+    },
+    "updated": "2026-09-20",
+    "addedDate": "2026-09-20",
+    "rank": 1,
+    "screenshot": true
+  },
+  {
+    "slug": "oh-no-more-lemmings",
+    "title": "Play Oh No! More Lemmings (1991) Online — The Macintosh Version",
+    "description": "The Lemmings expansion with a hundred harder levels, for the Macintosh, running in your browser.",
+    "keywords": "oh no more lemmings, play oh no more lemmings online, lemmings expansion, lemmings mac, dma design",
+    "ogTitle": "Oh No! More Lemmings (1991)",
+    "ogDescription": "A hundred more Lemmings levels, on an emulated Macintosh.",
+    "crumb": "Oh No! More Lemmings",
+    "h1": "Oh No! More Lemmings",
+    "appName": "Oh No! More Lemmings",
+    "appType": "game",
+    "author": "Psygnosis",
+    "year": 1991,
+    "genre": [
+      "Puzzle",
+      "Strategy"
+    ],
+    "categories": [
+      "Puzzle & strategy"
+    ],
+    "era": "system-7",
+    "machine": "Mac-II",
+    "screen": {
+      "w": 640,
+      "h": 480,
+      "depth": 8
+    },
+    "bootDisk": "oh-no-more-lemmings-v1",
+    "provenance": "grey",
+    "licenseReason": "The same lineage as Lemmings: DMA Design and Psygnosis, both now inside Sony, which has re-released Lemmings on its own platforms but not this. The 1991 Macintosh port has not been sold in over thirty years. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/oh-no-more-lemmings.md\" rel=\"noopener\">notices/oh-no-more-lemmings.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>A hundred more levels, five new tilesets, and a difficulty curve that starts where the original left off. The tiers are renamed Tame, Crazy, Wild, Wicked and Havoc, and only the first of those is joking.</p>\n<p>It is the same game, and if you have finished Lemmings this is the only place left to go.</p>",
+    "launchNote": "Boots straight to the title screen on an emulated Macintosh II. Click LETS GO! — and note the first tier is called Tame rather than Fun, which is the game warning you.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Select a skill, then click a lemming to assign it"
+      },
+      {
+        "keys": "Skill bar",
+        "does": "The same eight jobs as the original"
+      },
+      {
+        "keys": "Pause button",
+        "does": "Stop and think"
+      },
+      {
+        "keys": "Nuke button",
+        "does": "Concede. Click twice."
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh II, 640×480 colour</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Version</th><td>The Macintosh release</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser.</td></tr></tbody></table><p>Mechanically identical to Lemmings — the same eight skills, the same rules, the same interface. What changes is the design of the levels, which assume you already know all of it.</p>\n<p>Start here only if you have played the original. This was sold as an expansion to people who had finished a hundred and twenty levels, and it is built for them.</p>"
+      },
+      {
+        "h": "What is different",
+        "html": "<p><strong>Five new tilesets</strong> — including a distinctly odd one built from what appear to be bones, and a bright cartoon set that makes the cruelty of the levels funnier.</p>\n<p><strong>Difficulty tiers renamed</strong> to Tame, Crazy, Wild, Wicked and Havoc. Tame corresponds roughly to the original's Tricky, so the whole thing is shifted up.</p>\n<p><strong>Level design that plays against your habits.</strong> The original taught you patterns; this one builds levels that look like those patterns and punish you for applying them.</p>\n<p>There is no new mechanic, and that is the point — it is a hundred more puzzles written for an audience that had run out.</p>"
+      },
+      {
+        "h": "Expansions, in 1991",
+        "html": "<p>Selling a hundred extra levels as a separate product was not yet an established idea. Lemmings had sold in the millions, its audience had finished it, and DMA Design's answer was to make more of the same thing rather than a sequel with new systems.</p>\n<p>It worked, and the pattern is now so normal that it is hard to see as a decision: the same engine, new content, sold to people who already own the original. The actual Lemmings sequels that followed — adding tribes, new skills, and elaborate settings — are much less well remembered than this expansion pack.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Do I need the original Lemmings?",
+        "a": "Not technically — this is a standalone program. But the levels assume you already know all eight skills well, so play the original first."
+      },
+      {
+        "q": "How many levels are there?",
+        "a": "A hundred, across five tiers: Tame, Crazy, Wild, Wicked and Havoc."
+      },
+      {
+        "q": "Is it harder than Lemmings?",
+        "a": "Considerably. Its easiest tier is roughly where the original's third tier sat."
+      },
+      {
+        "q": "Are there new skills?",
+        "a": "No. Same eight jobs, same rules — what is new is a hundred level designs and five tilesets."
+      },
+      {
+        "q": "Is this the Macintosh version?",
+        "a": "Yes, in colour, on an emulated Macintosh II."
+      },
+      {
+        "q": "Is progress saved?",
+        "a": "Inside the emulated Mac, in your own browser. It survives closing the tab but not clearing site data."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li><a href=\"https://archive.org/details/ohno_mac\" rel=\"noopener\">Internet Archive</a> — the preserved Macintosh disk this copy came from.</li><li><a href=\"https://macintoshgarden.org/games/oh-no-more-lemmings\" rel=\"noopener\">Macintosh Garden</a> — other releases and documentation.</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/lemmings/",
+        "title": "Lemmings",
+        "desc": "Start here instead."
+      },
+      {
+        "href": "/run/pipe-dream/",
+        "title": "Pipe Dream",
+        "desc": "Another puzzle against a clock."
+      },
+      {
+        "href": "/run/shanghai/",
+        "title": "Shanghai",
+        "desc": "Slower, and kinder."
+      }
+    ],
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "waitMs": 20000
         }
       ]
     },

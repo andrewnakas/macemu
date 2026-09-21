@@ -147,7 +147,7 @@ def find_app(volume, wanted=None):
     would do it too.
     """
     best = named = None
-    stem = (wanted or volume.name or "").split()
+    stem = (wanted or volume.name or "").split(":")[-1].split()
     stem = stem[0].lower() if stem else ""
     def walk(folder, path):
         nonlocal best, named
@@ -161,7 +161,15 @@ def find_app(volume, wanted=None):
                 size = len(item.data) + len(item.rsrc)
                 if best is None or size > best[2]:
                     best = (here, item, size)
-                if wanted and name.lower() == wanted.lower():
+                # --app takes a bare name or a full colon path, because a disc
+                # can carry the same application twice: the Marathon 2 CD has
+                # "Marathon 2" in both "Marathon 2 Small Install" and
+                # "Marathon 2 \u0192", and only the second has the full game
+                # beside it.
+                here_path = ":".join(here).lower()
+                if wanted and (name.lower() == wanted.lower()
+                               or here_path == wanted.lower()
+                               or here_path.endswith(":" + wanted.lower())):
                     named = (here, item, size)
                 elif stem and name.lower().startswith(stem) and named is None:
                     named = (here, item, size)
