@@ -237,6 +237,10 @@
         },
       });
       state.instances.push(handle);
+      // Authoring (scripts/author-disk.mjs) needs to stop the machine before it
+      // can read the persistent disk the worker is holding a lock on. Harmless
+      // otherwise, and useful when debugging a boot by hand from the console.
+      global.__macInstances = state.instances;
       return handle.ready;
     }).catch(function (err) {
       clearTimeout(watchdog);

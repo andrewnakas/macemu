@@ -218,6 +218,10 @@ function macMount(p, { mode }) {
     `data-emulator="${esc(emulatorFor(p) || "")}"`,
     `data-disk="${esc(p.bootDisk || "")}"`,
     `data-extra-disks="${esc((p.extraDisks || []).join(","))}"`,
+    // Persistence routes the disk through an origin-private-file-system
+    // saver so writes survive a reload. Off by default: it has been seen to
+    // stop a machine booting, and a hosted title does not need it.
+    `data-persist="${p.persist ? "true" : "false"}"`,
     `data-width="${s.w}"`,
     `data-height="${s.h}"`,
     p.ramMB ? `data-ram="${p.ramMB}"` : "",

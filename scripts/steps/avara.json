@@ -1,0 +1,80 @@
+{
+  "screen": [
+    800,
+    600
+  ],
+  "steps": [
+    {
+      "doubleClick": [
+        750,
+        55
+      ],
+      "waitMs": 6000,
+      "note": "open the hard disk"
+    },
+    {
+      "doubleClick": [
+        193,
+        158
+      ],
+      "waitMs": 6000,
+      "note": "open Installers"
+    },
+    {
+      "doubleClick": [
+        51,
+        90
+      ],
+      "waitMs": 25000,
+      "note": "run the installer"
+    },
+    {
+      "click": [
+        398,
+        497
+      ],
+      "waitMs": 12000,
+      "note": "continue past the splash"
+    },
+    {
+      "click": [
+        648,
+        473
+      ],
+      "waitMs": 12000,
+      "note": "accept the licence"
+    },
+    {
+      "click": [
+        558,
+        420
+      ],
+      "waitMs": 60000,
+      "note": "install"
+    },
+    {
+      "click": [
+        565,
+        339
+      ],
+      "waitMs": 10000,
+      "note": "quit the installer"
+    },
+    {
+      "click": [
+        181,
+        9
+      ],
+      "waitMs": 3000,
+      "note": "open the Special menu"
+    },
+    {
+      "click": [
+        206,
+        120
+      ],
+      "waitMs": 30000,
+      "note": "shut down so the volume flushes"
+    }
+  ]
+}

@@ -3939,17 +3939,17 @@
   },
   {
     "slug": "mac-os-8",
-    "title": "Run Mac OS 8 Online — A Full Classic Mac Desktop in Your Browser",
-    "description": "A complete Mac OS 8 desktop running in your browser on an emulated Power Macintosh. Open the Finder, poke at the control panels, nothing to install.",
+    "title": "Run Mac OS 8.6 Online in Your Browser",
+    "description": "A complete Mac OS 8.6 desktop running in your browser on an emulated Power Macintosh. Open the Finder, poke at the control panels, nothing to install.",
     "keywords": "mac os 8, run mac os 8 online, mac os 8 emulator, classic mac os in browser, powerpc mac emulator, sheepshaver online",
-    "ogTitle": "Mac OS 8 in your browser",
-    "ogDescription": "A full Mac OS 8 desktop on an emulated Power Macintosh.",
+    "ogTitle": "Mac OS 8.6 in your browser",
+    "ogDescription": "A full Mac OS 8.6 desktop on an emulated Power Macintosh.",
     "crumb": "Mac OS 8",
-    "h1": "Mac OS 8 — the whole desktop",
-    "appName": "Mac OS 8",
+    "h1": "Mac OS 8.6 — the whole desktop",
+    "appName": "Mac OS 8.6",
     "appType": "app",
     "author": "Apple",
-    "year": 1997,
+    "year": 1999,
     "genre": [
       "Operating system"
     ],
@@ -3965,13 +3965,13 @@
     },
     "bootDisk": "macos8-v2",
     "provenance": "grey",
-    "licenseReason": "Mac OS 8 is Apple's and Apple is very much still in business. It has not been sold in over twenty-five years, runs on no machine Apple makes, and is contained in no current product. Classic Apple system software has been distributed openly by the Internet Archive, Macintosh Garden and Infinite Mac for many years without objection. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/mac-os-8.md\" rel=\"noopener\">notices/mac-os-8.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
+    "licenseReason": "Mac OS 8.6 is Apple's and Apple is very much still in business. It has not been sold in over twenty years, runs on no machine Apple makes, and is contained in no current product. Classic Apple system software has been distributed openly by the Internet Archive, Macintosh Garden and Infinite Mac for many years without objection. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/mac-os-8.md\" rel=\"noopener\">notices/mac-os-8.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
     "verdict": {
       "kind": "good",
       "text": "Runs here"
     },
-    "intro": "<p>Not a game and not an application — the whole machine. This is a complete Mac OS 8 system booting on an emulated Power Macintosh, with the Finder, the control panels, the Apple menu, and the desktop pattern of little Mac faces that everybody who used one remembers.</p>\n<p>Most of this site runs black-and-white software from the 1980s on compact Macs. This is the other end: 1997, colour, 800×600, and a PowerPC underneath.</p>",
-    "launchNote": "Boots to a Mac OS 8 desktop on an emulated Power Macintosh 9500. Give it a minute — it is loading a real operating system, not a single application.",
+    "intro": "<p>Not a game and not an application — the whole machine. This is a complete Mac OS 8.6 system booting on an emulated Power Macintosh, with the Finder, the control panels, the Apple menu, and the desktop pattern of little Mac faces that everybody who used one remembers.</p>\n<p>Most of this site runs black-and-white software from the 1980s on compact Macs. This is the other end: 1999, colour, 800×600, and a PowerPC underneath.</p>",
+    "launchNote": "Boots to a Mac OS 8.6 desktop on an emulated Power Macintosh 9500. Give it a minute — it is loading a real operating system, not a single application.",
     "macControls": [
       {
         "keys": "Mouse",
@@ -3997,21 +3997,25 @@
     "sections": [
       {
         "h": "How it works & what to expect",
-        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh 9500, 800×600 in colour</td></tr><tr><th>Processor</th><td>PowerPC 604 — a real RISC chip, emulated</td></tr><tr><th>System</th><td>Mac OS 8</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Changes</th><td>Live inside the emulated Mac, in your browser. Do not keep anything irreplaceable there.</td></tr></tbody></table><p>This is a considerably bigger thing to start than the rest of the catalogue. A black-and-white game from 1986 is a few hundred kilobytes; this is a 500 MB disk with an entire operating system on it, so the first boot takes rather longer than a title does.</p>\n<p>It is a real install and you can break it. Drag things to the Trash, rearrange the System Folder, change the desktop pattern — it is your copy, it lives in your browser, and reloading with fresh site data gives you a clean one.</p>"
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh 9500, 800×600 in colour</td></tr><tr><th>Processor</th><td>PowerPC 604 — a real RISC chip, emulated</td></tr><tr><th>System</th><td>Mac OS 8.6, the last release of the 8 line</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Changes</th><td>Live inside the emulated Mac, in your browser. Do not keep anything irreplaceable there.</td></tr></tbody></table><p>This is a considerably bigger thing to start than the rest of the catalogue. A black-and-white game from 1986 is a few hundred kilobytes; this is a 500 MB disk with an entire operating system on it, so the first boot takes rather longer than a title does.</p>\n<p>It is a real install and you can break it. Drag things to the Trash, rearrange the System Folder, change the desktop pattern — it is your copy, it lives in your browser, and reloading with fresh site data gives you a clean one.</p>"
       },
       {
         "h": "What to actually look at",
-        "html": "<p><strong>The Appearance control panel.</strong> Mac OS 8 introduced Platinum, the grey three-dimensional look that replaced the flat black-and-white Finder of the previous thirteen years. This is where it is configured, and it was a genuinely new idea at the time.</p>\n<p><strong>Spring-loaded folders.</strong> Drag a file onto a folder and hold still — the folder springs open so you can drop it deeper. It came in with this release and it is still in macOS today.</p>\n<p><strong>Pop-up windows.</strong> Drag a window to the bottom of the screen and it becomes a tab. This one did not survive.</p>\n<p><strong>The Extensions folder.</strong> Open System Folder → Extensions and look at the size of it. Every one of those loaded at startup, in alphabetical order, and any one of them could bring the machine down. This is what \"extension conflict\" meant, and it is why Mac OS 8 machines had a folder called Extensions (Disabled).</p>\n<p><strong>Sherlock and the Internet folder</strong>, which is 1997's idea of what going online looked like — including Internet Explorer and Outlook Express, which Apple shipped in the box.</p>"
+        "html": "<p><strong>The Appearance control panel.</strong> Mac OS 8 introduced Platinum, the grey three-dimensional look that replaced the flat black-and-white Finder of the previous thirteen years. This is where it is configured, and it was a genuinely new idea at the time.</p>\n<p><strong>Spring-loaded folders.</strong> Drag a file onto a folder and hold still — the folder springs open so you can drop it deeper. It came in with this line and it is still in macOS today.</p>\n<p><strong>Sherlock</strong>, in the Apple menu. Mac OS 8.5 rebuilt Find File into something that searched file contents and, startlingly for 1998, the internet, through plug-ins for individual search engines.</p>\n<p><strong>The Extensions folder.</strong> Open System Folder → Extensions and look at the size of it. Every one of those loaded at startup, in alphabetical order, and any one of them could bring the machine down. This is what \"extension conflict\" meant, and it is why these machines had a folder called Extensions (Disabled).</p>\n<p><strong>Pop-up windows.</strong> Drag a window to the bottom of the screen and it becomes a tab. This one did not survive.</p>"
       },
       {
-        "h": "Where Mac OS 8 sits in the story",
-        "html": "<p>Mac OS 8 shipped in July 1997, and the timing is the interesting part. Apple was close to failing. Copland, the ground-up modern operating system that was supposed to replace the classic Mac OS, had collapsed after years of work. Apple had just bought NeXT, Steve Jobs was back, and the operating system that would actually solve the problem — Mac OS X — was still four years away.</p>\n<p>Mac OS 8 is what Apple shipped in the meantime: the salvageable parts of Copland bolted onto the existing system. A multithreaded Finder, the Platinum appearance, spring-loaded folders, a rewritten networking stack. Underneath it was still the cooperative multitasking, memory-unprotected system that had been growing since 1984, and a single misbehaving application could still take the whole machine down.</p>\n<p>It sold extraordinarily well — around 1.2 million copies in two weeks, which for a paid OS upgrade in 1997 was remarkable — and it bought Apple the time it needed. It is the last version of the classic Mac OS that feels confident rather than transitional.</p>"
+        "h": "Where Mac OS 8.6 sits in the story",
+        "html": "<p>Mac OS 8 shipped in July 1997, and the timing is the interesting part. Apple was close to failing. Copland, the ground-up modern operating system that was supposed to replace the classic Mac OS, had collapsed after years of work. Apple had just bought NeXT, Steve Jobs was back, and the operating system that would actually solve the problem — Mac OS X — was still four years away.</p>\n<p>Mac OS 8 is what Apple shipped in the meantime: the salvageable parts of Copland bolted onto the existing system. A multithreaded Finder, the Platinum appearance, spring-loaded folders, a rewritten networking stack. It sold around 1.2 million copies in two weeks, which for a paid OS upgrade in 1997 was remarkable, and it bought Apple the time it needed.</p>\n<p>What runs here is <strong>8.6</strong>, from May 1999 — the end of that line rather than the beginning. By then 8.1 had brought HFS Plus, which fixed a genuine problem: on the old filesystem a one-gigabyte disk allocated space in sixteen-kilobyte blocks, so a one-byte file consumed sixteen kilobytes and a drive full of small files wasted most of itself. 8.5 had brought Sherlock and dropped 68k support entirely, making this the first PowerPC-only Mac OS. 8.6 refined the nanokernel underneath and improved power management.</p>\n<p>Mac OS 9 followed later that year, and then nothing: Mac OS X was a different operating system wearing the family name. This is close to the last word of the system that began in 1984.</p>"
       }
     ],
     "faq": [
       {
-        "q": "Is this a real Mac OS 8?",
-        "a": "Yes — a complete install, booting on an emulated Power Macintosh 9500 with a PowerPC 604. Not a mock-up or a simulation of the interface."
+        "q": "Is this a real Mac OS?",
+        "a": "Yes — a complete Mac OS 8.6 install, booting on an emulated Power Macintosh 9500 with a PowerPC 604. Not a mock-up or a simulation of the interface."
+      },
+      {
+        "q": "Why 8.6 rather than 8.0?",
+        "a": "Because 8.6 is what this preserved disk holds, and it is the better end of the line to show: HFS Plus, Sherlock, and a refined nanokernel, all of which arrived across 8.1 to 8.6."
       },
       {
         "q": "Why does it take so long to start?",
@@ -4027,7 +4031,7 @@
       },
       {
         "q": "Why a Power Macintosh and not a Quadra?",
-        "a": "Mac OS 8 wants a fairly capable machine, and SheepShaver emulates a PowerPC 604, which is what this release was built for. The 68k machines elsewhere on this site run System 6 and 7."
+        "a": "Mac OS 8.5 and later dropped 68k support entirely — they are PowerPC-only. SheepShaver emulates a PowerPC 604, which is what this release was built for."
       },
       {
         "q": "Does the internet work?",
@@ -4035,7 +4039,7 @@
       },
       {
         "q": "Is this legal?",
-        "a": "Apple has not sold Mac OS 8 in over twenty-five years and it runs on no machine Apple makes. Classic Apple system software has been distributed openly by major archives for years. The reasoning is written out in full and the takedown promise is unconditional."
+        "a": "Apple has not sold Mac OS 8.6 in over twenty years and it runs on no machine Apple makes. Classic Apple system software has been distributed openly by major archives for years. The reasoning is written out in full and the takedown promise is unconditional."
       }
     ],
     "download": {
@@ -4044,14 +4048,14 @@
     },
     "related": [
       {
-        "href": "/run/macpaint/",
-        "title": "MacPaint",
-        "desc": "The same company, thirteen years earlier."
+        "href": "/run/avara/",
+        "title": "Avara",
+        "desc": "Something to run on it."
       },
       {
-        "href": "/run/prince-of-persia/",
-        "title": "Prince of Persia",
-        "desc": "What colour Macs were for."
+        "href": "/run/macpaint/",
+        "title": "MacPaint",
+        "desc": "The same company, fifteen years earlier."
       },
       {
         "href": "/collection/system-7/",
@@ -4478,6 +4482,144 @@
     "updated": "2026-09-20",
     "addedDate": "2026-09-20",
     "rank": 3,
+    "screenshot": true
+  },
+  {
+    "slug": "avara",
+    "title": "Play Avara (1996) Online — Ambrosia's Macintosh Shareware Classic",
+    "description": "Avara, Ambrosia Software's strange and brilliant Macintosh mech game, running in your browser on an emulated Power Macintosh.",
+    "keywords": "avara, play avara online, avara mac, ambrosia software, juri munkki avara, macintosh shareware",
+    "ogTitle": "Avara (1996) in your browser",
+    "ogDescription": "Ambrosia Software's mech game, on an emulated Power Macintosh.",
+    "crumb": "Avara",
+    "h1": "Avara — walking tanks and level design",
+    "appName": "Avara",
+    "appType": "game",
+    "author": "Ambrosia Software",
+    "year": 1996,
+    "genre": [
+      "Action",
+      "Shooter"
+    ],
+    "categories": [
+      "Action"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "avara-title"
+    ],
+    "provenance": "shareware",
+    "licenseReason": "Avara is Ambrosia Software shareware, and its licence says in terms that \"non-profit distribution of the software is acceptable without prior written notice, providing that the software is not modified in any way, and the complete works of the software are included in the distribution package.\" Both conditions are met here: the copy is exactly what the installer produced, documentation and extras included, and nothing has been patched or pre-registered. It is unregistered, so it shows Ambrosia's shareware notice when it starts — that notice is part of the software and is deliberately left alone. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/avara.md\" rel=\"noopener\">notices/avara.md</a>.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>You drive a walking tank through angular, brightly coloured rooms, and the whole thing renders in flat-shaded polygons that look like nothing else from 1996. It was built for network play between Macs in an office or a lab, and it came with a level editor that people used hard.</p>\n<p>Avara is one of the stranger things Ambrosia published, and one of the best.</p>",
+    "launchNote": "Boots Mac OS 8.6 and opens Avara by itself. It is unregistered shareware, so it greets you with Ambrosia's notice first — click \"Not Yet\" and you are in.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Aim and turn"
+      },
+      {
+        "keys": "Arrow keys",
+        "does": "Walk, strafe"
+      },
+      {
+        "keys": "Space",
+        "does": "Fire"
+      },
+      {
+        "keys": "Tab",
+        "does": "Jump"
+      },
+      {
+        "keys": "Game menu",
+        "does": "Choose a level set — Berserkir Fury and Net Levels are both installed"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh 9500, 800×600 in colour</td></tr><tr><th>System</th><td>Mac OS 8.6, shared with every other title of this era</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Version</th><td>1.0.1, as the Ambrosia installer produced it</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser.</td></tr></tbody></table><p>This is the first title here that does not carry its own operating system. Mac OS 8.6 is mounted from one shared disk image, identical for every title of this era, and Avara sits on a small disk of its own beside it — so the operating system is downloaded once and the next Mac OS 8 title costs only its own few megabytes.</p>\n<p>It is demanding. Avara renders its polygons in software on an emulated PowerPC, and the machine occasionally runs out of room and stops — if it does, reload the page and it starts again.</p>\n<p>The shareware notice on startup is part of the software. Ambrosia's licence allows this to be distributed only unmodified, which means the notice stays exactly where it is. Click \"Not Yet\".</p>"
+      },
+      {
+        "h": "What makes it unusual",
+        "html": "<p><strong>It is built around network play.</strong> Avara expected several Macs on the same network, each driving a hector — the bipedal machine you pilot — through a shared level. Single player works and ships with level sets, but the design points outward.</p>\n<p><strong>The rendering is flat-shaded polygons</strong> at a time when Mac action games were overwhelmingly sprites. No textures, strong colours, hard edges, and a readability that a lot of textured 3D from the same years lost.</p>\n<p><strong>The levels are a description language.</strong> Avara's levels are written rather than drawn, in a text format the game compiles, which is why the community produced so many of them. \"Net Levels\" and \"Berserkir Fury\" are both installed here.</p>\n<p><strong>Movement has weight.</strong> The hector walks, and turning, walking and aiming are separate things you do at once. It takes a few minutes and then it is the point.</p>"
+      },
+      {
+        "h": "Ambrosia, and where Avara went",
+        "html": "<p>Ambrosia Software was the great Macintosh shareware house: Maelstrom, Apeiron, Escape Velocity, SketchFighter, and a distribution model where you downloaded the whole game, played it, and paid if you kept it. Avara was written by Juri Munkki and published by Ambrosia in 1996.</p>\n<p>In 2017 Munkki released Avara's source code, and a community port now runs it natively on modern machines with proper network play. What runs on this page is the original 1996 Macintosh application rather than that port — the thing as it shipped, nag screen and all.</p>\n<p>Ambrosia itself wound down in 2017. Maelstrom, which is also on this site, is from the same house and under the same kind of licence.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this free?",
+        "a": "It is shareware, which is not the same thing. Ambrosia's licence permits non-profit distribution of the unmodified software, which is what this is, and the game is fully playable on a trial basis. It is not registered, so it shows the shareware notice at startup."
+      },
+      {
+        "q": "Why does it ask me to register?",
+        "a": "Because it is unregistered shareware and that notice is part of the program. The licence only permits redistribution if the software is unmodified, so removing it is not an option. Click \"Not Yet\"."
+      },
+      {
+        "q": "It stopped and the screen went blank.",
+        "a": "Avara is demanding — software-rendered polygons on an emulated PowerPC — and the emulator occasionally runs out of memory. Reload the page and it starts again."
+      },
+      {
+        "q": "Can I play against other people?",
+        "a": "No. Avara's network play needs a real network between machines, and the emulated Mac has no connection. The installed level sets are for single play."
+      },
+      {
+        "q": "Is there a modern version?",
+        "a": "Yes — Juri Munkki released the source in 2017 and a community port runs natively with working network play. This page is the 1996 Macintosh original."
+      },
+      {
+        "q": "Why does it take so long to start?",
+        "a": "It boots a whole Mac OS 8.6 system first. That image is shared with every other title of this era, so once you have loaded it, the next one starts much faster."
+      }
+    ],
+    "download": {
+      "heading": "Source and archives",
+      "html": "<ul><li><a href=\"https://github.com/jmunkki/Avara\" rel=\"noopener\">Avara's source</a> — released by its author, Juri Munkki, in 2017.</li><li><a href=\"https://archive.org/details/tucows_205595_Avara\" rel=\"noopener\">Internet Archive</a> — the Ambrosia installer this copy was produced from.</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/maelstrom/",
+        "title": "Maelstrom",
+        "desc": "Ambrosia's other great one."
+      },
+      {
+        "href": "/run/mac-os-8/",
+        "title": "Mac OS 8.6",
+        "desc": "The system it runs on."
+      },
+      {
+        "href": "/run/crystal-quest/",
+        "title": "Crystal Quest",
+        "desc": "Mac action, a decade earlier."
+      }
+    ],
+    "shotSetup": {
+      "screen": [
+        800,
+        600
+      ],
+      "steps": [
+        {
+          "waitMs": 40000
+        }
+      ]
+    },
+    "updated": "2026-09-21",
+    "addedDate": "2026-09-21",
+    "rank": 2,
     "screenshot": true
   }
 ]
