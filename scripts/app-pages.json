@@ -4897,5 +4897,277 @@
     "addedDate": "2026-09-21",
     "rank": 2,
     "screenshot": true
+  },
+  {
+    "slug": "cythera",
+    "title": "Play Cythera Online — Ambrosia's Macintosh Role-Playing Game",
+    "description": "Cythera, Ambrosia Software's open-world Macintosh RPG, running in your browser on an emulated Power Macintosh.",
+    "keywords": "cythera, play cythera online, ambrosia software cythera, mac rpg, cythera macintosh",
+    "ogTitle": "Cythera in your browser",
+    "ogDescription": "Ambrosia's Macintosh RPG on an emulated Power Macintosh.",
+    "crumb": "Cythera",
+    "h1": "Cythera — an island, and no instructions",
+    "appName": "Cythera",
+    "appType": "game",
+    "author": "Ambrosia Software",
+    "year": 1998,
+    "genre": [
+      "Role-playing",
+      "Adventure"
+    ],
+    "categories": [
+      "Puzzle & strategy"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "cythera-title"
+    ],
+    "provenance": "shareware",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "licenseReason": "Cythera is Ambrosia Software shareware. Its licence permits non-profit distribution provided the software is unmodified and the complete works are included — both true here: the copy is exactly what the installer wrote, documentation and all, and the unregistered shareware notice it shows is left in place. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/cythera.md\" rel=\"noopener\">notices/cythera.md</a>.",
+    "intro": "<p>You wake on an island, you are told almost nothing, and the game does not care whether you find the plot. Cythera is an open-world role-playing game in the old sense — a place with people in it who have their own business, rather than a corridor of quests.</p>\n<p>It is the most ambitious thing Ambrosia ever published, and one of the few Macintosh RPGs anyone still argues about.</p>",
+    "launchNote": "Boots Mac OS 8.6 and opens Cythera by itself. It shows Ambrosia's shareware notice first — dismiss it and you are on the island.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Move, talk, attack, and pick things up — click where you want to go"
+      },
+      {
+        "keys": "Type at people",
+        "does": "Conversation is typed. Ask about words they use."
+      },
+      {
+        "keys": "Menus",
+        "does": "Inventory, character, spells and journal"
+      },
+      {
+        "keys": "Cmd-S",
+        "does": "Save. Do it often."
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh 9500, 800×600 in colour</td></tr><tr><th>System</th><td>Mac OS 8.6, shared with every other title of this era</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Version</th><td>1.0.4</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser. Save often.</td></tr></tbody></table><p>Cythera does not carry its own operating system — Mac OS 8.6 comes from the shared image used by Avara, Ferazel's Wand and MacBrickout, so if you have opened one of those it starts much faster.</p>\n<p>The thing to know going in: conversation is <em>typed</em>. People say things, and you ask them about words in what they said. There is no dialogue menu. It is closer to a text adventure bolted onto an RPG, and it is where most of the game's information lives.</p>"
+      },
+      {
+        "h": "Why it is remembered",
+        "html": "<p><strong>The island is simulated, not staged.</strong> Characters keep schedules, shops open and close, and things happen whether or not you are there to see them. It is doing, in 1998 on a Macintosh, roughly what Ultima VII was praised for.</p>\n<p><strong>It does not explain itself.</strong> There is no quest log pushing you forward, and the main thread can be missed entirely for hours while you do something else. Opinions divide sharply on whether that is the point or the flaw.</p>\n<p><strong>Magic is a language.</strong> Spells are assembled from components you learn, rather than picked from a list, which means finding out what is possible is itself progress.</p>\n<p><strong>It was unfinished.</strong> Cythera shipped with its story only partly told and a sequel that never came. Knowing that in advance makes it a better experience rather than a worse one.</p>"
+      },
+      {
+        "h": "Ambrosia's odd one out",
+        "html": "<p>Ambrosia Software built its name on arcade games — Maelstrom, Apeiron, Swoop — and on Escape Velocity, which was a space trading game with a strong spine. Cythera is neither: a slow, text-heavy, deliberately obscure RPG by Glenn Andreas, published in 1998 into a Macintosh games market that was already thin.</p>\n<p>It did not sell like Escape Velocity and it has a much smaller following, but the people who played it tend to remember it in detail. Three other Ambrosia titles are here: <a href=\"/run/maelstrom/\">Maelstrom</a>, <a href=\"/run/avara/\">Avara</a> and <a href=\"/run/ferazels-wand/\">Ferazel's Wand</a>.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is it free?",
+        "a": "It is shareware — freely distributed, fully playable, with a registration notice at startup. The copy here is unregistered and unmodified."
+      },
+      {
+        "q": "How do I talk to people?",
+        "a": "You type. Someone will mention a name or a place, and you ask them about that word. There is no menu of replies, and this is where most of the game is."
+      },
+      {
+        "q": "I cannot find the plot.",
+        "a": "That is normal and more or less intended. Cythera does not push you toward it. Talk to everyone, ask about anything they mention twice, and keep notes."
+      },
+      {
+        "q": "Is the story finished?",
+        "a": "No. Cythera shipped with its story incomplete and the planned sequel never appeared. It is worth knowing before you start."
+      },
+      {
+        "q": "Should I save often?",
+        "a": "Yes. Cmd-S. Saves live inside the emulated Mac, in your browser, and survive closing the tab but not clearing site data."
+      },
+      {
+        "q": "Why does it take a while to start?",
+        "a": "It boots Mac OS 8.6 first. That image is shared with the other titles of this era, so the next one you open starts faster."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li><a href=\"https://archive.org/details/tucows_205568_Cythera\" rel=\"noopener\">Internet Archive</a> — the Ambrosia installer this copy was produced from, via the Tucows Mac archive.</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/ferazels-wand/",
+        "title": "Ferazel's Wand",
+        "desc": "Ambrosia, one year later."
+      },
+      {
+        "href": "/run/avara/",
+        "title": "Avara",
+        "desc": "Ambrosia at its strangest."
+      },
+      {
+        "href": "/run/mac-os-8/",
+        "title": "Mac OS 8.6",
+        "desc": "The system it runs on."
+      }
+    ],
+    "shotSetup": {
+      "screen": [
+        800,
+        600
+      ],
+      "steps": [
+        {
+          "waitMs": 45000
+        }
+      ]
+    },
+    "updated": "2026-09-21",
+    "addedDate": "2026-09-21",
+    "rank": 3,
+    "screenshot": true
+  },
+  {
+    "slug": "barrack",
+    "title": "Play Barrack Online — Ambrosia's Qix-Style Macintosh Classic",
+    "description": "Barrack, Ambrosia Software's take on Qix, running in your browser on an emulated Power Macintosh. Claim the board without getting caught.",
+    "keywords": "barrack, play barrack online, ambrosia software barrack, qix mac, jezzball mac, mac shareware",
+    "ogTitle": "Barrack in your browser",
+    "ogDescription": "Ambrosia's Qix-like on an emulated Power Macintosh.",
+    "crumb": "Barrack",
+    "h1": "Barrack — claim the board, do not get caught",
+    "appName": "Barrack",
+    "appType": "game",
+    "author": "Ambrosia Software",
+    "year": 1996,
+    "genre": [
+      "Action",
+      "Puzzle"
+    ],
+    "categories": [
+      "Action"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "barrack-title"
+    ],
+    "provenance": "shareware",
+    "licenseReason": "Barrack is Ambrosia Software shareware. Its licence permits non-profit distribution provided the software is unmodified and the complete works are included — both true here. The copy is unregistered and the shareware notice it shows at startup is left in place. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/barrack.md\" rel=\"noopener\">notices/barrack.md</a>.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>You draw lines across a board to fence off territory, while things bounce around trying to hit the line before you finish it. Claim enough of the board and the level ends. Get caught mid-draw and you do not.</p>\n<p>It is Qix, essentially, dressed in riveted metal and given Ambrosia's usual polish — and it is far more tense than that description makes it sound.</p>",
+    "launchNote": "Boots Mac OS 8.6 and opens Barrack by itself. Ambrosia's shareware notice comes first — click \"Not Yet\" and the board is yours.",
+    "macControls": [
+      {
+        "keys": "Mouse or arrow keys",
+        "does": "Move, and start a line by heading into open space"
+      },
+      {
+        "keys": "Direction",
+        "does": "Lines are drawn in the direction you travel — you commit as you go"
+      },
+      {
+        "keys": "Menus",
+        "does": "Sound, difficulty and the high score table"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh 9500, 800×600 in colour</td></tr><tr><th>System</th><td>Mac OS 8.6, shared with every other title of this era</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Version</th><td>1.0.4</td></tr><tr><th>Saves</th><td>High scores inside the emulated Mac, in your browser.</td></tr></tbody></table><p>Barrack does not carry its own operating system. Mac OS 8.6 comes from the shared image used by Avara, Cythera, Ferazel's Wand and MacBrickout, so if you have opened one of those it starts much faster.</p>\n<p>It also asks, on some machines, whether to drop to 256 colours for speed. Either answer works here.</p>"
+      },
+      {
+        "h": "The thing that makes it tense",
+        "html": "<p>A line under construction is vulnerable along its whole length. You are not dodging — you are committing to a route and then hoping nothing reaches it before you close the loop.</p>\n<p>So the game is a constant argument with yourself about greed. A short line is safe and claims almost nothing. A long one across open board is worth the level and is exactly what gets you killed. Good players spend most of the level nibbling and then take one enormous risk when the bouncing things happen to be on the far side.</p>\n<p>The percentage needed to clear rises, and the number of hazards rises with it, so the safe strategy stops being sufficient fairly quickly.</p>"
+      },
+      {
+        "h": "Ambrosia's house style",
+        "html": "<p>Barrack does what Ambrosia did to almost everything: take an arcade idea that already worked, rebuild it properly for the Macintosh, and spend an unreasonable amount of effort on how it looks and sounds. Maelstrom did it to Asteroids, Apeiron to Centipede, and Barrack to Qix.</p>\n<p>The result is a game nobody needed that is markedly better made than the thing it copies. The riveted-metal presentation, the sound design and the high-score table are all doing more work than the genre requires.</p>\n<p>Four other Ambrosia titles are on this site: <a href=\"/run/maelstrom/\">Maelstrom</a>, <a href=\"/run/avara/\">Avara</a>, <a href=\"/run/cythera/\">Cythera</a> and <a href=\"/run/ferazels-wand/\">Ferazel's Wand</a>.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is it free?",
+        "a": "It is shareware — freely distributed, fully playable, with a registration notice at startup. The copy here is unregistered and unmodified."
+      },
+      {
+        "q": "Is this Qix?",
+        "a": "It is Ambrosia's version of that idea: claim territory by drawing lines while hazards try to hit the line before you finish it. Qix came first; Barrack is the Macintosh one."
+      },
+      {
+        "q": "How do I draw a line?",
+        "a": "Move off the edge into open board. The line follows you and stays vulnerable until you reach safety again."
+      },
+      {
+        "q": "Why do I keep dying?",
+        "a": "Almost certainly because you took a long line across open board. Nibble at the edges, and save the big claim for when the hazards are far away."
+      },
+      {
+        "q": "Are high scores kept?",
+        "a": "Inside the emulated Mac, in your own browser. They survive closing the tab but not clearing site data."
+      },
+      {
+        "q": "Why does it take a while to start?",
+        "a": "It boots Mac OS 8.6 first. That image is shared with the other titles of this era, so the next one starts faster."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li><a href=\"https://archive.org/details/tucows_205647_Barrack\" rel=\"noopener\">Internet Archive</a> — the Ambrosia installer this copy was produced from, via the Tucows Mac archive.</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/macbrickout/",
+        "title": "MacBrickout",
+        "desc": "The other one you play with your hand."
+      },
+      {
+        "href": "/run/maelstrom/",
+        "title": "Maelstrom",
+        "desc": "Where Ambrosia started."
+      },
+      {
+        "href": "/run/cythera/",
+        "title": "Cythera",
+        "desc": "Ambrosia at its least arcade."
+      }
+    ],
+    "shotSetup": {
+      "screen": [
+        800,
+        600
+      ],
+      "steps": [
+        {
+          "waitMs": 40000
+        }
+      ]
+    },
+    "updated": "2026-09-21",
+    "addedDate": "2026-09-21",
+    "rank": 4,
+    "screenshot": true
   }
 ]

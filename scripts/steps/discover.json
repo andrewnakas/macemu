@@ -1,0 +1,13 @@
+{
+  "screen": [800, 600],
+  "steps": [
+    { "doubleClick": [750, 55], "waitMs": 7000, "note": "open the hard disk" },
+    { "doubleClick": [193, 158], "waitMs": 7000, "note": "open Installers" },
+    { "doubleClick": [66, 90], "waitMs": 26000, "note": "barrack splash" },
+    { "key": "Meta+q", "waitMs": 9000, "note": "quit barrack" },
+    { "doubleClick": [193, 90], "waitMs": 26000, "note": "chiral splash" },
+    { "key": "Meta+q", "waitMs": 9000, "note": "quit chiral" },
+    { "doubleClick": [66, 153], "waitMs": 26000, "note": "ev override splash" },
+    { "key": "Meta+q", "waitMs": 9000, "note": "quit ev override" }
+  ]
+}

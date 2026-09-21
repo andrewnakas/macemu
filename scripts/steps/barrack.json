@@ -1,0 +1,14 @@
+{
+  "screen": [800, 600],
+  "steps": [
+    { "doubleClick": [750, 55], "waitMs": 7000, "note": "open the hard disk" },
+    { "doubleClick": [193, 158], "waitMs": 7000, "note": "open Installers" },
+    { "doubleClick": [66, 90], "waitMs": 28000, "note": "run Barrack installer" },
+    { "click": [398, 450], "waitMs": 14000, "note": "continue past the splash" },
+    { "click": [648, 473], "waitMs": 14000, "note": "accept the licence" },
+    { "click": [558, 420], "waitMs": 180000, "note": "install and wait" },
+    { "click": [565, 339], "waitMs": 15000, "note": "quit the installer" },
+    { "click": [181, 9], "waitMs": 4000, "note": "Special menu" },
+    { "click": [206, 120], "waitMs": 50000, "note": "Shut Down" }
+  ]
+}
