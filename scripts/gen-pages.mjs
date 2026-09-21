@@ -217,6 +217,7 @@ function macMount(p, { mode }) {
     `data-machine="${esc(p.machine)}"`,
     `data-emulator="${esc(emulatorFor(p) || "")}"`,
     `data-disk="${esc(p.bootDisk || "")}"`,
+    `data-extra-disks="${esc((p.extraDisks || []).join(","))}"`,
     `data-width="${s.w}"`,
     `data-height="${s.h}"`,
     p.ramMB ? `data-ram="${p.ramMB}"` : "",

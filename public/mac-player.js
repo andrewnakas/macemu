@@ -122,6 +122,11 @@
       machine: d.machine || "Quadra-650",
       emulator: d.emulator || "",
       disk: d.disk || "",
+      // Disks mounted after the boot disk. A title that runs on a shared
+      // operating-system image lives on one of these: the OS disk is byte
+      // identical for every such title, so a visitor downloads it once and
+      // every later title reuses the chunks already in their cache.
+      extraDisks: (d.extraDisks || "").split(",").filter(Boolean),
       width: parseInt(d.width, 10) || 640,
       height: parseInt(d.height, 10) || 480,
       ramMB: d.ram ? parseInt(d.ram, 10) : undefined,
@@ -170,8 +175,15 @@
       // disk through an origin-private-file-system saver, which is what a
       // hosted game wants so progress survives, and which has been seen to stop
       // a machine booting at all. Off unless a page asks for it.
-      var disks = extra.disks ||
-        (cfg.disk ? [{ name: cfg.disk, persistent: cfg.persist }] : []);
+      var disks = extra.disks || [];
+      if (!disks.length && cfg.disk) {
+        // The boot disk first — the runtime boots the first bootable one — then
+        // any title disks after it.
+        disks.push({ name: cfg.disk, persistent: cfg.persist });
+        for (var i = 0; i < cfg.extraDisks.length; i++) {
+          disks.push({ name: cfg.extraDisks[i], persistent: cfg.persist });
+        }
+      }
       if (!disks.length && !(extra.diskFiles && extra.diskFiles.length)) {
         // A machine with no disk boots to a blinking floppy icon, which looks
         // exactly like a bug. Say what is actually wrong.

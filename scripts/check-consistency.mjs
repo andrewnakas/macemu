@@ -85,6 +85,19 @@ section("Catalogue");
 // ── 2. a playable title really is playable ────────────────────────────────
 section("Playability claims");
 {
+  // A title may mount disks after its boot disk — that is how a title shares
+  // one operating-system image with every other title of its era instead of
+  // carrying its own copy. Each of those needs a manifest too, and a missing
+  // one shows up as a disk that simply never appears on the desktop.
+  for (const p of pages) {
+    for (const d of p.extraDisks || []) {
+      if (!existsSync(resolve(PUB, "mac", "disks", `${d}.json`)))
+        fail(`${p.slug}: extraDisks lists "${d}" but there is no manifest at public/mac/disks/${d}.json`);
+    }
+    if (p.extraDisks && !p.bootDisk)
+      fail(`${p.slug}: has extraDisks but no bootDisk — the machine would have nothing to boot from`);
+  }
+
   for (const p of pages) {
     if (!p.bootDisk) continue;
     const manifestPath = resolve(PUB, "mac", "disks", `${p.bootDisk}.json`);
