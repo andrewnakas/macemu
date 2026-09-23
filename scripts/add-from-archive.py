@@ -243,10 +243,45 @@ SHELL_OFFSET = 0x1A          # boot block: the program the Finder's job is given
 STARTUP_OFFSET = 0x5A        # boot block: the startup program
 
 
+# The boot-block name field is a Str15: one length byte and fifteen characters,
+# with no way to say more. A longer name used to be truncated here, which built
+# a disk that looked right and booted to "Can't load the finder!" — the ROM was
+# asking the volume for "Balance of Powe", which is not a file that exists.
+# Silently producing that is worse than refusing, so the truncation now happens
+# once, deliberately, by renaming the application on the volume to the name the
+# boot blocks can actually hold. Nobody sees the shortened name: these disks
+# come up in the game without ever drawing a Finder.
+BOOT_NAME_MAX = 15
+
+
+def fit_boot_name(vol, app_name):
+    """Return a name for `app_name` that fits the boot blocks, renaming if needed."""
+    if len(app_name.encode("mac_roman")) <= BOOT_NAME_MAX:
+        return app_name
+    stem = app_name
+    while len(stem.encode("mac_roman")) > BOOT_NAME_MAX:
+        stem = stem[:-1]
+    stem = stem.rstrip()
+    # Two long names could shorten onto each other, or onto something already
+    # on the disk. Walk a digit in from the end until the name is free.
+    candidate, n = stem, 1
+    while candidate in vol and candidate != app_name:
+        suffix = str(n)
+        candidate = stem[:BOOT_NAME_MAX - len(suffix)].rstrip() + suffix
+        n += 1
+    vol[candidate] = vol.pop(app_name)
+    print(f"  renamed {app_name!r} to {candidate!r}: the boot blocks hold "
+          f"{BOOT_NAME_MAX} characters and no more")
+    return candidate
+
+
 def patch_boot_shell(image, app_name):
     """Name `app_name` as the disk's startup program, the way a game disk does."""
-    name = app_name.encode("mac_roman")[:15]
-    field = bytes([len(name)]) + name + b"\0" * (15 - len(name))
+    name = app_name.encode("mac_roman")
+    assert len(name) <= BOOT_NAME_MAX, (
+        f"{app_name!r} is {len(name)} bytes; call fit_boot_name() before writing "
+        f"the boot blocks")
+    field = bytes([len(name)]) + name + b"\0" * (BOOT_NAME_MAX - len(name))
     out = bytearray(image)
     for off in (SHELL_OFFSET, STARTUP_OFFSET):
         out[off:off + 16] = field
@@ -297,10 +332,16 @@ def main():
     with urllib.request.urlopen(urllib.request.Request(meta_url, headers=UA), timeout=120) as r:
         meta = json.load(r)
     if args.file:
+        # --file normally names a file inside the Internet Archive item. It may
+        # also be a path to a disk image already on this machine, which is how
+        # a title reaches us when the item ships a zip rather than a raw image:
+        # unpack it by hand, point --file at what came out. Local paths are
+        # taken as-is and never fetched.
         have = {f["name"] for f in meta.get("files", [])}
-        missing = [n for n in args.file if n not in have]
+        missing = [n for n in args.file if n not in have and not os.path.exists(n)]
         if missing:
-            sys.exit(f"{args.item} has no file named {missing[0]!r}")
+            sys.exit(f"{args.item} has no file named {missing[0]!r}, "
+                     f"and there is no such file on disk either")
         names = list(args.file)
     else:
         names = [f["name"] for f in meta.get("files", [])
@@ -341,8 +382,12 @@ def main():
             app_path, app, app_volume, app_blob = path, found, v, blob
 
     for name in sorted(names):
-        local = f"Images/titles/src-{args.slug}-{name}"
-        fetch(f"https://archive.org/download/{args.item}/{urllib.parse.quote(name)}", local)
+        if os.path.exists(name):
+            local = name                      # a local image; nothing to fetch
+            print(f"  reading {os.path.basename(name)} from disk")
+        else:
+            local = f"Images/titles/src-{args.slug}-{os.path.basename(name)}"
+            fetch(f"https://archive.org/download/{args.item}/{urllib.parse.quote(name)}", local)
         raw = strip_dc42(open(local, "rb").read())
         # A disc can hold several volumes, a floppy holds exactly one, and a
         # hybrid CD hides the Mac one behind an ISO 9660 filesystem meant for
@@ -403,6 +448,13 @@ def main():
         if added:
             print(f"  merged from the other disk(s): {', '.join(sorted(added))}")
         vol.name = args.volume_name
+        # Some 1985-86 disks (the Miles Computing titles among them) carry no
+        # launchable application at all: the game is started by the disk's own
+        # boot blocks, and the only APPL on the volume is a "Reset & 'Boot'
+        # disk" stub. Naming that as the startup program boots into the stub.
+        # --no-launch leaves the original boot arrangement exactly as it was.
+        if not args.no_launch:
+            app_name = fit_boot_name(vol, app_name)
         out = f"Images/titles/boot-{args.slug}.img"
         image = vol.write(args.size * 1024 * 1024, align=512, desktopdb=True, bootable=True)
         # machfs writes boot blocks only when it can bless a System *Folder*, and
@@ -416,7 +468,10 @@ def main():
         if not struct.unpack(">I", image[1024 + 92:1024 + 96])[0]:
             image = (image[:1024 + 92] + struct.pack(">I", 2) + image[1024 + 96:])
             print("  blessed the root directory, where this disk's System lives")
-        image = patch_boot_shell(image, app_name)
+        if not args.no_launch:
+            image = patch_boot_shell(image, app_name)
+        else:
+            print("  left the source disk's own startup arrangement alone")
         assert image[0:2] == b"LK", "boot blocks missing"
         assert image[1024:1026] == b"BD", "not an HFS volume"
         open(out, "wb").write(image)

@@ -1,0 +1,14 @@
+{
+  "screen": [640, 480],
+  "shutdown": { "menu": [232, 9], "item": [249, 139] },
+  "steps": [
+    { "key": "Enter", "waitMs": 5000, "note": "dismiss the unclean shutdown notice" },
+    { "doubleClick": [597, 48], "waitMs": 7000, "note": "open the disk" },
+    { "doubleClick": [104, 95], "waitMs": 9000, "note": "open the System Folder" },
+    { "doubleClick": [39, 148], "waitMs": 9000, "note": "open Control Panels" },
+    { "doubleClick": [39, 95], "waitMs": 15000, "note": "open After Dark" },
+    { "click": [295, 93], "waitMs": 6000, "note": "When" },
+    { "click": [219, 258], "waitMs": 3000, "note": "uncheck SystemIQ" },
+    { "click": [394, 57], "waitMs": 5000, "note": "OK" }
+  ]
+}

@@ -1,0 +1,932 @@
+[
+  {
+    "slug": "hardball",
+    "title": "HardBall — test",
+    "description": "HardBall boot stub.",
+    "keywords": "hardball",
+    "ogTitle": "HardBall",
+    "ogDescription": "HardBall",
+    "crumb": "HardBall",
+    "h1": "HardBall",
+    "appName": "HardBall",
+    "appType": "game",
+    "author": "Accolade",
+    "year": 1986,
+    "genre": [
+      "sports"
+    ],
+    "categories": [
+      "Action"
+    ],
+    "era": "system-7",
+    "machine": "Mac-SE",
+    "screen": {
+      "w": 512,
+      "h": 342,
+      "depth": 1
+    },
+    "bootDisk": "hardball-v1",
+    "provenance": "grey",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>Stub.</p>",
+    "sections": [],
+    "faq": [],
+    "related": [],
+    "updated": "2026-09-21",
+    "addedDate": "2026-09-21",
+    "_stub": true
+  },
+  {
+    "slug": "speller-bee",
+    "title": "Speller Bee — test",
+    "description": "Speller Bee boot stub.",
+    "keywords": "speller-bee",
+    "ogTitle": "Speller Bee",
+    "ogDescription": "Speller Bee",
+    "crumb": "Speller Bee",
+    "h1": "Speller Bee",
+    "appName": "Speller Bee",
+    "appType": "app",
+    "author": "First Byte",
+    "year": 1986,
+    "genre": [
+      "educational"
+    ],
+    "categories": [
+      "Classroom classics"
+    ],
+    "era": "system-6",
+    "machine": "Mac-Plus",
+    "screen": {
+      "w": 512,
+      "h": 342,
+      "depth": 1
+    },
+    "bootDisk": "speller-bee-v1",
+    "provenance": "grey",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>Stub.</p>",
+    "sections": [],
+    "faq": [],
+    "related": [],
+    "updated": "2026-09-21",
+    "addedDate": "2026-09-21",
+    "_stub": true
+  },
+  {
+    "slug": "hardwood-solitaire-2",
+    "title": "Hardwood Solitaire II — test",
+    "description": "Hardwood Solitaire II boot stub.",
+    "keywords": "hardwood-solitaire-2",
+    "ogTitle": "Hardwood Solitaire II",
+    "ogDescription": "Hardwood Solitaire II",
+    "crumb": "Hardwood Solitaire II",
+    "h1": "Hardwood Solitaire II",
+    "appName": "Hardwood Solitaire II",
+    "appType": "game",
+    "author": "Silver Creek Entertainment",
+    "year": 1999,
+    "genre": [
+      "cards"
+    ],
+    "categories": [
+      "Puzzle & strategy"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "hardwood-solitaire-2-title"
+    ],
+    "provenance": "shareware",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>Stub.</p>",
+    "sections": [],
+    "faq": [],
+    "related": [],
+    "updated": "2026-09-21",
+    "addedDate": "2026-09-21",
+    "shotSetup": {
+      "screen": [
+        800,
+        600
+      ],
+      "steps": [
+        {
+          "waitMs": 40000
+        }
+      ]
+    },
+    "_stub": true
+  },
+  {
+    "slug": "ricochet",
+    "title": "Ricochet — test",
+    "description": "Ricochet boot stub.",
+    "keywords": "ricochet",
+    "ogTitle": "Ricochet",
+    "ogDescription": "Ricochet",
+    "crumb": "Ricochet",
+    "h1": "Ricochet",
+    "appName": "Ricochet",
+    "appType": "game",
+    "author": "Casady & Greene",
+    "year": 1996,
+    "genre": [
+      "arcade"
+    ],
+    "categories": [
+      "Action"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "ricochet-title"
+    ],
+    "provenance": "shareware",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>Stub.</p>",
+    "sections": [],
+    "faq": [],
+    "related": [],
+    "updated": "2026-09-21",
+    "addedDate": "2026-09-21",
+    "shotSetup": {
+      "screen": [
+        800,
+        600
+      ],
+      "steps": [
+        {
+          "waitMs": 40000
+        }
+      ]
+    },
+    "_stub": true
+  },
+  {
+    "slug": "bill-the-demon",
+    "title": "Bill the Demon — test",
+    "description": "Bill the Demon boot stub.",
+    "keywords": "bill-the-demon",
+    "ogTitle": "Bill the Demon",
+    "ogDescription": "Bill the Demon",
+    "crumb": "Bill the Demon",
+    "h1": "Bill the Demon",
+    "appName": "Bill the Demon",
+    "appType": "game",
+    "author": "Bryan Smith",
+    "year": 1997,
+    "genre": [
+      "action"
+    ],
+    "categories": [
+      "Action"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "bill-the-demon-title"
+    ],
+    "provenance": "shareware",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>Stub.</p>",
+    "sections": [],
+    "faq": [],
+    "related": [],
+    "updated": "2026-09-21",
+    "addedDate": "2026-09-21",
+    "shotSetup": {
+      "screen": [
+        800,
+        600
+      ],
+      "steps": [
+        {
+          "waitMs": 40000
+        }
+      ]
+    },
+    "_stub": true
+  },
+  {
+    "slug": "zap-t-balls",
+    "title": "Zap'T'Balls II — test",
+    "description": "Zap'T'Balls II boot stub.",
+    "keywords": "zap-t-balls",
+    "ogTitle": "Zap'T'Balls II",
+    "ogDescription": "Zap'T'Balls II",
+    "crumb": "Zap'T'Balls II",
+    "h1": "Zap'T'Balls II",
+    "appName": "Zap'T'Balls II",
+    "appType": "game",
+    "author": "Thomas Kolbeck",
+    "year": 1996,
+    "genre": [
+      "puzzle"
+    ],
+    "categories": [
+      "Puzzle & strategy"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "zap-t-balls-title"
+    ],
+    "provenance": "shareware",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>Stub.</p>",
+    "sections": [],
+    "faq": [],
+    "related": [],
+    "updated": "2026-09-21",
+    "addedDate": "2026-09-21",
+    "shotSetup": {
+      "screen": [
+        800,
+        600
+      ],
+      "steps": [
+        {
+          "waitMs": 40000
+        }
+      ]
+    },
+    "_stub": true
+  },
+  {
+    "slug": "star-fighters",
+    "title": "Star Fighters — test",
+    "description": "Star Fighters boot stub.",
+    "keywords": "star-fighters",
+    "ogTitle": "Star Fighters",
+    "ogDescription": "Star Fighters",
+    "crumb": "Star Fighters",
+    "h1": "Star Fighters",
+    "appName": "Star Fighters",
+    "appType": "game",
+    "author": "Tom Dunn",
+    "year": 1998,
+    "genre": [
+      "action"
+    ],
+    "categories": [
+      "Action"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "star-fighters-title"
+    ],
+    "provenance": "shareware",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>Stub.</p>",
+    "sections": [],
+    "faq": [],
+    "related": [],
+    "updated": "2026-09-21",
+    "addedDate": "2026-09-21",
+    "shotSetup": {
+      "screen": [
+        800,
+        600
+      ],
+      "steps": [
+        {
+          "waitMs": 40000
+        }
+      ]
+    },
+    "_stub": true
+  },
+  {
+    "slug": "diamonds-3d",
+    "title": "Diamonds 3D — test",
+    "description": "Diamonds 3D boot stub.",
+    "keywords": "diamonds-3d",
+    "ogTitle": "Diamonds 3D",
+    "ogDescription": "Diamonds 3D",
+    "crumb": "Diamonds 3D",
+    "h1": "Diamonds 3D",
+    "appName": "Diamonds 3D",
+    "appType": "game",
+    "author": "Varcon Systems",
+    "year": 1998,
+    "genre": [
+      "puzzle"
+    ],
+    "categories": [
+      "Puzzle & strategy"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "diamonds-3d-title"
+    ],
+    "provenance": "shareware",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>Stub.</p>",
+    "sections": [],
+    "faq": [],
+    "related": [],
+    "updated": "2026-09-21",
+    "addedDate": "2026-09-21",
+    "shotSetup": {
+      "screen": [
+        800,
+        600
+      ],
+      "steps": [
+        {
+          "waitMs": 40000
+        }
+      ]
+    },
+    "_stub": true
+  },
+  {
+    "slug": "bob-vs-the-aliens",
+    "title": "BOB vs The Aliens — test",
+    "description": "BOB vs The Aliens boot stub.",
+    "keywords": "bob-vs-the-aliens",
+    "ogTitle": "BOB vs The Aliens",
+    "ogDescription": "BOB vs The Aliens",
+    "crumb": "BOB vs The Aliens",
+    "h1": "BOB vs The Aliens",
+    "appName": "BOB vs The Aliens",
+    "appType": "game",
+    "author": "Dan Shurman",
+    "year": 1997,
+    "genre": [
+      "action"
+    ],
+    "categories": [
+      "Action"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "bob-vs-the-aliens-title"
+    ],
+    "provenance": "shareware",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>Stub.</p>",
+    "sections": [],
+    "faq": [],
+    "related": [],
+    "updated": "2026-09-21",
+    "addedDate": "2026-09-21",
+    "shotSetup": {
+      "screen": [
+        800,
+        600
+      ],
+      "steps": [
+        {
+          "waitMs": 40000
+        }
+      ]
+    },
+    "_stub": true
+  },
+  {
+    "slug": "deepsea",
+    "title": "DeepSea Classic — test",
+    "description": "DeepSea Classic boot stub.",
+    "keywords": "deepsea",
+    "ogTitle": "DeepSea Classic",
+    "ogDescription": "DeepSea Classic",
+    "crumb": "DeepSea Classic",
+    "h1": "DeepSea Classic",
+    "appName": "DeepSea Classic",
+    "appType": "game",
+    "author": "Peter Wagner",
+    "year": 1997,
+    "genre": [
+      "action"
+    ],
+    "categories": [
+      "Action"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "deepsea-title"
+    ],
+    "provenance": "shareware",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>Stub.</p>",
+    "sections": [],
+    "faq": [],
+    "related": [],
+    "updated": "2026-09-21",
+    "addedDate": "2026-09-21",
+    "shotSetup": {
+      "screen": [
+        800,
+        600
+      ],
+      "steps": [
+        {
+          "waitMs": 40000
+        }
+      ]
+    },
+    "_stub": true
+  },
+  {
+    "slug": "hardball",
+    "title": "HardBall — test",
+    "description": "HardBall boot stub.",
+    "keywords": "hardball",
+    "ogTitle": "HardBall",
+    "ogDescription": "HardBall",
+    "crumb": "HardBall",
+    "h1": "HardBall",
+    "appName": "HardBall",
+    "appType": "game",
+    "author": "Accolade",
+    "year": 1986,
+    "genre": [
+      "sports"
+    ],
+    "categories": [
+      "Action"
+    ],
+    "era": "system-7",
+    "machine": "Mac-SE",
+    "screen": {
+      "w": 512,
+      "h": 342,
+      "depth": 1
+    },
+    "bootDisk": "hardball-v1",
+    "provenance": "grey",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>Stub.</p>",
+    "sections": [],
+    "faq": [],
+    "related": [],
+    "updated": "2026-09-21",
+    "addedDate": "2026-09-21",
+    "_stub": true
+  },
+  {
+    "slug": "ricochet",
+    "title": "Ricochet — test",
+    "description": "Ricochet boot stub.",
+    "keywords": "ricochet",
+    "ogTitle": "Ricochet",
+    "ogDescription": "Ricochet",
+    "crumb": "Ricochet",
+    "h1": "Ricochet",
+    "appName": "Ricochet",
+    "appType": "game",
+    "author": "Casady & Greene",
+    "year": 1996,
+    "genre": [
+      "arcade"
+    ],
+    "categories": [
+      "Action"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "ricochet-title"
+    ],
+    "provenance": "shareware",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>Stub.</p>",
+    "sections": [],
+    "faq": [],
+    "related": [],
+    "updated": "2026-09-21",
+    "addedDate": "2026-09-21",
+    "shotSetup": {
+      "screen": [
+        800,
+        600
+      ],
+      "steps": [
+        {
+          "waitMs": 40000
+        }
+      ]
+    },
+    "_stub": true
+  },
+  {
+    "slug": "zap-t-balls",
+    "title": "Zap'T'Balls II — test",
+    "description": "Zap'T'Balls II boot stub.",
+    "keywords": "zap-t-balls",
+    "ogTitle": "Zap'T'Balls II",
+    "ogDescription": "Zap'T'Balls II",
+    "crumb": "Zap'T'Balls II",
+    "h1": "Zap'T'Balls II",
+    "appName": "Zap'T'Balls II",
+    "appType": "game",
+    "author": "Thomas Kolbeck",
+    "year": 1996,
+    "genre": [
+      "puzzle"
+    ],
+    "categories": [
+      "Puzzle & strategy"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "zap-t-balls-title"
+    ],
+    "provenance": "shareware",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>Stub.</p>",
+    "sections": [],
+    "faq": [],
+    "related": [],
+    "updated": "2026-09-21",
+    "addedDate": "2026-09-21",
+    "shotSetup": {
+      "screen": [
+        800,
+        600
+      ],
+      "steps": [
+        {
+          "waitMs": 40000
+        }
+      ]
+    },
+    "_stub": true
+  },
+  {
+    "slug": "frog-xing",
+    "title": "Frog Xing — test",
+    "description": "Frog Xing boot stub.",
+    "keywords": "frog-xing",
+    "ogTitle": "Frog Xing",
+    "ogDescription": "Frog Xing",
+    "crumb": "Frog Xing",
+    "h1": "Frog Xing",
+    "appName": "Frog Xing",
+    "appType": "game",
+    "author": "unknown",
+    "year": 1998,
+    "genre": [
+      "Arcade"
+    ],
+    "categories": [
+      "Action"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "frog-xing-title"
+    ],
+    "provenance": "shareware",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>Stub.</p>",
+    "sections": [],
+    "faq": [],
+    "related": [],
+    "updated": "2026-09-21",
+    "addedDate": "2026-09-21",
+    "shotSetup": {
+      "screen": [
+        800,
+        600
+      ],
+      "steps": [
+        {
+          "waitMs": 40000
+        }
+      ]
+    },
+    "_stub": true
+  },
+  {
+    "slug": "starship",
+    "title": "Starship — test",
+    "description": "Starship boot stub.",
+    "keywords": "starship",
+    "ogTitle": "Starship",
+    "ogDescription": "Starship",
+    "crumb": "Starship",
+    "h1": "Starship",
+    "appName": "Starship",
+    "appType": "game",
+    "author": "unknown",
+    "year": 1998,
+    "genre": [
+      "Shooter"
+    ],
+    "categories": [
+      "Shooters"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "starship-title"
+    ],
+    "provenance": "shareware",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>Stub.</p>",
+    "sections": [],
+    "faq": [],
+    "related": [],
+    "updated": "2026-09-21",
+    "addedDate": "2026-09-21",
+    "shotSetup": {
+      "screen": [
+        800,
+        600
+      ],
+      "steps": [
+        {
+          "waitMs": 40000
+        }
+      ]
+    },
+    "_stub": true
+  },
+  {
+    "slug": "sphaera",
+    "title": "Sphaera — test",
+    "description": "Sphaera boot stub.",
+    "keywords": "sphaera",
+    "ogTitle": "Sphaera",
+    "ogDescription": "Sphaera",
+    "crumb": "Sphaera",
+    "h1": "Sphaera",
+    "appName": "Sphaera",
+    "appType": "game",
+    "author": "unknown",
+    "year": 1998,
+    "genre": [
+      "Puzzle"
+    ],
+    "categories": [
+      "Puzzle & strategy"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "sphaera-title"
+    ],
+    "provenance": "shareware",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>Stub.</p>",
+    "sections": [],
+    "faq": [],
+    "related": [],
+    "updated": "2026-09-21",
+    "addedDate": "2026-09-21",
+    "shotSetup": {
+      "screen": [
+        800,
+        600
+      ],
+      "steps": [
+        {
+          "waitMs": 40000
+        }
+      ]
+    },
+    "_stub": true
+  },
+  {
+    "slug": "starship",
+    "title": "Starship — test",
+    "description": "Starship boot stub.",
+    "keywords": "starship",
+    "ogTitle": "Starship",
+    "ogDescription": "Starship",
+    "crumb": "Starship",
+    "h1": "Starship",
+    "appName": "Starship",
+    "appType": "game",
+    "author": "unknown",
+    "year": 1998,
+    "genre": [
+      "Shooter"
+    ],
+    "categories": [
+      "Shooters"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "starship-title"
+    ],
+    "provenance": "shareware",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>Stub.</p>",
+    "sections": [],
+    "faq": [],
+    "related": [],
+    "updated": "2026-09-21",
+    "addedDate": "2026-09-21",
+    "shotSetup": {
+      "screen": [
+        800,
+        600
+      ],
+      "steps": [
+        {
+          "waitMs": 40000
+        }
+      ]
+    },
+    "_stub": true
+  },
+  {
+    "slug": "sphaera",
+    "title": "Sphaera — test",
+    "description": "Sphaera boot stub.",
+    "keywords": "sphaera",
+    "ogTitle": "Sphaera",
+    "ogDescription": "Sphaera",
+    "crumb": "Sphaera",
+    "h1": "Sphaera",
+    "appName": "Sphaera",
+    "appType": "game",
+    "author": "unknown",
+    "year": 1998,
+    "genre": [
+      "Puzzle"
+    ],
+    "categories": [
+      "Puzzle & strategy"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "sphaera-title"
+    ],
+    "provenance": "shareware",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>Stub.</p>",
+    "sections": [],
+    "faq": [],
+    "related": [],
+    "updated": "2026-09-21",
+    "addedDate": "2026-09-21",
+    "shotSetup": {
+      "screen": [
+        800,
+        600
+      ],
+      "steps": [
+        {
+          "waitMs": 40000
+        }
+      ]
+    },
+    "_stub": true
+  }
+]

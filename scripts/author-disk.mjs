@@ -118,6 +118,38 @@ for (const step of steps.steps || []) {
     await page.waitForTimeout(90);
     await page.mouse.down(); await page.waitForTimeout(90); await page.mouse.up();
     console.log(`   double-click ${step.doubleClick.join(",")}${step.note ? "  (" + step.note + ")" : ""}`);
+  } else if (step.menu) {
+    // Classic Macintosh menus are pull-down, not click-to-open: the button is
+    // held from the title to the item and released there. A press-and-release
+    // on the title leaves nothing on screen — which is why the Shut Down below
+    // silently did nothing for years and every disk came away dirty.
+    const [[mx, my], [ix, iy]] = step.menu;
+    await page.mouse.move(box.x + mx * sx, box.y + my * sy);
+    await page.waitForTimeout(600);
+    await page.mouse.down();
+    await page.waitForTimeout(700);
+    // Travel in a few hops so the guest's mouse polling sees the movement and
+    // tracks the highlight down the menu.
+    for (let k = 1; k <= 4; k++) {
+      await page.mouse.move(box.x + (mx + (ix - mx) * k / 4) * sx,
+                            box.y + (my + (iy - my) * k / 4) * sy);
+      await page.waitForTimeout(220);
+    }
+    await page.waitForTimeout(500);
+    await page.mouse.up();
+    console.log(`   menu ${mx},${my} -> ${ix},${iy}${step.note ? "  (" + step.note + ")" : ""}`);
+  } else if (step.hold) {
+    // Press and keep holding, so the snapshot after this step shows the menu
+    // standing open and its item positions can be read off.
+    await page.mouse.move(box.x + step.hold[0] * sx, box.y + step.hold[1] * sy);
+    await page.waitForTimeout(600);
+    await page.mouse.down();
+    console.log(`   hold ${step.hold.join(",")}${step.note ? "  (" + step.note + ")" : ""}`);
+  } else if (step.release) {
+    await page.mouse.move(box.x + step.release[0] * sx, box.y + step.release[1] * sy);
+    await page.waitForTimeout(400);
+    await page.mouse.up();
+    console.log(`   release ${step.release.join(",")}`);
   } else if (step.type) {
     await page.keyboard.type(step.type, {delay: 120});
     console.log(`   type ${JSON.stringify(step.type)}`);
@@ -147,14 +179,36 @@ if (!has("no-shutdown")) {
     await page.waitForTimeout(3500);
   }
   await page.waitForTimeout(3000);
-  const menu = [181, 9], item = [206, 120];
-  for (const [mx, my] of [menu, item]) {
+  // Two things were wrong here and both left every disk dirty.
+  //
+  // First, a menu has to be PULLED DOWN — press on the title, drag to the
+  // item, release. Pressing and releasing on the title opens nothing, so the
+  // second press-release landed on the empty desktop and the machine was
+  // killed mid-write every time.
+  //
+  // Second, the menu bar moves with the System version. System 6 has no Label
+  // menu and Special sits at x=181; System 7 adds Label and pushes Special out
+  // to x=232. One hardcoded pair cannot serve both, and a miss is silent. So
+  // both are attempted — Shut Down on an already-halted Mac does nothing — and
+  // a steps file can override with "shutdown": {"menu": [x, y], "item": [x, y]}.
+  const layouts = steps.shutdown
+    ? [[steps.shutdown.menu, steps.shutdown.item]]
+    : [[[232, 9], [249, 139]], [[181, 9], [206, 120]]];
+  for (const [[mx, my], [ix, iy]] of layouts) {
     await page.mouse.move(box.x + mx * sx, box.y + my * sy);
     await page.waitForTimeout(700);
-    await page.mouse.down(); await page.waitForTimeout(250); await page.mouse.up();
-    await page.waitForTimeout(2500);
+    await page.mouse.down();
+    await page.waitForTimeout(700);
+    for (let k = 1; k <= 4; k++) {
+      await page.mouse.move(box.x + (mx + (ix - mx) * k / 4) * sx,
+                            box.y + (my + (iy - my) * k / 4) * sy);
+      await page.waitForTimeout(220);
+    }
+    await page.waitForTimeout(500);
+    await page.mouse.up();
+    await page.waitForTimeout(12000);
   }
-  await page.waitForTimeout(20000);
+  await page.waitForTimeout(8000);
   await snap("shut-down");
 }
 
