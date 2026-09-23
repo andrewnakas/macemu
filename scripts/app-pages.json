@@ -12911,5 +12911,371 @@
     "screenshot": true,
     "persist": true,
     "rank": 0
+  },
+  {
+    "appType": "game",
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "provenance": "shareware",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "updated": "2026-09-23",
+    "addedDate": "2026-09-23",
+    "shotSetup": {
+      "screen": [
+        800,
+        600
+      ],
+      "steps": [
+        {
+          "waitMs": 40000
+        }
+      ]
+    },
+    "screenshot": true,
+    "persist": true,
+    "slug": "ricochet",
+    "title": "Play Ricochet Online — Bob Urschel's Mac Puzzle Game, 1996",
+    "description": "Ricochet, a 1990s Macintosh puzzle game where you steer a runner with two keys and a set of deflectors, running in your browser.",
+    "keywords": "ricochet mac game, bob urschel ricochet, mac puzzle game 1996, charityware mac, classic mac puzzle online",
+    "ogTitle": "Ricochet",
+    "ogDescription": "Steer a runner into targets with nothing but two arrow keys. A 1990s Macintosh puzzle game, in your browser.",
+    "crumb": "Ricochet",
+    "h1": "Ricochet — two keys, and neither means what it says",
+    "appName": "Ricochet",
+    "author": "Bob Urschel",
+    "year": 1996,
+    "genre": [
+      "Puzzle",
+      "Action"
+    ],
+    "categories": [
+      "Puzzle & strategy"
+    ],
+    "extraDisks": [
+      "ricochet-title"
+    ],
+    "intro": "<p>A runner crosses the board on its own. You cannot stop it and you cannot point it; all you can do is press the left or right arrow key, which turns it — but <em>which way</em> depends on the direction it is already travelling. Going left to right, the right arrow sends it up. Going right to left, the same key sends it down. The object is to hit every target on the level, and the whole game is learning to think in the runner's frame rather than your own.</p>\n<p>Bob Urschel wrote it, graphics and sound included, in Valparaiso, Indiana, and released it as <strong>charityware</strong>: the registration fee went to a national non-profit. The unregistered copy here plays the first fifteen levels, exactly as it was distributed.</p>",
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh 9500, 800×600 in colour</td></tr><tr><th>System</th><td>Mac OS 8.6, shared with every other title of this era</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Saves</th><td>High scores persist inside the emulated Mac, in your browser</td></tr></tbody></table><p>The first screen is Ricochet's own registration notice — click <strong>Not Yet</strong>. It then asks for a player name; click OK, click once more to get past the level list, and you are on the main screen, a ring of coloured buttons around the title. <strong>start</strong> takes you to the board, and the up arrow begins the level.</p>\n<p>Ricochet does not carry its own operating system: Mac OS 8.6 comes from the image shared with the other late-1990s titles here, so it starts faster if you have already opened one of them.</p>"
+      },
+      {
+        "h": "Why it is worth a look",
+        "html": "<p><strong>Two keys, relative to the runner.</strong> Most games map a key to a direction on the screen. Ricochet maps it to a turn, from the runner's point of view, and the readme spells out all four cases because nobody gets them right at first. It is the sort of control scheme that feels hostile for five minutes and then becomes the whole pleasure of the thing.</p>\n<p><strong>Deflectors and obstacles do the rest.</strong> The board is full of things that change the runner's course on their own, explained on the Help screen from the main menu. Planning a route through them is where the puzzle is.</p>\n<p><strong>Charityware.</strong> A variation on shareware that was more common than it is remembered: the same honour-system request for payment, with the money going to a cause rather than the author. The notice at startup says so, and it is left exactly where Bob Urschel put it.</p>"
+      },
+      {
+        "h": "Getting started",
+        "html": "<p>Click <strong>Not Yet</strong>, then OK on the name, then click to continue.</p>\n<p>On the main screen, <strong>help</strong> explains the targets and obstacles; read it once. Then <strong>start</strong>, and press the up arrow to begin.</p>\n<p>When you finish a level the game shows the next level's password. Write it down — it is how you skip back to where you were.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Why does the right arrow not go right?",
+        "a": "Because the keys turn the runner relative to the way it is moving. Travelling left to right, right-arrow turns it up and left-arrow turns it down; the other directions follow the same logic."
+      },
+      {
+        "q": "Do I need a registration code?",
+        "a": "No. Click Not Yet on the opening notice. The unregistered version plays the first fifteen levels."
+      },
+      {
+        "q": "What is charityware?",
+        "a": "Shareware whose registration fee went to a charity rather than the author. Ricochet's went to a national 501(c)(3) non-profit."
+      },
+      {
+        "q": "How do I start a level?",
+        "a": "Press start on the main screen, then the up arrow. The up arrow also pauses."
+      },
+      {
+        "q": "Can I build my own levels?",
+        "a": "The game includes a level editor, but it is one of the things registration unlocked, so it is not available here."
+      },
+      {
+        "q": "Who made it?",
+        "a": "Bob Urschel, who did the programming, graphics and sound himself, between 1996 and 1999."
+      }
+    ],
+    "related": [
+      "pensate",
+      "pipe-dream",
+      "glider-pro"
+    ],
+    "licenseReason": "Charityware. The author's licence permits non-profit distribution provided the software is unmodified and complete. This copy is the unregistered release, with its registration notice and documentation intact.",
+    "launchNote": "Boots Mac OS 8.6 and opens Ricochet. Click Not Yet on the charityware notice, OK on the name, then click to continue; press start, then the up arrow.",
+    "macControls": [
+      {
+        "keys": "Not Yet",
+        "does": "Play without registering"
+      },
+      {
+        "keys": "Up arrow",
+        "does": "Start or pause the level"
+      },
+      {
+        "keys": "Left / right arrow",
+        "does": "Turn the runner (relative to its direction)"
+      },
+      {
+        "keys": "Mouse",
+        "does": "Menus and the main-screen buttons"
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li><a href=\"https://archive.org/details/tucows_205663_Ricochet\" rel=\"noopener\">Internet Archive</a> — the Tucows Macintosh archive copy this was built from.</li></ul>"
+    }
+  },
+  {
+    "appType": "game",
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "provenance": "shareware",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "updated": "2026-09-23",
+    "addedDate": "2026-09-23",
+    "shotSetup": {
+      "screen": [
+        800,
+        600
+      ],
+      "steps": [
+        {
+          "waitMs": 40000
+        }
+      ]
+    },
+    "screenshot": true,
+    "persist": true,
+    "slug": "zap-t-balls",
+    "title": "Play Zap'T'Balls II Online — Mac Shareware Pang Clone",
+    "description": "Zap'T'Balls II by Richard Bannister, a Macintosh take on Pang: split bouncing balls until none are left. Running in your browser.",
+    "keywords": "zap't'balls, zap t balls mac, richard bannister, pang clone mac, super buster bros mac, mac shareware arcade",
+    "ogTitle": "Zap'T'Balls II",
+    "ogDescription": "Pop the bouncing balls before they flatten you. Richard Bannister's Macintosh Pang, in your browser.",
+    "crumb": "Zap'T'Balls II",
+    "h1": "Zap'T'Balls II — Pang, over a lake",
+    "appName": "Zap'T'Balls II",
+    "author": "Richard F. Bannister",
+    "year": 1994,
+    "genre": [
+      "Arcade",
+      "Action"
+    ],
+    "categories": [
+      "Action"
+    ],
+    "extraDisks": [
+      "zap-t-balls-title"
+    ],
+    "intro": "<p>A large red ball bounces across a photograph of a lake. You are a small man at the bottom of the screen with a harpoon. Hit the ball and it splits in two smaller ones; hit those and they split again; keep going until nothing is left, and do not let any of them land on you. That is Pang — Super Buster Bros. in the United States — and Zap'T'Balls II is Richard Bannister's Macintosh version of it.</p>\n<p>By his own account he wrote it because he could not afford a copy of the Amstrad CPC game of the same name, and used it to learn C. He came back to it in 2002 to fix a scoring bug one registered user would not stop reporting, and this is that last version.</p>",
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh 9500, 800×600 in colour</td></tr><tr><th>System</th><td>Mac OS 8.6, shared with every other title of this era</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Saves</th><td>High scores persist inside the emulated Mac, in your browser</td></tr></tbody></table><p>The game opens on a title card of gulls over water and waits. Start from the menu bar: <strong>File → New Game → Normal Mode</strong>. Help! Mode, on the same submenu, is the gentler option.</p>\n<p>The status bar along the bottom keeps score, level, lives and a countdown timer — the timer is the part that catches people.</p>"
+      },
+      {
+        "h": "Why it is worth a look",
+        "html": "<p><strong>Photographs for backgrounds.</strong> Where most arcade games of 1994 drew their scenery, Zap'T'Balls uses real photographs, which gives it an odd, calm look for a game about being flattened by rubber balls.</p>\n<p><strong>The Sprite Animation Toolkit.</strong> It is built on Ingemar Ragnemalm's SAT, the free library behind a good part of Macintosh shareware action games in the 1990s. Richard Bannister credits it in the readme, and Space Debris, also here, uses it too.</p>\n<p><strong>An honest readme.</strong> Bannister describes his own graphics as terrible (of a sister game) and his old code as awful, and cut the shareware fee while he was at it. It is worth opening from the title disk.</p>"
+      },
+      {
+        "h": "Getting started",
+        "html": "<p>File → New Game → Normal Mode.</p>\n<p>Move with the arrow keys and fire straight up. Aim for the largest ball first while there is room to work, and do not stand directly under anything.</p>\n<p>Watch the timer; running out costs a life as surely as a ball does.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "How do I start a game?",
+        "a": "From the menu bar: File, then New Game, then Normal Mode. Help! Mode is the easier variant."
+      },
+      {
+        "q": "Is this Pang?",
+        "a": "It is an independently written Macintosh game in the same style as Pang, also known as Super Buster Bros. It borrows the idea, not the code or art."
+      },
+      {
+        "q": "Do I need to register?",
+        "a": "No. This is the unregistered shareware release, left as it was distributed. Registration was handled through Kagi, which no longer operates."
+      },
+      {
+        "q": "Do high scores save?",
+        "a": "Yes, inside the emulated Mac, in your browser."
+      },
+      {
+        "q": "Who wrote it?",
+        "a": "Richard F. Bannister, who also wrote Space Debris and later a long list of Macintosh emulators."
+      },
+      {
+        "q": "Why does it take a while to start?",
+        "a": "It boots Mac OS 8.6 first, from the image shared with the other late-1990s titles here."
+      }
+    ],
+    "related": [
+      "space-debris",
+      "maelstrom",
+      "crystal-quest"
+    ],
+    "licenseReason": "Shareware, distributed freely by its author through the shareware archives. This copy is the unregistered v2.5 release, unmodified, with its readme and Register application intact.",
+    "launchNote": "Boots Mac OS 8.6 and opens Zap'T'Balls II on its title card. Choose File → New Game → Normal Mode to play.",
+    "macControls": [
+      {
+        "keys": "File → New Game",
+        "does": "Start (Normal Mode or Help! Mode)"
+      },
+      {
+        "keys": "Arrow keys",
+        "does": "Move"
+      },
+      {
+        "keys": "Space",
+        "does": "Fire"
+      },
+      {
+        "keys": "Cmd-S",
+        "does": "Sound on or off"
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li><a href=\"https://archive.org/details/tucows_205652_Zap_T_Balls_II\" rel=\"noopener\">Internet Archive</a> — the Tucows Macintosh archive copy this was built from.</li><li><a href=\"https://www.bannister.org/software/\" rel=\"noopener\">bannister.org</a> — the author's site.</li></ul>"
+    }
+  },
+  {
+    "appType": "game",
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "provenance": "shareware",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "updated": "2026-09-23",
+    "addedDate": "2026-09-23",
+    "shotSetup": {
+      "screen": [
+        800,
+        600
+      ],
+      "steps": [
+        {
+          "waitMs": 40000
+        }
+      ]
+    },
+    "screenshot": true,
+    "persist": true,
+    "slug": "sphaera",
+    "title": "Play Sphaera Online — Freeware Mac Breakout Game, 1999",
+    "description": "Sphaera by Shawn Henry, a freeware Macintosh Breakout game from 1999 with bonuses and a pool of fire, running in your browser.",
+    "keywords": "sphaera mac, sphaera breakout, shawn henry, mac breakout game, freeware mac game 1999, arkanoid mac",
+    "ogTitle": "Sphaera",
+    "ogDescription": "Freeware Breakout for the late-1990s Macintosh, in your browser.",
+    "crumb": "Sphaera",
+    "h1": "Sphaera — Breakout, over a pool of fire",
+    "appName": "Sphaera",
+    "author": "Shawn Henry",
+    "year": 1999,
+    "genre": [
+      "Arcade",
+      "Breakout"
+    ],
+    "categories": [
+      "Action"
+    ],
+    "extraDisks": [
+      "sphaera-title"
+    ],
+    "intro": "<p>A paddle at the bottom, a wall of bricks at the top, and a ball between them. Sphaera is Breakout, and says so in its readme — \"a modern freeware arcade game in the spirit of the classic\" — with the late-1990s additions you would expect: bricks that take several hits, gold ones that never break, bonuses that fall when a brick goes, and a pool of fire where the floor should be.</p>\n<p>Shawn Henry released it as freeware in August 1999 and put out a bug-fix version a week later. That 1.0.1 release is the one here.</p>",
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh 9500, 800×600 in colour</td></tr><tr><th>System</th><td>Mac OS 8.6, shared with every other title of this era</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Saves</th><td>High scores persist inside the emulated Mac, in your browser</td></tr></tbody></table><p>It opens on its title screen with a high-score table. Choose <strong>Game → New Game</strong> from the menu bar, then click or press Space to launch the ball.</p>\n<p>The paddle follows the mouse or the arrow keys, depending on the setting in Options.</p>"
+      },
+      {
+        "h": "What the bricks and bonuses do",
+        "html": "<p>From the readme: <strong>red, blue and green</strong> bricks go in one hit; <strong>grey</strong> bricks take several; <strong>gold</strong> bricks cannot be destroyed at all, and are there to shape the level.</p>\n<p>Bonuses fall from broken bricks. The useful ones make your paddle larger, split the ball into three, let the paddle move up and down, set off a chain of explosions, or make the ball explosive so it ploughs through. One makes the paddle smaller — do not catch that one.</p>\n<p>The side panel keeps score, lives, level, a multiplier and a bonus that counts down while you play.</p>"
+      },
+      {
+        "h": "Getting started",
+        "html": "<p>Game → New Game, then click to launch.</p>\n<p>If play stutters, the readme's own advice applies: there is a menu option to turn off background event handling, added in 1.0.1 for exactly that.</p>\n<p>Clear the grey bricks early while you have room; the gold ones are permanent, so play the angles around them.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "How do I start?",
+        "a": "Choose Game → New Game, then click the mouse or press Space to launch the ball."
+      },
+      {
+        "q": "Is it free?",
+        "a": "Yes. Sphaera is freeware; the author allowed non-profit and online distribution as long as its documentation is included unchanged, and it is."
+      },
+      {
+        "q": "Mouse or keyboard?",
+        "a": "Either. The Options menu decides which controls the paddle."
+      },
+      {
+        "q": "Why can't I break the gold bricks?",
+        "a": "They are indestructible by design. Play around them."
+      },
+      {
+        "q": "Who made it?",
+        "a": "Shawn Henry, in 1999."
+      },
+      {
+        "q": "Why does it take a while to start?",
+        "a": "It boots Mac OS 8.6 first, from the image shared with the other late-1990s titles here."
+      }
+    ],
+    "related": [
+      "colibricks",
+      "macbrickout",
+      "diamonds-3d"
+    ],
+    "licenseReason": "Freeware. The author permits non-profit and online distribution provided the documentation is included unchanged; this copy carries the original readme and is unmodified.",
+    "launchNote": "Boots Mac OS 8.6 and opens Sphaera on its title screen. Choose Game → New Game, then click to launch the ball.",
+    "macControls": [
+      {
+        "keys": "Game → New Game",
+        "does": "Start a game"
+      },
+      {
+        "keys": "Mouse or arrow keys",
+        "does": "Move the paddle"
+      },
+      {
+        "keys": "Click or Space",
+        "does": "Launch the ball"
+      },
+      {
+        "keys": "Cmd-P",
+        "does": "Pause"
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li><a href=\"https://archive.org/details/tucows_205674_Sphaera\" rel=\"noopener\">Internet Archive</a> — the Tucows Macintosh archive copy this was built from.</li></ul>"
+    }
   }
 ]
