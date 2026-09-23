@@ -5886,7 +5886,7 @@
       "kind": "good",
       "text": "Runs here"
     },
-    "intro": "<p>A chess board, a move list, two clocks, and an engine that was genuinely strong for a machine with no hardware multiply. The Chessmaster 2000 was the program that made chess software a consumer product rather than a hobbyist one, largely on the strength of the presentation — the board actually looked like a board, and the packaging with the robed wizard is one of the most recognisable box arts of the decade.</p>\n<p>The Macintosh version is the austere one: black and white, a clean two-dimensional board, and the analysis window showing what the engine is considering. There is no wizard on screen.</p>",
+    "intro": "<p>A chess board, a move list, two clocks, and an engine that was genuinely strong for an eight-megahertz machine. The Chessmaster 2000 was the program that made chess software a consumer product rather than a hobbyist one, largely on the strength of the presentation — the board actually looked like a board, and the packaging with the robed wizard is one of the most recognisable box arts of the decade.</p>\n<p>The Macintosh version is the austere one: black and white, a clean two-dimensional board, and the analysis window showing what the engine is considering. There is no wizard on screen.</p>",
     "sections": [
       {
         "h": "How it works & what to expect",
