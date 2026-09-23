@@ -85,7 +85,7 @@
       },
       {
         "h": "What to send",
-        "html": "<p>Email <a href=\"/contact/\">the address on the contact page</a> with:</p><ul><li>The page or pages, by URL.</li><li>The work concerned.</li><li>Who you are and what your relationship to the rights is. A company email or a link to a page that connects you to the work is plenty; notarised anything is not required.</li></ul><p>That is the whole process. A reply confirming removal follows.</p>"
+        "html": "<p>Email <a href=\"mailto:hello@macemu.com\"><strong>hello@macemu.com</strong></a> with:</p><ul><li>The page or pages, by URL.</li><li>The work concerned.</li><li>Who you are and what your relationship to the rights is. A company email or a link to a page that connects you to the work is plenty; notarised anything is not required.</li></ul><p>That is the whole process. A reply confirming removal follows.</p>"
       },
       {
         "h": "Where this site stands",

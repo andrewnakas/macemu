@@ -46,6 +46,9 @@ public/terms/
 public/load-mac-file/
 public/open-*/
 public/classic-mac-emulator-online/
+public/embed-a-game/
+public/school-computer-lab-games/
+public/.well-known/security.txt
 
 # python venv for the disk builders (machfs)
 .venv/

@@ -61,9 +61,14 @@ if (pageFlag) {
   // that stays true when the page layout changes.
   const catalogue = JSON.parse(readFileSync(resolve(process.cwd(), "scripts", "app-pages.json"), "utf8"));
   const setupFor = (slug) => (catalogue.find((p) => p.slug === slug) || {}).shotSetup || null;
+  // Screening a freshly built batch only asks one question — does the disk
+  // boot into the title — and the answer is the same on both routes. Testing
+  // /embed/ too doubles the cost of every failure, which is what dominates a
+  // batch: a title that never boots spends the whole timeout twice.
+  const playOnly = has("play-only");
   for (const s of slugs) {
     targets.push({ url: `${BASE}/play/${s}/`, isolated: true, label: `play/${s}`, setup: setupFor(s) });
-    targets.push({ url: `${BASE}/embed/${s}/`, isolated: false, label: `embed/${s}`, setup: setupFor(s) });
+    if (!playOnly) targets.push({ url: `${BASE}/embed/${s}/`, isolated: false, label: `embed/${s}`, setup: setupFor(s) });
   }
 }
 

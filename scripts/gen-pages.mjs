@@ -73,7 +73,7 @@ const ROOT = resolve(process.cwd(), "public");
 // Content-hash every asset the pages reference, so a changed file always gets a
 // changed URL and a returning visitor never runs yesterday's JavaScript against
 // today's HTML.
-const ASSETS = ["style.css", "macbin.js", "mac-player.js", "mac-loader.js", "grid-filter.js"];
+const ASSETS = ["style.css", "macbin.js", "mac-player.js", "mac-loader.js", "grid-filter.js", "continue-playing.js"];
 setAssetVersions(Object.fromEntries(ASSETS.map((f) => {
   const p = resolve(ROOT, f);
   return [f, existsSync(p) ? createHash("sha256").update(readFileSync(p)).digest("hex").slice(0, 8) : "0"];
@@ -219,9 +219,37 @@ function macMount(p, { mode }) {
     `data-disk="${esc(p.bootDisk || "")}"`,
     `data-extra-disks="${esc((p.extraDisks || []).join(","))}"`,
     // Persistence routes the disk through an origin-private-file-system
-    // saver so writes survive a reload. Off by default: it has been seen to
-    // stop a machine booting, and a hosted title does not need it.
+    // saver so writes survive a reload — which is what lets someone come back
+    // to a saved game. It has been seen to stop a machine booting, so the
+    // player treats a persistent boot as revocable: if it fails it retries
+    // once without and remembers, per title, in localStorage.
     `data-persist="${p.persist ? "true" : "false"}"`,
+    // The names the emulator gives its persistent files in the origin private
+    // file system. It uses each manifest's `name` field — "Archon v2" — not
+    // the manifest's filename, so a player that guessed from the slug would
+    // look for a save that is not there and delete nothing when asked to.
+    (() => {
+      const names = [p.bootDisk].concat(p.extraDisks || []).filter(Boolean)
+        .map((d) => {
+          try {
+            return JSON.parse(readFileSync(resolve(ROOT, "mac", "disks", `${d}.json`), "utf8")).name || d;
+          } catch { return d; }
+        });
+      return names.length ? `data-disk-names="${esc(JSON.stringify(names))}"` : "";
+    })(),
+    // What the visitor has to do once the machine is up. 59 of the 101 titles
+    // need a first action — click Start Game, allow 256 colours, press Demo,
+    // wait for the screensaver — and until now that was a line of small grey
+    // text UNDER the player, which is both easy to miss and not on screen at
+    // all in fullscreen. The player shows it over the machine instead.
+    p.launchNote ? `data-launch-note="${esc(p.launchNote)}"` : "",
+    // The controls table again, for the player's own overlay. The article
+    // under the screen carries the same information, but in fullscreen there
+    // is no article — and fullscreen is exactly when someone needs reminding
+    // which key throws the ball.
+    p.macControls && p.macControls.length
+      ? `data-controls="${esc(JSON.stringify(p.macControls.map((c) => [c.keys, c.does])))}"`
+      : "",
     `data-width="${s.w}"`,
     `data-height="${s.h}"`,
     p.ramMB ? `data-ram="${p.ramMB}"` : "",
@@ -345,12 +373,27 @@ ${items}
   </section>`;
 }
 
-function relatedHtml(related) {
+function relatedHtml(related, pages) {
   if (!related || !related.length) return "";
-  const cards = related.map((r) => `      <a class="link-card" href="${esc(r.href)}">
+  // Two shapes, both in use. The older entries carry a hand-written card
+  // ({href, title, desc}); newer ones are just a slug, because writing a
+  // bespoke blurb three times per page for a hundred pages is how you end up
+  // with a hundred bad blurbs. A slug is resolved against the catalogue.
+  // Anything that resolves to neither is dropped rather than rendered as
+  // href="undefined", which is what shipped before this existed.
+  const resolve = (r) => {
+    if (r && typeof r === "object" && r.href) return r;
+    if (typeof r !== "string") return null;
+    const t = (pages || []).find((x) => x.slug === r);
+    if (!t) return null;
+    return { href: `/run/${t.slug}/`, title: t.appName || t.crumb || t.slug,
+             desc: t.ogDescription || t.description || "" };
+  };
+  const cards = related.map(resolve).filter(Boolean).map((r) => `      <a class="link-card" href="${esc(r.href)}">
         <strong>${esc(r.title)}</strong>
         <span>${esc(r.desc)}</span>
       </a>`).join("\n");
+  if (!cards) return "";
   return `
   <section class="card">
     <h2>Keep going</h2>
@@ -398,7 +441,7 @@ function runPage(p) {
     <p class="muted small">Guide updated ${esc(monthYear(p.updated))}${playable ? "" : " · needs your own copy"}</p>` : ""}
     ${p.intro}${playerBlock(p)}${p.launchNote && playable ? `
     <p class="muted small">${esc(p.launchNote)}</p>` : ""}${controlsHtml(p)}${figureHtml(p)}${soldHtml(p)}${licenseHtml(p)}
-  </section>${downloadHtml(p)}${sectionsHtml(p.sections)}${faqHtml(p)}${alsoPlayHtml(p, pages)}${relatedHtml(p.related)}
+  </section>${downloadHtml(p)}${sectionsHtml(p.sections)}${faqHtml(p)}${embedBlockHtml(p)}${alsoPlayHtml(p, pages)}${relatedHtml(p.related, pages)}
 </main>
 
 ${footer()}`;
@@ -509,7 +552,7 @@ ${guides.map((p) => `      <li><a href="/run/${p.slug}/">${esc(p.appName)}</a> <
 </main>
 
 ${footer()}`;
-  return page({ headHtml, bodyHtml: body, scripts: `<script src="/grid-filter.js?v=${av("grid-filter.js")}"></script>` });
+  return page({ headHtml, bodyHtml: body, scripts: `<script src="/grid-filter.js?v=${av("grid-filter.js")}"></script>\n<script src="/continue-playing.js?v=${av("continue-playing.js")}"></script>` });
 }
 
 function homePage() {
@@ -547,6 +590,12 @@ function homePage() {
     </ul>
   </section>
 
+  <!-- Filled by continue-playing.js from what this visitor has actually
+       played, or left hidden. Rendered client-side on purpose: it is different
+       for every visitor, so it must not be baked into a cached page, and it
+       carries no SEO weight either way. -->
+  <section class="card" id="continue-playing" hidden></section>
+
 ${playNow.length ? `  <section class="card">
     <h2>Start here</h2>
 ${gridFilter(playNow)}
@@ -560,8 +609,12 @@ ${byoCard()}
   </section>`}
 
   <section class="card">
-    <h2>Browse by era</h2>
+    <h2>Browse</h2>
     <div class="card-grid">
+${CATEGORY_HUBS.filter((h) => pages.some(h.match)).map((h) => `      <a class="link-card" href="/${h.slug}/">
+        <strong>${esc(h.name)}</strong>
+        <span>${pages.filter(h.match).length} titles</span>
+      </a>`).join("\n")}
 ${ERA_ORDER.filter((e) => pages.some((p) => p.era === e)).map((e) => `      <a class="link-card" href="/collection/${e}/">
         <strong>${esc(ERA_LABELS[e])}</strong>
         <span>${pages.filter((p) => p.era === e).length} titles</span>
@@ -581,7 +634,147 @@ ${utils.filter((u) => u.onHome).map((u) => `      <a class="link-card" href="/${
 </main>
 
 ${footer()}`;
-  return page({ headHtml, bodyHtml: body, scripts: `<script src="/grid-filter.js?v=${av("grid-filter.js")}"></script>` });
+  return page({ headHtml, bodyHtml: body, scripts: `<script src="/grid-filter.js?v=${av("grid-filter.js")}"></script>\n<script src="/continue-playing.js?v=${av("continue-playing.js")}"></script>` });
+}
+
+
+// ── category hubs ─────────────────────────────────────────────────────────
+// The era collections are organised the way the SITE thinks — System 6, System
+// 7, Mac OS 8. Nobody searches that. These are organised the way a visitor
+// thinks, and each one has to earn its place with real writing: a page that is
+// only a grid of links is the thin content that got exebrowser turned down.
+// Start with one hub rather than seven empty ones.
+const CATEGORY_HUBS = [
+  {
+    slug: "school-computer-lab-games",
+    name: "The school computer lab",
+    match: (p) => (p.categories || []).includes("Classroom classics"),
+    title: "School Computer Lab Games — Play the Originals Free",
+    description: "The games from the school computer lab, playable free in your browser. Oregon Trail, Carmen Sandiego, Reader Rabbit and the rest, in their real Macintosh releases.",
+    keywords: "school computer lab games, old educational computer games, games we played in school, 90s school games online, classroom games from the 90s, elementary school computer games",
+    body: `<p>If you were at school in North America between about 1985 and 1998, there was a room with a dozen beige Macintoshes in it, and a rota that got you twenty minutes on one. This is what was on them.</p>
+<p>The machines matter to the memory. School districts bought Apple, heavily and for years, which is why the version of <em>The Oregon Trail</em> most adults picture is the Macintosh one rather than the DOS release — the black-and-white wagon, the blocky river, the hunting screen where the deer moves faster than your cursor. Every title on this page is that version: the actual software, running on an emulated Macintosh, not a remake.</p>
+
+<h3>Why these games worked</h3>
+<p>None of them announced that they were teaching you anything, which is precisely why they did. <em>Carmen Sandiego</em> did not set out to teach geography; it made you look up a currency because the clock was running and the suspect was getting away. <em>The Oregon Trail</em> did not lecture about supply management; it let you buy too many bullets and not enough food, and then killed your entire family in Kansas.</p>
+<p>That indirectness was a deliberate design position, and it is the reason these titles are remembered with affection while the drill-and-practice software of the same era is remembered not at all. The lesson arrived as a consequence of wanting something else.</p>
+
+<h3>What the lab actually had</h3>
+<p>MECC — the Minnesota Educational Computing Consortium — supplied a great deal of it, as a state-funded body that ended up shipping some of the most-played software of the century. Brøderbund supplied Carmen Sandiego. The Learning Company supplied Reader Rabbit. Davidson supplied Math Blaster. Between those four, most of a generation's screen time before 1995 is accounted for.</p>
+
+<h3>A note on what is missing</h3>
+<p>Number Munchers is not here, and it is the one people ask about. No working Macintosh copy appears to survive: the archived disk images are either truncated or turn out to hold the PC side of a hybrid disc. Super Munchers, from the same series, is here and does run. Kid Pix is not here either, for a different reason — it is still sold today, and this site does not host anything you can buy.</p>`,
+  },
+];
+
+function categoryPage(hub) {
+  const list = pages.filter(hub.match);
+  const playNow = sortPlayable(list);
+  const headHtml = head({
+    title: hub.title, description: hub.description, keywords: hub.keywords,
+    path: `/${hub.slug}/`, kind: "content",
+    ld: [
+      breadcrumbLd([{ name: "Home", href: "/" }, { name: "All titles", href: "/run/" }, { name: hub.name, href: `/${hub.slug}/` }]),
+      itemListLd(playNow, { name: hub.name, url: `${SITE}/${hub.slug}/` }),
+    ],
+  });
+  const body = `${header()}
+
+<main class="prose">
+  ${crumbs([{ name: "Home", href: "/" }, { name: "All titles", href: "/run/" }, { name: hub.name }])}
+  <section class="card">
+    <h2>${esc(hub.name)}</h2>
+    ${hub.body}
+  </section>
+${playNow.length ? `  <section class="card">
+    <h2>Play now</h2>
+    <ul class="poster-grid">
+${playNow.map(posterCard).join("\n")}
+    </ul>
+  </section>` : ""}
+</main>
+
+${footer()}`;
+  return page({ headHtml, bodyHtml: body });
+}
+
+
+// ── the embed offer ───────────────────────────────────────────────────────
+// Every playable title is already served at /embed/<slug>/ and has been since
+// the site launched, but nothing anywhere said so. Distribution was named as
+// the growth lever and then left with no front door: no hub, no snippet, no
+// mention on the page of the person most likely to want one.
+//
+// allowfullscreen is not optional in the snippet. The player checks
+// document.fullscreenEnabled and hides its own fullscreen button when the
+// framing page has not granted it, so a snippet without it ships a visibly
+// poorer game to someone else's audience.
+function embedSnippet(p) {
+  const s = p.screen || { w: 640, h: 480 };
+  return `<iframe src="${SITE}/embed/${p.slug}/"\n        width="${s.w}" height="${s.h}"\n        style="border:0;max-width:100%"\n        allowfullscreen\n        title="${esc(p.appName)}"></iframe>`;
+}
+
+function embedBlockHtml(p) {
+  if (!isPlayable(p) || p.iframeUrl) return "";
+  return `
+  <section class="card">
+    <h2>Put ${esc(p.appName)} on your own site</h2>
+    <p>Free, no permission needed and no account. Paste this where you want the machine to appear; it brings its own emulator and asks nothing of your page.</p>
+    <pre class="embed-code"><code>${esc(embedSnippet(p))}</code></pre>
+    <p class="muted small">Sized to this title's real screen. <a href="/embed-a-game/">How embedding works</a>.</p>
+  </section>`;
+}
+
+const EMBED_HUB = {
+  slug: "embed-a-game",
+  title: "Embed a Classic Mac Game on Your Site — Free",
+  description: "Put a working Macintosh game on your own page with one line of HTML. Free, no account, no permission needed. Every title on macemu can be embedded.",
+  keywords: "embed classic game, embed mac game website, free game iframe, embeddable retro game, put a game on my website, classic mac game widget",
+};
+
+function embedHubPage() {
+  const playable = sortPlayable(pages.filter((p) => isPlayable(p) && !p.iframeUrl));
+  const sample = playable[0];
+  const headHtml = head({
+    title: EMBED_HUB.title, description: EMBED_HUB.description, keywords: EMBED_HUB.keywords,
+    path: `/${EMBED_HUB.slug}/`, kind: "content",
+    ld: [breadcrumbLd([{ name: "Home", href: "/" }, { name: "Embed a game", href: `/${EMBED_HUB.slug}/` }])],
+  });
+  const body = `${header()}
+
+<main class="prose">
+  ${crumbs([{ name: "Home", href: "/" }, { name: "Embed a game" }])}
+  <section class="card">
+    <h2>Put a working Macintosh on your page</h2>
+    <p>Every one of the ${playable.length} playable titles here can be embedded in somebody else's site with a single line of HTML. It is free, it needs no account and no permission, and there is nothing to ask us for.</p>
+    <pre class="embed-code"><code>${esc(embedSnippet(sample))}</code></pre>
+    <p>That is the whole of it. The frame loads its own emulator, fetches the disk in pieces as it needs them, and runs the real software. Your page does not need to change its headers, load a script, or do anything else.</p>
+
+    <h3>Where the snippet lives</h3>
+    <p>Every title's page carries its own, sized to that machine's real screen — a compact Macintosh is 512×342 and a Power Macintosh is 800×600, so one size would letterbox most of them. Open any title and the snippet is near the bottom.</p>
+
+    <h3>Things worth knowing</h3>
+    <p><strong>Keep <code>allowfullscreen</code>.</strong> The player offers a fullscreen button and hides it when the framing page has not granted permission. Drop the attribute and your visitors get a worse version than the one on this site.</p>
+    <p><strong>It is not a video or a screenshot.</strong> The emulator runs in your visitor's browser, so the software is genuinely being operated rather than played back. Nothing is installed on their machine and nothing is uploaded from it.</p>
+    <p><strong>The first start is the slow one.</strong> Disks are served in 256-kilobyte content-addressed pieces, so a returning visitor — and anyone who has opened another title of the same era — starts from cache.</p>
+    <p><strong>No link back is required.</strong> It is appreciated and not demanded. If you would rather not link, embed it anyway.</p>
+
+    <h3>What you may not embed</h3>
+    <p>The same rule that governs this site governs the frames: nothing here is hosted if it is still sold, and every title carries a notice saying where it came from and on what footing. If a rightsholder asks for something to come down it comes down, and your embed will stop working with it. That is the honest trade for software of this age.</p>
+  </section>
+
+  <section class="card">
+    <h2>Pick a title</h2>
+    <p class="muted small">Each links to its page, where the ready-made snippet is waiting.</p>
+    <ul class="poster-grid">
+${sortPlayable(playable).slice(0, 24).map(posterCard).join("\n")}
+    </ul>
+    <p><a href="/run/">See all ${playable.length} titles →</a></p>
+  </section>
+</main>
+
+${footer()}`;
+  return page({ headHtml, bodyHtml: body });
 }
 
 function collectionPage(era) {
@@ -698,7 +891,7 @@ function utilityPage(u) {
     </div>
     <p class="muted small">Everything happens in your browser. Your file is never uploaded anywhere.</p>
   </section>
-${sectionsHtml(u.sections)}${faqHtml(u)}${relatedHtml(u.related)}
+${sectionsHtml(u.sections)}${faqHtml(u)}${relatedHtml(u.related, pages)}
 </main>
 
 ${footer()}`;
@@ -731,7 +924,7 @@ function staticPage(s) {
   <section class="card">
     <h2>${esc(s.h1 || s.crumb)}</h2>
     ${(s.sections[0] && !s.sections[0].h) ? s.sections[0].html : ""}
-  </section>${sectionsHtml(s.sections, !!(s.sections[0] && !s.sections[0].h))}${faqHtml(s)}${relatedHtml(s.related)}
+  </section>${sectionsHtml(s.sections, !!(s.sections[0] && !s.sections[0].h))}${faqHtml(s)}${relatedHtml(s.related, pages)}
 </main>
 
 ${footer()}`;
@@ -857,6 +1050,8 @@ function sitemapXml(staticPaths) {
     { loc: "/run/", lastmod: maxDate(pages.map((p) => p.updated)) },
     ...pages.map((p) => ({ loc: `/run/${p.slug}/`, lastmod: p.updated })),
     ...ERA_ORDER.filter((e) => pages.some((p) => p.era === e)).map((e) => ({ loc: `/collection/${e}/`, lastmod: maxDate(pages.filter((p) => p.era === e).map((p) => p.updated)) })),
+    ...CATEGORY_HUBS.filter((h) => pages.some(h.match)).map((h) => ({ loc: `/${h.slug}/`, lastmod: maxDate(pages.filter(h.match).map((p) => p.updated)) })),
+    { loc: `/${EMBED_HUB.slug}/`, lastmod: maxDate(pages.map((p) => p.updated)) },
     ...utils.map((u) => ({ loc: `/${u.slug}/`, lastmod: u.updated })),
     ...staticPaths.map((s) => ({ loc: s.loc, lastmod: s.lastmod })),
   ];
@@ -897,6 +1092,19 @@ ${recent.map((r) => `    <item>
 // A plain-text catalogue aimed at assistants. On exebrowser, people asking an
 // assistant where to play an old game is one of the largest referral sources —
 // 14% of sessions — so this file is not a curiosity, it is a channel.
+function securityTxt() {
+  const expires = new Date(Date.now() + 365 * 24 * 3600 * 1000);
+  expires.setUTCHours(0, 0, 0, 0);
+  return [
+    "Contact: mailto:hello@macemu.com",
+    `Expires: ${expires.toISOString().replace(/\.\d+Z$/, "Z")}`,
+    "Preferred-Languages: en",
+    `Canonical: ${SITE}/.well-known/security.txt`,
+    `Policy: ${SITE}/takedown/`,
+    "",
+  ].join("\n");
+}
+
 function llmsTxt() {
   const playNow = sortPlayable(pages);
   const guides = pages.filter((p) => !isPlayable(p));
@@ -982,6 +1190,8 @@ if (posts.length) write("blog/index.html", blogIndex());
 write("run/index.html", runHub());
 write("index.html", homePage());
 for (const e of ERA_ORDER) if (pages.some((p) => p.era === e)) write(`collection/${e}/index.html`, collectionPage(e));
+for (const h of CATEGORY_HUBS) if (pages.some(h.match)) write(`${h.slug}/index.html`, categoryPage(h));
+write(`${EMBED_HUB.slug}/index.html`, embedHubPage());
 write("404.html", notFound());
 
 write("sitemap.xml", sitemapXml([
@@ -991,6 +1201,14 @@ write("sitemap.xml", sitemapXml([
 ]));
 write("feed.xml", feedXml());
 write("llms.txt", llmsTxt());
+
+// RFC 9116. A rights holder or a researcher who wants to report something
+// looks here before hunting for a contact page, and the takedown promise on
+// this site — 48 hours — is only worth anything if the message arrives. The
+// expiry is deliberately short: a stale security.txt is a signal the address
+// behind it has stopped being watched, which is exactly what happened to the
+// last one.
+write(".well-known/security.txt", securityTxt());
 
 console.log(`wrote ${written.length} files`);
 console.log(`  ${pages.length} titles (${pages.filter(isPlayable).length} playable, ${pages.filter((p) => !isPlayable(p)).length} guides)`);

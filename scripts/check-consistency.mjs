@@ -160,6 +160,14 @@ section("Internal links");
       checked++;
       if (!exists(m[1])) { fail(`${file} → ${m[1]} does not exist`); broken++; }
     }
+    // The loop above only inspects hrefs that begin with "/", so a template
+    // that interpolated nothing slips straight past it. href="undefined" is
+    // never intentional, and 207 of them once shipped to production across
+    // 69 pages because nothing here looked for the shape.
+    for (const m of html.matchAll(/(?:href|src)="(undefined|null|)"/g)) {
+      fail(`${file}: has ${m[0]} — a template rendered an empty value`);
+      broken++;
+    }
   }
   console.log(`  ${checked} internal links checked, ${broken} broken`);
 }
@@ -260,6 +268,17 @@ section("Sitemap");
       "/", "/run/",
       ...pages.map((p) => `/run/${p.slug}/`),
       ...ERA_ORDER.filter((e) => pages.some((p) => p.era === e)).map((e) => `/collection/${e}/`),
+      // Hub pages are generated from the catalogue rather than declared in a
+      // data file. Rather than keep a list here that would drift, take the
+      // honest definition: a top-level page that exists and is not noindex is
+      // one that belongs in the sitemap. Matching on the directory name was
+      // the first attempt and broke the moment a hub was not named "-games".
+      ...readdirSync(PUB, { withFileTypes: true })
+        .filter((d) => d.isDirectory() && existsSync(resolve(PUB, d.name, "index.html")))
+        .filter((d) => !/^(play|embed|mac|run|collection|blog|icons)$/.test(d.name))
+        .filter((d) => !/name="robots"[^>]*noindex/
+          .test(readFileSync(resolve(PUB, d.name, "index.html"), "utf8")))
+        .map((d) => `/${d.name}/`),
       ...utils.map((u) => `/${u.slug}/`),
       ...statics.map((s) => `/${s.slug}/`),
       ...(posts.length ? ["/blog/"] : []),
@@ -281,6 +300,20 @@ section("Crawler files");
   if (!/Disallow: \/play\//.test(robots)) fail("robots.txt should disallow /play/");
   if (!/Disallow: \/embed\//.test(robots)) fail("robots.txt should disallow /embed/");
   if (!/Sitemap: /.test(robots)) fail("robots.txt has no Sitemap line");
+
+  // A takedown promise of 48 hours is worth nothing if the address behind it
+  // has quietly stopped accepting mail, which is what happened here once
+  // already. security.txt is where a rights holder looks first, so it has to
+  // exist and it has to be in date — an expired one advertises a dead contact.
+  const sec = read(".well-known/security.txt") || "";
+  if (!sec) fail("public/.well-known/security.txt is missing");
+  else {
+    const c = sec.match(/^Contact:\s*(\S+)/m);
+    const e = sec.match(/^Expires:\s*(\S+)/m);
+    if (!c) fail("security.txt has no Contact line");
+    if (!e) fail("security.txt has no Expires line (RFC 9116 requires one)");
+    else if (new Date(e[1]) <= new Date()) fail(`security.txt expired on ${e[1]}`);
+  }
   const llms = read("llms.txt") || "";
   if (!llms) fail("public/llms.txt is missing — assistant referrals are one of the largest channels for this kind of site");
   else {

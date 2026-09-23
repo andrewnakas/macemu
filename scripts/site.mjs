@@ -23,7 +23,7 @@ export const av = (file) => ASSET_V[file] || "0";
 // Google Analytics. Empty means no tag is emitted at all — better than a
 // half-configured property quietly collecting nothing. Fill in after the
 // property exists.
-export const GA_ID = "";
+export const GA_ID = "G-PS6KPLM4Y4";
 
 // AdSense publisher. Deliberately empty: the site ships ad-free and applies
 // once there is a body of real content, which is the mistake exebrowser made in
@@ -122,6 +122,7 @@ export const footer = () => `<footer>
     <a href="/run/">All titles</a>
     <a href="/load-mac-file/">Open your own file</a>
     <a href="/guide/">What runs</a>
+    <a href="/embed-a-game/">Embed a game</a>
     <a href="/blog/">Blog</a>
     <a href="/about/">About</a>
     <a href="/contact/">Contact</a>
