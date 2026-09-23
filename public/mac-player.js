@@ -68,6 +68,20 @@
       .catch(function () { return false; });
   }
 
+  // ── analytics ────────────────────────────────────────────────────────────
+  // GA sees page views and nothing inside the emulator, so without these a
+  // title that never boots looks exactly like one someone played for an hour.
+  // gtag is defined by the page head (scripts/site.mjs) on every page that
+  // mounts a player; where it is missing, or blocked, this does nothing.
+  function track(cfg, name, params) {
+    try {
+      if (typeof global.gtag !== "function") return;
+      var p = { slug: cfg.slug || "", mode: cfg.mode, os: cfg.era || "" };
+      for (var k in params) if (params.hasOwnProperty(k)) p[k] = params[k];
+      global.gtag("event", name, p);
+    } catch (e) { /* analytics is never allowed to break a boot */ }
+  }
+
   function esc(s) {
     return String(s).replace(/[&<>"]/g, function (c) {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
@@ -310,8 +324,26 @@
     hint.className = "embed-hint";
     hint.textContent = (cfg.emulator ? cfg.emulator + " · " : "") + cfg.width + "×" + cfg.height +
       " · nothing is installed or uploaded";
+    if (cfg.poster) {
+      overlay.classList.add("has-poster");
+      // Dimmed, so the Start button and its hint stay readable over any picture.
+      overlay.style.backgroundImage = "linear-gradient(rgba(0,0,0,0.62), rgba(0,0,0,0.8)), url(\"" +
+        cfg.poster.replace(/"/g, "%22") + "\")";
+    }
     overlay.appendChild(btn);
     overlay.appendChild(hint);
+    // A phone can start the machine but cannot press an arrow key, and finding
+    // that out after a minute of booting is worse than being told up front.
+    // Only where the device has no fine pointer at all: a touchscreen laptop
+    // has a keyboard.
+    if (cfg.needsKeyboard && global.matchMedia &&
+        global.matchMedia("(pointer: coarse)").matches &&
+        !global.matchMedia("(any-pointer: fine)").matches) {
+      var kb = document.createElement("p");
+      kb.className = "embed-touch";
+      kb.textContent = "This one needs a keyboard — it plays best on a computer.";
+      overlay.appendChild(kb);
+    }
 
     var progress = document.createElement("div");
     progress.className = "dos-progress";
@@ -341,8 +373,9 @@
       // The note is pointer-transparent (see the stylesheet) so a click aimed
       // at the menu bar behind it still reaches the Macintosh. That same click
       // is the signal the visitor has started, so the note steps aside.
+      // pointerdown rather than mousedown, so a tap counts on a touchscreen.
       var step = function () { note.hidden = true; };
-      screen.addEventListener("mousedown", step, { once: true });
+      screen.addEventListener("pointerdown", step, { once: true });
       global.addEventListener("keydown", step, { once: true });
     }
 
@@ -378,6 +411,18 @@
     if (cfg.controls.length) bar.appendChild(ctrls);
     bar.appendChild(wipe);
     bar.appendChild(status);
+    // Somewhere to go next once this title has had its turn. Not inside an
+    // embed: a link there would navigate someone else's iframe.
+    var next = null;
+    if (cfg.nextSlug && global.self === global.top) {
+      next = document.createElement("a");
+      next.className = "embed-ctl embed-next";
+      next.href = "/run/" + encodeURIComponent(cfg.nextSlug) + "/";
+      next.setAttribute("data-rec", "next");
+      next.setAttribute("data-slug", cfg.nextSlug);
+      next.textContent = "Play next: " + (cfg.nextName || cfg.nextSlug) + " →";
+      bar.appendChild(next);
+    }
     mount.appendChild(stage);
     mount.appendChild(bar);
 
@@ -415,6 +460,14 @@
       persist: d.persist === "true",
       controls: parseControls(d.controls),
       launchNote: d.launchNote || "",
+      era: d.era || "",
+      // The title's own screenshot, drawn behind the Start button so the first
+      // thing a visitor sees is the game rather than an empty grey box.
+      poster: d.poster || "",
+      // Where to send someone once this title has had its turn.
+      nextSlug: d.nextSlug || "",
+      nextName: d.nextName || "",
+      needsKeyboard: d.needsKeyboard === "true",
       // What the emulator calls this title's persistent files in the origin
       // private file system: each manifest's `name`, not its filename.
       diskNames: parseJsonList(d.diskNames),
@@ -428,6 +481,13 @@
     ui.btn.disabled = true;
     ui.progress.hidden = false;
     ui.hint.textContent = "Starting…";
+    // A retry after a failed persistent boot is the same visit, not a new one:
+    // keep the first start time so boot_ms is what the visitor actually waited.
+    if (!ui.t0) {
+      ui.t0 = Date.now();
+      track(cfg, "game_start", { resumed: !!ui.resuming, persist: !!cfg.persist });
+    }
+    startLoadingReadout(cfg, ui);
 
     // A missing disk chunk does not raise an error — the emulator simply waits
     // for bytes that never arrive. Without a watchdog that failure looks
@@ -444,6 +504,7 @@
         ui.persistRetry = true;
         blockPersist(cfg);
         global.__macPersistFellBack = true;
+        track(cfg, "persist_fallback", { cause: "hang" });
         if (global.console) {
           console.warn("[macemu] persistent boot hung; retrying without saved progress");
         }
@@ -453,6 +514,8 @@
         }, function () {});
         return;
       }
+      stopLoadingReadout(ui);
+      track(cfg, "game_timeout", { boot_ms: Date.now() - ui.t0, mb_read: mbRead(ui) });
       ui.progress.hidden = true;
       ui.overlay.hidden = false;
       ui.btn.disabled = false;
@@ -532,8 +595,35 @@
         onProgress: function (done, total) {
           if (total) ui.fill.style.width = Math.round((done / total) * 100) + "%";
         },
+        // Fires once per 256 KB disk chunk the machine asks for, from the
+        // network or the cache. The runtime's own progress counts its files,
+        // not bytes, so this is the only honest measure of a long first boot.
+        onDiskActivity: function (busy) { if (busy) ui.chunks = (ui.chunks || 0) + 1; },
+        onQuiescent: function () {
+          if (ui.ready) return;
+          ui.ready = true;
+          stopLoadingReadout(ui);
+          setStatus(ui, ui.triedPersist ? "Progress is saved in this browser" : "");
+          track(cfg, "game_ready", {
+            ready_ms: Date.now() - ui.t0,
+            mb_read: mbRead(ui),
+            resumed: !!ui.resuming,
+          });
+        },
+        // "Loaded" is the emulator process starting — a fraction of a second
+        // in, before the Mac has read most of its disk. The wait a visitor
+        // actually sits through comes after it, on screen, and ends when the
+        // worker reports the machine has gone quiet: boot writes done.
         onLoaded: function (h) {
           clearTimeout(watchdog);
+          ui.loadedAt = Date.now();
+          track(cfg, "emulator_started", {
+            boot_ms: ui.loadedAt - ui.t0,
+            shared_memory: !!h.useSharedMemory,
+            resumed: !!ui.resuming,
+            persist: !!ui.triedPersist,
+          });
+          watchPlay(cfg, ui);
           ui.overlay.hidden = true;
           ui.progress.hidden = true;
           global.__macBooted = true;
@@ -558,7 +648,7 @@
             ui.bar.hidden = false;
             ui.full.hidden = false;
             if (ui.ctrls) ui.ctrls.hidden = false;
-            setStatus(ui, ui.triedPersist ? "Progress is saved in this browser" : "");
+            if (ui.ready) setStatus(ui, ui.triedPersist ? "Progress is saved in this browser" : "");
           }
           if (!h.useSharedMemory && cfg.mode === "isolated") {
             // Asked for full speed and did not get it. Better to say so than to
@@ -569,6 +659,8 @@
         },
         onError: function (message) {
           clearTimeout(watchdog);
+          stopLoadingReadout(ui);
+          trackError(cfg, ui, message);
           global.__macBootError = message;
           ui.progress.hidden = true;
           ui.btn.disabled = false;
@@ -593,6 +685,7 @@
         ui.persistRetry = true;
         blockPersist(cfg);
         global.__macPersistFellBack = true;
+        track(cfg, "persist_fallback", { cause: "error" });
         if (global.console) {
           console.warn("[macemu] persistent boot failed; retrying without saved progress");
         }
@@ -603,6 +696,8 @@
         });
       }
       global.__macBootError = err && err.message ? err.message : String(err);
+      stopLoadingReadout(ui);
+      trackError(cfg, ui, global.__macBootError);
       ui.progress.hidden = true;
       ui.btn.disabled = false;
       ui.overlay.hidden = false;
@@ -616,6 +711,80 @@
 
   function setStatus(ui, text) {
     if (ui.status) ui.status.textContent = text || "";
+  }
+
+  // ── while it starts ──────────────────────────────────────────────────────
+  // A first Mac OS 8 boot pulls a large shared system image and can take a
+  // minute, most of it after the emulator has started and the Mac is drawing
+  // its own startup screen. Behind a bare progress bar that looks like a hang, and a visitor
+  // who thinks it has hung leaves. A clock and a running total say otherwise.
+  function mbRead(ui) { return Math.round((ui.chunks || 0) / 4); }
+
+  function startLoadingReadout(cfg, ui) {
+    stopLoadingReadout(ui);
+    ui.readout = setInterval(function () {
+      var s = Math.round((Date.now() - ui.t0) / 1000);
+      if (s < 3) return;
+      var text = "Starting… " + s + " s";
+      var mb = mbRead(ui);
+      if (mb) text += " · " + mb + " MB loaded";
+      if (cfg.extraDisks.length && s >= 8) {
+        text += ". The first Mac OS 8 title downloads the system once; the rest start much faster.";
+      }
+      // Before the emulator is up the overlay is on screen; after it, the
+      // overlay is gone and the Mac is booting, so the bar under it speaks.
+      if (ui.loadedAt) setStatus(ui, text); else ui.hint.textContent = text;
+    }, 1000);
+  }
+
+  function stopLoadingReadout(ui) {
+    if (ui.readout) { clearInterval(ui.readout); ui.readout = null; }
+  }
+
+  // The runtime both calls onError and rejects its ready promise for the same
+  // failure. Count it once.
+  function trackError(cfg, ui, message) {
+    if (ui.errorTracked) return;
+    ui.errorTracked = true;
+    track(cfg, "game_error", {
+      reason: String(message || "").slice(0, 100),
+      boot_ms: Date.now() - ui.t0,
+    });
+  }
+
+  // What happened after it booted: did the visitor touch it, and for how
+  // long did they stay. play_time goes once, when the page is hidden or left,
+  // as a beacon so it survives the tab closing.
+  function watchPlay(cfg, ui) {
+    if (ui.watching) return;
+    ui.watching = true;
+    var loadedAt = Date.now();
+    var touched = false;
+    var first = function () {
+      if (touched) return;
+      touched = true;
+      track(cfg, "first_input", { ms_after_load: Date.now() - loadedAt });
+    };
+    ui.screen.addEventListener("pointerdown", first, { once: true });
+    global.addEventListener("keydown", first, { once: true });
+
+    var sent = false;
+    var send = function () {
+      if (sent) return;
+      sent = true;
+      var s = Math.round((Date.now() - loadedAt) / 1000);
+      track(cfg, "play_time", {
+        seconds: s,
+        bucket: s < 60 ? "<1m" : s < 300 ? "1-5m" : s < 900 ? "5-15m" : "15m+",
+        interacted: touched,
+        ready: !!ui.ready,
+        transport_type: "beacon",
+      });
+    };
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState === "hidden") send();
+    });
+    global.addEventListener("pagehide", send);
   }
 
   // ── chrome behaviour ─────────────────────────────────────────────────────
@@ -639,6 +808,7 @@
       if (document.fullscreenElement === ui.stage) {
         document.exitFullscreen();
       } else if (ui.stage.requestFullscreen) {
+        track(cfg, "fullscreen", {});
         ui.stage.requestFullscreen().catch(function () {
           setStatus(ui, "This browser would not allow fullscreen here");
         });
@@ -652,6 +822,7 @@
       ui.ctrls.addEventListener("click", function () {
         ui.sheet.hidden = !ui.sheet.hidden;
         ui.ctrls.setAttribute("aria-pressed", String(!ui.sheet.hidden));
+        if (!ui.sheet.hidden) track(cfg, "controls_open", {});
       });
     }
 
@@ -660,6 +831,7 @@
     // again, and they have no way to know why.
     ui.wipe.addEventListener("click", function () {
       if (!global.confirm("Delete saved progress for this title? The next start begins fresh.")) return;
+      track(cfg, "reset_save", { booted: !!global.__macBooted });
       clearSavedState(cfg).then(function () {
         try { global.localStorage.removeItem(persistKey(cfg)); } catch (e) {}
         setStatus(ui, "Saved progress deleted — reload to start fresh");

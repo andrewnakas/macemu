@@ -228,6 +228,15 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
 .embed-play:hover { background: var(--accent-hover); }
 .embed-play:disabled { opacity: 0.6; cursor: progress; }
 .embed-hint { margin: 0; font-size: 0.82rem; color: #c3bfb8; max-width: 38ch; }
+/* The title's screenshot behind the Start button (the dimming gradient is
+   layered in by mac-player.js, so the button reads over any picture). */
+.embed-overlay.has-poster { background-size: cover; background-position: center; image-rendering: pixelated; }
+.embed-overlay.has-poster .embed-hint { color: #eeeae3; background: rgba(0,0,0,0.6); padding: 0.3rem 0.6rem; border-radius: var(--radius); }
+.embed-touch {
+  margin: 0; font-size: 0.82rem; max-width: 34ch;
+  padding: 0.35rem 0.6rem; border-radius: var(--radius);
+  background: rgba(0,0,0,0.6); color: #ffd98a;
+}
 
 .dos-progress { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: rgba(255,255,255,0.14); }
 .dos-progress-fill { height: 100%; width: 0; background: var(--accent); transition: width 0.25s ease; }
@@ -486,6 +495,8 @@ body.is-embed .embed-stage { border: 0; border-radius: 0; margin: 0; }
 .embed-ctl:hover { border-color: var(--accent); color: var(--accent); }
 .embed-ctl[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
 .embed-status { font-size: 0.78rem; color: var(--muted); }
+/* Pushed to the far end of the bar: the way on, not another control. */
+.embed-next { margin-left: auto; text-decoration: none; }
 
 /* What to do first, over the top of the screen. Most titles need an action
  * before anything happens — click Start Game, allow 256 colours, wait for the

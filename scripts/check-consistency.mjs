@@ -80,6 +80,17 @@ section("Catalogue");
     if (!p.faq || p.faq.length < 4) warn(`${where}: only ${(p.faq || []).length} FAQ entries; 6+ earns the rich result`);
     if (!p.licenseReason) warn(`${where}: no licenseReason — every hosted or guided title should say why it is here`);
   }
+  // The genre hubs are search landing pages too, and their snippets are held
+  // to the same lengths as a title's.
+  const hubsFile = resolve(ROOT, "scripts", "hub-pages.json");
+  for (const h of existsSync(hubsFile) ? JSON.parse(readFileSync(hubsFile, "utf8")) : []) {
+    const where = `hub ${h.slug}`;
+    if (!h.title || !h.description) { fail(`${where}: needs both a title and a description`); continue; }
+    if (h.description.length < 70 || h.description.length > 175) {
+      warn(`${where}: meta description is ${h.description.length} chars; aim for 110–160 or search engines rewrite it`);
+    }
+    if (h.title.length > 65) warn(`${where}: <title> is ${h.title.length} chars — Bing truncates around 65`);
+  }
 }
 
 // ── 2. a playable title really is playable ────────────────────────────────

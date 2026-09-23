@@ -245,6 +245,12 @@ ${items}
 </script>`;
 }
 
+// Whether a title is unplayable without a physical keyboard: arrow keys,
+// typed commands, Space to fire. Read off the controls table, so a phone
+// visitor can be told before the machine spends a minute booting.
+const needsKeyboard = (p) =>
+  (p.macControls || []).some((c) => /arrow|type \+ return|keyboard|\bspace\b|\bshift\b/i.test(c.keys || ""));
+
 // ── page parts ─────────────────────────────────────────────────────────────
 // The emulator mount. Every attribute the player needs is a data-* on one
 // element, so the page is static HTML and the driver is one generic script.
@@ -293,6 +299,15 @@ function macMount(p, { mode }) {
     `data-height="${s.h}"`,
     p.ramMB ? `data-ram="${p.ramMB}"` : "",
     `data-mode="${mode}"`,
+    p.era ? `data-era="${esc(p.era)}"` : "",
+    // The title's own screenshot behind the Start button. Absolute, because
+    // the same mount appears on /run/, /play/ and /embed/.
+    screenshotFile(p) ? `data-poster="/run/${esc(p.slug)}/${esc(screenshotFile(p))}"` : "",
+    ...(() => {
+      const next = relatedPlayable(p, pages, 1)[0];
+      return next ? [`data-next-slug="${esc(next.slug)}"`, `data-next-name="${esc(next.appName)}"`] : [];
+    })(),
+    needsKeyboard(p) ? `data-needs-keyboard="true"` : "",
   ].filter(Boolean).join("\n         ");
   return `<div id="mac-embed"
          ${attrs}></div>`;
@@ -428,7 +443,7 @@ function relatedHtml(related, pages) {
     return { href: `/run/${t.slug}/`, title: t.appName || t.crumb || t.slug,
              desc: t.ogDescription || t.description || "" };
   };
-  const cards = related.map(resolve).filter(Boolean).map((r) => `      <a class="link-card" href="${esc(r.href)}">
+  const cards = related.map(resolve).filter(Boolean).map((r) => `      <a class="link-card" href="${esc(r.href)}" data-rec="keep-going">
         <strong>${esc(r.title)}</strong>
         <span>${esc(r.desc)}</span>
       </a>`).join("\n");
@@ -442,16 +457,31 @@ ${cards}
   </section>`;
 }
 
-// Three more playable titles, so a page that got a visitor from search has
+// Playable titles most like this one, best first: those sharing a hub, then
+// the same era, then the site's running order. It used to be the global top
+// six on every page, so someone who came for an Infocom adventure was offered
+// the same arcade games as someone who came for Maelstrom.
+function relatedPlayable(current, all, n) {
+  const hubs = CATEGORY_HUBS.filter((h) => h.match(current));
+  const score = (p) => hubs.filter((h) => h.match(p)).length * 2 + (p.era === current.era ? 1 : 0);
+  return sortPlayable(all)
+    .filter((p) => p.slug !== current.slug)
+    .map((p, i) => ({ p, i, s: score(p) }))
+    .sort((a, b) => b.s - a.s || a.i - b.i)
+    .slice(0, n)
+    .map((x) => x.p);
+}
+
+// Six more playable titles, so a page that got a visitor from search has
 // somewhere to send them. Only ever links to titles that actually run.
 function alsoPlayHtml(current, all) {
-  const others = sortPlayable(all).filter((p) => p.slug !== current.slug).slice(0, 6);
+  const others = relatedPlayable(current, all, 6);
   if (others.length < 3) return "";
   return `
   <section class="card">
     <h2>Play something else</h2>
     <ul class="poster-grid">
-${others.map(posterCard).join("\n")}
+${others.map((q) => posterCard(q, "also")).join("\n")}
     </ul>
   </section>`;
 }
@@ -588,7 +618,7 @@ ${playNow.length ? `  <section class="card">
     <h2>Play now</h2>
 ${gridFilter(playNow)}
     <ul class="poster-grid">
-${playNow.map(posterCard).join("\n")}
+${playNow.map((q) => posterCard(q, "catalog")).join("\n")}
 ${byoCard()}
     </ul>
   </section>` : ""}
@@ -651,7 +681,7 @@ ${playNow.length ? `  <section class="card">
     <h2>Start here</h2>
 ${gridFilter(playNow)}
     <ul class="poster-grid">
-${playNow.map(posterCard).join("\n")}
+${playNow.map((q) => posterCard(q, "home")).join("\n")}
 ${byoCard()}
     </ul>
   </section>` : `  <section class="card">
@@ -744,7 +774,7 @@ function hubLinksHtml(p) {
   <section class="card">
     <h2>More like this</h2>
     <div class="card-grid">
-${hubs.map((h) => `      <a class="link-card" href="/${h.slug}/">
+${hubs.map((h) => `      <a class="link-card" href="/${h.slug}/" data-rec="more-like" data-slug="${esc(h.slug)}">
         <strong>${esc(h.name)}</strong>
         <span>${sortPlayable(pages.filter(h.match)).length} to play</span>
       </a>`).join("\n")}
@@ -775,7 +805,7 @@ function categoryPage(hub) {
 ${playNow.length ? `  <section class="card">
     <h2>Play now</h2>
     <ul class="poster-grid">
-${playNow.map(posterCard).join("\n")}
+${playNow.map((q) => posterCard(q, "hub")).join("\n")}
     </ul>
   </section>` : ""}
 </main>
@@ -853,7 +883,7 @@ function embedHubPage() {
     <h2>Pick a title</h2>
     <p class="muted small">Each links to its page, where the ready-made snippet is waiting.</p>
     <ul class="poster-grid">
-${sortPlayable(playable).slice(0, 24).map(posterCard).join("\n")}
+${sortPlayable(playable).slice(0, 24).map((q) => posterCard(q, "embed-hub")).join("\n")}
     </ul>
     <p><a href="/run/">See all ${playable.length} titles →</a></p>
   </section>
@@ -890,7 +920,7 @@ function collectionPage(era) {
 ${playNow.length ? `  <section class="card">
     <h2>Play now</h2>
     <ul class="poster-grid">
-${playNow.map(posterCard).join("\n")}
+${playNow.map((q) => posterCard(q, "collection")).join("\n")}
     </ul>
   </section>` : ""}
 ${list.filter((p) => !isPlayable(p)).length ? `  <section class="card">
@@ -1123,7 +1153,7 @@ function notFound() {
 ${playNow.length ? `  <section class="card">
     <h2>Try one of these</h2>
     <ul class="poster-grid">
-${playNow.map(posterCard).join("\n")}
+${playNow.map((q) => posterCard(q, "404")).join("\n")}
     </ul>
   </section>` : ""}
 </main>

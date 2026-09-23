@@ -208,7 +208,11 @@ for (const t of targets) {
     while (Date.now() < deadline) {
       if (white === -1) throw new Error("no canvas on the page");
       if (!sawStartup && isStarting(white)) sawStartup = true;
-      if (sawStartup && isSettled(white)) break;
+      // A bright top strip is proof on its own: an unpainted canvas is black,
+      // never white. A small System 6 disk can go from black to the menu bar
+      // inside one poll, so waiting to see the dither failed a working machine
+      // (Hitchhiker's Guide). Only the dark outcome needs the dither first.
+      if (isSettled(white) && (sawStartup || white >= BOOTED_LIGHT)) { sawStartup = true; break; }
       await page.waitForTimeout(1500);
       white = await menuBarWhite();
     }

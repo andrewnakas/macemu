@@ -58,7 +58,7 @@
     '<ul class="poster-grid">' +
     shown.map(function (r) {
       var ago = when(r.at);
-      return '<li class="pc-item"><a class="poster-card" href="/run/' + esc(r.slug) + '/">' +
+      return '<li class="pc-item"><a class="poster-card" href="/run/' + esc(r.slug) + '/" data-rec="continue" data-slug="' + esc(r.slug) + '">' +
         '<img class="pc-shot" src="/run/' + esc(r.slug) + '/screenshot.png" width="320" height="240" ' +
         'loading="lazy" alt="' + esc(r.name) + ' running in the browser" />' +
         '<span class="pc-body"><span class="pc-title">' + esc(r.name) + '</span>' +

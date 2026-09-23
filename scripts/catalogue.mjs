@@ -146,7 +146,10 @@ export const FREE_BADGE = ` <span class="badge-free" title="Free and complete �
 
 // Poster-style card for the visual grids: real screenshot when we have one,
 // otherwise a lettered placeholder tile so the grid never looks broken.
-export function posterCard(p) {
+// `rec` names the list a card sits in ("also", "hub", …). It rides on the link
+// as data-rec so one delegated click listener (scripts/site.mjs) can report
+// which recommendations people actually follow.
+export function posterCard(p, rec) {
   const shot = screenshotFile(p);
   const art = shot
     ? `<img class="pc-shot" src="/run/${p.slug}/${shot}" width="320" height="240" loading="lazy" alt="${esc(shotAlt(p))}" />`
@@ -158,7 +161,7 @@ export function posterCard(p) {
   const hay = [p.appName, p.author, ...(p.genre || []), ...(p.categories || []),
     p.fullyFree ? "free complete open source freeware" : ""]
     .filter(Boolean).join(" ").toLowerCase();
-  return `        <li class="pc-item" data-cats="${esc(cats)}" data-search="${esc(hay)}"><a class="poster-card" href="/run/${p.slug}/">
+  return `        <li class="pc-item" data-cats="${esc(cats)}" data-search="${esc(hay)}"><a class="poster-card" href="/run/${p.slug}/"${rec ? ` data-rec="${esc(rec)}" data-slug="${esc(p.slug)}"` : ""}>
           ${art}
           <span class="pc-body"><span class="pc-title">${esc(p.appName)}${isNew(p) ? NEW_BADGE : ""}${p.fullyFree ? FREE_BADGE : ""}</span><span class="pc-play">▶ Play free</span></span>
         </a></li>`;

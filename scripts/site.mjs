@@ -59,6 +59,13 @@ const gaHtml = () => (GA_ID ? `
   // Headless automation (scripts/boot-test.mjs, crawlers driving Chrome) shows
   // up otherwise as 0%-engaged sessions with fifty events. Don't report it.
   if (!navigator.webdriver) gtag('config', '${GA_ID}');
+  // Which recommendation a visitor followed: every "next title" link carries
+  // data-rec naming its list (also, continue, more-like, next…).
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[data-rec]');
+    if (a) gtag('event', 'select_content', { content_type: a.getAttribute('data-rec'),
+      item_id: a.getAttribute('data-slug') || a.getAttribute('href'), from: location.pathname });
+  });
 </script>` : "");
 
 const adsHtml = (kind) => (adsAllowed(kind) ? `
