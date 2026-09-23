@@ -75,6 +75,107 @@
   }
 
   // ── the poster / play overlay ────────────────────────────────────────────
+  // ── saved progress ───────────────────────────────────────────────────────
+  // A persistent disk lives in the origin private file system as <name>.data
+  // plus a <name>.dirtychunks bitmap. The bitmap is the useful one: it exists
+  // only once something has actually been written, so its presence is a
+  // reliable "this visitor has progress here" without opening the disk.
+  function opfsRoot() {
+    if (!global.navigator || !navigator.storage || !navigator.storage.getDirectory) {
+      return Promise.resolve(null);
+    }
+    return navigator.storage.getDirectory().catch(function () { return null; });
+  }
+
+  // The emulator names its OPFS files after each manifest's `name` field
+  // ("Archon v2"), not the manifest filename ("archon-v2"). gen-pages resolves
+  // those and sends them down; falling back to the slugs would look for saves
+  // that are not there and delete nothing when asked to.
+  function diskNames(cfg) {
+    var names = (cfg.diskNames && cfg.diskNames.length)
+      ? cfg.diskNames.slice()
+      : [cfg.disk].concat(cfg.extraDisks).filter(Boolean);
+    // Drop the shared system image: it is never persisted (see boot()), so
+    // reporting or deleting a save against it would be wrong in both
+    // directions. data-disk-names lists the boot disk first.
+    if (cfg.extraDisks.length > 0 && names.length > 1) names.shift();
+    return names;
+  }
+
+  function hasSavedState(cfg) {
+    return opfsRoot().then(function (root) {
+      if (!root) return false;
+      var names = diskNames(cfg);
+      var checks = names.map(function (n) {
+        return root.getFileHandle(n + ".dirtychunks").then(function () { return true; },
+                                                           function () { return false; });
+      });
+      return Promise.all(checks).then(function (found) {
+        return found.some(Boolean);
+      });
+    }).catch(function () { return false; });
+  }
+
+  function clearSavedState(cfg) {
+    return opfsRoot().then(function (root) {
+      if (!root) return;
+      var jobs = [];
+      diskNames(cfg).forEach(function (n) {
+        [".data", ".dirtychunks"].forEach(function (ext) {
+          jobs.push(root.removeEntry(n + ext).catch(function () {}));
+        });
+      });
+      return Promise.all(jobs);
+    });
+  }
+
+  // ── what this visitor has played ─────────────────────────────────────────
+  // A small registry so the homepage can offer to carry on. It records only
+  // what is needed to draw a card — slug, name, when — and only for titles
+  // that actually persist, because offering to "continue" a title whose
+  // progress was never saved is a promise the site cannot keep.
+  var RECENT_KEY = "macemu:recent";
+  var RECENT_MAX = 12;
+
+  function rememberPlayed(cfg) {
+    if (!cfg.slug) return;
+    try {
+      var list = JSON.parse(global.localStorage.getItem(RECENT_KEY) || "[]");
+      if (!Array.isArray(list)) list = [];
+      list = list.filter(function (r) { return r && r.slug !== cfg.slug; });
+      list.unshift({ slug: cfg.slug, name: cfg.appName || cfg.slug, at: Date.now() });
+      global.localStorage.setItem(RECENT_KEY, JSON.stringify(list.slice(0, RECENT_MAX)));
+    } catch (e) { /* private mode, quota, disabled storage — never fatal */ }
+  }
+
+  // Persistence can stop a machine booting. Rather than refuse it everywhere,
+  // treat it as revocable per title: the first failure disables it for that
+  // title on this device and the retry goes through unpersisted.
+  function persistKey(cfg) { return "macemu:nopersist:" + (cfg.slug || cfg.disk || "?"); }
+
+  function persistBlocked(cfg) {
+    try { return global.localStorage.getItem(persistKey(cfg)) === "1"; }
+    catch (e) { return false; }
+  }
+
+  function blockPersist(cfg) {
+    try { global.localStorage.setItem(persistKey(cfg), "1"); } catch (e) {}
+  }
+
+  function parseJsonList(raw) {
+    if (!raw) return [];
+    try { var v = JSON.parse(raw); return Array.isArray(v) ? v : []; }
+    catch (e) { return []; }
+  }
+
+  function parseControls(raw) {
+    if (!raw) return [];
+    try {
+      var rows = JSON.parse(raw);
+      return Array.isArray(rows) ? rows.filter(function (r) { return r && r.length >= 2; }) : [];
+    } catch (e) { return []; }
+  }
+
   function buildStage(mount, cfg) {
     var stage = document.createElement("div");
     stage.className = "embed-stage";
@@ -107,11 +208,79 @@
     fill.className = "dos-progress-fill";
     progress.appendChild(fill);
 
+    // The controls sheet. Hidden until asked for, and the only copy of this
+    // information that survives going fullscreen.
+    // What to do once the machine is up, shown over the screen rather than
+    // under it. Most titles need a first action and the visitor cannot be
+    // expected to have read a grey line below the fold — still less to see it
+    // in fullscreen, where the page is not on screen at all.
+    var note = document.createElement("div");
+    note.className = "embed-note";
+    note.hidden = true;
+    if (cfg.launchNote || cfg.persist) {
+      if (cfg.launchNote) note.innerHTML = "<p>" + esc(cfg.launchNote) + "</p>";
+      var dismiss = document.createElement("button");
+      dismiss.type = "button";
+      dismiss.className = "embed-note-x";
+      dismiss.setAttribute("aria-label", "Dismiss");
+      dismiss.innerHTML = "&times;";
+      dismiss.addEventListener("click", function () { note.hidden = true; });
+      note.appendChild(dismiss);
+      // The note is pointer-transparent (see the stylesheet) so a click aimed
+      // at the menu bar behind it still reaches the Macintosh. That same click
+      // is the signal the visitor has started, so the note steps aside.
+      var step = function () { note.hidden = true; };
+      screen.addEventListener("mousedown", step, { once: true });
+      global.addEventListener("keydown", step, { once: true });
+    }
+
+    var sheet = document.createElement("div");
+    sheet.className = "embed-sheet";
+    sheet.hidden = true;
+    if (cfg.controls.length) {
+      var rows = cfg.controls.map(function (c) {
+        return "<tr><td><kbd>" + esc(c[0]) + "</kbd></td><td>" + esc(c[1]) + "</td></tr>";
+      }).join("");
+      sheet.innerHTML = "<h4>Controls</h4><table>" + rows + "</table>";
+    }
+
     stage.appendChild(screen);
     stage.appendChild(overlay);
+    stage.appendChild(note);
+    stage.appendChild(sheet);
     stage.appendChild(progress);
+
+    // Chrome under the screen. Built now, revealed once the machine is up —
+    // there is nothing to go fullscreen with before that.
+    var bar = document.createElement("div");
+    bar.className = "embed-bar";
+    bar.hidden = true;
+
+    var full = mkbtn("⛶", "Fullscreen", "Fullscreen");
+    var ctrls = mkbtn("⌨", "Controls", "Show the controls");
+    var wipe = mkbtn("↺", "Reset save", "Delete saved progress for this title");
+    var status = document.createElement("span");
+    status.className = "embed-status";
+
+    bar.appendChild(full);
+    if (cfg.controls.length) bar.appendChild(ctrls);
+    bar.appendChild(wipe);
+    bar.appendChild(status);
     mount.appendChild(stage);
-    return { stage: stage, overlay: overlay, btn: btn, progress: progress, fill: fill, screen: screen, hint: hint };
+    mount.appendChild(bar);
+
+    return { stage: stage, overlay: overlay, btn: btn, progress: progress, fill: fill,
+             screen: screen, hint: hint, bar: bar, full: full, ctrls: ctrls, wipe: wipe,
+             status: status, sheet: sheet, note: note };
+  }
+
+  function mkbtn(glyph, label, title) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "embed-ctl";
+    b.title = title;
+    b.innerHTML = '<span aria-hidden="true">' + glyph + "</span> " + esc(label);
+    return b;
   }
 
   function readConfig(mount) {
@@ -132,6 +301,11 @@
       ramMB: d.ram ? parseInt(d.ram, 10) : undefined,
       mode: d.mode || "isolated",
       persist: d.persist === "true",
+      controls: parseControls(d.controls),
+      launchNote: d.launchNote || "",
+      // What the emulator calls this title's persistent files in the origin
+      // private file system: each manifest's `name`, not its filename.
+      diskNames: parseJsonList(d.diskNames),
     };
   }
 
@@ -149,6 +323,24 @@
     // until they leave.
     var watchdog = setTimeout(function () {
       if (global.__macBooted) return;
+      // The documented way persistence goes wrong is not an error — it is a
+      // machine that never finishes starting. That never rejects, so the
+      // catch below would not see it; the watchdog has to revoke persistence
+      // and retry, or the visitor just gets a dead screen and a Try again
+      // button that fails the same way for ever.
+      if (ui.triedPersist && !ui.persistRetry) {
+        ui.persistRetry = true;
+        blockPersist(cfg);
+        global.__macPersistFellBack = true;
+        if (global.console) {
+          console.warn("[macemu] persistent boot hung; retrying without saved progress");
+        }
+        ui.booted = null;
+        boot(cfg, ui, extra).then(function () {
+          setStatus(ui, "Saving is unavailable for this title in this browser");
+        }, function () {});
+        return;
+      }
       ui.progress.hidden = true;
       ui.overlay.hidden = false;
       ui.btn.disabled = false;
@@ -179,9 +371,17 @@
       if (!disks.length && cfg.disk) {
         // The boot disk first — the runtime boots the first bootable one — then
         // any title disks after it.
-        disks.push({ name: cfg.disk, persistent: cfg.persist });
+        var wantPersist = cfg.persist && !persistBlocked(cfg);
+        ui.triedPersist = wantPersist;
+        // A Mac OS 8 title boots the SHARED system image and mounts its own
+        // small disk after it. Persisting the shared one would hand every
+        // such title the same mutable operating system: writes from one would
+        // show up in another, and a single corrupted copy would take out
+        // twenty-odd titles at once. Persist only what belongs to this title.
+        var sharedBoot = cfg.extraDisks.length > 0;
+        disks.push({ name: cfg.disk, persistent: wantPersist && !sharedBoot });
         for (var i = 0; i < cfg.extraDisks.length; i++) {
-          disks.push({ name: cfg.extraDisks[i], persistent: cfg.persist });
+          disks.push({ name: cfg.extraDisks[i], persistent: wantPersist });
         }
       }
       if (!disks.length && !(extra.diskFiles && extra.diskFiles.length)) {
@@ -220,6 +420,30 @@
           ui.overlay.hidden = true;
           ui.progress.hidden = true;
           global.__macBooted = true;
+          // Only remember it if progress is actually being saved — see
+          // rememberPlayed().
+          if (ui.triedPersist) rememberPlayed(cfg);
+          // Closing a tab is not shutting a Macintosh down, so a visitor who
+          // comes back to saved progress is met by "This computer may not have
+          // been shut down properly" sitting over the game. The machine is
+          // fine — the volume simply was not unmounted — but nothing on screen
+          // says so, and the dialog has to be cleared before anything works.
+          if (ui.resuming && ui.note) {
+            var r = document.createElement("p");
+            r.className = "embed-note-resume";
+            r.textContent = "Picking up your saved disk. If the Mac opens a "
+              + "notice about not being shut down properly, press Return — "
+              + "that is just because the tab was closed rather than the "
+              + "machine shut down.";
+            ui.note.insertBefore(r, ui.note.firstChild);
+          }
+          if (ui.note && (cfg.launchNote || ui.resuming)) ui.note.hidden = false;
+          if (ui.bar) {
+            ui.bar.hidden = false;
+            ui.full.hidden = false;
+            if (ui.ctrls) ui.ctrls.hidden = false;
+            setStatus(ui, ui.triedPersist ? "Progress is saved in this browser" : "");
+          }
           if (!h.useSharedMemory && cfg.mode === "isolated") {
             // Asked for full speed and did not get it. Better to say so than to
             // let someone conclude the emulator is simply slow.
@@ -244,6 +468,24 @@
       return handle.ready;
     }).catch(function (err) {
       clearTimeout(watchdog);
+      // A persistent disk can stop a machine booting outright. If that is what
+      // just happened, revoke persistence for this title on this device and go
+      // again unpersisted — one dead boot is a bad visit, two is a lost one.
+      // __macPersistFellBack is here for scripts/author-disk.mjs, which needs
+      // to know it captured nothing rather than silently writing no changes.
+      if (ui.triedPersist && !ui.persistRetry) {
+        ui.persistRetry = true;
+        blockPersist(cfg);
+        global.__macPersistFellBack = true;
+        if (global.console) {
+          console.warn("[macemu] persistent boot failed; retrying without saved progress");
+        }
+        ui.booted = null;
+        return boot(cfg, ui, extra).then(function (h) {
+          setStatus(ui, "Saving is unavailable for this title in this browser");
+          return h;
+        });
+      }
       global.__macBootError = err && err.message ? err.message : String(err);
       ui.progress.hidden = true;
       ui.btn.disabled = false;
@@ -254,6 +496,73 @@
       throw err;
     });
     return ui.booted;
+  }
+
+  function setStatus(ui, text) {
+    if (ui.status) ui.status.textContent = text || "";
+  }
+
+  // ── chrome behaviour ─────────────────────────────────────────────────────
+  function wireControls(cfg, ui) {
+    if (!ui.bar) return;
+
+    // Fullscreen. The stage is capped at the Macintosh's real resolution with
+    // an inline max-width, which would otherwise pin a 512-pixel screen to the
+    // middle of a 4K display; lift it while fullscreen and put it back after.
+    var capped = ui.stage.style.maxWidth;
+    function onFsChange() {
+      var on = document.fullscreenElement === ui.stage;
+      ui.stage.style.maxWidth = on ? "none" : capped;
+      ui.full.innerHTML = '<span aria-hidden="true">⛶</span> ' + (on ? "Exit fullscreen" : "Fullscreen");
+      // Fullscreen takes the element out of the document flow, so the bar and
+      // its buttons go with it or they are simply gone.
+      if (on) ui.stage.appendChild(ui.bar); else ui.stage.parentNode.appendChild(ui.bar);
+    }
+    document.addEventListener("fullscreenchange", onFsChange);
+    ui.full.addEventListener("click", function () {
+      if (document.fullscreenElement === ui.stage) {
+        document.exitFullscreen();
+      } else if (ui.stage.requestFullscreen) {
+        ui.stage.requestFullscreen().catch(function () {
+          setStatus(ui, "This browser would not allow fullscreen here");
+        });
+      }
+    });
+    // An embed inside someone else's page only gets fullscreen if they allowed
+    // it. Hide the button rather than offer one that does nothing.
+    if (global.self !== global.top && !document.fullscreenEnabled) ui.full.hidden = true;
+
+    if (ui.ctrls) {
+      ui.ctrls.addEventListener("click", function () {
+        ui.sheet.hidden = !ui.sheet.hidden;
+        ui.ctrls.setAttribute("aria-pressed", String(!ui.sheet.hidden));
+      });
+    }
+
+    // Deleting saved progress is the escape hatch for a save that has gone
+    // bad — without it a corrupted disk is a title the visitor can never load
+    // again, and they have no way to know why.
+    ui.wipe.addEventListener("click", function () {
+      if (!global.confirm("Delete saved progress for this title? The next start begins fresh.")) return;
+      clearSavedState(cfg).then(function () {
+        try { global.localStorage.removeItem(persistKey(cfg)); } catch (e) {}
+        setStatus(ui, "Saved progress deleted — reload to start fresh");
+      });
+    });
+
+    // Reveal the bar before boot when there is a save, with only the controls
+    // that mean anything yet. This is not cosmetic: a save that has gone bad
+    // is a title that will not start, and if the only way to delete it is a
+    // button that appears after a successful boot, the visitor is stuck for
+    // good with no way to find out why.
+    hasSavedState(cfg).then(function (found) {
+      ui.resuming = found;
+      if (!found || ui.booted) return;
+      ui.full.hidden = true;
+      if (ui.ctrls) ui.ctrls.hidden = true;
+      ui.bar.hidden = false;
+      setStatus(ui, "Saved progress found — starting continues it");
+    });
   }
 
   function showNote(ui, text) {
@@ -275,6 +584,7 @@
       var cfg = readConfig(mount);
       for (var k in opts) if (cfg.hasOwnProperty(k) && opts[k] !== undefined) cfg[k] = opts[k];
       var ui = buildStage(mount, cfg);
+      wireControls(cfg, ui);
       ui.btn.addEventListener("click", function () { boot(cfg, ui, opts); });
       return boot(cfg, ui, opts);
     },
@@ -288,6 +598,7 @@
     if (!mount) return;
     var cfg = readConfig(mount);
     var ui = buildStage(mount, cfg);
+    wireControls(cfg, ui);
     ui.btn.addEventListener("click", function () { boot(cfg, ui, null); });
 
     // Inside an embed on somebody else's page there is no article to read, so
