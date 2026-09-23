@@ -109,7 +109,7 @@ export const nav = () => `<nav class="site-nav" aria-label="Primary">
 export const header = () => `<header>
   <div class="brand">
     <span class="logo" aria-hidden="true">☺</span>
-    <h1>${BRAND}</h1>
+    <a class="site-name" href="/">${BRAND}</a>
   </div>
   <p class="tagline">${TAGLINE}</p>
   ${nav()}

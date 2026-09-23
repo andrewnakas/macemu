@@ -124,6 +124,19 @@ export const sortPlayable = (pages) =>
     return (isNew(b) ? 1 : 0) - (isNew(a) ? 1 : 0);
   });
 
+// Screenshot alt text. A hand-written `shotAlt` wins; otherwise say what the
+// picture actually is — which title, whose, when, on what — rather than the
+// same "X running in the browser" on a hundred images.
+const MACHINE_NAME = { "Mac-Plus": "Macintosh Plus", "Mac-SE": "Macintosh SE", "Mac-II": "Macintosh II",
+  "Mac-IIx": "Macintosh IIx", "Mac-IIfx": "Macintosh IIfx", "Quadra-650": "Quadra 650",
+  "Power-Macintosh-G3": "Power Macintosh G3", "Power-Macintosh-9500": "Power Macintosh 9500" };
+export function shotAlt(p) {
+  if (p.shotAlt) return p.shotAlt;
+  const who = [p.author, p.year].filter(Boolean).join(", ");
+  const on = MACHINE_NAME[p.machine] || "a Macintosh";
+  return `Screenshot of ${p.appName}${who ? ` (${who})` : ""} running on an emulated ${on}`;
+}
+
 // ── Poster card ───────────────────────────────────────────────────────────
 export const NEW_BADGE = ` <span class="badge-new">NEW</span>`;
 // Titles whose engine *and* assets are freely licensed — no shareware episode,
@@ -136,7 +149,7 @@ export const FREE_BADGE = ` <span class="badge-free" title="Free and complete �
 export function posterCard(p) {
   const shot = screenshotFile(p);
   const art = shot
-    ? `<img class="pc-shot" src="/run/${p.slug}/${shot}" width="320" height="240" loading="lazy" alt="${esc(p.appName)} running in the browser" />`
+    ? `<img class="pc-shot" src="/run/${p.slug}/${shot}" width="320" height="240" loading="lazy" alt="${esc(shotAlt(p))}" />`
     : `<span class="pc-shot pc-placeholder" aria-hidden="true">${esc((p.appName || "?").trim().charAt(0))}</span>`;
   // Categories and a search haystack ride on the <li> so filtering is a pure
   // client-side attribute match — no data duplicated into a JS blob, and the

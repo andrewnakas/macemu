@@ -102,7 +102,8 @@ header {
 }
 
 .brand { display: inline-flex; align-items: center; gap: 0.55rem; }
-.brand h1 { font-size: 1.85rem; margin: 0; letter-spacing: -0.02em; font-weight: 700; }
+.brand .site-name { font-size: 1.85rem; margin: 0; letter-spacing: -0.02em; font-weight: 700; line-height: 1.25; color: inherit; text-decoration: none; }
+h1.page-title { font-size: 1.6rem; margin: 0 0 0.7rem; }
 
 /* The Happy Mac, as a mark rather than an image. */
 .logo {
@@ -404,6 +405,7 @@ footer p { max-width: 60ch; margin-inline: auto; }
   main { padding: 1rem 0.8rem 2.5rem; }
   .card { padding: 1.15rem 1.1rem; border-radius: 0; margin-inline: -0.8rem; border-left: 0; border-right: 0; }
   h2 { font-size: 1.28rem; }
+  h1.page-title { font-size: 1.4rem; }
   .spec-table th { width: auto; }
   .controls-table td:first-child { width: auto; }
   .poster-grid { grid-template-columns: repeat(auto-fill, minmax(135px, 1fr)); gap: 0.7rem; }

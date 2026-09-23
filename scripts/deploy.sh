@@ -11,6 +11,7 @@ cd "$(dirname "$0")/.."
 
 echo "==> generating"
 node scripts/gen-pages.mjs
+node scripts/og-cards.mjs
 
 echo "==> checking"
 node scripts/check-consistency.mjs
@@ -35,6 +36,10 @@ bash scripts/sync-disks.sh --jobs 6 | tail -2
 
 echo "==> smoke testing"
 bash scripts/smoke-test.sh https://macemu.pages.dev | tail -2
+
+echo "==> telling Bing (IndexNow)"
+# Never fails the deploy: the site is already live by this point.
+node scripts/indexnow.mjs --changed || echo "    indexnow did not accept; rerun: node scripts/indexnow.mjs --changed"
 
 echo
 echo "Deployed. Run scripts/boot-test.mjs --all to check the titles still start."

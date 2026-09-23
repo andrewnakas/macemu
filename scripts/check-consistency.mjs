@@ -377,6 +377,11 @@ section("Page depth");
       .replace(/<style[\s\S]*?<\/style>/g, " ")
       .replace(/<[^>]+>/g, " ");
     const words = text.split(/\s+/).filter(Boolean).length;
+    // One <h1> per indexed page, and it names the page. Until 2026-09-22 every page
+    // here had the brand as its only <h1> and the actual title in an <h2>,
+    // which tells a crawler that all 130 pages are about the word "macemu".
+    const h1s = (readFileSync(resolve(PUB, file), "utf8").match(/<h1[\s>]/g) || []).length;
+    if (h1s !== 1) fail(`${file}: has ${h1s} <h1> elements — every indexed page needs exactly one, naming the page`);
     if (words < MIN_WORDS) warn(`${file}: only ~${words} words. Thin pages are what "low value content" means.`);
   }
 }
@@ -422,6 +427,19 @@ for (const f of ["favicon.svg", "og.png", "apple-touch-icon.png", "manifest.webm
       else if (statSync(p).size > LIMIT) fail(`${p.slice(PUB.length + 1)} is ${(statSync(p).size / 1048576).toFixed(1)} MB — Cloudflare Pages rejects anything over 25 MB. It belongs in R2.`);
     }
   })(PUB);
+}
+
+// Every og:image under /og/ was actually rendered. gen-pages names the card
+// and og-cards.mjs draws it; a missing PNG is a broken preview on every share.
+{
+  let cards = 0;
+  for (const file of htmlFiles) {
+    const m = readFileSync(resolve(PUB, file), "utf8").match(/<meta property="og:image" content="https:\/\/macemu\.com\/(og\/[^"]+)"/);
+    if (!m) continue;
+    cards++;
+    if (!existsSync(resolve(PUB, m[1]))) fail(`${file}: og:image ${m[1]} was never rendered — run node scripts/og-cards.mjs`);
+  }
+  console.log(`  ${cards} social cards checked`);
 }
 
 // ── verdict ───────────────────────────────────────────────────────────────

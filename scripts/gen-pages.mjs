@@ -61,7 +61,7 @@ import { createHash } from "node:crypto";
 import {
   SITE, esc, xmlEsc, isPlayable, isSold, emulatorFor, screenshotFile, isNew,
   NEW_BADGE, FREE_BADGE, posterCard, byoCard, sortPlayable, categoryCounts,
-  categoryChips, jsonText, maxDate, toRfc822, itemListLd, ERA_ORDER, ERA_LABELS,
+  categoryChips, jsonText, maxDate, toRfc822, itemListLd, ERA_ORDER, ERA_LABELS, shotAlt,
 } from "./catalogue.mjs";
 import {
   BRAND, TAGLINE, head, header, footer, nav, page, crumbs, breadcrumbLd,
@@ -152,7 +152,28 @@ function imageSize(absPath) {
 }
 
 const shotUrl = (p) => { const f = screenshotFile(p); return f ? `${SITE}/run/${p.slug}/${f}` : null; };
-const ogImage = (p) => shotUrl(p) || `${SITE}/og.png`;
+// Social cards. Pages ask for one by key and get its URL back; the specs are
+// written to public/og/cards.json and scripts/og-cards.mjs renders them. A raw
+// 512x342 screenshot shared on a social feed is a grey smear cropped to 1.91:1;
+// a card says what the thing is and where to play it. The gate fails a page
+// whose card was never rendered.
+const OG_CARDS = {};
+function ogCard(key, spec) {
+  OG_CARDS[key] = spec;
+  return `${SITE}/og/${key}.png`;
+}
+const shotsFor = (list, n) => sortPlayable(list).filter((q) => screenshotFile(q)).slice(0, n)
+  .map((q) => `run/${q.slug}/${screenshotFile(q)}`);
+const ogImage = (p) => {
+  const f = screenshotFile(p);
+  if (!f) return `${SITE}/og.png`;
+  return ogCard(p.slug, {
+    kind: "title", title: p.appName,
+    sub: [p.author, p.year].filter(Boolean).join(" · "),
+    tag: isPlayable(p) ? "Play it in your browser" : "Open your own copy in your browser",
+    shots: [`run/${p.slug}/${f}`],
+  });
+};
 const screenOf = (p) => p.screen || { w: 640, h: 480, depth: 8 };
 
 // ── structured data ────────────────────────────────────────────────────────
@@ -162,7 +183,9 @@ function appLd(p) {
   "url": "${url}",
   "image": "${ogImage(p)}",
   "description": ${jsonText(p.description)},
-  "operatingSystem": "Web Browser"${p.author ? `,
+  "operatingSystem": "Web Browser"${shotUrl(p) ? `,
+  "screenshot": "${shotUrl(p)}"` : ""}${p.year ? `,
+  "datePublished": "${esc(String(p.year))}"` : ""}${p.author ? `,
   "${p.appType === "game" ? "publisher" : "author"}": { "@type": "Organization", "name": ${JSON.stringify(p.author)} }` : ""}${p.updated ? `,
   "dateModified": ${JSON.stringify(p.updated)}` : ""}${isPlayable(p) ? `,
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }` : ""}`;
@@ -184,6 +207,22 @@ ${common},
   "@type": "SoftwareApplication",
 ${common},
   "applicationCategory": "Utility"
+}
+</script>`;
+}
+
+// Homepage only. Tells a search engine what the site is called and who runs
+// it, which is what feeds the site name shown above a result. No SearchAction:
+// the site has no search page, and declaring one that does not exist is worse
+// than declaring none.
+function siteLd() {
+  return `<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "WebSite", "@id": "${SITE}/#website", "name": "${BRAND}", "url": "${SITE}/", "inLanguage": "en", "publisher": { "@id": "${SITE}/#org" } },
+    { "@type": "Organization", "@id": "${SITE}/#org", "name": "${BRAND}", "url": "${SITE}/", "logo": "${SITE}/apple-touch-icon.png", "email": "hello@macemu.com" }
+  ]
 }
 </script>`;
 }
@@ -307,7 +346,7 @@ function figureHtml(p) {
   const d = imageSize(resolve(ROOT, "run", p.slug, f)) || { w: 1200, h: 750 };
   return `
     <figure class="app-shot">
-      <img src="/run/${p.slug}/${f}" width="${d.w}" height="${d.h}" loading="lazy" alt="${esc(p.appName)} running in a browser tab" />
+      <img src="/run/${p.slug}/${f}" width="${d.w}" height="${d.h}" loading="lazy" alt="${esc(shotAlt(p))}" />
       <figcaption>${esc(p.appName)}, running here in ${esc(emulatorFor(p) || "an emulator")}.</figcaption>
     </figure>`;
 }
@@ -435,13 +474,13 @@ function runPage(p) {
   ${crumbs([{ name: "Home", href: "/" }, { name: "All titles", href: "/run/" }, { name: p.crumb }])}
 
   <section class="card">
-    <h2>${esc(p.h1 || p.crumb)} <span class="verdict ${p.verdict.kind}">${esc(p.verdict.text)}</span>${!playable && p.fullyFree ? `
-    <span class="verdict good" title="The licence is clear; this site simply does not host a copy">Freely licensed</span>` : ""}</h2>
+    <h1 class="page-title">${esc(p.h1 || p.crumb)} <span class="verdict ${p.verdict.kind}">${esc(p.verdict.text)}</span>${!playable && p.fullyFree ? `
+    <span class="verdict good" title="The licence is clear; this site simply does not host a copy">Freely licensed</span>` : ""}</h1>
     ${specLine(p)}${p.updated ? `
     <p class="muted small">Guide updated ${esc(monthYear(p.updated))}${playable ? "" : " · needs your own copy"}</p>` : ""}
     ${p.intro}${playerBlock(p)}${p.launchNote && playable ? `
     <p class="muted small">${esc(p.launchNote)}</p>` : ""}${controlsHtml(p)}${figureHtml(p)}${soldHtml(p)}${licenseHtml(p)}
-  </section>${downloadHtml(p)}${sectionsHtml(p.sections)}${faqHtml(p)}${embedBlockHtml(p)}${alsoPlayHtml(p, pages)}${relatedHtml(p.related, pages)}
+  </section>${downloadHtml(p)}${sectionsHtml(p.sections)}${faqHtml(p)}${embedBlockHtml(p)}${alsoPlayHtml(p, pages)}${relatedHtml(p.related, pages)}${hubLinksHtml(p)}
 </main>
 
 ${footer()}`;
@@ -528,7 +567,7 @@ function runHub() {
   ${crumbs([{ name: "Home", href: "/" }, { name: "All titles" }])}
 
   <section class="card">
-    <h2>Everything on ${BRAND}</h2>
+    <h1 class="page-title">Everything on ${BRAND}</h1>
     <p>${playNow.length ? `<strong>${playNow.length}</strong> titles start in a click — nothing to install, nothing uploaded.` : "Titles are being added as their disk images are built and checked."} ${guides.length ? `Another <strong>${guides.length}</strong> have guides for running a copy you already own, using the same emulator and the same <a href="/load-mac-file/">file loader</a>.` : ""}</p>
     <p class="muted">This list is deliberately not exhaustive. There were tens of thousands of Macintosh programs, and a page that exists only to hold a name helps nobody. Each title here gets a real page: what it was, who made it, how to play it, what machine it needs, and where to find an original if you would rather run your own copy.</p>
   </section>
@@ -561,13 +600,13 @@ function homePage() {
     title: `${BRAND} — run classic Mac games and apps in your browser`,
     description: "System 6, System 7 and Mac OS 9 software running in a browser tab. No download, no install, nothing uploaded. Open your own .sit, .hqx or disk image too.",
     path: "/", kind: "content",
-    ld: [itemListLd(playNow, { name: "Classic Mac titles playable in the browser", url: `${SITE}/` })],
+    ld: [siteLd(), itemListLd(playNow, { name: "Classic Mac titles playable in the browser", url: `${SITE}/` })],
   });
   const body = `${header()}
 
 <main class="prose">
   <section class="card">
-    <h2>The Mac you grew up with, in a tab</h2>
+    <h1 class="page-title">Classic Mac games, running in a browser tab</h1>
     <p>${BRAND} runs classic Macintosh software the way it actually ran: the real System software, the real applications, emulated in WebAssembly. Pick a title and it starts in a couple of seconds. Nothing installs, nothing is uploaded, and your saves stay in your own browser.</p>
     <p>Got a file of your own — a <code>.sit</code> from an old download, a <code>.img</code> off a Zip disk, a <code>.hqx</code> from a Usenet archive? <a href="/load-mac-file/">Drop it in the loader</a> and it opens on an emulated Mac.</p>
   </section>
@@ -655,17 +694,51 @@ const CATEGORY_HUBS = [
     body: `<p>If you were at school in North America between about 1985 and 1998, there was a room with a dozen beige Macintoshes in it, and a rota that got you twenty minutes on one. This is what was on them.</p>
 <p>The machines matter to the memory. School districts bought Apple, heavily and for years, which is why the version of <em>The Oregon Trail</em> most adults picture is the Macintosh one rather than the DOS release — the black-and-white wagon, the blocky river, the hunting screen where the deer moves faster than your cursor. Every title on this page is that version: the actual software, running on an emulated Macintosh, not a remake.</p>
 
-<h3>Why these games worked</h3>
+<h2>Why these games worked</h2>
 <p>None of them announced that they were teaching you anything, which is precisely why they did. <em>Carmen Sandiego</em> did not set out to teach geography; it made you look up a currency because the clock was running and the suspect was getting away. <em>The Oregon Trail</em> did not lecture about supply management; it let you buy too many bullets and not enough food, and then killed your entire family in Kansas.</p>
 <p>That indirectness was a deliberate design position, and it is the reason these titles are remembered with affection while the drill-and-practice software of the same era is remembered not at all. The lesson arrived as a consequence of wanting something else.</p>
 
-<h3>What the lab actually had</h3>
+<h2>What the lab actually had</h2>
 <p>MECC — the Minnesota Educational Computing Consortium — supplied a great deal of it, as a state-funded body that ended up shipping some of the most-played software of the century. Brøderbund supplied Carmen Sandiego. The Learning Company supplied Reader Rabbit. Davidson supplied Math Blaster. Between those four, most of a generation's screen time before 1995 is accounted for.</p>
 
-<h3>A note on what is missing</h3>
+<h2>A note on what is missing</h2>
 <p>Number Munchers is not here, and it is the one people ask about. No working Macintosh copy appears to survive: the archived disk images are either truncated or turn out to hold the PC side of a hybrid disc. Super Munchers, from the same series, is here and does run. Kid Pix is not here either, for a different reason — it is still sold today, and this site does not host anything you can buy.</p>`,
   },
 ];
+
+// The rest of the hubs live in hub-pages.json, as prose plus a declarative
+// match: a title belongs if any of its genres, categories or provenance is
+// listed, or its slug is named, and it is not excluded by slug.
+const HUBS_FILE = resolve(process.cwd(), "scripts", "hub-pages.json");
+for (const h of existsSync(HUBS_FILE) ? JSON.parse(readFileSync(HUBS_FILE, "utf8")) : []) {
+  const m = h.match || {};
+  CATEGORY_HUBS.push({
+    ...h,
+    match: (p) => !(m.exclude || []).includes(p.slug) && (
+      (m.slugs || []).includes(p.slug)
+      || (p.genre || []).some((g) => (m.genres || []).includes(g))
+      || (p.categories || []).some((c) => (m.categories || []).includes(c))
+      || (m.provenance || []).includes(p.provenance)),
+  });
+}
+
+// "More like this" at the foot of a title page: every hub the title appears
+// on. This is what makes the hubs part of the site rather than a side door —
+// without it they are linked only from the homepage.
+function hubLinksHtml(p) {
+  const hubs = CATEGORY_HUBS.filter((h) => h.match(p));
+  if (!hubs.length) return "";
+  return `
+  <section class="card">
+    <h2>More like this</h2>
+    <div class="card-grid">
+${hubs.map((h) => `      <a class="link-card" href="/${h.slug}/">
+        <strong>${esc(h.name)}</strong>
+        <span>${sortPlayable(pages.filter(h.match)).length} to play</span>
+      </a>`).join("\n")}
+    </div>
+  </section>`;
+}
 
 function categoryPage(hub) {
   const list = pages.filter(hub.match);
@@ -673,6 +746,7 @@ function categoryPage(hub) {
   const headHtml = head({
     title: hub.title, description: hub.description, keywords: hub.keywords,
     path: `/${hub.slug}/`, kind: "content",
+    ogImage: ogCard(`hub-${hub.slug}`, { kind: "collage", title: hub.name, tag: `${playNow.length} to play in your browser`, shots: shotsFor(list, 4) }),
     ld: [
       breadcrumbLd([{ name: "Home", href: "/" }, { name: "All titles", href: "/run/" }, { name: hub.name, href: `/${hub.slug}/` }]),
       itemListLd(playNow, { name: hub.name, url: `${SITE}/${hub.slug}/` }),
@@ -683,7 +757,7 @@ function categoryPage(hub) {
 <main class="prose">
   ${crumbs([{ name: "Home", href: "/" }, { name: "All titles", href: "/run/" }, { name: hub.name }])}
   <section class="card">
-    <h2>${esc(hub.name)}</h2>
+    <h1 class="page-title">${esc(hub.name)}</h1>
     ${hub.body}
   </section>
 ${playNow.length ? `  <section class="card">
@@ -745,7 +819,7 @@ function embedHubPage() {
 <main class="prose">
   ${crumbs([{ name: "Home", href: "/" }, { name: "Embed a game" }])}
   <section class="card">
-    <h2>Put a working Macintosh on your page</h2>
+    <h1 class="page-title">Put a working Macintosh on your page</h1>
     <p>Every one of the ${playable.length} playable titles here can be embedded in somebody else's site with a single line of HTML. It is free, it needs no account and no permission, and there is nothing to ask us for.</p>
     <pre class="embed-code"><code>${esc(embedSnippet(sample))}</code></pre>
     <p>That is the whole of it. The frame loads its own emulator, fetches the disk in pieces as it needs them, and runs the real software. Your page does not need to change its headers, load a script, or do anything else.</p>
@@ -787,6 +861,7 @@ function collectionPage(era) {
     description: meta.description || `Games and applications from the ${label} era of the Macintosh, running in a browser tab.`,
     keywords: meta.keywords || "",
     path: `/collection/${era}/`, kind: "content",
+    ogImage: ogCard(`era-${era}`, { kind: "collage", title: `${label} software`, tag: `${playNow.length} to play in your browser`, shots: shotsFor(list, 4) }),
     ld: [
       breadcrumbLd([{ name: "Home", href: "/" }, { name: "All titles", href: "/run/" }, { name: label, href: `/collection/${era}/` }]),
       itemListLd(playNow, { name: `${label} titles`, url: `${SITE}/collection/${era}/` }),
@@ -797,7 +872,7 @@ function collectionPage(era) {
 <main class="prose">
   ${crumbs([{ name: "Home", href: "/" }, { name: "All titles", href: "/run/" }, { name: label }])}
   <section class="card">
-    <h2>${esc(label)}</h2>
+    <h1 class="page-title">${esc(label)}</h1>
     ${ERA_BODY[era] || ""}
   </section>
 ${playNow.length ? `  <section class="card">
@@ -829,7 +904,7 @@ const ERA_BODY = {
 
 const ERA_META = {
   "system-6": {
-    "title": "System 6 Software Online — The Compact Mac, in Your Browser",
+    "title": "Black-and-White Mac Games and Software — System 6 Online",
     "description": "System 6 on an emulated Macintosh Plus: 512×342, black and white, and fast enough for a phone. What ran on it and why it still starts in a second.",
     "keywords": "system 6 online, macintosh plus emulator, mac system 6, compact macintosh, mini vmac online, black and white mac"
   },
@@ -879,7 +954,7 @@ function utilityPage(u) {
   ${crumbs([{ name: "Home", href: "/" }, { name: u.crumb }])}
 
   <section class="card">
-    <h2>${esc(u.h1 || u.crumb)}</h2>
+    <h1 class="page-title">${esc(u.h1 || u.crumb)}</h1>
     ${u.intro}
     <div id="mac-loader"
          data-slug="${esc(u.slug)}"
@@ -922,7 +997,7 @@ function staticPage(s) {
   ${crumbs([{ name: "Home", href: "/" }, { name: s.crumb }])}
 
   <section class="card">
-    <h2>${esc(s.h1 || s.crumb)}</h2>
+    <h1 class="page-title">${esc(s.h1 || s.crumb)}</h1>
     ${(s.sections[0] && !s.sections[0].h) ? s.sections[0].html : ""}
   </section>${sectionsHtml(s.sections, !!(s.sections[0] && !s.sections[0].h))}${faqHtml(s)}${relatedHtml(s.related, pages)}
 </main>
@@ -937,9 +1012,13 @@ ${footer()}`;
 // and they are what separates a catalogue from a content site in the eyes of an
 // ad reviewer. Both jobs need real writing, so there is no template filler here.
 function blogPost(post) {
+  // A post may name the titles it is about in `cardSlugs`; otherwise its card
+  // borrows the head of the catalogue.
+  const cardList = post.cardSlugs ? pages.filter((q) => post.cardSlugs.includes(q.slug)) : pages;
+  const card = ogCard(`blog-${post.slug}`, { kind: "collage", title: post.title, tag: "macemu blog", shots: shotsFor(cardList, 4) });
   const headHtml = head({
     title: post.title, description: post.description,
-    path: `/blog/${post.slug}/`, kind: "content",
+    path: `/blog/${post.slug}/`, kind: "content", ogImage: card,
     ld: [
       breadcrumbLd([{ name: "Home", href: "/" }, { name: "Blog", href: "/blog/" }, { name: post.crumb, href: `/blog/${post.slug}/` }]),
       `<script type="application/ld+json">
@@ -953,7 +1032,7 @@ function blogPost(post) {
   "dateModified": ${JSON.stringify(post.updated || post.date)},
   "author": { "@type": "Person", "name": ${JSON.stringify(post.author)} },
   "publisher": { "@type": "Organization", "name": ${JSON.stringify(BRAND)}, "url": "${SITE}/" },
-  "image": "${SITE}/og.png",
+  "image": "${card}",
   "mainEntityOfPage": "${SITE}/blog/${post.slug}/"
 }
 </script>`,
@@ -964,7 +1043,7 @@ function blogPost(post) {
 <main class="prose">
   ${crumbs([{ name: "Home", href: "/" }, { name: "Blog", href: "/blog/" }, { name: post.crumb }])}
   <article class="card">
-    <h2>${esc(post.title)}</h2>
+    <h1 class="page-title">${esc(post.title)}</h1>
     <p class="muted small">${esc(monthYear(post.date))} · ${esc(post.author)}</p>
     ${post.body}
   </article>
@@ -999,7 +1078,7 @@ function blogIndex() {
 <main class="prose">
   ${crumbs([{ name: "Home", href: "/" }, { name: "Blog" }])}
   <section class="card">
-    <h2>Blog</h2>
+    <h1 class="page-title">Blog</h1>
     <p>How this site works, what classic Macintosh software was actually like, and why the files it left behind are so awkward to open.</p>
   </section>
 ${posts.map((q) => `  <section class="card">
@@ -1026,7 +1105,7 @@ function notFound() {
 
 <main class="prose">
   <section class="card">
-    <h2>That page isn't here</h2>
+    <h1 class="page-title">That page isn't here</h1>
     <p>The link may be old, or the title may not have gone live yet. <a href="/run/">The full list is here</a>, and <a href="/load-mac-file/">the loader</a> will run a file you already have.</p>
   </section>
 ${playNow.length ? `  <section class="card">
@@ -1131,6 +1210,15 @@ once the visitor supplies the file themselves.
 
 ${guides.map((p) => `- ${p.appName}${p.year ? ` (${p.year})` : ""} — ${SITE}/run/${p.slug}/`).join("\n")}
 
+## Browse by kind
+
+${CATEGORY_HUBS.filter((h) => pages.some(h.match)).map((h) => `- ${h.name} — ${SITE}/${h.slug}/ — ${h.description}`).join("\n")}
+${ERA_ORDER.filter((e) => pages.some((p) => p.era === e)).map((e) => `- ${ERA_LABELS[e]} — ${SITE}/collection/${e}/`).join("\n")}
+
+## Writing
+
+${posts.map((q) => `- ${q.title} — ${SITE}/blog/${q.slug}/ — ${q.description}`).join("\n")}
+
 ## Open a file you already have
 
 ${utils.map((u) => `- ${u.crumb} — ${SITE}/${u.slug}/`).join("\n")}
@@ -1192,6 +1280,7 @@ write("index.html", homePage());
 for (const e of ERA_ORDER) if (pages.some((p) => p.era === e)) write(`collection/${e}/index.html`, collectionPage(e));
 for (const h of CATEGORY_HUBS) if (pages.some(h.match)) write(`${h.slug}/index.html`, categoryPage(h));
 write(`${EMBED_HUB.slug}/index.html`, embedHubPage());
+write("og/cards.json", JSON.stringify(OG_CARDS, null, 1) + "\n");
 write("404.html", notFound());
 
 write("sitemap.xml", sitemapXml([

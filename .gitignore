@@ -48,7 +48,15 @@ public/open-*/
 public/classic-mac-emulator-online/
 public/embed-a-game/
 public/school-computer-lab-games/
+public/mac-adventure-games/
+public/mac-rpg-games/
+public/mac-board-and-card-games/
+public/mac-arcade-games/
+public/mac-shareware-games/
 public/.well-known/security.txt
 
 # python venv for the disk builders (machfs)
 .venv/
+public/og/
+.og-state.json
+.indexnow-state.json
