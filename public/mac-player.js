@@ -129,6 +129,118 @@
     });
   }
 
+  // Closing a tab is not shutting a Macintosh down. System 7.5 creates an
+  // empty file called "Shutdown Check" at the root of the startup disk when it
+  // boots and deletes it when it shuts down; finding it already there at
+  // startup is how it knows to put "This computer may not have been shut down
+  // properly" over the game. Every saved disk comes back with that file on it.
+  //
+  // So before the emulator opens a saved disk, delete the file's catalog
+  // record, which is what Shut Down would have done. (Setting the MDB's
+  // "unmounted cleanly" bit was tried first and changes nothing: 7.5 does not
+  // look at it.) Only 512-byte blocks the Mac itself has written are read or
+  // touched — the file was created on this visitor's machine, so every block
+  // that mentions it is in the saved copy. Anything unexpected — a partitioned
+  // image, a non-empty file, a leaf node that would be left empty, a record
+  // the index points at — and nothing is written: the dialog is a nuisance, a
+  // damaged catalog would lose the save.
+  function markCleanShutdown(cfg) {
+    var name = cfg.diskNames && cfg.diskNames[0];
+    if (!name || !cfg.disk) return Promise.resolve();
+    var TARGET = "shutdown check";
+    return opfsRoot().then(function (root) {
+      if (!root) return;
+      return Promise.all([
+        root.getFileHandle(name + ".dirtychunks").then(function (h) { return h.getFile(); })
+          .then(function (f) { return f.arrayBuffer(); }),
+        root.getFileHandle(name + ".data"),
+        fetch("/mac/disks/" + encodeURIComponent(cfg.disk) + ".json").then(function (r) { return r.json(); }),
+      ]).then(function (got) {
+        var dirty = new Uint8Array(got[0]), dataHandle = got[1], chunkSize = got[2].chunkSize;
+        var isDirty = function (off) {
+          var c = Math.floor(off / chunkSize);
+          return !!(dirty[c >> 3] & (1 << (c & 7)));
+        };
+        if (!isDirty(1024)) return;
+        return dataHandle.getFile().then(function (file) {
+          var read = function (off) {
+            return file.slice(off, off + 512).arrayBuffer().then(function (b) { return new Uint8Array(b); });
+          };
+          return read(1024).then(function (mdb) {
+            var dv = new DataView(mdb.buffer);
+            if (dv.getUint16(0) !== 0x4244) return;              // not a bare HFS volume
+            var alBlkSiz = dv.getUint32(20), alBlSt = dv.getUint16(28);
+            // Catalog file extents: three (start, count) pairs at +150.
+            var nodes = [];
+            for (var e = 0; e < 3; e++) {
+              var start = dv.getUint16(150 + e * 4), count = dv.getUint16(152 + e * 4);
+              var base = alBlSt * 512 + start * alBlkSiz;
+              for (var b = 0; b < count * alBlkSiz; b += 512) nodes.push(base + b);
+            }
+            nodes = nodes.slice(0, Math.floor(dv.getUint32(146) / 512));   // drCTFlSize
+            if (!nodes.length || !isDirty(nodes[0])) return;
+            var saved = nodes.filter(isDirty);
+            return Promise.all(saved.map(read)).then(function (blocks) {
+              var byOff = {};
+              saved.forEach(function (off, i) { byOff[off] = blocks[i]; });
+              var u16 = function (b, o) { return (b[o] << 8) | b[o + 1]; };
+              var u32 = function (b, o) { return ((b[o] << 24) >>> 0) + (b[o + 1] << 16) + (b[o + 2] << 8) + b[o + 3]; };
+              var put16 = function (b, o, v) { b[o] = (v >> 8) & 0xff; b[o + 1] = v & 0xff; };
+              var put32 = function (b, o, v) { put16(b, o, v >>> 16); put16(b, o + 2, v & 0xffff); };
+              var recOff = function (node, i) { return u16(node, 512 - 2 * (i + 1)); };
+              var keyName = function (node, r) {
+                var len = node[r + 6], s = "";
+                for (var k = 0; k < len; k++) s += String.fromCharCode(node[r + 7 + k]);
+                return s.toLowerCase();
+              };
+              var dataAt = function (node, r) { var d = r + 1 + node[r]; return d + (d & 1); };
+              var hit = null, rootDir = null;
+              saved.forEach(function (off) {
+                var node = byOff[off];
+                if (node[8] !== 0xff) return;                       // leaf nodes only
+                var n = u16(node, 10);
+                for (var i = 0; i < n; i++) {
+                  var r = recOff(node, i), d = dataAt(node, r), parent = u32(node, r + 2);
+                  if (parent === 2 && node[d] === 2 && keyName(node, r) === TARGET) hit = { off: off, i: i, d: d };
+                  if (parent === 1 && node[d] === 1 && u32(node, d + 6) === 2) rootDir = { off: off, d: d };
+                }
+              });
+              if (!hit || !rootDir || hit.i === 0) return;
+              var node = byOff[hit.off], n = u16(node, 10);
+              // Physical lengths of both forks must be zero: nothing to free.
+              if (u32(node, hit.d + 30) || u32(node, hit.d + 40)) return;
+              if (n < 2) return;
+              var from = recOff(node, hit.i), to = recOff(node, hit.i + 1), end = recOff(node, n), gap = to - from;
+              node.copyWithin(from, to, end);
+              node.fill(0, end - gap, end);
+              for (var j = hit.i + 1; j <= n; j++) put16(node, 512 - 2 * j, recOff(node, j) - gap);
+              put16(node, 512 - 2 * (n + 1), 0);
+              put16(node, 10, n - 1);
+              var header = byOff[nodes[0]];
+              put32(header, 14 + 6, u32(header, 14 + 6) - 1);       // bthNRecs
+              var dir = byOff[rootDir.off];
+              put16(dir, rootDir.d + 4, u16(dir, rootDir.d + 4) - 1); // dirVal
+              put16(mdb, 12, u16(mdb, 12) - 1);                      // drNmFls
+              put32(mdb, 84, u32(mdb, 84) - 1);                      // drFilCnt
+              var writes = [[1024, mdb]];
+              [hit.off, nodes[0], rootDir.off].forEach(function (off) {
+                if (!writes.some(function (w) { return w[0] === off; })) writes.push([off, byOff[off]]);
+              });
+              return dataHandle.createWritable({ keepExistingData: true }).then(function (w) {
+                return writes.reduce(function (p, wr) {
+                  return p.then(function () { return w.write({ type: "write", position: wr[0], data: wr[1] }); });
+                }, Promise.resolve()).then(function () { return w.close(); });
+              });
+            });
+          });
+        });
+      });
+    }).catch(function (e) {
+      // NotFoundError is simply "no save yet", the ordinary first visit.
+      if (e && e.name !== "NotFoundError" && global.console) console.warn("[macemu] could not tidy the saved disk", e);
+    });
+  }
+
   // ── what this visitor has played ─────────────────────────────────────────
   // A small registry so the homepage can offer to carry on. It records only
   // what is needed to draw a card — slug, name, when — and only for titles
@@ -351,6 +463,11 @@
     }, 90000);
 
     ui.booted = loadRuntime().then(function (MacEmulator) {
+      // A saved boot disk is marked as cleanly shut down before the emulator
+      // opens it. Not for shared-system titles: their boot disk is never saved.
+      if (!(cfg.persist && !persistBlocked(cfg) && !cfg.extraDisks.length)) return MacEmulator;
+      return markCleanShutdown(cfg).then(function () { return MacEmulator; });
+    }).then(function (MacEmulator) {
       // Only fallback mode depends on the service worker; with shared memory
       // the emulator talks to its worker directly and waiting would be dead
       // time on every boot.
@@ -428,13 +545,12 @@
           // been shut down properly" sitting over the game. The machine is
           // fine — the volume simply was not unmounted — but nothing on screen
           // says so, and the dialog has to be cleared before anything works.
+          // markCleanShutdown() is what keeps that dialog away; the note only
+          // says that progress was picked up.
           if (ui.resuming && ui.note) {
             var r = document.createElement("p");
             r.className = "embed-note-resume";
-            r.textContent = "Picking up your saved disk. If the Mac opens a "
-              + "notice about not being shut down properly, press Return — "
-              + "that is just because the tab was closed rather than the "
-              + "machine shut down.";
+            r.textContent = "Picking up your saved disk where you left it.";
             ui.note.insertBefore(r, ui.note.firstChild);
           }
           if (ui.note && (cfg.launchNote || ui.resuming)) ui.note.hidden = false;
