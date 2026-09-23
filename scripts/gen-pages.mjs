@@ -803,7 +803,7 @@ function embedSnippet(p) {
 function embedBlockHtml(p) {
   if (!isPlayable(p) || p.iframeUrl) return "";
   return `
-  <section class="card">
+  <section class="card" id="embed">
     <h2>Put ${esc(p.appName)} on your own site</h2>
     <p>Free, no permission needed and no account. Paste this where you want the machine to appear; it brings its own emulator and asks nothing of your page.</p>
     <pre class="embed-code"><code>${esc(embedSnippet(p))}</code></pre>
