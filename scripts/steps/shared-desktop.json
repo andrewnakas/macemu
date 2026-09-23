@@ -1,0 +1,9 @@
+{
+  "screen": [800, 600],
+  "shutdown": { "menu": [181, 9], "item": [206, 119] },
+  "steps": [
+    { "waitMs": 90000, "note": "let the Finder rebuild the desktop file" },
+    { "waitMs": 60000, "note": "margin for the rebuild" },
+    { "key": "Enter", "waitMs": 4000, "note": "dismiss: alias Start has no Title disk" }
+  ]
+}
