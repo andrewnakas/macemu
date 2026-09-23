@@ -532,7 +532,19 @@ function embedPage(p) {
     extraHead: `\n<meta name="theme-color" content="#131313" />`,
   });
   const body = `${macMount(p, { mode: "fallback" })}
-<div class="embedbar"><a href="${SITE}/play/${p.slug}/" target="_blank" rel="noopener">▶ Full speed on ${BRAND}</a></div>`;
+<div class="embedbar"><a id="embed-out" href="${SITE}/play/${p.slug}/?utm_source=embed&amp;utm_medium=embed&amp;utm_campaign=${esc(p.slug)}" target="_blank" rel="noopener">▶ Full speed on ${BRAND}</a></div>
+<script>
+  // Name the site this embed is sitting on, so a visit that comes through it
+  // is credited to that site rather than to macemu.com's own /embed/ page —
+  // which is what the referrer of a click inside an iframe otherwise says.
+  try {
+    var host = document.referrer ? new URL(document.referrer).hostname : "";
+    if (host && host !== location.hostname) {
+      var a = document.getElementById("embed-out");
+      a.href = a.href.replace("utm_source=embed", "utm_source=" + encodeURIComponent(host));
+    }
+  } catch (e) {}
+</script>`;
   return page({ headHtml, bodyHtml: body, bodyClass: "is-embed", scripts: `<script src="/mac-player.js?v=${av("mac-player.js")}"></script>` });
 }
 
@@ -1045,7 +1057,7 @@ function blogPost(post) {
   <article class="card">
     <h1 class="page-title">${esc(post.title)}</h1>
     <p class="muted small">${esc(monthYear(post.date))} · ${esc(post.author)}</p>
-    ${post.body}
+    ${post.body.replace(/<(\/?)h3>/g, "<$1h2>")}
   </article>
   <section class="card">
     <h2>More</h2>
