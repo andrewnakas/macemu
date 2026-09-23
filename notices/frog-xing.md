@@ -28,6 +28,11 @@ Internet Archive item `tucows_205692_Frog_Xing`, from the Tucows Macintosh
 archive. The `.sit` expands to a plain folder, copied onto a title disk that
 mounts beside the shared Mac OS 8.6 image.
 
+On the title disk that mounts beside the shared Mac OS 8.6 image, the
+application file is named "Start App" (with an alias, "Start") so the shared
+system can launch it at boot. Only the file's name was changed; its contents
+were copied unaltered.
+
 ## Takedown
 
 Say so at /takedown/ and it is removed within 48 hours, without argument.

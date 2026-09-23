@@ -22,6 +22,11 @@ archive. The `.sit` expands to a plain folder, which was copied onto a small
 title disk; it mounts beside the shared Mac OS 8.6 image rather than carrying
 its own copy of the operating system.
 
+On the title disk that mounts beside the shared Mac OS 8.6 image, the
+application file is named "Start App" (with an alias, "Start") so the shared
+system can launch it at boot. Only the file's name was changed; its contents
+were copied unaltered.
+
 ## Takedown
 
 If you hold rights and want it gone — the author included — say so at

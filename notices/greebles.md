@@ -22,6 +22,11 @@ Internet Archive item `tucows_205596_Greebles`, from the Tucows Macintosh
 archive. The `.sit` expands to a plain folder, copied onto a small title disk
 that mounts beside the shared Mac OS 8.6 image.
 
+On the title disk that mounts beside the shared Mac OS 8.6 image, the
+application file is named "Start App" (with an alias, "Start") so the shared
+system can launch it at boot. Only the file's name was changed; its contents
+were copied unaltered.
+
 ## Takedown
 
 If you hold rights and want it gone — Peter N Lewis included — say so at
