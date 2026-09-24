@@ -910,6 +910,140 @@
     "persist": true
   },
   {
+    "slug": "amazon-trail",
+    "title": "Play The Amazon Trail Online — MECC's Mac Classic, Free",
+    "description": "The Amazon Trail, MECC's river-journey sequel to The Oregon Trail, playable free in your browser. The Macintosh CD release, running on an emulated Mac.",
+    "keywords": "amazon trail, play amazon trail online, the amazon trail game, amazon trail mecc, amazon trail mac, oregon trail sequel, amazon trail cinchona, school computer games",
+    "ogTitle": "The Amazon Trail in your browser",
+    "ogDescription": "MECC's Amazon Trail, the Macintosh CD release, running on an emulated Mac.",
+    "crumb": "The Amazon Trail",
+    "h1": "The Amazon Trail — up the river from Belém",
+    "appName": "The Amazon Trail",
+    "appType": "game",
+    "author": "MECC",
+    "year": 1996,
+    "genre": [
+      "Simulation",
+      "Educational",
+      "Adventure"
+    ],
+    "categories": [
+      "Classroom classics"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "amazon-trail-title"
+    ],
+    "provenance": "grey",
+    "licenseReason": "MECC's educational catalogue passed from MECC to SoftKey, The Learning Company, Mattel and eventually Houghton Mifflin Harcourt. The Amazon Trail has not been sold in any form for well over twenty years, and no current product contains it. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/amazon-trail.md\" rel=\"noopener\">notices/amazon-trail.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>The Oregon Trail's school-lab sibling. Instead of a wagon, a dugout canoe; instead of the plains, the Amazon, starting at Belém on the Atlantic and working upriver towards Peru. Along the way you fish, trade, talk to the people you meet, and try to reach the Inca King with the medicine his people need.</p>\n<p>This is MECC's Macintosh CD release, and it runs here on an emulated Power Macintosh under Mac OS 8.6. It opens in a bedroom in Peru, Indiana, with a kid asleep under posters of the Amazon. The river is the dream.</p>",
+    "launchNote": "Mac OS 8.6 starts and opens The Amazon Trail by itself. Click OK when it asks for 256 colours, click through the intro, then choose Start a new quest.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Everything: the buttons along the bottom, the people you meet, trading"
+      },
+      {
+        "keys": "Return",
+        "does": "Confirm a dialog"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh, 800×600, 256 colours</td></tr><tr><th>System</th><td>Mac OS 8.6</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Version</th><td>The Amazon Trail CD, version 1.1 (1996)</td></tr><tr><th>Saves</th><td>Save Quest writes inside the emulated Mac, in your browser</td></tr></tbody></table><p>The first start is the slow one. Mac OS 8.6 downloads once, then the game itself, which is mostly photographs and recorded voices. Later visits start much faster.</p><p>The game is played in a window with a row of picture buttons along the bottom: travel on, talk to someone, trade, look at the map, read your journal. Everything is the mouse.</p>"
+      },
+      {
+        "h": "What you are actually doing",
+        "html": "<p>You arrive in Belém, at the mouth of the river, and a soldier at the market wants to know who you are. Once your papers are in order you choose a guide (Isabel or Antonio) and set off upriver in a canoe.</p><p>The goal becomes clear on the water. A jaguar speaks to you: the Inca people are sick with malaria, and cinchona is a medicine for it. The quest is to get cinchona to the Inca King. The places between are real ones: Santarém, Manaus, Tefé, Leticia, Iquitos, Pucallpa and more, up the main river and its tributaries.</p><p>Food comes from the river. You fish with harpoons and bring back as much as the canoe will hold, and you trade with the people at each stop for what you cannot catch. Running out of harpoons, food or goods to trade is how a quest goes wrong.</p>"
+      },
+      {
+        "h": "The Oregon Trail's other half",
+        "html": "<p>MECC made The Amazon Trail for the same classrooms and on the same idea as The Oregon Trail: a long journey, limited resources, and history and geography learned because you needed them, not because a quiz asked. It keeps the parts that worked (the store, the pace, the people along the way) and adds a fishing game in place of hunting and a quest with an ending.</p><p>This CD edition is built on the earlier Macintosh and DOS versions of the game, rebuilt with photographs, music and recorded voices. The Inca King and the jaguar are voiced characters, which in a school lab in 1996 was a novelty. The same release has a teacher's Management Options panel, behind a password, for changing how long fishing lasts, switching the sound and music on or off, and clearing the Hall of Shields.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the version I played at school?",
+        "a": "If your school had Macs and a CD-ROM drive in the mid-to-late 1990s, very probably. This is MECC's Amazon Trail CD for Macintosh, version 1.1, with the photographs and recorded voices."
+      },
+      {
+        "q": "What is the goal?",
+        "a": "Get cinchona, the source of quinine, to the Inca King, whose people are sick with malaria. You travel upriver from Belém by canoe, fishing and trading on the way."
+      },
+      {
+        "q": "It asks for 256 colours. What do I do?",
+        "a": "Click OK. The game prefers a 256-colour screen but runs as it is, and the emulated Mac is already set up for it."
+      },
+      {
+        "q": "How do I get food?",
+        "a": "Fish. You fish with harpoons from the canoe and keep what fits in it, and you can trade for food at the stops along the river. Keep harpoons in reserve: when they run out you cannot fish at all."
+      },
+      {
+        "q": "What is the Hall of Shields?",
+        "a": "The game's hall of fame, shown from the title screen. Here it is kept inside the emulated Mac, in your own browser."
+      },
+      {
+        "q": "Can I save and come back?",
+        "a": "Yes. Use Save Quest from the Game menu, and Load a quest from the title screen. The save lives in your browser, so it survives closing the tab but not clearing site data."
+      },
+      {
+        "q": "Does it work on a phone?",
+        "a": "It loads, and it only needs a pointer, but the first start downloads a large system and the buttons are small. A computer is much more comfortable."
+      }
+    ],
+    "download": {
+      "heading": "Archives and originals",
+      "html": "<ul><li><a href=\"https://archive.org/details/amazon-trail\" rel=\"noopener\">Internet Archive</a>: the preserved CD this copy came from.</li><li><a href=\"https://macintoshgarden.org/games/the-amazon-trail\" rel=\"noopener\">Macintosh Garden</a>: other releases and scans.</li></ul>"
+    },
+    "related": [
+      "oregon-trail",
+      "carmen-world",
+      "super-munchers"
+    ],
+    "shotSetup": {
+      "screen": [
+        800,
+        600
+      ],
+      "steps": [
+        {
+          "waitMs": 15000
+        },
+        {
+          "key": "Enter",
+          "waitMs": 8000
+        },
+        {
+          "click": [
+            400,
+            300
+          ],
+          "waitMs": 7000
+        }
+      ]
+    },
+    "updated": "2026-09-23",
+    "addedDate": "2026-09-23",
+    "screenshot": true,
+    "persist": true
+  },
+  {
     "slug": "marathon",
     "title": "Marathon (1994) — How to Run Bungie's Mac Shooter Today",
     "description": "Bungie's Marathon, free since 2005: where to get it, what it is, and how to run your copy on an emulated Macintosh in a browser tab.",

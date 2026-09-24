@@ -1,0 +1,90 @@
+{
+ "screen": [
+  800,
+  600
+ ],
+ "steps": [
+  {
+   "waitMs": 60000,
+   "note": "boot"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 5000,
+   "note": "dismiss alias alert"
+  },
+  {
+   "doubleClick": [
+    750,
+    105
+   ],
+   "waitMs": 12000,
+   "note": "open the CD"
+  },
+  {
+   "doubleClick": [
+    160,
+    80
+   ],
+   "waitMs": 15000,
+   "note": "launch installer"
+  },
+  {
+   "waitMs": 10000,
+   "note": "installer settled"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 8000,
+   "note": "ok the virus notice"
+  },
+  {
+   "click": [
+    461,
+    382
+   ],
+   "waitMs": 3000,
+   "note": "drive 1"
+  },
+  {
+   "click": [
+    461,
+    382
+   ],
+   "waitMs": 3000,
+   "note": "drive 2"
+  },
+  {
+   "click": [
+    531,
+    347
+   ],
+   "waitMs": 8000,
+   "note": "install"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 120000,
+   "note": "continue: confirm the destination, then copy"
+  },
+  {
+   "waitMs": 30000,
+   "note": "copy finished?"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 8000,
+   "note": "dismiss the result"
+  }
+ ],
+ "shutdown": {
+  "menu": [
+   181,
+   9
+  ],
+  "item": [
+   206,
+   119
+  ]
+ }
+}

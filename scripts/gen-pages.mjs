@@ -304,7 +304,10 @@ function macMount(p, { mode }) {
     p.era ? `data-era="${esc(p.era)}"` : "",
     // The title's own screenshot behind the Start button. Absolute, because
     // the same mount appears on /run/, /play/ and /embed/.
-    screenshotFile(p) ? `data-poster="/run/${esc(p.slug)}/${esc(screenshotFile(p))}"` : "",
+    // Only when the file is really there: a brand-new title's screenshot is
+    // taken by booting the page, and a poster pointing at a 404 fails that boot.
+    screenshotFile(p) && existsSync(resolve(ROOT, "run", p.slug, screenshotFile(p)))
+      ? `data-poster="/run/${esc(p.slug)}/${esc(screenshotFile(p))}"` : "",
     ...(() => {
       const next = relatedPlayable(p, pages, 1)[0];
       return next ? [`data-next-slug="${esc(next.slug)}"`, `data-next-name="${esc(next.appName)}"`] : [];
