@@ -248,7 +248,9 @@ ${items}
 // Whether a title is unplayable without a physical keyboard: arrow keys,
 // typed commands, Space to fire. Read off the controls table, so a phone
 // visitor can be told before the machine spends a minute booting.
-const needsKeyboard = (p) =>
+// `touchOk: true` on a title overrides it, for a game played with the pointer
+// that merely has keyboard extras (Crystal Quest's smart bomb on Space).
+const needsKeyboard = (p) => !p.touchOk &&
   (p.macControls || []).some((c) => /arrow|type \+ return|keyboard|\bspace\b|\bshift\b/i.test(c.keys || ""));
 
 // ── page parts ─────────────────────────────────────────────────────────────

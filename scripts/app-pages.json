@@ -656,6 +656,10 @@
         "html": "<p>Mechanically there is almost nothing here: a table, two paddles, a puck, and a mouse. What makes it memorable is the bar.</p><p>Each opponent is a hand-drawn character with their own way of playing and their own reaction to losing, and they get steadily harder as you work along the line. Some cheat. Some sulk. The artwork is the best argument for one-bit graphics anyone made in the late 1980s — every character is built from dithered black and white and every one of them has a face you remember.</p><p>The difficulty curve is steep and the final opponents are genuinely hard, which in 1988 was the point: the game was small enough to fit on a floppy and had to stay interesting for months.</p>"
       },
       {
+        "h": "The menus most people never opened",
+        "html": "<p>Most people who played Shufflepuck in a lab never looked past the bar. The menus hold more than they expect:</p>\n<ul><li><strong>New Opponent</strong> lets you pick who sits down, instead of working along the line. The regulars are named in the game itself, among them Vinnie, Visine, Nerual and Biff Raunch, and each has their own growls, laughs and sulks in the sound list.</li><li><strong>The Droid and the Blocker</strong> are for practice. The droid serves and returns without pity. The blocker is a shield you can put up in front of your goal while you learn the angles.</li><li><strong>Paddle settings</strong> change the size of your paddle (small, medium, large or custom), its power and its speed. A big slow paddle is a real help against the later opponents, and nobody is watching.</li><li><strong>The Roster of Champions</strong> keeps the names of whoever has beaten the bar. It is saved on the emulated disk, in your browser, so it stays yours.</li></ul>\n<p>One more thing the game still carries: a dialog asking you to insert the original disk. That was the copy protection. The preserved copy never shows it, which is the point of the 4am crack described below.</p>"
+      },
+      {
         "h": "Brøderbund, and where this came from",
         "html": "<p>Brøderbund published it — the same company behind Myst, The Print Shop, Where in the World is Carmen Sandiego and Kid Pix. In 1988 they were at their peak, and Shufflepuck Café is a good example of what they did well: take one idea, execute it beautifully, and let the art carry it.</p><p>The copy preserved here is a 4am crack, which matters practically rather than morally. The original shipped with copy protection that expected a real floppy drive reading a real disk, so an unmodified image simply will not run in an emulator. Removing that is what makes preservation possible at all.</p>"
       }
@@ -671,7 +675,7 @@
       },
       {
         "q": "Who are the opponents?",
-        "a": "A bar full of aliens, each hand-drawn, each with a different style and a different reaction to losing. They get harder as you go along the line."
+        "a": "A bar full of aliens and oddballs, each hand-drawn, each with a different style and a different reaction to losing. The game's own files name Vinnie, Visine, Nerual and Biff Raunch among them. They get harder as you go along the line, and New Opponent lets you choose who sits down."
       },
       {
         "q": "Is it legal to have this here?",
@@ -684,6 +688,14 @@
       {
         "q": "Does it work on a phone?",
         "a": "It runs, but the paddle tracks a mouse pointer and a touchscreen makes that awkward. Use a real mouse or trackpad."
+      },
+      {
+        "q": "Can I practise before playing the bar?",
+        "a": "Yes. The Droid is a practice opponent and the Blocker is a shield for your goal while you learn the angles. You can also make your paddle bigger, stronger or faster from the paddle settings."
+      },
+      {
+        "q": "Is there a high-score table?",
+        "a": "The Roster of Champions records who has beaten the bar. Here it is kept on the emulated disk in your own browser."
       }
     ],
     "download": {
@@ -718,7 +730,7 @@
         }
       ]
     },
-    "updated": "2026-09-16",
+    "updated": "2026-09-23",
     "addedDate": "2026-09-16",
     "rank": 1,
     "screenshot": true,
@@ -793,6 +805,18 @@
         "html": "<p><strong>Leave in April or May.</strong> Leave in March and you hit snow in the mountains. Leave in July and you hit snow in the mountains.</p>\n<p><strong>Buy more oxen than you think you need.</strong> A dead ox is a stopped wagon, and a stopped wagon in October is the end of the run. Two spare yoke is not excessive.</p>\n<p><strong>Do not shoot more than you can carry.</strong> Hunting is the most fun part of the game and the easiest way to waste a day: you can only haul a few hundred pounds back to the wagon, and everything else rots where it fell.</p>\n<p><strong>Slow the pace and raise the rations when people get sick.</strong> Grueling pace plus bare-bones rations is how a party of five becomes a party of one, and the game will let you do it all the way to the end.</p>\n<p><strong>Ford only shallow water.</strong> Under two and a half feet, ford it. Deeper than that, take the ferry or hire the guide and pay the money. Everyone learns this once, expensively.</p>"
       },
       {
+        "h": "The route, stop by stop",
+        "html": "<p>Knowing the order of the stops is half of planning the trip. These are the places this release names between Missouri and Oregon, in order:</p>\n<ol><li>Independence, Missouri, where you buy everything</li><li>The Kansas River crossing</li><li>The Big Blue River crossing</li><li>Fort Kearney</li><li>Chimney Rock</li><li>Fort Laramie</li><li>Independence Rock</li><li>South Pass</li><li>Fort Bridger, or the Green River crossing</li><li>Soda Springs</li><li>Fort Hall</li><li>The Snake River crossing</li><li>Fort Boise</li><li>The Blue Mountains (the Grande Ronde)</li><li>Fort Walla Walla, or straight on to The Dalles</li><li>The Dalles</li><li>The Barlow Toll Road, or a raft down the Columbia River</li><li>The Willamette Valley, the end</li></ol>\n<p>There are two real decisions of route. After South Pass you can take the shortcut to the Green River crossing or detour to Fort Bridger to buy supplies. After the Blue Mountains you can take the shortcut to The Dalles or head to Fort Walla Walla to buy supplies. The shortcut saves days; the fort saves you if you are short of something. Go by the fort whenever you are low on food, clothing or spare parts. Snow in the mountains is what ends most late runs.</p>\n<p>The last choice is the one people remember. The Barlow Toll Road costs money and is dull. Rafting down the Columbia is free, and it is the only part of the game you steer yourself: move the raft with the mouse and keep it off the rocks.</p>"
+      },
+      {
+        "h": "How the score works",
+        "html": "<p>Reaching the Willamette Valley is only half the game. The other half is the score, and the Mac version shows exactly how it is built:</p>\n<ul><li>Points for every person who arrives, and more for each one who arrives in good health.</li><li>Points for what is still in the wagon: oxen, spare wagon parts, sets of clothing, bullets, pounds of food and dollars.</li><li>A bonus for your profession. A banker's run is worth the least and a farmer's the most, which is why farmer is the one to pick once you have finished the trail once.</li></ul>\n<p>Your total earns a rank: Greenhorn, then Adventurer, then Trail Guide. The profession matters on the way too, not only at the end. A farmer can help with a sick ox, and a carpenter can fix a broken wheel, axle or tongue that would otherwise have to be traded for. Buy spare parts at Independence anyway.</p>"
+      },
+      {
+        "h": "Wagon Train 1848, the version for a whole class",
+        "html": "<p>This release has a mode most people never saw. With a school's Macs linked over AppleTalk, a class could play <em>Wagon Train 1848</em>: one machine ran as the leader, and every other Mac joined as a wagon in the same train, travelling under a captain. Wagons could leave the train, and the game reported it when one did. The score counted the whole train as well as each family.</p>\n<p>It needs a network of real Macs, so it will not run here: this is one emulated Macintosh with no one else on the line. The menus for it are still in the game, under Network.</p>\n<p>The same release has a teacher's panel called Management Options. It is locked with a password and lets a teacher set the simulation speed and how long hunting lasts, among other things. That is why the game sometimes felt faster or slower on a different day in the lab.</p>"
+      },
+      {
         "h": "Why this version is the one people remember",
         "html": "<p>The Oregon Trail started in 1971 as a text program written by three student teachers in Minnesota, typed into a mainframe and played over a teletype. MECC — the Minnesota Educational Computing Consortium — spent the next two decades rebuilding it for each new machine that arrived in schools.</p>\n<p>The Apple II version is the one with the historical claim; it is what put the game in classrooms in the first place. But the Macintosh release is the one most people picture, because it is what the school computer labs of the 1990s actually had, and because it is the first version that looked drawn rather than plotted.</p>\n<p>It is also a genuinely unusual piece of educational software: it teaches by killing you. There is no quiz and no score screen explaining what you should have learned. There is a long journey, a set of resources, and a river.</p>"
       }
@@ -825,6 +849,22 @@
       {
         "q": "Can I play it on a phone?",
         "a": "It will load, but the game expects a mouse and a keyboard for hunting, so a desktop or laptop is much better."
+      },
+      {
+        "q": "What are the landmarks on the Oregon Trail?",
+        "a": "In order: Independence, the Kansas River, the Big Blue River, Fort Kearney, Chimney Rock, Fort Laramie, Independence Rock, South Pass, Fort Bridger or the Green River, Soda Springs, Fort Hall, the Snake River, Fort Boise, the Blue Mountains, Fort Walla Walla or The Dalles, then the Barlow Toll Road or the Columbia River, and finally the Willamette Valley."
+      },
+      {
+        "q": "Should I take the Barlow Toll Road or raft down the Columbia?",
+        "a": "The toll road costs money and is safe. The raft is free, and you steer it with the mouse around the rocks, so it depends on your hand more than your luck. The raft is the one worth trying."
+      },
+      {
+        "q": "How do I get a high score?",
+        "a": "Travel as a farmer. Arrive with everyone alive and in good health, and keep oxen, spare parts, clothing, food and money in the wagon at the end, because all of it counts. The ranks go Greenhorn, Adventurer, Trail Guide."
+      },
+      {
+        "q": "What was Wagon Train 1848?",
+        "a": "The networked version of this release. Several Macs on a school network joined one wagon train under a captain, with one machine as the leader. It needs real networked Macs, so it does not work here."
       }
     ],
     "download": {
@@ -862,7 +902,7 @@
       ],
       "hint": "A .sit or .img of the Macintosh release works best."
     },
-    "updated": "2026-09-13",
+    "updated": "2026-09-23",
     "addedDate": "2026-09-13",
     "rank": 0,
     "bootDisk": "oregon-trail-v1",
@@ -3464,8 +3504,24 @@
         "does": "Fly. The ship follows the pointer directly."
       },
       {
-        "keys": "Mouse button",
+        "keys": "Mouse button / any letter key",
         "does": "Fire, in the direction you are moving"
+      },
+      {
+        "keys": "Space",
+        "does": "Smart bomb, clearing the screen"
+      },
+      {
+        "keys": "Tab",
+        "does": "Pause"
+      },
+      {
+        "keys": "Cmd-S",
+        "does": "Save the game in progress"
+      },
+      {
+        "keys": "0–9",
+        "does": "Sound volume"
       },
       {
         "keys": "Return",
@@ -3487,11 +3543,15 @@
       },
       {
         "h": "The nasties",
-        "html": "<p>Enemies arrive by type and each behaves differently, which is the whole strategic layer. Some drift. Some home in. Some sit still and shoot. Some split when you kill them, and killing them at the wrong moment is worse than leaving them alone.</p>\n<p>Mines are the ones that get you. They do not chase — they simply sit in the path between you and the last crystal, and the game is very good at placing them where you were about to go.</p>\n<p>There is a bonus for finishing a wave quickly and a bigger one for not firing at all, which turns some waves into a pure evasion puzzle. Playing for score and playing to survive are genuinely different games.</p>"
+        "html": "<p>Enemies arrive by type and each behaves differently, which is the whole strategic layer. Some drift. Some home in. Some sit still and shoot. Some split when you kill them, and killing them at the wrong moment is worse than leaving them alone.</p>\n<p>Mines are the ones that get you. They do not chase — they simply sit in the path between you and the last crystal, and the game is very good at placing them where you were about to go.</p>\n<p>Finish a wave fast enough and you get a time bonus; dawdle and the game tells you, with some satisfaction, that there is no time bonus. Bonus crystals turn up too, and the rules are blunt about them: catch them to get a bonus, shoot them to lose it. Playing for score and playing to survive are genuinely different games.</p>"
       },
       {
         "h": "The voices",
-        "html": "<p>Crystal Quest talks. It congratulates you, it insults you when you die, and the sampled voices — recorded by the developers, including a deadpan \"ooooh\" and a resigned \"that's nice\" — are the thing every person who played it remembers first.</p>\n<p>Patrick Buckland wrote the game; Casady & Greene, a Mac-only publisher with an unusually good ear for what the platform's users wanted, published it. Buckland later founded Rockstar Leeds. Casady & Greene closed in 2003, a Macintosh software house that outlived nearly all the others and is now mostly remembered for this and for Conflict Catcher.</p>\n<p>The sound files are still on the disk with their copyright notices in the filenames, which is a small and rather charming piece of 1994 housekeeping.</p>"
+        "html": "<p>Crystal Quest talks. It congratulates you, it insults you when you die, and the sampled voices are the thing every person who played it remembers first.</p>\n<p>Patrick Buckland wrote the game; Casady & Greene, a Mac-only publisher with an unusually good ear for what the platform's users wanted, published it. Buckland went on to co-found Stainless Software, the studio behind Carmageddon. Casady & Greene closed in 2003, a Macintosh software house that outlived nearly all the others and is now mostly remembered for this and for Conflict Catcher.</p>\n<p>The sound files are still on the disk with their copyright notices in the filenames, which is a small and rather charming piece of 1994 housekeeping.</p>"
+      },
+      {
+        "h": "What the manual inside the game says",
+        "html": "<p>Crystal Quest carries its own instructions, and they are written in the same voice as the rest of it. The useful parts:</p>\n<ul><li><strong>Extra lives</strong> come every 15,000 points up to wave 11, every 40,000 up to wave 26, and every 75,000 after that. Past wave 26 each one is expensive, so play for survival there.</li><li><strong>Firing</strong> works with the mouse button or any letter key, and the shot always goes in the direction you are moving. To hit something, move towards it.</li><li><strong>The space bar</strong> sets off a smart bomb, if you have one. It kills everything on the screen. The manual compares it to using an anti-aircraft gun on a mosquito. Collect the spare smart bombs that turn up in later waves.</li><li><strong>Tab</strong> pauses. <strong>Command-S</strong> saves the game in progress. The <strong>number keys</strong> set the volume, from 0 (silent) to 9, and the manual says 8 sounds better than 9.</li><li><strong>Delete</strong> switches between one and two players before a game starts, for passing the mouse to a friend.</li><li>Holding <strong>Option</strong> when you click to start puts a Mac II into super-fast mode. Scores set that way show in italics in the high-score table, so everyone can see how you got them.</li></ul>\n<p>The manual also has a note on <strong>Command-A</strong>, which ends the current game. It suggests using it on someone who is about to beat your high score.</p>"
       }
     ],
     "faq": [
@@ -3504,12 +3564,12 @@
         "a": "With the mouse alone. The ship goes exactly where you point, and the button fires in whatever direction you are moving."
       },
       {
-        "q": "Why can I not use the keyboard?",
-        "a": "The game was designed around the mouse, and the absolute positioning is the point — you can cross the screen as fast as your hand moves, which no keyboard would allow."
+        "q": "Does it use the keyboard at all?",
+        "a": "For everything except flying. The mouse moves the ship, because absolute positioning is the point of the game. But the mouse button or any letter key fires, the space bar sets off a smart bomb, Tab pauses, and Command-S saves a game in progress."
       },
       {
         "q": "How do I score well?",
-        "a": "Finish waves quickly, and finish them without firing where you can. The no-shot bonus is large enough that some waves are best played as pure evasion."
+        "a": "Clear waves fast for the time bonus, catch the bonus crystals rather than shooting them, and save smart bombs for the waves that go wrong. Extra lives come every 15,000 points early on, then less often, so survival matters more the further you get."
       },
       {
         "q": "Does it really talk?",
@@ -3552,11 +3612,12 @@
         }
       ]
     },
-    "updated": "2026-09-20",
+    "updated": "2026-09-23",
     "addedDate": "2026-09-20",
     "rank": 1,
     "screenshot": true,
-    "persist": true
+    "persist": true,
+    "touchOk": true
   },
   {
     "slug": "macwrite",
