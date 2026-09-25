@@ -1,0 +1,242 @@
+{
+ "screen": [
+  800,
+  600
+ ],
+ "shutdown": {
+  "menu": [
+   181,
+   9
+  ],
+  "item": [
+   206,
+   119
+  ]
+ },
+ "steps": [
+  {
+   "waitMs": 20000,
+   "note": "settle"
+  },
+  {
+   "doubleClick": [
+    750,
+    55
+   ],
+   "waitMs": 6000,
+   "note": "ev-override: disk window"
+  },
+  {
+   "doubleClick": [
+    193,
+    158
+   ],
+   "waitMs": 6000,
+   "note": "ev-override: installers window"
+  },
+  {
+   "doubleClick": [
+    193,
+    90
+   ],
+   "waitMs": 25000,
+   "note": "ev-override: launch"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 6000,
+   "note": "ev-override: continue"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 6000,
+   "note": "ev-override: accept"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 200000,
+   "note": "ev-override: install"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 8000,
+   "note": "ev-override: quit installer"
+  },
+  {
+   "doubleClick": [
+    750,
+    55
+   ],
+   "waitMs": 6000,
+   "note": "chiral: disk window"
+  },
+  {
+   "doubleClick": [
+    193,
+    158
+   ],
+   "waitMs": 6000,
+   "note": "chiral: installers window"
+  },
+  {
+   "doubleClick": [
+    65,
+    90
+   ],
+   "waitMs": 25000,
+   "note": "chiral: launch"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 6000,
+   "note": "chiral: continue"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 6000,
+   "note": "chiral: accept"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 200000,
+   "note": "chiral: install"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 8000,
+   "note": "chiral: quit installer"
+  },
+  {
+   "doubleClick": [
+    750,
+    55
+   ],
+   "waitMs": 6000,
+   "note": "mars-rising: disk window"
+  },
+  {
+   "doubleClick": [
+    193,
+    158
+   ],
+   "waitMs": 6000,
+   "note": "mars-rising: installers window"
+  },
+  {
+   "doubleClick": [
+    320,
+    90
+   ],
+   "waitMs": 25000,
+   "note": "mars-rising: launch"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 6000,
+   "note": "mars-rising: continue"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 6000,
+   "note": "mars-rising: accept"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 200000,
+   "note": "mars-rising: install"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 8000,
+   "note": "mars-rising: quit installer"
+  },
+  {
+   "doubleClick": [
+    750,
+    55
+   ],
+   "waitMs": 6000,
+   "note": "slithereens: disk window"
+  },
+  {
+   "doubleClick": [
+    193,
+    158
+   ],
+   "waitMs": 6000,
+   "note": "slithereens: installers window"
+  },
+  {
+   "doubleClick": [
+    65,
+    153
+   ],
+   "waitMs": 25000,
+   "note": "slithereens: launch"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 6000,
+   "note": "slithereens: continue"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 6000,
+   "note": "slithereens: accept"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 200000,
+   "note": "slithereens: install"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 8000,
+   "note": "slithereens: quit installer"
+  },
+  {
+   "doubleClick": [
+    750,
+    55
+   ],
+   "waitMs": 6000,
+   "note": "swoop: disk window"
+  },
+  {
+   "doubleClick": [
+    193,
+    158
+   ],
+   "waitMs": 6000,
+   "note": "swoop: installers window"
+  },
+  {
+   "doubleClick": [
+    193,
+    153
+   ],
+   "waitMs": 25000,
+   "note": "swoop: launch"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 6000,
+   "note": "swoop: continue"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 6000,
+   "note": "swoop: accept"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 200000,
+   "note": "swoop: install"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 8000,
+   "note": "swoop: quit installer"
+  }
+ ]
+}

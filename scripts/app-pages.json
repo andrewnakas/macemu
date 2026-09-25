@@ -5408,6 +5408,553 @@
     "persist": true
   },
   {
+    "slug": "ev-override",
+    "appType": "game",
+    "author": "Ambrosia Software",
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "ev-override-title"
+    ],
+    "provenance": "shareware",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "updated": "2026-09-25",
+    "addedDate": "2026-09-25",
+    "screenshot": true,
+    "persist": true,
+    "title": "Play EV Override Online — Escape Velocity's Sequel, Free",
+    "description": "EV Override, Ambrosia's space trading and combat sequel to Escape Velocity, running free in your browser on an emulated Power Macintosh.",
+    "keywords": "ev override, escape velocity override, play escape velocity online, escape velocity mac, ambrosia escape velocity, ev override online, space trading game mac",
+    "ogTitle": "EV Override in your browser",
+    "ogDescription": "Ambrosia's Escape Velocity sequel on an emulated Power Macintosh.",
+    "crumb": "EV Override",
+    "h1": "EV Override — a shuttlecraft, some money and a universe",
+    "appName": "EV Override",
+    "year": 1998,
+    "genre": [
+      "Action",
+      "Strategy",
+      "Science fiction"
+    ],
+    "categories": [
+      "Shooters"
+    ],
+    "licenseReason": "EV Override is Ambrosia Software shareware. Its licence permits non-profit distribution provided the software is unmodified and the complete works are included, and both are true here. The copy is unregistered, and the shareware notice it shows at startup is left in place. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/ev-override.md\" rel=\"noopener\">notices/ev-override.md</a>.",
+    "intro": "<p>You start with a small shuttlecraft, a little money, somewhere near Earth. From there it is up to you: haul cargo between systems, take missions from the bar, hunt pirates, or pick a side in a war that your choices can actually move.</p>\n<p>EV Override is Ambrosia's 1998 follow-up to Escape Velocity, with a universe its own FAQ puts at five times the size of the original's and more than 250 missions. This is version 1.0.2, running on an emulated Power Macintosh.</p>",
+    "launchNote": "Boots Mac OS 8.6 and opens EV Override by itself. Ambrosia's shareware notice comes first: wait for Not Yet to light up, click it, then choose New Pilot and Enter Ship.",
+    "macControls": [
+      {
+        "keys": "Arrow keys",
+        "does": "Thrust and turn"
+      },
+      {
+        "keys": "Space",
+        "does": "Fire the primary weapons"
+      },
+      {
+        "keys": "L",
+        "does": "Request clearance to land, then press again to land"
+      },
+      {
+        "keys": "M",
+        "does": "The star map, to choose a hyperspace destination"
+      },
+      {
+        "keys": "J",
+        "does": "Hyperspace jump, once far enough from the planet"
+      },
+      {
+        "keys": "Set Prefs",
+        "does": "Every key can be changed from the main menu"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh, 800×600, 256 colours</td></tr><tr><th>System</th><td>Mac OS 8.6</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Version</th><td>EV Override 1.0.2 (the game first shipped in April 1998)</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser</td></tr></tbody></table><p>The first start is the slow one: Mac OS 8.6 downloads once and every Mac OS 8 title after it starts much faster. EV Override takes over the whole screen, and the emulated Mac is set up for it.</p>"
+      },
+      {
+        "h": "Getting started",
+        "html": "<p>From the main menu, choose <strong>New Pilot</strong>. The game asks for your name (it suggests Rick Hardslab) and offers <strong>Strict Play</strong>: tick it and death is final, with no reloading. Then it asks you to name your new S-685 shuttlecraft, fresh from the Liverpool shipyards. <strong>Enter Ship</strong> puts you on the ground at a spaceport, where you can trade, visit the bar for missions, buy upgrades or take off.</p><p>In space, landing needs clearance: press L to ask, then L again to land. To leave a system, open the map, pick a nearby system and fly far enough from the planet before jumping. The game tells you when you are too close, too fast, or short of fuel.</p>"
+      },
+      {
+        "h": "What changed from Escape Velocity",
+        "html": "<p>Ambrosia's own FAQ describes Override as the huge follow-up to the original Escape Velocity: a much bigger universe, a slew of populated worlds, and no more never-ending wars. Winning critical battles changes who controls what, or you can ignore all of it and make a living as a trader, as long as the renegades leave your cargo alone.</p><p>It was made by Matt Burch, Chris West and Peter Cartwright on an improved Escape Velocity engine, and it ships with a plug-in folder and a developer's reference, which is why the EV series grew such a large modding scene. EV Nova followed in 2002.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the real EV Override?",
+        "a": "Yes: version 1.0.2 from Ambrosia's own installer, running on an emulated Power Macintosh. It is not a remake or a fan port."
+      },
+      {
+        "q": "Is it legal to play here?",
+        "a": "EV Override is Ambrosia shareware, and its licence allows non-profit distribution as long as the software is unmodified and complete. This site is non-profit and carries no advertising, and the shareware notice is left in place."
+      },
+      {
+        "q": "How do I start?",
+        "a": "Click Not Yet on the shareware notice once it lights up, then New Pilot, give your pilot and ship a name, and Enter Ship."
+      },
+      {
+        "q": "What is Strict Play?",
+        "a": "An option when you create a pilot. With it on, dying ends that pilot for good; there is no reloading an earlier save."
+      },
+      {
+        "q": "How do I land and jump?",
+        "a": "Press L near a planet to ask for clearance and L again to land. For a jump, open the map with M, choose a nearby system, fly clear of the planet and press J."
+      },
+      {
+        "q": "Is my pilot saved?",
+        "a": "Pilots are saved inside the emulated Mac, in your own browser, so they survive closing the tab but not clearing site data."
+      },
+      {
+        "q": "Is there an EV Nova here?",
+        "a": "No. EV Nova (2002) was a later, separate product."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li><a href=\"https://archive.org/details/tucows_205563_Escape_Velocity_Override\" rel=\"noopener\">Internet Archive</a>: the Ambrosia installer this copy was produced from, via the Tucows Mac archive.</li></ul>"
+    },
+    "related": [
+      "avara",
+      "cythera",
+      "mars-rising"
+    ]
+  },
+  {
+    "slug": "mars-rising",
+    "appType": "game",
+    "author": "Ambrosia Software",
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "mars-rising-title"
+    ],
+    "provenance": "shareware",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "updated": "2026-09-25",
+    "addedDate": "2026-09-25",
+    "screenshot": true,
+    "persist": true,
+    "title": "Play Mars Rising Online — Ambrosia's 1998 Mac Shooter",
+    "description": "Mars Rising, David Wareing's vertically scrolling shooter for Ambrosia, running free in your browser on an emulated Power Macintosh. One or two players.",
+    "keywords": "mars rising, play mars rising online, mars rising mac, ambrosia mars rising, david wareing, mac shoot em up, vertical shooter mac",
+    "ogTitle": "Mars Rising in your browser",
+    "ogDescription": "Ambrosia's vertical shooter on an emulated Power Macintosh.",
+    "crumb": "Mars Rising",
+    "h1": "Mars Rising — Vac-Fighters over the Red Planet",
+    "appName": "Mars Rising",
+    "year": 1998,
+    "genre": [
+      "Action",
+      "Shoot 'em up",
+      "Science fiction"
+    ],
+    "categories": [
+      "Shooters"
+    ],
+    "licenseReason": "Mars Rising is Ambrosia Software shareware. Its licence permits non-profit distribution provided the software is unmodified and the complete works are included, and both are true here. The copy is unregistered, and the shareware notice it shows at startup is left in place. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/mars-rising.md\" rel=\"noopener\">notices/mars-rising.md</a>.",
+    "intro": "<p>The year is 2084, Mars Colony has declared independence, and a general has cut the planet off from Earth. You fly out of Deimos in a prototype Vac-Fighter to hit the Martian bases below, alone or with a second player beside you.</p>\n<p>Mars Rising is a vertically scrolling shooter by David Wareing, published by Ambrosia in 1998, with 28 levels. The read-me lists the Wave Motion Gun among the Vac-Fighter's weapons, and describes the mission with a straight face that does not last long.</p>",
+    "launchNote": "Boots Mac OS 8.6 and opens Mars Rising by itself. Choose Don't Change when it offers to switch the screen, click Not Yet on the shareware notice, then 1 Player.",
+    "macControls": [
+      {
+        "keys": "Arrow keys",
+        "does": "Fly"
+      },
+      {
+        "keys": "Fire key",
+        "does": "Shoot; set it under Controls on the menu"
+      },
+      {
+        "keys": "D",
+        "does": "Watch a demo from the menu"
+      },
+      {
+        "keys": "Mouse",
+        "does": "Menus, and the menu bar at the top of the screen"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh, 800×600, 256 colours</td></tr><tr><th>System</th><td>Mac OS 8.6</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Version</th><td>Mars Rising 1.0.2</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser</td></tr></tbody></table><p>The first start is the slow one: Mac OS 8.6 downloads once and every Mac OS 8 title after it starts much faster. It asks at first start whether to change the screen resolution. Don't Change is the safe answer here.</p>"
+      },
+      {
+        "h": "The mission",
+        "html": "<p>The read-me sets it up: Mars Colony, owned by a company called Terran Assets Corp, has declared independence, a general of the Martian Defence Force has taken control, and every Terran asset in Martian space has been lost except Deimos. You strike back from there, first at the Olympus Mons air base.</p><p>The Vac-Fighter carries bombs for ground targets and matter cannon for the air, and weapon upgrades turn up as you go. Two players can fly together and compete for the score, which is how the game was meant to be played in 1998, ideally with gamepads.</p>"
+      },
+      {
+        "h": "Ambrosia and David Wareing",
+        "html": "<p>David Wareing also wrote <a href=\"/run/swoop/\">Swoop</a> for Ambrosia three years earlier. Mars Rising is the Power Macintosh follow-up: it needs a PowerPC processor and 7.5 MB of free memory by its own requirements, which ruled out a lot of Macs still in use at the time.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "How do I start a game?",
+        "a": "Choose Don't Change at the screen-resolution question, click Not Yet on the shareware notice, then click 1 Player on the menu."
+      },
+      {
+        "q": "Can two people play?",
+        "a": "Yes. 2 Player on the menu puts two Vac-Fighters on the screen. The read-me recommends gamepads for that; on one keyboard it is cramped but works."
+      },
+      {
+        "q": "What are the controls?",
+        "a": "Fly with the arrow keys. The fire key and everything else can be seen and changed under Controls on the menu."
+      },
+      {
+        "q": "How many levels are there?",
+        "a": "28, according to the read-me."
+      },
+      {
+        "q": "Is it legal to play here?",
+        "a": "Mars Rising is Ambrosia shareware, and its licence allows non-profit distribution as long as the software is unmodified and complete. This site is non-profit and carries no advertising."
+      },
+      {
+        "q": "Are high scores kept?",
+        "a": "Inside the emulated Mac, in your own browser."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li><a href=\"https://archive.org/details/tucows_205646_Mars_Rising\" rel=\"noopener\">Internet Archive</a>: the Ambrosia installer this copy was produced from, via the Tucows Mac archive.</li></ul>"
+    },
+    "related": [
+      "swoop",
+      "ev-override",
+      "maelstrom"
+    ]
+  },
+  {
+    "slug": "swoop",
+    "appType": "game",
+    "author": "Ambrosia Software",
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "swoop-title"
+    ],
+    "provenance": "shareware",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "updated": "2026-09-25",
+    "addedDate": "2026-09-25",
+    "screenshot": true,
+    "persist": true,
+    "title": "Play Swoop Online — Ambrosia's 1995 Mac Arcade Shooter",
+    "description": "Swoop, David Wareing's fast vertical shoot 'em up for Ambrosia, running free in your browser on an emulated Mac. Rendered aliens, lots of dodging.",
+    "keywords": "swoop, play swoop online, swoop mac game, ambrosia swoop, galaxian mac, mac arcade shooter, david wareing",
+    "ogTitle": "Swoop in your browser",
+    "ogDescription": "Ambrosia's Galaxian-style shooter on an emulated Macintosh.",
+    "crumb": "Swoop",
+    "h1": "Swoop — rapid fire and even more frantic dodging",
+    "appName": "Swoop",
+    "year": 1995,
+    "genre": [
+      "Action",
+      "Shoot 'em up",
+      "Arcade"
+    ],
+    "categories": [
+      "Shooters"
+    ],
+    "licenseReason": "Swoop is Ambrosia Software shareware. Its licence permits non-profit distribution provided the software is unmodified and the complete works are included, and both are true here. The copy is unregistered, and the shareware notice it shows at startup is left in place. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/swoop.md\" rel=\"noopener\">notices/swoop.md</a>.",
+    "intro": "<p>Formations of rendered aliens peel off and dive at you, and you slide along the bottom of the screen shooting back. Swoop is Ambrosia's take on the Galaxian idea, written by David Wareing in 1995.</p>\n<p>Its own FAQ describes it as frantic rapid-fire activity and even more frantic dodging, and adds that it is definitely not a game for wusses. This is version 1.0.2 on an emulated Macintosh.</p>",
+    "launchNote": "Boots Mac OS 8.6 and opens Swoop by itself. Click Not Yet on the shareware notice, then New Game.",
+    "macControls": [
+      {
+        "keys": "Keyboard",
+        "does": "Move and fire; the keys are listed and changed under Controls on the menu"
+      },
+      {
+        "keys": "Return",
+        "does": "Start a new game from the menu"
+      },
+      {
+        "keys": "Mouse",
+        "does": "The menu"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh, 800×600, 256 colours</td></tr><tr><th>System</th><td>Mac OS 8.6</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Version</th><td>Swoop 1.0.2</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser</td></tr></tbody></table><p>The first start is the slow one: Mac OS 8.6 downloads once and every Mac OS 8 title after it starts much faster. Swoop was written to run happily on anything from a 68020 LC to a Power Mac, so it is light here.</p>"
+      },
+      {
+        "h": "The game",
+        "html": "<p>Waves of aliens arrive in formation and then break off in named attack patterns. The game's own files name them: dive bombers, a fish hook, a twister, an under-the-radar run. Some come straight at you and some circle back. You have a variety of weapons, and the dodging matters as much as the shooting.</p><p>The menu has New Game, Instructions, High Scores, Controls, Register and Quit.</p>"
+      },
+      {
+        "h": "David Wareing's first Ambrosia game",
+        "html": "<p>Wareing was a freelance Macintosh games programmer. Swoop came first, in 1995, and he followed it with <a href=\"/run/mars-rising/\">Mars Rising</a> for the Power Macintosh in 1998. Swoop's FAQ makes a point that was a selling line then: it works just as happily on a 68020 Mac as on a PowerMac.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "How do I start?",
+        "a": "Click Not Yet on the shareware notice, then New Game (or press Return) on the menu."
+      },
+      {
+        "q": "What are the controls?",
+        "a": "Keyboard, and they are listed and can be changed under Controls on Swoop's menu."
+      },
+      {
+        "q": "Is Swoop like Galaxian?",
+        "a": "Yes, in the same family: enemies fly in formation and dive at you while you move along the bottom of the screen. Swoop's are 3D-rendered and come in a lot of named attack patterns."
+      },
+      {
+        "q": "Is it legal to play here?",
+        "a": "Swoop is Ambrosia shareware, and its licence allows non-profit distribution as long as the software is unmodified and complete. This site is non-profit and carries no advertising."
+      },
+      {
+        "q": "Are high scores kept?",
+        "a": "Inside the emulated Mac, in your own browser."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li><a href=\"https://archive.org/details/tucows_205644_Swoop\" rel=\"noopener\">Internet Archive</a>: the Ambrosia installer this copy was produced from, via the Tucows Mac archive.</li></ul>"
+    },
+    "related": [
+      "mars-rising",
+      "maelstrom",
+      "ev-override"
+    ]
+  },
+  {
+    "slug": "slithereens",
+    "appType": "game",
+    "author": "Ambrosia Software",
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "slithereens-title"
+    ],
+    "provenance": "shareware",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "updated": "2026-09-25",
+    "addedDate": "2026-09-25",
+    "screenshot": true,
+    "persist": true,
+    "title": "Play Slithereens Online — Ambrosia's Snake Game, Free",
+    "description": "Slithereens, Ambrosia's 1998 snake game set in a stone maze, running free in your browser on an emulated Power Macintosh. One or two players.",
+    "keywords": "slithereens, play slithereens online, slithereens mac, ambrosia slithereens, snake game mac, nibbles mac, mac snake game",
+    "ogTitle": "Slithereens in your browser",
+    "ogDescription": "Ambrosia's snake game on an emulated Power Macintosh.",
+    "crumb": "Slithereens",
+    "h1": "Slithereens — snakes in a stone maze",
+    "appName": "Slithereens",
+    "year": 1998,
+    "genre": [
+      "Action",
+      "Arcade"
+    ],
+    "categories": [
+      "Action"
+    ],
+    "licenseReason": "Slithereens is Ambrosia Software shareware. Its licence permits non-profit distribution provided the software is unmodified and the complete works are included, and both are true here. The copy is unregistered, and the shareware notice it shows at startup is left in place. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/slithereens.md\" rel=\"noopener\">notices/slithereens.md</a>.",
+    "intro": "<p>You are the green snake. Eat, grow, and do not run into the walls, the other snakes or yourself. Slithereens takes the old snake game into a stone maze full of rival snakes, with a menu that is itself a little 3D garden of signposts.</p>\n<p>Ambrosia released it in December 1998. This is version 1.0.0 on an emulated Power Macintosh.</p>",
+    "launchNote": "Boots Mac OS 8.6 and opens Slithereens by itself. Click Change (or press Return) when it asks about screen resolution, then New 1-Player Game.",
+    "macControls": [
+      {
+        "keys": "Arrow keys",
+        "does": "Turn the snake"
+      },
+      {
+        "keys": "Caps Lock",
+        "does": "Pause"
+      },
+      {
+        "keys": "Esc",
+        "does": "Abort the game"
+      },
+      {
+        "keys": "Mouse",
+        "does": "Either player can use the mouse instead; set it in Preferences"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh, 800×600, 256 colours</td></tr><tr><th>System</th><td>Mac OS 8.6</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Version</th><td>Slithereens 1.0.0 (December 1998)</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser</td></tr></tbody></table><p>The first start is the slow one: Mac OS 8.6 downloads once and every Mac OS 8 title after it starts much faster. At first start it asks whether to switch the screen resolution. Choose Change, or press Return; that is the combination tested here.</p>"
+      },
+      {
+        "h": "How it plays",
+        "html": "<p>Each level is a stone maze with food on the floor and other snakes moving through it. Eating makes you longer, which is the point and the problem. The game's own walkthrough adds a warning: lay an egg when only your head is left, and you die.</p><p>The menu is a set of signposts in a garden: New 1-Player Game, New 2-Player Game, Preferences, High Scores, Help, About and Quit. Two players can share the keyboard, or one can use the mouse, and there is a cooperative mode.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "How do I start?",
+        "a": "Choose Change (or press Return) at the screen-resolution question, then click the New 1-Player Game signpost."
+      },
+      {
+        "q": "What are the controls?",
+        "a": "The arrow keys turn your snake. Caps Lock pauses and Escape aborts. Preferences lets either player use the keyboard or the mouse."
+      },
+      {
+        "q": "Can two people play?",
+        "a": "Yes, from the New 2-Player Game signpost, on one keyboard or with one player on the mouse."
+      },
+      {
+        "q": "Is it legal to play here?",
+        "a": "Slithereens is Ambrosia shareware, and its licence allows non-profit distribution as long as the software is unmodified and complete. This site is non-profit and carries no advertising."
+      },
+      {
+        "q": "Are high scores kept?",
+        "a": "Inside the emulated Mac, in your own browser."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li><a href=\"https://archive.org/details/tucows_205645_Slithereens\" rel=\"noopener\">Internet Archive</a>: the Ambrosia installer this copy was produced from, via the Tucows Mac archive.</li></ul>"
+    },
+    "related": [
+      "macsnake",
+      "chiral",
+      "barrack"
+    ]
+  },
+  {
+    "slug": "chiral",
+    "appType": "game",
+    "author": "Ambrosia Software",
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "chiral-title"
+    ],
+    "provenance": "shareware",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "updated": "2026-09-25",
+    "addedDate": "2026-09-25",
+    "screenshot": true,
+    "persist": true,
+    "title": "Play Chiral Online — Ambrosia's Molecule Puzzle Game",
+    "description": "Chiral, Ambrosia's atom-bonding puzzle game from 1994, running free in your browser on an emulated Mac. Stabilise the atoms before the lab fills.",
+    "keywords": "chiral, play chiral online, chiral mac game, ambrosia chiral, molecule puzzle game, tetris like mac game, trevor powell",
+    "ogTitle": "Chiral in your browser",
+    "ogDescription": "Ambrosia's atom-bonding puzzle game on an emulated Macintosh.",
+    "crumb": "Chiral",
+    "h1": "Chiral — bond the atoms before the lab fills",
+    "appName": "Chiral",
+    "year": 1994,
+    "genre": [
+      "Puzzle",
+      "Arcade"
+    ],
+    "categories": [
+      "Puzzle & strategy"
+    ],
+    "touchOk": true,
+    "licenseReason": "Chiral is Ambrosia Software shareware. Its licence permits non-profit distribution provided the software is unmodified and the complete works are included, and both are true here. The copy is unregistered, and the shareware notice it shows at startup is left in place. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/chiral.md\" rel=\"noopener\">notices/chiral.md</a>.",
+    "intro": "<p>A laboratory has built a machine that makes atoms out of thin air and cannot switch it off. Your job is to bond the unstable atoms it produces into stable molecules before they fill the screen. Chiral's own FAQ calls it a fusion of atomic bonding and the addictive play of Tetris.</p>\n<p>It was written by Trevor Powell and Andrew Welch, Ambrosia's founder, and first released in 1994. This is version 1.0.4.</p>",
+    "launchNote": "Boots Mac OS 8.6 and opens Chiral by itself. Click through the title, wait for Not Yet to light up on the shareware notice and click it, then click the small button beside Play Chiral.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "The menu buttons are the small flags beside each label"
+      },
+      {
+        "keys": "Instructions",
+        "does": "The game's own guide to bonding atoms, from the menu"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh, 800×600, 256 colours</td></tr><tr><th>System</th><td>Mac OS 8.6</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Version</th><td>Chiral 1.0.4 (April 1996; first released April 1994)</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser</td></tr></tbody></table><p>The first start is the slow one: Mac OS 8.6 downloads once and every Mac OS 8 title after it starts much faster. Chiral is light: its FAQ asks for a 256-colour screen and 1.5 MB of memory.</p>"
+      },
+      {
+        "h": "The game",
+        "html": "<p>The machine keeps producing unstable atoms, and the job is to bond them into stable molecules before they take over. Beside the board sit a test tube with an atom in it, your score and a bonus.</p><p>The FAQ counts six difficulty settings and twenty-four levels, 144 screens in all. The menu sets difficulty, sound volume and music, and keeps a high-score table. The clickable parts of the menu are the small flag buttons beside each label, not the words, which is worth knowing before you wonder why nothing happens.</p>"
+      },
+      {
+        "h": "Ambrosia's early catalogue",
+        "html": "<p>Chiral is from the first years of Ambrosia Software, the Rochester shareware house Andrew Welch founded, which also published <a href=\"/run/maelstrom/\">Maelstrom</a>. The in-game credits still read ©1994–6.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "How do I start?",
+        "a": "Click past the title, click Not Yet on the shareware notice once it lights up, then the small button beside Play Chiral."
+      },
+      {
+        "q": "Why does clicking Play Chiral do nothing?",
+        "a": "The buttons are the little flag icons to the left of each label. Click the flag, not the word."
+      },
+      {
+        "q": "Is it like Tetris?",
+        "a": "Its own FAQ describes it as atomic bonding crossed with Tetris-style play: things arrive, you fit them together, and you lose when the space runs out."
+      },
+      {
+        "q": "Is it legal to play here?",
+        "a": "Chiral is Ambrosia shareware, and its licence allows non-profit distribution as long as the software is unmodified and complete. This site is non-profit and carries no advertising."
+      },
+      {
+        "q": "Are high scores kept?",
+        "a": "Inside the emulated Mac, in your own browser."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li><a href=\"https://archive.org/details/tucows_205639_Chiral\" rel=\"noopener\">Internet Archive</a>: the Ambrosia installer this copy was produced from, via the Tucows Mac archive.</li></ul>"
+    },
+    "related": [
+      "slithereens",
+      "barrack",
+      "maelstrom"
+    ]
+  },
+  {
     "slug": "archon",
     "title": "Play Archon Online — Free Fall's Chess-Arcade Hybrid",
     "description": "Archon, the 1984 Macintosh release of Free Fall's chess-and-combat hybrid, running in your browser on an emulated Macintosh Plus.",
