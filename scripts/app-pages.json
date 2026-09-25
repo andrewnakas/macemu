@@ -5955,6 +5955,436 @@
     ]
   },
   {
+    "slug": "escape-velocity",
+    "appType": "game",
+    "author": "Ambrosia Software",
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "escape-velocity-title"
+    ],
+    "provenance": "shareware",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "updated": "2026-09-25",
+    "addedDate": "2026-09-25",
+    "screenshot": true,
+    "persist": true,
+    "title": "Play Escape Velocity Online — Ambrosia's 1996 Original",
+    "description": "Escape Velocity, the 1996 Mac space trading and combat game that started the EV series, running free in your browser on an emulated Mac.",
+    "keywords": "escape velocity, play escape velocity online, escape velocity 1996, escape velocity mac, ambrosia escape velocity, matt burch, space trading game mac",
+    "ogTitle": "Escape Velocity in your browser",
+    "ogDescription": "The original 1996 Escape Velocity on an emulated Macintosh.",
+    "crumb": "Escape Velocity",
+    "h1": "Escape Velocity — the original, from 1996",
+    "appName": "Escape Velocity",
+    "year": 1996,
+    "genre": [
+      "Action",
+      "Strategy",
+      "Science fiction"
+    ],
+    "categories": [
+      "Shooters"
+    ],
+    "licenseReason": "Escape Velocity is Ambrosia Software shareware. Its licence permits non-profit distribution provided the software is unmodified and the complete works are included, and both are true here. The copy is unregistered, and the shareware notice it shows is left in place. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/escape-velocity.md\" rel=\"noopener\">notices/escape-velocity.md</a>.",
+    "intro": "<p>Build a trading empire, help the Rebellion in its civil war, or strike out as a pirate: Escape Velocity's own FAQ says there is no right way to play it. You start with a small ship and some credits and the galaxy is open.</p>\n<p>This is the original, written by Matt Burch and published by Ambrosia in May 1996, the game that started the EV series. Version 1.0.5, running on an emulated Power Macintosh.</p>",
+    "launchNote": "Boots Mac OS 8.6 and opens Escape Velocity by itself. Choose New Pilot, name your pilot and ship, then Enter Ship. The opening story plays first; click through it.",
+    "macControls": [
+      {
+        "keys": "Arrow keys",
+        "does": "Thrust and turn"
+      },
+      {
+        "keys": "Space",
+        "does": "Fire the primary weapons"
+      },
+      {
+        "keys": "Esc",
+        "does": "Pause; Enter Ship resumes"
+      },
+      {
+        "keys": "Set Prefs",
+        "does": "See and change every key from the main menu"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh, 800×600, 256 colours</td></tr><tr><th>System</th><td>Mac OS 8.6</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Version</th><td>Escape Velocity 1.0.5 (May 1997; first released 5 May 1996)</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser</td></tr></tbody></table><p>The first start is the slow one: Mac OS 8.6 downloads once and every Mac OS 8 title after it starts much faster. Escape Velocity takes the whole screen. Your pilot is saved automatically every time you land.</p>"
+      },
+      {
+        "h": "Starting out",
+        "html": "<p>From the main menu choose <strong>New Pilot</strong>, give yourself and your ship a name, and <strong>Enter Ship</strong>. A short story plays (the new age of peace and prosperity, it begins, was a failure) and then you are in space above a planet with 10,000 credits and not much of a ship.</p><p>The FAQ's advice is to read the first few chapters of the included documentation and then do what you like. Missions come from landing and looking around; your legal status changes system by system; and you can join a government if you want a side. Planning a long trip? The map supports route planning across several jumps.</p>"
+      },
+      {
+        "h": "Strict Play, and the series that followed",
+        "html": "<p>New pilots can choose <strong>Strict Play</strong>. The FAQ explains it plainly: with it on, when your pilot dies he is truly dead, so be quick to jettison in the escape pod. Without it, Open Pilot puts you back on the last planet you landed on.</p><p>Escape Velocity was followed by <a href=\"/run/ev-override/\">EV Override</a> in 1998, with a universe five times the size, and EV Nova in 2002. The engine's openness to plug-ins is why the series still has a following.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the original Escape Velocity?",
+        "a": "Yes: version 1.0.5 of the 1996 Macintosh game, from Ambrosia's own installer, not a remake."
+      },
+      {
+        "q": "How do I start?",
+        "a": "New Pilot, name your pilot and ship, then Enter Ship. Click through the opening story and you are in space."
+      },
+      {
+        "q": "How do I pause?",
+        "a": "Press Esc. Enter Ship resumes. Command-Q quits to the Finder."
+      },
+      {
+        "q": "How is my pilot saved?",
+        "a": "Automatically, every time you land on a planet, inside the emulated Mac in your browser."
+      },
+      {
+        "q": "What is Strict Play?",
+        "a": "An option for new pilots: if your pilot dies, the pilot file records the death and you must start again. Without it, you resume from the last planet you landed on."
+      },
+      {
+        "q": "Are there cheat codes?",
+        "a": "The game's own FAQ answers that in one word: no."
+      },
+      {
+        "q": "Is it legal to play here?",
+        "a": "Escape Velocity is Ambrosia shareware, and its licence allows non-profit distribution as long as the software is unmodified and complete. This site is non-profit and carries no advertising."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li><a href=\"https://archive.org/details/ambrosia_software_cd_7\" rel=\"noopener\">Internet Archive</a>: Ambrosia Software CD 7, the company's own compilation disc, which this copy's installer came from.</li></ul>"
+    },
+    "related": [
+      "ev-override",
+      "ares",
+      "avara"
+    ]
+  },
+  {
+    "slug": "ares",
+    "appType": "game",
+    "author": "Ambrosia Software",
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "ares-title"
+    ],
+    "provenance": "shareware",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "updated": "2026-09-25",
+    "addedDate": "2026-09-25",
+    "screenshot": true,
+    "persist": true,
+    "title": "Play Ares Online — Ambrosia's 1999 Space Strategy Game",
+    "description": "Ares, Nathan Lamont's real-time space strategy game for Ambrosia, running free in your browser on an emulated Power Macintosh. Starts with a tutorial.",
+    "keywords": "ares, ares ambrosia, play ares online, ares mac game, nathan lamont, space strategy mac, real time strategy mac",
+    "ogTitle": "Ares in your browser",
+    "ogDescription": "Ambrosia's real-time space strategy game on an emulated Power Macintosh.",
+    "crumb": "Ares",
+    "h1": "Ares — command a fleet, fly one of the ships",
+    "appName": "Ares",
+    "year": 1999,
+    "genre": [
+      "Strategy",
+      "Action",
+      "Science fiction"
+    ],
+    "categories": [
+      "Puzzle & strategy"
+    ],
+    "licenseReason": "Ares is Ambrosia Software shareware. Its licence permits non-profit distribution provided the software is unmodified and the complete works are included, and both are true here. The copy is unregistered, and the shareware notice it shows is left in place. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/ares.md\" rel=\"noopener\">notices/ares.md</a>.",
+    "intro": "<p>Ares is real-time strategy in space where you are also one of the ships. You build ships, give them orders and fly in the middle of it yourself, in a campaign whose opening story begins with humanity's first interstellar ship, the Apollo.</p>\n<p>Nathan Lamont wrote it and Ambrosia published it in 1999. This is version 1.2.0 from April 2001, on an emulated Power Macintosh.</p>",
+    "launchNote": "Boots Mac OS 8.6 and opens Ares by itself. An opening story plays; click past it, then choose Start New Game. The first mission is a tutorial.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "The ship's computer: menus, orders and selection"
+      },
+      {
+        "keys": "Keyboard",
+        "does": "Fly your ship; the keys are listed and changed under Options"
+      },
+      {
+        "keys": "Hotkeys",
+        "does": "Assign keys to select particular ships (added in 1.2.0)"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh, 800×600, 256 colours</td></tr><tr><th>System</th><td>Mac OS 8.6</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Version</th><td>Ares 1.2.0 (April 2001; first released September 1999)</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser</td></tr></tbody></table><p>The first start is the slow one: Mac OS 8.6 downloads once and every Mac OS 8 title after it starts much faster. Everything runs inside Ares's own screen.</p>"
+      },
+      {
+        "h": "Getting started",
+        "html": "<p>After the opening story, the menu offers Start New Game, Start Network Game, Replay Intro, Demo, Options and About. A new game begins with <strong>Tutorial Lesson 1</strong> (its title is \"Moons for Goons\"), which walks you through using the ship's computer: the panel on the left of the screen, where you pick orders, send messages and check the mission status.</p><p>From there the campaign mixes flying and fleet command. You build ships, the game tells you when you cannot build more because too much is already in play, and you can bind hotkeys to jump to particular ships.</p>"
+      },
+      {
+        "h": "What 1.2.0 added",
+        "html": "<p>The release notes for version 1.2.0 list support for external scenario files (with an Open… button on the network setup screen), assignable ship hotkeys, clearer mission briefing graphics, and a fix for a beam-weapon bug that let an idle ship hit enemies at any range. The network game needs other Macs on a network, so it does not work here; the campaign does.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "How do I start?",
+        "a": "Click past the opening story, then Start New Game. The first mission is a tutorial that teaches the ship's computer."
+      },
+      {
+        "q": "Is Ares real-time strategy or a space shooter?",
+        "a": "Both. You command a fleet and build ships, and you fly one of them yourself."
+      },
+      {
+        "q": "Does network play work?",
+        "a": "No. It needs other Macs on a network. The single-player campaign works."
+      },
+      {
+        "q": "Who made Ares?",
+        "a": "Nathan Lamont, published as shareware by Ambrosia Software in 1999."
+      },
+      {
+        "q": "Is it legal to play here?",
+        "a": "Ares is Ambrosia shareware, and its licence allows non-profit distribution as long as the software is unmodified and complete. This site is non-profit and carries no advertising."
+      },
+      {
+        "q": "Is my progress saved?",
+        "a": "Inside the emulated Mac, in your own browser."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li><a href=\"https://archive.org/details/ambrosia_software_cd_7\" rel=\"noopener\">Internet Archive</a>: Ambrosia Software CD 7, the company's own compilation disc, which this copy's installer came from.</li></ul>"
+    },
+    "related": [
+      "escape-velocity",
+      "ev-override",
+      "avara"
+    ]
+  },
+  {
+    "slug": "bubble-trouble",
+    "appType": "game",
+    "author": "Ambrosia Software",
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "bubble-trouble-title"
+    ],
+    "provenance": "shareware",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "updated": "2026-09-25",
+    "addedDate": "2026-09-25",
+    "screenshot": true,
+    "persist": true,
+    "title": "Play Bubble Trouble Online — Ambrosia's Underwater Maze",
+    "description": "Bubble Trouble, Alex Metcalf and David Wareing's underwater maze game for Ambrosia, running free in your browser on an emulated Mac.",
+    "keywords": "bubble trouble, bubble trouble mac, ambrosia bubble trouble, play bubble trouble online, david wareing, alex metcalf, mac maze game",
+    "ogTitle": "Bubble Trouble in your browser",
+    "ogDescription": "Ambrosia's underwater maze game on an emulated Macintosh.",
+    "crumb": "Bubble Trouble",
+    "h1": "Bubble Trouble — a young fish in an underwater maze",
+    "appName": "Bubble Trouble",
+    "year": 1996,
+    "genre": [
+      "Action",
+      "Arcade"
+    ],
+    "categories": [
+      "Action"
+    ],
+    "licenseReason": "Bubble Trouble is Ambrosia Software shareware. Its licence permits non-profit distribution provided the software is unmodified and the complete works are included, and both are true here. The copy is unregistered, and the shareware notice it shows is left in place. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/bubble-trouble.md\" rel=\"noopener\">notices/bubble-trouble.md</a>.",
+    "intro": "<p>You are Blinky, a young fish floundering in an underwater maze. Defend yourself from the Denizens of the Deep, collect the treasure and get out. That is the whole setup in the game's own read-me, which also tells you not to bother with instructions: watch a demo, set your controls, and dive in.</p>\n<p>Alex Metcalf and David Wareing wrote it for Ambrosia in 1996. This is version 1.0.1 on an emulated Power Macintosh.</p>",
+    "launchNote": "Boots Mac OS 8.6 and opens Bubble Trouble by itself. Choose Don't Change when it asks about the screen, then New Game.",
+    "macControls": [
+      {
+        "keys": "Keyboard",
+        "does": "Swim and fire; set the keys in Prefs on the title screen"
+      },
+      {
+        "keys": "Demo",
+        "does": "Watch a game first; the read-me recommends it"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh, 800×600, 256 colours</td></tr><tr><th>System</th><td>Mac OS 8.6</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Version</th><td>Bubble Trouble 1.0.1 (February 1997; first released October 1996)</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser</td></tr></tbody></table><p>The first start is the slow one: Mac OS 8.6 downloads once and every Mac OS 8 title after it starts much faster. It asks on first start whether to change the screen resolution. Don't Change is the answer tested here.</p>"
+      },
+      {
+        "h": "How it plays",
+        "html": "<p>Each level is a maze of bubbles, with gems to collect and creatures patrolling it. The status bar along the bottom shows your lives, your score, EXTRA and a bonus. The title screen offers New Game, Demo, Scores, Prefs, Credits, Register and Quit.</p><p>The read-me is short on rules on purpose. Its advice: watch a few demos to learn the basics, set your controls in Preferences, and see what works.</p>"
+      },
+      {
+        "h": "Who made it",
+        "html": "<p>David Wareing also wrote <a href=\"/run/swoop/\">Swoop</a> and <a href=\"/run/mars-rising/\">Mars Rising</a> for Ambrosia; Bubble Trouble was his collaboration with Alex Metcalf. It runs natively on Power Macs and asks for only about 3 MB of memory.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "How do I start?",
+        "a": "Choose Don't Change at the screen question, then New Game on the title screen."
+      },
+      {
+        "q": "What are the controls?",
+        "a": "Keyboard, set under Prefs on the title screen. The read-me suggests watching a demo first."
+      },
+      {
+        "q": "Is this the Mac OS X Bubble Trouble X?",
+        "a": "No. This is the original classic Mac release, version 1.0.1."
+      },
+      {
+        "q": "Is it legal to play here?",
+        "a": "Bubble Trouble is Ambrosia shareware, and its licence allows non-profit distribution as long as the software is unmodified and complete. This site is non-profit and carries no advertising."
+      },
+      {
+        "q": "Are high scores kept?",
+        "a": "Inside the emulated Mac, in your own browser."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li><a href=\"https://archive.org/details/ambrosia_software_cd_7\" rel=\"noopener\">Internet Archive</a>: Ambrosia Software CD 7, the company's own compilation disc, which this copy's installer came from.</li></ul>"
+    },
+    "related": [
+      "slithereens",
+      "swoop",
+      "chiral"
+    ]
+  },
+  {
+    "slug": "harry",
+    "appType": "game",
+    "author": "Ambrosia Software",
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "harry-title"
+    ],
+    "provenance": "shareware",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "updated": "2026-09-25",
+    "addedDate": "2026-09-25",
+    "screenshot": true,
+    "persist": true,
+    "title": "Play Harry the Handsome Executive Online — Ambrosia, 1997",
+    "description": "Harry the Handsome Executive, Ambrosia's 1997 corporate-office action game, running free in your browser on an emulated Power Macintosh.",
+    "keywords": "harry the handsome executive, harry ambrosia, play harry the handsome executive, harry mac game, office action game mac, ambrosia shareware",
+    "ogTitle": "Harry the Handsome Executive in your browser",
+    "ogDescription": "Ambrosia's office action game on an emulated Power Macintosh.",
+    "crumb": "Harry the Handsome Executive",
+    "h1": "Harry the Handsome Executive — corporate life, from above",
+    "appName": "Harry the Handsome Executive",
+    "year": 1997,
+    "genre": [
+      "Action",
+      "Comedy"
+    ],
+    "categories": [
+      "Action"
+    ],
+    "licenseReason": "Harry the Handsome Executive is Ambrosia Software shareware. Its licence permits non-profit distribution provided the software is unmodified and the complete works are included, and both are true here. The copy is unregistered, and the shareware notice it shows is left in place. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/harry.md\" rel=\"noopener\">notices/harry.md</a>.",
+    "intro": "<p>Harry is an executive. The game starts with him pretending to be asleep in a first-class seat while a stewardess tries to sell him something, and it goes on from there into the offices of his company, seen from above, where his comfort and his standing with the company both count.</p>\n<p>Ambrosia published it in September 1997. This is version 1.0.1, running on an emulated Power Macintosh.</p>",
+    "launchNote": "Boots Mac OS 8.6 and opens Harry by itself. Click Not Yet on the shareware notice once it lights up, then New Game, and click through the story page.",
+    "macControls": [
+      {
+        "keys": "Keyboard",
+        "does": "Move Harry; the keys are set under Options on the menu"
+      },
+      {
+        "keys": "Mouse",
+        "does": "The menu and story pages"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh, 800×600, 256 colours</td></tr><tr><th>System</th><td>Mac OS 8.6</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Version</th><td>Harry the Handsome Executive 1.0.1 (November 1997; first released September 1997)</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser</td></tr></tbody></table><p>The first start is the slow one: Mac OS 8.6 downloads once and every Mac OS 8 title after it starts much faster. The game fills the screen with its own frame and status panel.</p>"
+      },
+      {
+        "h": "What you see",
+        "html": "<p>The menu is a green wireframe of an executive office chair, annotated like an engineering drawing, next to New Game, Continue Game, Instructions, Options, Credits and Quit. A new game opens on a page of story before each level, and then Harry's office from above.</p><p>The panel on the right tracks the level, the score, and three gauges: <strong>Comfort</strong>, <strong>Surface Resistance</strong> and <strong>Corporate Favor</strong>. The game comes with its first episode in the Episode 1 folder, and the release notes mention support for custom worlds, rolling boulders and at least thirteen levels.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "How do I start?",
+        "a": "Wait for Not Yet to light up on the shareware notice, click it, then New Game, and click past the story page."
+      },
+      {
+        "q": "What are the controls?",
+        "a": "The keyboard moves Harry; the keys can be seen and set under Options on the menu."
+      },
+      {
+        "q": "Can I save and continue?",
+        "a": "Yes: Continue Game on the menu picks up a saved game, stored inside the emulated Mac in your browser."
+      },
+      {
+        "q": "Is it legal to play here?",
+        "a": "Harry is Ambrosia shareware, and its licence allows non-profit distribution as long as the software is unmodified and complete. This site is non-profit and carries no advertising."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li><a href=\"https://archive.org/details/ambrosia_software_cd_7\" rel=\"noopener\">Internet Archive</a>: Ambrosia Software CD 7, the company's own compilation disc, which this copy's installer came from.</li></ul>"
+    },
+    "related": [
+      "bubble-trouble",
+      "ferazels-wand",
+      "mars-rising"
+    ]
+  },
+  {
     "slug": "archon",
     "title": "Play Archon Online — Free Fall's Chess-Arcade Hybrid",
     "description": "Archon, the 1984 Macintosh release of Free Fall's chess-and-combat hybrid, running in your browser on an emulated Macintosh Plus.",

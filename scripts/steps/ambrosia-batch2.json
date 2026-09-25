@@ -1,0 +1,242 @@
+{
+ "screen": [
+  800,
+  600
+ ],
+ "shutdown": {
+  "menu": [
+   181,
+   9
+  ],
+  "item": [
+   206,
+   119
+  ]
+ },
+ "steps": [
+  {
+   "waitMs": 20000,
+   "note": "settle"
+  },
+  {
+   "doubleClick": [
+    750,
+    55
+   ],
+   "waitMs": 6000,
+   "note": "escape-velocity: disk window"
+  },
+  {
+   "doubleClick": [
+    193,
+    158
+   ],
+   "waitMs": 6000,
+   "note": "escape-velocity: installers window"
+  },
+  {
+   "doubleClick": [
+    75,
+    153
+   ],
+   "waitMs": 25000,
+   "note": "escape-velocity: launch"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 6000,
+   "note": "escape-velocity: continue"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 6000,
+   "note": "escape-velocity: accept"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 200000,
+   "note": "escape-velocity: install"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 8000,
+   "note": "escape-velocity: quit installer"
+  },
+  {
+   "doubleClick": [
+    750,
+    55
+   ],
+   "waitMs": 6000,
+   "note": "apeiron: disk window"
+  },
+  {
+   "doubleClick": [
+    193,
+    158
+   ],
+   "waitMs": 6000,
+   "note": "apeiron: installers window"
+  },
+  {
+   "doubleClick": [
+    75,
+    90
+   ],
+   "waitMs": 25000,
+   "note": "apeiron: launch"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 6000,
+   "note": "apeiron: continue"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 6000,
+   "note": "apeiron: accept"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 200000,
+   "note": "apeiron: install"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 8000,
+   "note": "apeiron: quit installer"
+  },
+  {
+   "doubleClick": [
+    750,
+    55
+   ],
+   "waitMs": 6000,
+   "note": "ares: disk window"
+  },
+  {
+   "doubleClick": [
+    193,
+    158
+   ],
+   "waitMs": 6000,
+   "note": "ares: installers window"
+  },
+  {
+   "doubleClick": [
+    202,
+    90
+   ],
+   "waitMs": 25000,
+   "note": "ares: launch"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 6000,
+   "note": "ares: continue"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 6000,
+   "note": "ares: accept"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 200000,
+   "note": "ares: install"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 8000,
+   "note": "ares: quit installer"
+  },
+  {
+   "doubleClick": [
+    750,
+    55
+   ],
+   "waitMs": 6000,
+   "note": "bubble-trouble: disk window"
+  },
+  {
+   "doubleClick": [
+    193,
+    158
+   ],
+   "waitMs": 6000,
+   "note": "bubble-trouble: installers window"
+  },
+  {
+   "doubleClick": [
+    330,
+    90
+   ],
+   "waitMs": 25000,
+   "note": "bubble-trouble: launch"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 6000,
+   "note": "bubble-trouble: continue"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 6000,
+   "note": "bubble-trouble: accept"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 200000,
+   "note": "bubble-trouble: install"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 8000,
+   "note": "bubble-trouble: quit installer"
+  },
+  {
+   "doubleClick": [
+    750,
+    55
+   ],
+   "waitMs": 6000,
+   "note": "harry: disk window"
+  },
+  {
+   "doubleClick": [
+    193,
+    158
+   ],
+   "waitMs": 6000,
+   "note": "harry: installers window"
+  },
+  {
+   "doubleClick": [
+    202,
+    153
+   ],
+   "waitMs": 25000,
+   "note": "harry: launch"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 6000,
+   "note": "harry: continue"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 6000,
+   "note": "harry: accept"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 200000,
+   "note": "harry: install"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 8000,
+   "note": "harry: quit installer"
+  }
+ ]
+}

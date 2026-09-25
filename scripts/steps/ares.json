@@ -1,0 +1,69 @@
+{
+ "screen": [
+  800,
+  600
+ ],
+ "shutdown": {
+  "menu": [
+   181,
+   9
+  ],
+  "item": [
+   206,
+   119
+  ]
+ },
+ "steps": [
+  {
+   "waitMs": 20000,
+   "note": "settle"
+  },
+  {
+   "doubleClick": [
+    750,
+    55
+   ],
+   "waitMs": 6000,
+   "note": "disk window"
+  },
+  {
+   "doubleClick": [
+    193,
+    158
+   ],
+   "waitMs": 6000,
+   "note": "installers window"
+  },
+  {
+   "doubleClick": [
+    202,
+    90
+   ],
+   "waitMs": 25000,
+   "note": "ares: launch"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 8000,
+   "note": "ares: continue"
+  },
+  {
+   "click": [
+    648,
+    473
+   ],
+   "waitMs": 8000,
+   "note": "ares: accept"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 200000,
+   "note": "ares: install"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 8000,
+   "note": "ares: quit installer"
+  }
+ ]
+}
