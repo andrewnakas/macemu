@@ -1,0 +1,11 @@
+{"screen":[800,600],"shutdown":{"menu":[181,9],"item":[206,119]},"steps":[
+ {"waitMs":50000,"note":"boot"},{"key":"Enter","waitMs":5000,"note":"alias alert"},
+ {"doubleClick":[750,118],"waitMs":8000,"note":"open carbonlib disk"},
+ {"doubleClick":[60,90],"waitMs":40000,"note":"run smi"},{"click":[586,449],"waitMs":25000,"note":"agree to image licence"},
+ {"doubleClick":[620,45],"waitMs":10000,"note":"open mounted volume"},{"doubleClick":[180,95],"waitMs":25000,"note":"launch installer"},
+ {"key":"Enter","waitMs":8000,"note":"continue past licence"},{"click":[540,366],"waitMs":10000,"note":"agree"},
+ {"key":"Enter","waitMs":10000,"note":"select Mac OS 8"},{"key":"Enter","waitMs":10000,"note":"start"},
+ {"click":[536,370],"waitMs":120000,"note":"continue: quit apps and install"},
+ {"waitMs":60000,"note":"after install"},{"key":"Enter","waitMs":90000,"note":"restart if asked"},
+ {"key":"Enter","waitMs":8000,"note":"alias alert after reboot"}
+]}

@@ -458,6 +458,10 @@
       ramMB: d.ram ? parseInt(d.ram, 10) : undefined,
       mode: d.mode || "isolated",
       persist: d.persist === "true",
+      // Authoring only (scripts/author-disk.mjs pages, never a title page):
+      // save the boot disk even with other disks mounted, so a system image
+      // can have software installed into it from a second disk.
+      persistBoot: d.persistBoot === "true",
       controls: parseControls(d.controls),
       launchNote: d.launchNote || "",
       era: d.era || "",
@@ -558,7 +562,7 @@
         // such title the same mutable operating system: writes from one would
         // show up in another, and a single corrupted copy would take out
         // twenty-odd titles at once. Persist only what belongs to this title.
-        var sharedBoot = cfg.extraDisks.length > 0;
+        var sharedBoot = cfg.extraDisks.length > 0 && !cfg.persistBoot;
         disks.push({ name: cfg.disk, persistent: wantPersist && !sharedBoot });
         for (var i = 0; i < cfg.extraDisks.length; i++) {
           disks.push({ name: cfg.extraDisks[i], persistent: wantPersist });
