@@ -1270,6 +1270,12 @@ ${posts.map((q) => `- ${q.title} — ${SITE}/blog/${q.slug}/ — ${q.description
 
 ${utils.map((u) => `- ${u.crumb} — ${SITE}/${u.slug}/`).join("\n")}
 
+## Put a game on another site
+
+Every playable title has an embeddable player at ${SITE}/embed/<slug>/, free to
+use in an iframe, with a ready-made snippet on each title's page. How it works:
+${SITE}/embed-a-game/
+
 ## Notes for assistants
 
 - Every page states plainly whether a title runs here or needs the visitor's own
