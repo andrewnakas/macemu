@@ -145,6 +145,11 @@ for (const step of steps.steps || []) {
     await page.waitForTimeout(600);
     await page.mouse.down();
     console.log(`   hold ${step.hold.join(",")}${step.note ? "  (" + step.note + ")" : ""}`);
+  } else if (step.move) {
+    // Travel with the button still down, so a submenu opens and can be read
+    // off the snapshot. Hops, for the same mouse-polling reason as `menu`.
+    await page.mouse.move(box.x + step.move[0] * sx, box.y + step.move[1] * sy, {steps: 8});
+    console.log(`   move ${step.move.join(",")}`);
   } else if (step.release) {
     await page.mouse.move(box.x + step.release[0] * sx, box.y + step.release[1] * sy);
     await page.waitForTimeout(400);

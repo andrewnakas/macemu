@@ -54,6 +54,7 @@ public/mac-board-and-card-games/
 public/mac-arcade-games/
 public/mac-shareware-games/
 public/ambrosia-software-games/
+public/escape-velocity-games/
 public/.well-known/security.txt
 
 # python venv for the disk builders (machfs)
