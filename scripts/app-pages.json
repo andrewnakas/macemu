@@ -14085,6 +14085,167 @@
     "rank": 0
   },
   {
+    "slug": "carmen-usa",
+    "title": "Where in the USA is Carmen Sandiego? — Play the 1996 CD Free",
+    "description": "Where in the USA is Carmen Sandiego?, the 1996 Brøderbund CD with the Chief on the videophone, playable free in your browser on an emulated Power Mac.",
+    "keywords": "where in the usa is carmen sandiego, carmen sandiego usa, play carmen sandiego online, carmen sandiego 1996, carmen sandiego usa online free, broderbund carmen sandiego usa, carmen sandiego mac",
+    "ogTitle": "Where in the USA is Carmen Sandiego?",
+    "ogDescription": "The 1996 Brøderbund CD, running in your browser on an emulated Power Mac.",
+    "crumb": "Where in the USA is Carmen Sandiego?",
+    "h1": "Where in the USA is Carmen Sandiego? — fifty states, one warrant",
+    "appName": "Where in the USA is Carmen Sandiego?",
+    "appType": "game",
+    "author": "Brøderbund",
+    "year": 1996,
+    "genre": [
+      "Educational",
+      "Detective",
+      "Geography"
+    ],
+    "categories": [
+      "Classroom classics"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "carmen-usa-title",
+      "carmen-usa-cd"
+    ],
+    "provenance": "grey",
+    "licenseReason": "Carmen Sandiego belongs to Houghton Mifflin Harcourt and is actively licensed for new work. Those are new software; this 1996 CD edition has not been sold in over twenty-five years and is in no current product. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/carmen-usa.md\" rel=\"noopener\">notices/carmen-usa.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>This is the Carmen Sandiego from the CD-ROM era: photographs of real places, music, spoken witnesses, and the Chief briefing you over a videophone. One of Carmen's gang has stolen a national treasure, and you follow them across the United States, questioning witnesses in each state and building a description good enough for a warrant.</p>\n<p>It is Brøderbund's 1996 rebuild of the 1986 original, version 3.0.2, the edition that came on the CD bundled with Performas and Power Macs. The whole disc runs here, video and voices included.</p>",
+    "launchNote": "Mac OS 8.6 starts and opens the game by itself; the opening credits take about a minute. At the ACME screen, click the Name box, type a name, press Return, then click Play using this name. Click the Chief to hear the options, then choose Yes, I want a new case.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Everything: the videophone, witnesses, travel, the clue log"
+      },
+      {
+        "keys": "Typing + Return",
+        "does": "Your agent name at the ACME screen"
+      },
+      {
+        "keys": "Speed Dial",
+        "does": "Call the Chief, or request a guide"
+      },
+      {
+        "keys": "Clue Log",
+        "does": "The notes you have collected on the suspect"
+      },
+      {
+        "keys": "Map (bottom right)",
+        "does": "Where you are, and where you can travel next"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh, 800×600</td></tr><tr><th>System</th><td>Mac OS 8.6</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Version</th><td>3.0.2, © 1996 Brøderbund (the Power Macintosh bundle edition, readme dated January 1997)</td></tr><tr><th>Disc</th><td>The whole CD is mounted beside the game, as it was in 1996</td></tr></tbody></table><p>This is the heaviest download of the school-lab titles, because the game reads its photographs, video and speech from the CD as it goes, the way it did from a double-speed drive. The first start takes a couple of minutes: Mac OS 8.6 loads once, then the opening credits run. After that the game only fetches what each new place needs.</p>"
+      },
+      {
+        "h": "Starting a case",
+        "html": "<p>The first screen is the ACME agency roster. Click the Name box, type a name, and press Return; your name then appears in the roster and <em>Play using this name</em> becomes clickable. That puts you on the Videophone, with the Chief waiting. Click her and she offers you a new case, the chance to explore, or to quit.</p>\n<p>Take the case. She tells you what was stolen and where, and you arrive in that state. Along the bottom are your questions for the people you meet: <em>Where did the suspect go?</em>, <em>Tell me about the suspect</em>, and <em>Thank you, goodbye</em>. The map in the corner shows where you are.</p>\n<p>The two kinds of question are the whole game, just as in the original. One tells you where to go next. The other tells you who you are chasing, and those details go into the warrant. Keep both, check the Clue Log, and do not fly anywhere the clues did not point.</p>"
+      },
+      {
+        "h": "How it differs from the 1991 original",
+        "html": "<p>The <a href=\"/run/carmen-world/\">1991 Where in the World</a> on this site is a black-and-white Macintosh game of text clues and a clock. This is the version a school lab in 1997 would have had: full colour, a photograph of every destination, spoken witnesses, and the Chief as a live-action character on the videophone rather than a line of text.</p>\n<p>The design underneath is the same, and so is the lesson it teaches without saying so. A witness mentions a state bird or a capital, you work out where that is, and by the end of a case you know more about Arizona than you meant to learn.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the Carmen Sandiego USA game from school?",
+        "a": "If your school had Macintoshes in the late 1990s, very likely. This is Brøderbund's 1996 CD edition, version 3.0.2, with photographs, music and the Chief on the videophone."
+      },
+      {
+        "q": "Do I need to install anything?",
+        "a": "No. It runs on an emulated Power Macintosh in your browser tab, with the whole CD mounted beside it."
+      },
+      {
+        "q": "Why does it take a while to start?",
+        "a": "Mac OS 8.6 loads first, then the game plays its opening credits. Both take a minute or two on the first start."
+      },
+      {
+        "q": "How do I start a case?",
+        "a": "Type a name in the Name box on the ACME screen and press Return, then click Play using this name. On the videophone, click the Chief and choose Yes, I want a new case."
+      },
+      {
+        "q": "Is Where in the World is Carmen Sandiego here too?",
+        "a": "Yes. The 1991 Where in the World and the 1989 Where in Europe both have their own pages on this site."
+      }
+    ],
+    "download": {
+      "heading": "Archives and originals",
+      "html": "<ul><li><a href=\"https://archive.org/details/carmen-sandiego-usa\" rel=\"noopener\">Internet Archive</a>: the preserved CD this copy came from.</li><li><a href=\"https://macintoshgarden.org/games/where-in-the-usa-is-carmen-sandiego\" rel=\"noopener\">Macintosh Garden</a>: other releases and scans.</li></ul>"
+    },
+    "related": [
+      "carmen-world",
+      "carmen-sandiego-europe",
+      "oregon-trail"
+    ],
+    "shotSetup": {
+      "screen": [
+        800,
+        600
+      ],
+      "steps": [
+        {
+          "waitMs": 110000
+        },
+        {
+          "click": [
+            340,
+            406
+          ],
+          "waitMs": 3000
+        },
+        {
+          "type": "Gumshoe",
+          "waitMs": 4000
+        },
+        {
+          "key": "Enter",
+          "waitMs": 10000
+        },
+        {
+          "click": [
+            400,
+            440
+          ],
+          "waitMs": 30000
+        },
+        {
+          "click": [
+            400,
+            300
+          ],
+          "waitMs": 8000
+        },
+        {
+          "click": [
+            400,
+            304
+          ],
+          "waitMs": 90000
+        }
+      ]
+    },
+    "updated": "2026-09-27",
+    "addedDate": "2026-09-27",
+    "rank": 1,
+    "screenshot": true,
+    "persist": true
+  },
+  {
     "appType": "game",
     "era": "mac-os-8",
     "machine": "Power-Macintosh-9500",

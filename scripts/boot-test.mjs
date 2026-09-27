@@ -254,6 +254,8 @@ for (const t of targets) {
           await page.mouse.up();
         } else if (step.key) {
           await page.keyboard.press(step.key);
+        } else if (step.type) {
+          await page.keyboard.type(step.type, { delay: 120 });
         }
         await page.waitForTimeout(step.waitMs || 2500);
       }
