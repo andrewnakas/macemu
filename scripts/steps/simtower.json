@@ -1,0 +1,91 @@
+{
+ "screen": [
+  800,
+  600
+ ],
+ "steps": [
+  {
+   "waitMs": 10000,
+   "note": "t1"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 5000,
+   "note": "alias"
+  },
+  {
+   "doubleClick": [
+    750,
+    118
+   ],
+   "waitMs": 6000,
+   "note": "open-work"
+  },
+  {
+   "doubleClick": [
+    44,
+    84
+   ],
+   "waitMs": 25000,
+   "note": "launch-installer"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 6000,
+   "note": "cont"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 6000,
+   "note": "readme-cont"
+  },
+  {
+   "click": [
+    424,
+    416
+   ],
+   "waitMs": 4000,
+   "note": "switch-disk"
+  },
+  {
+   "click": [
+    424,
+    416
+   ],
+   "waitMs": 4000,
+   "note": "switch-disk-2"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 120000,
+   "note": "install"
+  },
+  {
+   "waitMs": 30000,
+   "note": "after"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 10000,
+   "note": "quit"
+  },
+  {
+   "click": [
+    400,
+    500
+   ],
+   "waitMs": 3000,
+   "note": "desktop"
+  }
+ ],
+ "shutdown": {
+  "menu": [
+   181,
+   9
+  ],
+  "item": [
+   206,
+   119
+  ]
+ }
+}

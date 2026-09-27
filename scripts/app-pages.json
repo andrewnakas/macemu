@@ -14763,5 +14763,349 @@
     "rank": 2,
     "screenshot": true,
     "persist": true
+  },
+  {
+    "slug": "simtower",
+    "title": "SimTower — Play the 1994 Maxis Tower Builder Free Online",
+    "description": "SimTower, the 1994 Maxis skyscraper simulator by Yoot Saito, playable free in your browser. Build offices, condos and elevators up to five stars.",
+    "keywords": "simtower, play simtower online, simtower free, sim tower game, simtower mac, yoot saito, maxis simtower, tower building game",
+    "ogTitle": "SimTower in your browser",
+    "ogDescription": "The 1994 Maxis skyscraper simulator, running on an emulated Mac.",
+    "crumb": "SimTower",
+    "h1": "SimTower — build it up, keep the elevators moving",
+    "appName": "SimTower",
+    "appType": "game",
+    "author": "Maxis / OPeNBooK (Yoot Saito)",
+    "year": 1994,
+    "genre": [
+      "Simulation",
+      "Strategy",
+      "City building"
+    ],
+    "categories": [
+      "Puzzle & strategy"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "simtower-title"
+    ],
+    "provenance": "grey",
+    "licenseReason": "SimTower belongs to Electronic Arts, which bought Maxis in 1997, and to Yoot Saito, who designed it. This 1995 Macintosh release has not been sold for decades and is in no current product. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/simtower.md\" rel=\"noopener\">notices/simtower.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>You get an empty lot, two million dollars and a side-on view of the sky. SimTower asks you to fill that sky with a building people want to be in: offices, condos, hotel rooms, shops and restaurants, all joined up by elevators that are never quite fast enough. Tenants move in, complain, and move out, and the tower earns its stars as it grows.</p>\n<p>It was designed in Japan by Yoot Saito and published in the West by Maxis in 1994. This is the Macintosh release, version 1.2, installed from the original CD onto an emulated Power Macintosh.</p>",
+    "launchNote": "Mac OS 8.6 starts and opens SimTower by itself. Click Yes when it asks to switch to 256 colours, then New Tower. Start with a lobby on the ground floor.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Everything: pick a tool, then click or drag in the tower to build"
+      },
+      {
+        "keys": "Edit palette",
+        "does": "The building tools: lobby, floors, offices, condos, hotel rooms, elevators, stairs"
+      },
+      {
+        "keys": "Windows menu",
+        "does": "Bring back the tool palette, the map or the info windows"
+      },
+      {
+        "keys": "Pause button",
+        "does": "Stop the clock while you plan"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh, 800×600, 256 colours</td></tr><tr><th>System</th><td>Mac OS 8.6</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Version</th><td>SimTower 1.2 (readme dated 24 April 1995)</td></tr><tr><th>Saves</th><td>Towers save inside the emulated Mac, in your browser</td></tr></tbody></table><p>SimTower insists on 256 colours and asks to switch before it starts; say Yes. The first start downloads Mac OS 8.6 once, and every Mac OS 8 title after it starts faster.</p>"
+      },
+      {
+        "h": "Your first tower",
+        "html": "<p>Choose New Tower and you are looking at an empty plot. Build a lobby along the ground floor first: everything else has to be reached from it. Then add a few floors of offices above, and an elevator shaft that runs from the lobby up through them. Offices pay rent and bring workers in each morning.</p>\n<p>Watch the elevators. Most of the game is about moving people, and a tower with too few elevators fills with angry tenants who leave. Stairs help for short hops; a second shaft helps more. As the population grows the tower gains stars, and each new star unlocks more kinds of room.</p>\n<p>Money comes in over the day and the quarter, shown at the top of the screen alongside the date. Pause while you plan a floor; build when you can afford it.</p>"
+      },
+      {
+        "h": "Why it is remembered",
+        "html": "<p>SimTower is the Maxis game that is not about a city or a planet but about a single building, and that narrowness is what makes it work. Every problem is concrete: a queue at the fourth-floor elevator, a noisy restaurant under a hotel, a condo nobody will buy. Yoot Saito went on to make a sequel, Yoot Tower.</p>\n<p>It is also one of the few Maxis titles that feels as good with a mouse on a small screen as it did in 1994.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the real SimTower?",
+        "a": "Yes: the 1994 Maxis game, Macintosh version 1.2, installed from the original CD and running on an emulated Power Macintosh."
+      },
+      {
+        "q": "Why does it ask to switch colours?",
+        "a": "SimTower was written for 256-colour screens and will not start otherwise. Click Yes and it switches the emulated monitor for you."
+      },
+      {
+        "q": "Can I save my tower?",
+        "a": "Yes. Save from the File menu; the file lives on the emulated Mac inside your browser, so it is there next time on the same browser."
+      },
+      {
+        "q": "How do I get more stars?",
+        "a": "Grow the population and keep tenants happy. Each star unlocks new room types, so the early game is mostly offices, lobby and elevators."
+      },
+      {
+        "q": "Is SimTower still sold?",
+        "a": "No. The Macintosh release has been out of print for decades and is not part of any current product."
+      }
+    ],
+    "download": {
+      "heading": "Archives and originals",
+      "html": "<ul><li><a href=\"https://archive.org/details/SimTowerMacOS\" rel=\"noopener\">Internet Archive</a>: the preserved Macintosh CD this copy was installed from.</li></ul>"
+    },
+    "related": [
+      "simcity",
+      "simearth",
+      "oregon-trail"
+    ],
+    "shotSetup": {
+      "screen": [
+        800,
+        600
+      ],
+      "steps": [
+        {
+          "waitMs": 15000
+        },
+        {
+          "key": "Enter",
+          "waitMs": 12000
+        }
+      ]
+    },
+    "updated": "2026-09-27",
+    "addedDate": "2026-09-27",
+    "rank": 1,
+    "screenshot": true,
+    "persist": true
+  },
+  {
+    "slug": "scarab-of-ra",
+    "title": "Scarab of Ra — Play the Classic Mac Shareware Adventure Free",
+    "description": "Scarab of Ra, Rick Holzgrafe's 1987 Macintosh pyramid adventure, playable free in your browser. Map the maze, watch your food and health, find the scarab.",
+    "keywords": "scarab of ra, scarab of ra mac, scarab of ra online, rick holzgrafe, semicolon software, mac shareware game, pyramid adventure game",
+    "ogTitle": "Scarab of Ra in your browser",
+    "ogDescription": "The classic Mac shareware pyramid adventure, running on an emulated Macintosh.",
+    "crumb": "Scarab of Ra",
+    "h1": "Scarab of Ra — into the Great Pyramid",
+    "appName": "Scarab of Ra",
+    "appType": "game",
+    "author": "Rick Holzgrafe (Semicolon Software)",
+    "year": 1987,
+    "genre": [
+      "Adventure",
+      "RPG",
+      "Dungeon crawl"
+    ],
+    "categories": [
+      "Puzzle & strategy"
+    ],
+    "era": "system-7",
+    "machine": "Mac-SE",
+    "screen": {
+      "w": 512,
+      "h": 342,
+      "depth": 1
+    },
+    "bootDisk": "scarab-of-ra-v1",
+    "provenance": "shareware",
+    "licenseReason": "Scarab of Ra is shareware. Its About box says it \"may not be changed or resold for profit, but it may be freely distributed and copied\", with a $10 fee to Semicolon Software for those who enjoy it. The copy here is unchanged. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/scarab-of-ra.md\" rel=\"noopener\">notices/scarab-of-ra.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>You are an archaeology student sent into the Great Pyramid of Ra, and the pyramid does not want you there. Scarab of Ra is a first-person maze adventure: you step through stone corridors, pick up what you find, and keep an eye on your food, your lamp and your health while you map your way down towards the scarab.</p>\n<p>Rick Holzgrafe wrote it for the Macintosh and released it as shareware in 1987, and it became one of the best-known Mac shareware games. This is version 1.4, © 1987–1992, running on an emulated Macintosh SE.</p>",
+    "launchNote": "Boots straight into the game at the entrance of the Great Pyramid. Move with the arrow buttons in the Movement panel and use Pick Up for what you find.",
+    "macControls": [
+      {
+        "keys": "Movement panel",
+        "does": "Step forward and back, turn left and right"
+      },
+      {
+        "keys": "Pick Up",
+        "does": "Take what is on the floor here"
+      },
+      {
+        "keys": "Inventory menu",
+        "does": "Use, eat or drop what you carry"
+      },
+      {
+        "keys": "Map menu",
+        "does": "See the part of the pyramid you have explored"
+      },
+      {
+        "keys": "Speed menu",
+        "does": "How fast time passes"
+      },
+      {
+        "keys": "Hints menu",
+        "does": "The game's own hints, if you are stuck"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh SE, 512×342, black and white</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Version</th><td>1.4, © 1987–1992 Rick Holzgrafe</td></tr><tr><th>Saves</th><td>Games save inside the emulated Mac, in your browser</td></tr></tbody></table><p>The screen is split into panels: Movement top left, a News log of what just happened, the corridor view, your Inventory, and a Status panel with prestige, gold, health, speed, hunger and the weight you are carrying.</p>"
+      },
+      {
+        "h": "Staying alive in the pyramid",
+        "html": "<p>You start with sixteen ounces of food and a lantern. Hunger climbs as you walk and carrying too much slows you. Most of the early game is learning how far you can go before turning back.</p>\n<p>Read the News panel. It tells you what you found, what just attacked you, and what changed. The pyramid is home to creatures that are not all equally dangerous, and the Hints menu is there for when you are properly stuck.</p>\n<p>Map as you go. The Map menu shows what you have seen, and the corridors are built to lose you.</p>"
+      },
+      {
+        "h": "Why it is remembered",
+        "html": "<p>Scarab of Ra is one of the games that defined Macintosh shareware in the late 1980s: small, clever, entirely mouse-driven, and made by one person. Its interface of separate panels, each doing one job, is very much a Macintosh design rather than a port of something else.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the full game?",
+        "a": "Yes. Scarab of Ra was shareware: complete, with a request to send $10 if you enjoyed it."
+      },
+      {
+        "q": "Is it free to play here?",
+        "a": "Yes. Its own licence allows it to be freely distributed and copied, as long as it is not changed or sold."
+      },
+      {
+        "q": "How do I move?",
+        "a": "Click the arrows in the Movement panel at the top left. Pick Up takes whatever is on the floor."
+      },
+      {
+        "q": "Why am I getting weaker?",
+        "a": "Hunger. Eat from your inventory before it gets critical, and do not carry more than you need."
+      }
+    ],
+    "download": {
+      "heading": "Archives and originals",
+      "html": "<ul><li><a href=\"https://archive.org/details/ScarabOfRaMacintosh\" rel=\"noopener\">Internet Archive</a>: the disk this copy came from.</li></ul>"
+    },
+    "related": [
+      "pyramid-of-peril",
+      "rogue",
+      "wizardry"
+    ],
+    "updated": "2026-09-27",
+    "addedDate": "2026-09-27",
+    "rank": 2,
+    "screenshot": true,
+    "persist": true
+  },
+  {
+    "slug": "pyramid-of-peril",
+    "title": "Pyramid of Peril — Play the 1985 Mac 3D Adventure Free",
+    "description": "Pyramid of Peril, Aegis Development's 1985 first-person pyramid maze for the Macintosh, playable free in your browser from its original floppy.",
+    "keywords": "pyramid of peril, pyramid of peril mac, aegis pyramid of peril, 1985 mac game, first person maze mac, classic macintosh adventure",
+    "ogTitle": "Pyramid of Peril in your browser",
+    "ogDescription": "Aegis Development's 1985 Mac maze adventure, booting from its original floppy.",
+    "crumb": "Pyramid of Peril",
+    "h1": "Pyramid of Peril — a 3D maze from 1985",
+    "appName": "Pyramid of Peril",
+    "appType": "game",
+    "author": "Aegis Development",
+    "year": 1985,
+    "genre": [
+      "Adventure",
+      "Maze",
+      "Dungeon crawl"
+    ],
+    "categories": [
+      "Puzzle & strategy"
+    ],
+    "era": "system-6",
+    "machine": "Mac-Plus",
+    "screen": {
+      "w": 512,
+      "h": 342,
+      "depth": 1
+    },
+    "bootDisk": "pyramid-of-peril-v1",
+    "provenance": "grey",
+    "licenseReason": "Aegis Development closed decades ago and Pyramid of Peril has not been sold since the 1980s. It is preserved here on the same footing as the rest of the early Macintosh catalogue. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/pyramid-of-peril.md\" rel=\"noopener\">notices/pyramid-of-peril.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>A first-person walk through the corridors of a pyramid, drawn in black and white on a 1985 Macintosh. Pyramid of Peril gives you six buttons, forward, back, turn left, turn right, climb up and climb down, and a pyramid to find your way through, with your condition and score in the corner.</p>\n<p>It was published by Aegis Development in 1985, and this copy boots from its own original floppy, System and all, on an emulated Macintosh Plus.</p>",
+    "launchNote": "Boots from the original 1985 floppy straight into the pyramid. Click the buttons under the view to move, turn and climb.",
+    "macControls": [
+      {
+        "keys": "Move Forward / Backward",
+        "does": "Step along the corridor"
+      },
+      {
+        "keys": "Turn Left / Right",
+        "does": "Face a new direction"
+      },
+      {
+        "keys": "Climb Up / Down",
+        "does": "Use the ladders between levels"
+      },
+      {
+        "keys": "Map menu",
+        "does": "See where you have been"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh Plus, 512×342, black and white</td></tr><tr><th>System</th><td>The floppy's own 1985 System</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Version</th><td>1 (1985)</td></tr></tbody></table><p>Applications from 1985 often crash later versions of the Mac system, so this one boots the way it shipped: from the original floppy, which starts the game directly instead of the Finder.</p>"
+      },
+      {
+        "h": "Finding your way",
+        "html": "<p>The view on the left is what is in front of you; the panel on the right shows ladders and the way up or down. Everything is done with the six buttons under the view, so it plays entirely with the mouse.</p>\n<p>Your condition starts at 100 per cent and your score at nothing. Use the Map menu often: corridors look alike, and the pyramid is built to lose you.</p>"
+      },
+      {
+        "h": "Why it is here",
+        "html": "<p>Pyramid of Peril is from the first year of Macintosh games, when a first-person 3D view on a black-and-white screen was an achievement in itself. If you like it, Scarab of Ra is a bigger pyramid adventure from two years later.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Do I need the keyboard?",
+        "a": "No. The six buttons under the view do everything."
+      },
+      {
+        "q": "Why black and white?",
+        "a": "It is a 1985 game for the original Macintosh, which had a black-and-white screen."
+      },
+      {
+        "q": "Is there a similar game here?",
+        "a": "Scarab of Ra, from 1987, is a bigger pyramid adventure with food, a lamp and creatures to deal with."
+      },
+      {
+        "q": "Who made Pyramid of Peril?",
+        "a": "Aegis Development, in 1985, for the original Macintosh."
+      },
+      {
+        "q": "Why is there no Mac desktop first?",
+        "a": "This copy boots from the original floppy, which was set up to start the game directly rather than the Finder. That is also why it runs reliably: 1985 programs often crash later Mac system software."
+      },
+      {
+        "q": "Does it work on a touchscreen?",
+        "a": "Mostly. Every action is an on-screen button, so taps work, though a mouse is more comfortable."
+      }
+    ],
+    "download": {
+      "heading": "Archives and originals",
+      "html": "<ul><li><a href=\"https://archive.org/details/mac_Pyramid_of_Peril_v1\" rel=\"noopener\">Internet Archive</a>: the floppy this copy came from.</li></ul>"
+    },
+    "related": [
+      "scarab-of-ra",
+      "rogue",
+      "dark-castle"
+    ],
+    "updated": "2026-09-27",
+    "addedDate": "2026-09-27",
+    "rank": 3,
+    "screenshot": true,
+    "persist": true
   }
 ]
