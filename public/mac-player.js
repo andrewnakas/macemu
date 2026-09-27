@@ -475,13 +475,48 @@
       // What the emulator calls this title's persistent files in the origin
       // private file system: each manifest's `name`, not its filename.
       diskNames: parseJsonList(d.diskNames),
+      // { "ArrowUp": "Numpad8", … } — browser key codes re-sent as others,
+      // for titles whose default controls assume a numeric keypad that most
+      // laptops do not have. The title's own key setup would be the better
+      // fix, but it is saved to the shared system disk and lost every visit.
+      keymap: parseKeymap(d.keymap),
     };
+  }
+
+  function parseKeymap(s) {
+    if (!s) return null;
+    try { var m = JSON.parse(s); return m && typeof m === "object" ? m : null; }
+    catch (e) { return null; }
+  }
+
+  // The runtime listens for keys on window and reads only event.code. A
+  // capturing listener on window runs first, swallows a mapped key, and sends
+  // the replacement to the same target, where the runtime picks it up as if
+  // it had been pressed. Installed once per page.
+  function installKeymap(map) {
+    if (!map || installKeymap.done) return;
+    installKeymap.done = true;
+    ["keydown", "keyup"].forEach(function (type) {
+      global.addEventListener(type, function (e) {
+        var to = map[e.code];
+        if (!to || e.remapped) return;
+        e.stopImmediatePropagation();
+        e.preventDefault();
+        var r = new KeyboardEvent(type, {
+          code: to, key: e.key, bubbles: true, cancelable: true,
+          shiftKey: e.shiftKey, altKey: e.altKey, ctrlKey: e.ctrlKey, metaKey: e.metaKey,
+        });
+        r.remapped = true;
+        (e.target || global).dispatchEvent(r);
+      }, true);
+    });
   }
 
   // ── boot ─────────────────────────────────────────────────────────────────
   function boot(cfg, ui, extra) {
     extra = extra || {};
     if (ui.booted) return ui.booted;
+    installKeymap(cfg.keymap);
     ui.btn.disabled = true;
     ui.progress.hidden = false;
     ui.hint.textContent = "Starting…";

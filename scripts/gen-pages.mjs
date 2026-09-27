@@ -50,6 +50,8 @@
 //   download      { heading, html } — where to get an original copy
 //   macControls   [{ keys, does }] rendered as a table under the player
 //   launchNote    one line about what happens on boot ("Starts at the map")
+//   keymap        { browserCode: macCode } keys re-sent as others, e.g. arrows
+//                 as the numeric keypad for a game whose defaults assume one
 //   byo           { accepts: [".sit"], hint: "…" } for guide pages
 //   screenshot    true → /run/<slug>/screenshot.png; string overrides filename
 //   updated       YYYY-MM-DD — sitemap <lastmod> + "Guide updated" line
@@ -313,6 +315,7 @@ function macMount(p, { mode }) {
       return next ? [`data-next-slug="${esc(next.slug)}"`, `data-next-name="${esc(next.appName)}"`] : [];
     })(),
     needsKeyboard(p) ? `data-needs-keyboard="true"` : "",
+    p.keymap ? `data-keymap="${esc(JSON.stringify(p.keymap))}"` : "",
   ].filter(Boolean).join("\n         ");
   return `<div id="mac-embed"
          ${attrs}></div>`;

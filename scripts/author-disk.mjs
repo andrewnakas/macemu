@@ -158,6 +158,12 @@ for (const step of steps.steps || []) {
   } else if (step.type) {
     await page.keyboard.type(step.type, {delay: 120});
     console.log(`   type ${JSON.stringify(step.type)}`);
+  } else if (step.keyDown) {
+    await page.keyboard.down(step.keyDown);
+    console.log(`   keyDown ${step.keyDown}`);
+  } else if (step.keyUp) {
+    await page.keyboard.up(step.keyUp);
+    console.log(`   keyUp ${step.keyUp}`);
   } else if (step.key) {
     await page.keyboard.press(step.key);
     console.log(`   key ${step.key}`);

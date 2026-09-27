@@ -14610,5 +14610,158 @@
       "heading": "Archives",
       "html": "<ul><li><a href=\"https://archive.org/details/tucows_205674_Sphaera\" rel=\"noopener\">Internet Archive</a> — the Tucows Macintosh archive copy this was built from.</li></ul>"
     }
+  },
+  {
+    "slug": "reckless-drivin",
+    "title": "Reckless Drivin' — Play the 2000 Mac Driving Game Free Online",
+    "description": "Reckless Drivin', Jonas Echterhoff's top-down Mac driving game, playable free in your browser. Outrun the cops, drop mines, and try not to leave the road.",
+    "keywords": "reckless drivin, reckless driving mac game, reckless drivin online, jonas echterhoff, burning rubber 2, mac shareware driving game, top down driving game",
+    "ogTitle": "Reckless Drivin' in your browser",
+    "ogDescription": "Jonas Echterhoff's top-down Mac driving game, running on an emulated Power Mac.",
+    "crumb": "Reckless Drivin'",
+    "h1": "Reckless Drivin' — keep it on the road",
+    "appName": "Reckless Drivin'",
+    "appType": "game",
+    "author": "Jonas Echterhoff",
+    "year": 2000,
+    "genre": [
+      "Racing",
+      "Action",
+      "Arcade"
+    ],
+    "categories": [
+      "Action"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-carbon",
+    "extraDisks": [
+      "reckless-drivin-title"
+    ],
+    "provenance": "shareware",
+    "licenseReason": "Reckless Drivin' is shareware, and its readme says it \"may be freely distributed, as long as all the files that came with the original package are included\". Every file from the package is on the disk, unregistered, with the shareware notice left alone. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/reckless-drivin.md\" rel=\"noopener\">notices/reckless-drivin.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>A car, a road seen from above, and a clock. Reckless Drivin' asks you to get to the end of each level as fast as you can while traffic, cops and the edge of the road all try to stop you. The car skids properly, leaves tyre tracks, and comes apart when you misjudge a bend, which you will.</p>\n<p>Jonas Echterhoff wrote it on his own in Germany and released it as Mac shareware in 2000, the sequel to his 1996 game Burning Rubber. This is version 1.44 from 2003, the last release, running on an emulated Power Macintosh.</p>",
+    "launchNote": "Mac OS 8.6 starts and opens the game by itself. Press Return at the shareware notice (Let Me Try Out First!), then click START. The arrow keys drive. For a sharper picture, untick Line Skipping under PREFS.",
+    "keymap": {
+      "ArrowUp": "Numpad8",
+      "ArrowDown": "Numpad5",
+      "ArrowLeft": "Numpad4",
+      "ArrowRight": "Numpad6"
+    },
+    "macControls": [
+      {
+        "keys": "↑ arrow",
+        "does": "Gas"
+      },
+      {
+        "keys": "↓ arrow",
+        "does": "Brake, then reverse"
+      },
+      {
+        "keys": "← / → arrows",
+        "does": "Steer"
+      },
+      {
+        "keys": "Shift",
+        "does": "Kickdown"
+      },
+      {
+        "keys": "Space",
+        "does": "Handbrake"
+      },
+      {
+        "keys": "Option",
+        "does": "Drop a mine"
+      },
+      {
+        "keys": "Cmd (⌘)",
+        "does": "Fire a missile"
+      },
+      {
+        "keys": "P / Esc",
+        "does": "Pause / abort the game"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh, 800×600</td></tr><tr><th>System</th><td>Mac OS 8.6 with CarbonLib and Apple's DrawSprocket</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Version</th><td>1.44 (27 January 2003), © 2000–2003 Jonas Echterhoff</td></tr><tr><th>Shareware</th><td>Unregistered: the first three levels are playable</td></tr></tbody></table><p>The game's own defaults put the driving controls on the numeric keypad (8, 5, 4 and 6), which most laptops do not have. This page sends the arrow keys to those keypad keys, so the arrows simply work. Shift, Space, Option and Cmd are the game's own defaults.</p>\n<p><strong>The picture has stripes at first.</strong> That is the game's Line Skipping option, which draws every other line to run faster on the Macs of 2000. Click PREFS on the main menu and untick it; the emulated machine is quick enough without it. Settings are not kept between visits.</p>"
+      },
+      {
+        "h": "Playing it",
+        "html": "<p>Each level is a long road with a time limit, shown bottom right with your score and remaining lives. Traffic runs in both directions. Leaving the tarmac is usually fatal, and the game's own FAQ is unrepentant about that: arcade games are not meant to be realistic.</p>\n<p>The police join in as you go, and you have two answers to them: mines, dropped behind you with Option, and missiles, fired ahead with Cmd. The handbrake on Space is what gets you round the tight corners without losing all your speed, and a skid is often the right way through a bend rather than a mistake.</p>\n<p>The unregistered game stops after the third level. Registration was $12 through Kagi, which has since closed, so the first three levels are what can be played today.</p>"
+      },
+      {
+        "h": "Why it is remembered",
+        "html": "<p>Reckless Drivin' came late in the classic Mac's life, in 2000. It was then carbonised to run natively on the first versions of Mac OS X, which is why this final version lives inside an application package that Mac OS 9 and Mac OS X could both open.</p>\n<p>Its handling is the point: the car slides, grips again, and spins if you are careless, on a road that zooms out as you speed up. It is a small game made by one person, and it still plays well.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the whole game?",
+        "a": "It is the complete shareware release, unregistered, which plays the first three levels. Registering unlocked the rest, but the payment service it used has closed."
+      },
+      {
+        "q": "Do I need a numeric keypad?",
+        "a": "No. The game's defaults use the keypad, but this page sends the arrow keys there for you."
+      },
+      {
+        "q": "Why is the picture striped?",
+        "a": "That is the game's Line Skipping option, on by default for speed. Click PREFS on the main menu and untick it."
+      },
+      {
+        "q": "Does it run on a phone?",
+        "a": "It needs a keyboard, so a desktop or laptop is the way to play."
+      },
+      {
+        "q": "Who made it?",
+        "a": "Jonas Echterhoff, working alone. It followed his 1996 Mac game Burning Rubber, which is why the title screen calls it Burning Rubber 2."
+      }
+    ],
+    "download": {
+      "heading": "Archives and originals",
+      "html": "<ul><li><a href=\"https://archive.org/details/tucows_205727_Reckless_Drivin\" rel=\"noopener\">Internet Archive</a>: the Tucows mirror copy this came from.</li></ul>"
+    },
+    "related": [
+      "mighty-mike",
+      "maelstrom",
+      "bubble-trouble"
+    ],
+    "shotSetup": {
+      "screen": [
+        800,
+        600
+      ],
+      "steps": [
+        {
+          "waitMs": 20000
+        },
+        {
+          "key": "Enter",
+          "waitMs": 8000
+        },
+        {
+          "click": [
+            570,
+            214
+          ],
+          "waitMs": 6000
+        }
+      ]
+    },
+    "updated": "2026-09-27",
+    "addedDate": "2026-09-27",
+    "rank": 2,
+    "screenshot": true,
+    "persist": true
   }
 ]
