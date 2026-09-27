@@ -1,0 +1,188 @@
+{
+ "screen": [
+  800,
+  600
+ ],
+ "shutdown": {
+  "menu": [
+   181,
+   9
+  ],
+  "item": [
+   206,
+   119
+  ]
+ },
+ "steps": [
+  {
+   "waitMs": 15000,
+   "note": "t1"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 5000,
+   "note": "alias-alert"
+  },
+  {
+   "doubleClick": [
+    750,
+    118
+   ],
+   "waitMs": 6000,
+   "note": "open-sprockets"
+  },
+  {
+   "hold": [
+    200,
+    34
+   ],
+   "waitMs": 500,
+   "note": "grab-title"
+  },
+  {
+   "move": [
+    200,
+    200
+   ],
+   "waitMs": 400,
+   "note": "mv1"
+  },
+  {
+   "move": [
+    200,
+    380
+   ],
+   "waitMs": 400,
+   "note": "mv2"
+  },
+  {
+   "release": [
+    200,
+    380
+   ],
+   "waitMs": 2000,
+   "note": "dropped-window"
+  },
+  {
+   "key": "Meta+a",
+   "waitMs": 2000,
+   "note": "select-all"
+  },
+  {
+   "doubleClick": [
+    750,
+    50
+   ],
+   "waitMs": 8000,
+   "note": "open-macos8"
+  },
+  {
+   "hold": [
+    44,
+    425
+   ],
+   "waitMs": 500,
+   "note": "grab-drawsprocket"
+  },
+  {
+   "move": [
+    44,
+    300
+   ],
+   "waitMs": 300,
+   "note": "m1"
+  },
+  {
+   "move": [
+    66,
+    150
+   ],
+   "waitMs": 300,
+   "note": "m2"
+  },
+  {
+   "move": [
+    66,
+    90
+   ],
+   "waitMs": 800,
+   "note": "over-sysfolder"
+  },
+  {
+   "release": [
+    66,
+    88
+   ],
+   "waitMs": 8000,
+   "note": "dropped-drawsprocket"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 8000,
+   "note": "ok-extensions-drawsprocket"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 10000,
+   "note": "ok-replace-drawsprocket"
+  },
+  {
+   "hold": [
+    184,
+    425
+   ],
+   "waitMs": 500,
+   "note": "grab-inputsprocket"
+  },
+  {
+   "move": [
+    184,
+    300
+   ],
+   "waitMs": 300,
+   "note": "m1"
+  },
+  {
+   "move": [
+    66,
+    150
+   ],
+   "waitMs": 300,
+   "note": "m2"
+  },
+  {
+   "move": [
+    66,
+    90
+   ],
+   "waitMs": 800,
+   "note": "over-sysfolder"
+  },
+  {
+   "release": [
+    66,
+    88
+   ],
+   "waitMs": 8000,
+   "note": "dropped-inputsprocket"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 8000,
+   "note": "ok-extensions-inputsprocket"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 10000,
+   "note": "ok-replace-inputsprocket"
+  },
+  {
+   "doubleClick": [
+    66,
+    88
+   ],
+   "waitMs": 8000,
+   "note": "open-sysfolder"
+  }
+ ]
+}
