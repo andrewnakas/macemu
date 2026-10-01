@@ -486,11 +486,11 @@
   },
   {
     "slug": "classic-mac-emulator-online",
-    "title": "Classic Mac Emulator Online — Run System 7 in Your Browser Free",
-    "description": "A classic Macintosh emulator that runs in your browser. System 6, System 7 and Mac OS 9 with no download, no install and no plugin. Free.",
-    "keywords": "classic mac emulator online, mac emulator browser, system 7 online, macintosh emulator, run mac os in browser, basilisk ii online",
+    "title": "Mac Emulator Online — Run Classic Mac OS in Your Browser, Free",
+    "description": "A free Macintosh emulator that runs in your browser: System 6, System 7 and Mac OS 8.6, plus over 100 classic Mac games ready to play. No download, no plugin.",
+    "keywords": "mac emulator online, macintosh emulator online, mac emulator in browser, classic mac os emulator, system 7 emulator, mac os 7 emulator, mac os 8 emulator, basilisk ii online, sheepshaver online",
     "ogTitle": "A classic Mac emulator in your browser",
-    "ogDescription": "System 6, System 7 and Mac OS 9, running in a tab. No download.",
+    "ogDescription": "System 6, System 7 and Mac OS 8.6, running in a tab. No download.",
     "crumb": "Mac emulator online",
     "h1": "A classic Macintosh, running in this tab",
     "machine": "Mac-IIfx",
@@ -511,7 +511,11 @@
     "sections": [
       {
         "h": "Which Macintosh you are getting",
-        "html": "<table class=\"compat-table\"><thead><tr><th>Era</th><th>Machine</th><th>Emulator</th><th>Good for</th></tr></thead><tbody><tr><td>System 6</td><td>Macintosh Plus, 512×342 black and white</td><td>Mini vMac</td><td>Anything from 1984–1990. Fast enough for a phone.</td></tr><tr><td>System 7</td><td>Macintosh IIfx, 640×480 in colour</td><td>Basilisk II</td><td>The bulk of the classic era: 1991–1997.</td></tr><tr><td>Mac OS 8–9</td><td>Power Macintosh G3</td><td>SheepShaver</td><td>PowerPC-only software. Heavier.</td></tr></tbody></table><p>The differences are real, not cosmetic. A Mac Plus is an eight-megahertz machine with a one-bit screen; a Macintosh IIfx is a 68040 with colour; a G3 is a different processor architecture entirely. Software from one will often not run on another, and picking the wrong machine is the single most common reason an old program refuses to start.</p>"
+        "html": "<table class=\"compat-table\"><thead><tr><th>Era</th><th>Machine</th><th>Emulator</th><th>Good for</th></tr></thead><tbody><tr><td>System 6</td><td>Macintosh Plus or SE, 512×342 black and white</td><td>Mini vMac</td><td>Anything from 1984–1990. Fast enough for a phone.</td></tr><tr><td>System 7</td><td>Macintosh IIfx, 640×480 in colour</td><td>Basilisk II</td><td>The bulk of the classic era: 1991–1997.</td></tr><tr><td>Mac OS 8.6</td><td>Power Macintosh 9500, 800×600 in colour</td><td>SheepShaver</td><td>PowerPC-only software. Heavier.</td></tr></tbody></table><p>The differences are real, not cosmetic. A Mac Plus is an eight-megahertz machine with a one-bit screen; a Macintosh IIfx is a 68040 with colour; a G3 is a different processor architecture entirely. Software from one will often not run on another, and picking the wrong machine is the single most common reason an old program refuses to start.</p>"
+      },
+      {
+        "h": "Pick a Mac OS version and start it now",
+        "html": "<p>Each of these boots straight away, with nothing to download first.</p><ul><li><strong>System 6</strong> on a black-and-white Macintosh SE: <a href=\"/run/macpaint/\">MacPaint</a>, <a href=\"/run/dark-castle/\">Dark Castle</a> or <a href=\"/run/simcity/\">the original SimCity</a>. This is the 1980s Mac most people picture.</li><li><strong>System 7</strong> on a colour Macintosh IIfx: the machine at the top of this page. System 7 (sometimes searched for as Mac OS 7) was the Mac from 1991 to 1997, and it is where most of the classic software library lives.</li><li><strong>Mac OS 8.6</strong> on a Power Macintosh: <a href=\"/run/mac-os-8/\">the complete Mac OS 8.6 desktop</a>, with the Finder, the control panels and the Platinum look of 1999.</li></ul><p>If you came for the games rather than the operating system, <a href=\"/run/\">every title that runs here</a> starts in one click, sorted by kind on the <a href=\"/mac-arcade-games/\">arcade</a>, <a href=\"/mac-adventure-games/\">adventure</a> and <a href=\"/school-computer-lab-games/\">school computer lab</a> pages.</p>"
       },
       {
         "h": "How the emulation works",
@@ -520,6 +524,10 @@
       {
         "h": "What you can do with it",
         "html": "<p>Drop in a <code>.sit</code>, <code>.hqx</code>, <code>.bin</code> or disk image and it appears on the emulated Mac. Applications run. Documents open in whatever is on the disk. Files you save stay in your browser between visits.</p><p>What you cannot do: run Mac OS X or macOS software, print, or reach the internet from inside the emulated machine. The first is an architectural gap, the second and third are simply not wired up.</p><p>If you want the whole machine rather than one program — every system release from 1984 to Mac OS X, a large built-in software library, NeXTSTEP as well — <a href=\"https://infinitemac.org/\" rel=\"noopener\">Infinite Mac</a> is the project to use, and the emulator builds on this site come from it.</p>"
+      },
+      {
+        "h": "Looking for a Mac OS X or iMac G3 emulator?",
+        "html": "<p>Mac OS X cannot run here, and no browser emulator runs it usably today. It needs a fast PowerPC G3 or G4 with far more memory and speed than an emulator interpreting instructions in WebAssembly can supply. If you need Mac OS X, the realistic route is QEMU or a real old Mac.</p><p>The iMac G3 is a different story. It shipped in 1998 with Mac OS 8.1 and later Mac OS 8.5, 8.6 and 9, so the <a href=\"/run/mac-os-8/\">Mac OS 8.6 desktop here</a> is the same system an original iMac ran. Only the translucent case is missing.</p>"
       }
     ],
     "faq": [

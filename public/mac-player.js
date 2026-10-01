@@ -324,6 +324,12 @@
     hint.className = "embed-hint";
     hint.textContent = (cfg.emulator ? cfg.emulator + " · " : "") + cfg.width + "×" + cfg.height +
       " · nothing is installed or uploaded";
+    // Titles on the shared Mac OS 8.6 image fetch the whole system on a first
+    // visit, which is the long wait on this site. Said before Start, because a
+    // wait someone was told about is a wait they sit through.
+    if (cfg.era === "mac-os-8" && cfg.extraDisks.length) {
+      hint.textContent += ". The first start loads Mac OS 8.6 and takes about a minute; after that it is quick.";
+    }
     if (cfg.poster) {
       overlay.classList.add("has-poster");
       // Dimmed, so the Start button and its hint stay readable over any picture.
@@ -341,7 +347,7 @@
         !global.matchMedia("(any-pointer: fine)").matches) {
       var kb = document.createElement("p");
       kb.className = "embed-touch";
-      kb.textContent = "This one needs a keyboard — it plays best on a computer.";
+      kb.textContent = "This one needs a keyboard. On-screen keys appear once it starts; it still plays best on a computer.";
       overlay.appendChild(kb);
     }
 
@@ -424,11 +430,159 @@
       bar.appendChild(next);
     }
     mount.appendChild(stage);
+    var pad = cfg.needsKeyboard && touchOnly() ? buildTouchPad(cfg) : null;
+    if (pad) {
+      mount.appendChild(pad);
+      // Under the screen on the page; over it in fullscreen, where the page is
+      // gone and the stage is all there is.
+      document.addEventListener("fullscreenchange", function () {
+        var fs = document.fullscreenElement === stage;
+        pad.classList.toggle("tp-over", fs);
+        if (fs) stage.appendChild(pad);
+        else if (pad.parentNode !== mount) mount.insertBefore(pad, bar);
+      });
+    }
     mount.appendChild(bar);
 
     return { stage: stage, overlay: overlay, btn: btn, progress: progress, fill: fill,
              screen: screen, hint: hint, bar: bar, full: full, ctrls: ctrls, wipe: wipe,
-             status: status, sheet: sheet, note: note };
+             status: status, sheet: sheet, note: note, pad: pad };
+  }
+
+  // ── on-screen keys for touch-only devices ────────────────────────────────
+  // About 30% of visitors (2026-10-01) were on phones, and 56 titles need keys
+  // a phone does not have. The runtime listens on window and reads only
+  // event.code, so a synthetic KeyboardEvent with the right code is a real key
+  // press as far as the Mac is concerned, and it still passes through the
+  // per-title keymap. The keys offered are read from the title's own controls
+  // list, so a game that only wants Space does not get a D-pad.
+  function touchOnly() {
+    return !!(global.matchMedia && global.matchMedia("(pointer: coarse)").matches &&
+      !global.matchMedia("(any-pointer: fine)").matches);
+  }
+
+  function sendKey(type, code, key) {
+    global.dispatchEvent(new KeyboardEvent(type, {
+      code: code, key: key || code, bubbles: true, cancelable: true,
+    }));
+  }
+
+  function charCode(ch) {
+    if (/^[a-z]$/i.test(ch)) return { code: "Key" + ch.toUpperCase(), shift: ch !== ch.toLowerCase() };
+    if (/^[0-9]$/.test(ch)) return { code: "Digit" + ch };
+    var table = { " ": "Space", ".": "Period", ",": "Comma", "-": "Minus", "'": "Quote",
+                  "/": "Slash", ";": "Semicolon", "=": "Equal" };
+    if (table[ch]) return { code: table[ch] };
+    if (ch === "?") return { code: "Slash", shift: true };
+    if (ch === "!") return { code: "Digit1", shift: true };
+    return null;
+  }
+
+  function buildTouchPad(cfg) {
+    var text = cfg.controls.map(function (c) { return c[0]; }).join(" | ");
+    var want = {
+      arrows: /arrow/i.test(text),
+      space: /\bspace\b/i.test(text),
+      enter: /return|enter/i.test(text),
+      shift: /\bshift\b/i.test(text),
+      esc: /\besc\b/i.test(text),
+      typing: /type|keyboard|letter|word/i.test(text),
+      // Single letters a title names as its own controls ("A / S / D / W"),
+      // never the letters of a Cmd-shortcut.
+      letters: cfg.controls.map(function (c) { return c[0]; })
+        .filter(function (k) { return !/cmd|ctrl|option|opt-/i.test(k); })
+        .join(" ").split(/[\s\/,+]+/)
+        .filter(function (t, i, all) { return /^[A-Z]$/.test(t) && all.indexOf(t) === i; })
+        .slice(0, 6),
+    };
+    if (!want.arrows && !want.space && !want.enter && !want.shift && !want.esc && !want.typing &&
+        !want.letters.length) return null;
+
+    var pad = document.createElement("div");
+    pad.className = "touch-pad";
+    pad.hidden = true;
+
+    function hold(el, code, key) {
+      var down = false;
+      function press(e) { e.preventDefault(); if (down) return; down = true; el.classList.add("on"); sendKey("keydown", code, key); }
+      function release(e) { if (e) e.preventDefault(); if (!down) return; down = false; el.classList.remove("on"); sendKey("keyup", code, key); }
+      el.addEventListener("pointerdown", function (e) { el.setPointerCapture && el.setPointerCapture(e.pointerId); press(e); });
+      el.addEventListener("pointerup", release);
+      el.addEventListener("pointercancel", release);
+      el.addEventListener("contextmenu", function (e) { e.preventDefault(); });
+    }
+    function key(label, code, keyName, cls) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "tp-key" + (cls ? " " + cls : "");
+      b.textContent = label;
+      b.setAttribute("aria-label", keyName || code);
+      hold(b, code, keyName);
+      return b;
+    }
+
+    if (want.arrows) {
+      var dpad = document.createElement("div");
+      dpad.className = "tp-dpad";
+      dpad.appendChild(key("▲", "ArrowUp", "ArrowUp", "tp-up"));
+      dpad.appendChild(key("◀", "ArrowLeft", "ArrowLeft", "tp-left"));
+      dpad.appendChild(key("▶", "ArrowRight", "ArrowRight", "tp-right"));
+      dpad.appendChild(key("▼", "ArrowDown", "ArrowDown", "tp-down"));
+      pad.appendChild(dpad);
+    }
+    var acts = document.createElement("div");
+    acts.className = "tp-actions";
+    want.letters.forEach(function (l) { acts.appendChild(key(l, "Key" + l, l.toLowerCase())); });
+    if (want.space) acts.appendChild(key("Space", "Space", " ", "tp-wide"));
+    if (want.enter) acts.appendChild(key("Return", "Enter", "Enter"));
+    if (want.shift) acts.appendChild(key("Shift", "ShiftLeft", "Shift"));
+    if (want.esc) acts.appendChild(key("Esc", "Escape", "Escape"));
+    if (want.typing) {
+      // The phone's own keyboard, forwarded a character at a time. The input
+      // stays empty so every keystroke arrives as a fresh insert.
+      var input = document.createElement("input");
+      input.className = "tp-input";
+      input.setAttribute("autocapitalize", "off");
+      input.setAttribute("autocorrect", "off");
+      input.setAttribute("autocomplete", "off");
+      input.setAttribute("spellcheck", "false");
+      input.setAttribute("aria-label", "Type into the Mac");
+      input.addEventListener("input", function (e) {
+        var s = input.value; input.value = "";
+        if (e.inputType === "deleteContentBackward") { sendKey("keydown", "Backspace"); sendKey("keyup", "Backspace"); return; }
+        for (var i = 0; i < s.length; i++) {
+          var m = charCode(s[i]);
+          if (!m) continue;
+          if (m.shift) sendKey("keydown", "ShiftLeft", "Shift");
+          sendKey("keydown", m.code, s[i]); sendKey("keyup", m.code, s[i]);
+          if (m.shift) sendKey("keyup", "ShiftLeft", "Shift");
+        }
+      });
+      // The text box's own key events must never reach the emulator, or a
+      // key with a usable code would arrive twice (once raw, once forwarded).
+      // The runtime listens on window and loads later, so a capturing
+      // listener registered now runs ahead of it.
+      // Return, and Backspace on an empty box, insert nothing, so they are
+      // forwarded from here rather than from the input event.
+      ["keydown", "keyup", "keypress"].forEach(function (t) {
+        global.addEventListener(t, function (e) {
+          if (e.target !== input) return;
+          e.stopImmediatePropagation();
+          if (t !== "keydown") return;
+          if (e.key === "Enter") { e.preventDefault(); sendKey("keydown", "Enter", "Enter"); sendKey("keyup", "Enter", "Enter"); }
+          else if (e.key === "Backspace" && !input.value) { e.preventDefault(); sendKey("keydown", "Backspace"); sendKey("keyup", "Backspace"); }
+        }, true);
+      });
+      var kb = document.createElement("button");
+      kb.type = "button";
+      kb.className = "tp-key tp-kbd";
+      kb.textContent = "⌨ Type";
+      kb.addEventListener("click", function () { input.focus(); });
+      acts.appendChild(kb);
+      acts.appendChild(input);
+    }
+    pad.appendChild(acts);
+    return pad;
   }
 
   function mkbtn(glyph, label, title) {
@@ -683,6 +837,7 @@
             ui.note.insertBefore(r, ui.note.firstChild);
           }
           if (ui.note && (cfg.launchNote || ui.resuming)) ui.note.hidden = false;
+          if (ui.pad && ui.pad.hidden) { ui.pad.hidden = false; track(cfg, "touch_pad", {}); }
           if (ui.bar) {
             ui.bar.hidden = false;
             ui.full.hidden = false;

@@ -180,6 +180,7 @@ main {
 .warn-box { background: var(--warn-bg); border-color: #ddc98a; border-left-color: var(--warn); }
 
 .download-box { background: var(--bg-elev); }
+.quick-answer { margin: 0.6rem 0 0.9rem; padding-left: 0.8rem; border-left: 3px solid var(--good); font-size: 0.97rem; }
 
 /* ── tables ─────────────────────────────────────────────────────────────── */
 .spec-table, .compat-table, .controls-table {
@@ -569,3 +570,32 @@ body.is-embed .embed-stage { border: 0; border-radius: 0; margin: 0; }
   font: 500 0.78rem/1.55 var(--mono, ui-monospace, SFMono-Regular, Menlo, monospace);
   white-space: pre-wrap; word-break: break-word; color: var(--text);
 }
+
+/* ── on-screen keys (touch-only devices; see buildTouchPad in mac-player.js) ── */
+.touch-pad {
+  display: flex; justify-content: space-between; align-items: center; gap: 0.8rem;
+  margin: 0.6rem auto 0; padding: 0.5rem; max-width: 560px;
+  user-select: none; -webkit-user-select: none; touch-action: none;
+}
+.touch-pad[hidden] { display: none; }
+.tp-dpad {
+  display: grid; grid-template: repeat(3, 3.1rem) / repeat(3, 3.1rem);
+  grid-template-areas: ". up ." "left . right" ". down .";
+}
+.tp-up { grid-area: up; } .tp-left { grid-area: left; } .tp-right { grid-area: right; } .tp-down { grid-area: down; }
+.tp-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.5rem; margin-left: auto; }
+.tp-key {
+  min-width: 3.1rem; min-height: 3.1rem; padding: 0 0.8rem;
+  font: 600 0.95rem/1 var(--font); color: #f2f0ec;
+  background: #2a2a2a; border: 1px solid #555; border-radius: var(--radius);
+  touch-action: none; -webkit-tap-highlight-color: transparent;
+}
+.tp-key.on { background: var(--accent); border-color: var(--accent); }
+.tp-wide { min-width: 6rem; }
+.tp-input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; font-size: 16px; }
+/* In fullscreen the pad sits over the bottom of the screen, translucent. */
+.touch-pad.tp-over {
+  position: absolute; left: 0; right: 0; bottom: 0; max-width: none; margin: 0; z-index: 5;
+  pointer-events: none;
+}
+.touch-pad.tp-over .tp-key { pointer-events: auto; opacity: 0.55; }

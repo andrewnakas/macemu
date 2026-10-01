@@ -4166,7 +4166,7 @@
   },
   {
     "slug": "mac-os-8",
-    "title": "Run Mac OS 8.6 Online in Your Browser",
+    "title": "Mac OS 8 Emulator Online — Run Mac OS 8.6 in Your Browser",
     "description": "A complete Mac OS 8.6 desktop running in your browser on an emulated Power Macintosh. Open the Finder, poke at the control panels, nothing to install.",
     "keywords": "mac os 8, run mac os 8 online, mac os 8 emulator, classic mac os in browser, powerpc mac emulator, sheepshaver online",
     "ogTitle": "Mac OS 8.6 in your browser",
@@ -5996,7 +5996,7 @@
       "Shooters"
     ],
     "licenseReason": "Escape Velocity is Ambrosia Software shareware. Its licence permits non-profit distribution provided the software is unmodified and the complete works are included, and both are true here. The copy is unregistered, and the shareware notice it shows is left in place. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/escape-velocity.md\" rel=\"noopener\">notices/escape-velocity.md</a>.",
-    "intro": "<p>Build a trading empire, help the Rebellion in its civil war, or strike out as a pirate: Escape Velocity's own FAQ says there is no right way to play it. You start with a small ship and some credits and the galaxy is open.</p>\n<p>This is the original, written by Matt Burch and published by Ambrosia in May 1996, the game that started the EV series. Version 1.0.5, running on an emulated Power Macintosh.</p>",
+    "intro": "<p>Build a trading empire, help the Rebellion in its civil war, or strike out as a pirate: Escape Velocity's own FAQ says there is no right way to play it. You start with a small ship and some credits and the galaxy is open.</p>\n<p>This is the original, written by Matt Burch and published by Ambrosia in May 1996, the game that started the EV series. Version 1.0.5, running on an emulated Power Macintosh.</p>\n<p>Looking for <strong>EV Nova</strong>? It is not playable here, because its licence has no clause permitting redistribution. The <a href=\"/escape-velocity-games/\">Escape Velocity series page</a> explains more, and what to play instead. EV Override, the 1998 sequel, <a href=\"/run/ev-override/\">runs here</a>.</p>",
     "launchNote": "Boots Mac OS 8.6 and opens Escape Velocity by itself. Choose New Pilot, name your pilot and ship, then Enter Ship. The opening story plays first; click through it.",
     "macControls": [
       {
