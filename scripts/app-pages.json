@@ -873,6 +873,11 @@
     },
     "related": [
       {
+        "href": "/run/oregon-trail-ii/",
+        "title": "Oregon Trail II",
+        "desc": "The 1995 CD sequel, with photographs, voices and video."
+      },
+      {
         "href": "/run/super-munchers/",
         "title": "Super Munchers",
         "desc": "The other MECC game from the same lab."
@@ -1012,9 +1017,9 @@
       "html": "<ul><li><a href=\"https://archive.org/details/amazon-trail\" rel=\"noopener\">Internet Archive</a>: the preserved CD this copy came from.</li><li><a href=\"https://macintoshgarden.org/games/the-amazon-trail\" rel=\"noopener\">Macintosh Garden</a>: other releases and scans.</li></ul>"
     },
     "related": [
-      "oregon-trail",
-      "carmen-world",
-      "super-munchers"
+      "amazon-trail-ii",
+      "amazon-trail-3",
+      "oregon-trail"
     ],
     "shotSetup": {
       "screen": [
@@ -1040,6 +1045,412 @@
     },
     "updated": "2026-09-23",
     "addedDate": "2026-09-23",
+    "screenshot": true,
+    "persist": true
+  },
+  {
+    "slug": "amazon-trail-ii",
+    "title": "Play Amazon Trail II Online — MECC's 1996 Sequel, Free",
+    "description": "Amazon Trail II, MECC's 1996 sequel to The Amazon Trail, playable free in your browser. The Macintosh CD release, version 1.0, on an emulated Mac.",
+    "keywords": "amazon trail 2, amazon trail ii, play amazon trail 2 online, amazon trail ii mac, mecc amazon trail ii, oregon trail sequel, school computer games",
+    "ogTitle": "Amazon Trail II in your browser",
+    "ogDescription": "MECC's Amazon Trail II, the Macintosh CD release, on an emulated Mac.",
+    "crumb": "Amazon Trail II",
+    "h1": "Amazon Trail II — MECC's 1996 sequel",
+    "appName": "Amazon Trail II",
+    "appType": "game",
+    "author": "MECC",
+    "year": 1996,
+    "genre": [
+      "Simulation",
+      "Educational",
+      "Adventure"
+    ],
+    "categories": [
+      "Classroom classics"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "amazon-trail-ii-title"
+    ],
+    "provenance": "grey",
+    "licenseReason": "MECC's educational catalogue passed from MECC to SoftKey, The Learning Company, Mattel and eventually Houghton Mifflin Harcourt. Amazon Trail II has not been sold in any form for well over twenty years, and no current product contains it. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/amazon-trail-ii.md\" rel=\"noopener\">notices/amazon-trail-ii.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>The middle Amazon Trail. MECC rebuilt the river journey for CD-ROM in 1996 with video, photographs and a new quest, and kept what made the first one work: a long trip by canoe, food from the river, trade with the people you meet, and a goal at the end of it.</p>\n<p>This is MECC's Macintosh CD, version 1.0, running here on an emulated Power Macintosh under Mac OS 8.6. <a href=\"/run/amazon-trail/\">The Amazon Trail</a> and <a href=\"/run/amazon-trail-3/\">Amazon Trail 3rd Edition</a> are here too.</p>",
+    "launchNote": "Mac OS 8.6 starts and opens Amazon Trail II by itself. After the opening film, click New Quest and choose a difficulty; if a button does not respond, click it again.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Everything: the buttons on the title screen, the people you meet, the choices they offer"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh, 800×600, 256 colours</td></tr><tr><th>System</th><td>Mac OS 8.6</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Version</th><td>Amazon Trail II for Macintosh 1.0 (1996)</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser</td></tr></tbody></table><p>The first start is the slow one: Mac OS 8.6 downloads once, then the game, which is mostly video. Later visits start much faster.</p>"
+      },
+      {
+        "h": "Starting a quest",
+        "html": "<p>The game opens with a short film and then its title screen, with three buttons along the bottom: <strong>New Quest</strong>, <strong>Load Quest</strong> and <strong>High Score</strong>. New Quest asks for a difficulty: <strong>Newcomer</strong>, <strong>Challenger</strong> or <strong>Expert</strong>. Newcomer is the place to start.</p><p>The quest itself begins in a museum, and the journey is by river, from people to people, with food to catch and goods to trade along the way.</p>"
+      },
+      {
+        "h": "Which Amazon Trail is which",
+        "html": "<p><a href=\"/run/amazon-trail/\">The Amazon Trail</a> is MECC's first, a canoe trip up the river from Belém to bring cinchona to the Inca King. Amazon Trail II (1996) is this one. <a href=\"/run/amazon-trail-3/\">Amazon Trail 3rd Edition: Rainforest Adventures</a> came from The Learning Company and sends you back in time to Vilcabamba; it was also given away free by General Mills, which is why many people remember it from home rather than school.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the Amazon Trail II I played at school?",
+        "a": "If your school had Macs with CD-ROM drives in the late 1990s, very probably. This is MECC's Amazon Trail II for Macintosh, version 1.0."
+      },
+      {
+        "q": "A button on the title screen did not respond.",
+        "a": "Click it again. The title screen sometimes takes the second click, particularly while its film is still loading."
+      },
+      {
+        "q": "Can I save and come back?",
+        "a": "Yes. Your quest is saved inside the emulated Mac, which is kept in your own browser between visits; Load Quest picks it up."
+      },
+      {
+        "q": "Does it work on a phone?",
+        "a": "It loads and it is all mouse, but the first start downloads a large system. A computer is much more comfortable."
+      }
+    ],
+    "download": {
+      "heading": "Archives and originals",
+      "html": "<ul><li><a href=\"https://archive.org/details/Amazon_Trail_II_Version_1.0_Softkey_MECC_1996\" rel=\"noopener\">Internet Archive</a>: the preserved CD this copy came from.</li></ul>"
+    },
+    "related": [
+      "amazon-trail",
+      "amazon-trail-3",
+      "oregon-trail-ii"
+    ],
+    "rank": 1,
+    "updated": "2026-10-02",
+    "addedDate": "2026-10-02",
+    "screenshot": true,
+    "persist": true
+  },
+  {
+    "slug": "amazon-trail-3",
+    "title": "Play Amazon Trail 3rd Edition Online — Rainforest Adventures",
+    "description": "Amazon Trail 3rd Edition: Rainforest Adventures, the last Amazon Trail, free in your browser. The Macintosh release, version 1.1, on an emulated Mac.",
+    "keywords": "amazon trail 3, amazon trail 3rd edition, amazon trail rainforest adventures, play amazon trail online, amazon trail mac, vilcabamba, oregon trail sequel, school computer games",
+    "ogTitle": "Amazon Trail 3rd Edition in your browser",
+    "ogDescription": "Amazon Trail 3rd Edition: Rainforest Adventures, the Macintosh release, on an emulated Mac.",
+    "crumb": "Amazon Trail 3rd Edition",
+    "h1": "Amazon Trail 3rd Edition — up the river to Vilcabamba",
+    "appName": "Amazon Trail 3rd Edition",
+    "appType": "game",
+    "author": "The Learning Company",
+    "year": 1998,
+    "genre": [
+      "Simulation",
+      "Educational",
+      "Adventure"
+    ],
+    "categories": [
+      "Classroom classics"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "amazon-trail-3-title"
+    ],
+    "provenance": "grey",
+    "licenseReason": "The Amazon Trail passed with MECC's catalogue to The Learning Company, Mattel and eventually Houghton Mifflin Harcourt. This copy is the full game General Mills gave away free on a CD-ROM in 2000; it has not been sold in any form for over twenty years. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/amazon-trail-3.md\" rel=\"noopener\">notices/amazon-trail-3.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>The third and last Amazon Trail. You start in Belém at the mouth of the Amazon, pick a guide and buy supplies, and travel upriver and back in time towards Vilcabamba, the last city of the Inca, fishing for food on the way and keeping clear of whirlpools, log jams, piranha and conquistadors.</p>\n<p>This is the Macintosh release, version 1.1, from the copy General Mills gave away free in 2000. It runs here on an emulated Power Macintosh under Mac OS 8.6. The earlier games are here too: <a href=\"/run/amazon-trail/\">The Amazon Trail</a> and <a href=\"/run/amazon-trail-ii/\">Amazon Trail II</a>.</p>",
+    "launchNote": "Mac OS 8.6 starts and opens Amazon Trail 3rd Edition by itself. On the title screen click New Quest, then pick a difficulty; if a leaf does not respond, click it again. The opening film plays, then you arrive in Belém.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Everything: the leaves on the title screen, the people you meet, the choices they offer"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh, 800×600, 256 colours</td></tr><tr><th>System</th><td>Mac OS 8.6</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Version</th><td>Amazon Trail 3rd Edition: Rainforest Adventures 1.1 (© 2000)</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser</td></tr></tbody></table><p>The first start is the slow one: Mac OS 8.6 downloads once, then the game, which is mostly video and photographs. Later visits start much faster.</p>"
+      },
+      {
+        "h": "Starting a quest",
+        "html": "<p>The title screen is a jungle of leaves: <strong>New Quest</strong>, <strong>Load Quest</strong>, <strong>High Score</strong> and <strong>Credits</strong>. Left alone it plays its own short films in a loop. New Quest asks for a difficulty, again on leaves: <strong>Novice</strong>, <strong>Challenger</strong> or <strong>Expert</strong>.</p><p>After the opening film you arrive at Amazon River Tours in Belém, where the owner offers to sell you everything for the trip but first wants you to pick a guide. You can let them choose your guide and supplies, or choose for yourself.</p>"
+      },
+      {
+        "h": "The three Amazon Trails",
+        "html": "<p>MECC's first Amazon Trail (1993) sent you upriver from Belém by canoe to bring cinchona to the Inca King; its CD edition, with photographs and recorded voices, is <a href=\"/run/amazon-trail/\">The Amazon Trail here</a>. <a href=\"/run/amazon-trail-ii/\">Amazon Trail II</a> (1996) followed, and this third edition, from The Learning Company, sends you back in time to Vilcabamba and leans further into video. Fishing, trading and the people you meet carry through all three.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the Amazon Trail from school?",
+        "a": "If your school had Macs around 2000, it could well be; this edition was also given away free by General Mills, so many people played it at home. The Amazon Trail and Amazon Trail II are on this site too."
+      },
+      {
+        "q": "The New Quest leaf did not respond.",
+        "a": "Click it again. The title screen sometimes takes the second click, particularly while its own film is loading."
+      },
+      {
+        "q": "Can I save and come back?",
+        "a": "Yes. Your quest is saved inside the emulated Mac, which is kept in your own browser between visits; Load Quest picks it up."
+      },
+      {
+        "q": "Does it work on a phone?",
+        "a": "It loads and it is all mouse, but the first start downloads a large system. A computer is much more comfortable."
+      }
+    ],
+    "download": {
+      "heading": "Archives and originals",
+      "html": "<ul><li><a href=\"https://archive.org/details/generalmills\" rel=\"noopener\">Internet Archive</a>: the General Mills CD this copy came from.</li></ul>"
+    },
+    "related": [
+      "amazon-trail-ii",
+      "amazon-trail",
+      "oregon-trail-ii"
+    ],
+    "rank": 2,
+    "updated": "2026-10-02",
+    "addedDate": "2026-10-02",
+    "screenshot": true,
+    "persist": true
+  },
+  {
+    "slug": "oregon-trail-ii",
+    "rank": 1,
+    "title": "Play Oregon Trail II Online — MECC's 1995 Sequel, Free",
+    "description": "Oregon Trail II, MECC's 1995 sequel to The Oregon Trail, playable free in your browser. The Macintosh CD release, version 1.32, on an emulated Mac.",
+    "keywords": "oregon trail 2, oregon trail ii, play oregon trail 2 online, oregon trail ii online, oregon trail 2 mac, mecc oregon trail 2, oregon trail sequel, school computer games",
+    "ogTitle": "Oregon Trail II in your browser",
+    "ogDescription": "MECC's Oregon Trail II, the Macintosh CD release, running on an emulated Mac.",
+    "crumb": "Oregon Trail II",
+    "h1": "Oregon Trail II — the 1995 sequel",
+    "appName": "Oregon Trail II",
+    "appType": "game",
+    "author": "MECC",
+    "year": 1995,
+    "genre": [
+      "Simulation",
+      "Educational",
+      "Adventure"
+    ],
+    "categories": [
+      "Classroom classics"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "oregon-trail-ii-title"
+    ],
+    "provenance": "grey",
+    "licenseReason": "MECC's educational catalogue passed from MECC to SoftKey, The Learning Company, Mattel and eventually Houghton Mifflin Harcourt. Oregon Trail II has not been sold in any form for well over twenty years, and no current product contains it. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/oregon-trail-ii.md\" rel=\"noopener\">notices/oregon-trail-ii.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>The sequel most people only ever saw in a school library. Where <a href=\"/run/oregon-trail/\">the original</a> is a few screens of text and pixel art, Oregon Trail II is photographs, recorded voices and full-motion video: you pick a year, a starting town, a profession and a destination, buy a wagon and a team, and walk two thousand miles west with a wagon party you have to keep alive.</p>\n<p>This is MECC's Macintosh CD release, version 1.32, running here on an emulated Power Macintosh under Mac OS 8.6. The CD's own bundled saves come with it, so you can also start part-way down the trail.</p>",
+    "launchNote": "Mac OS 8.6 starts and opens Oregon Trail II by itself. Choose Quick Start for a party that is ready to go, or New Game to choose everything yourself, then Hit The Trail!",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Everything: the choices on each screen, and the Guide, Diary, party and wagon buttons along the bottom"
+      },
+      {
+        "keys": "Game menu",
+        "does": "Save at a landmark, or load a saved game"
+      },
+      {
+        "keys": "Cmd-Q",
+        "does": "Quit to the Finder"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh, 800×600, 256 colours</td></tr><tr><th>System</th><td>Mac OS 8.6</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Version</th><td>Oregon Trail II for Macintosh, version 1.32 (1996)</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser</td></tr></tbody></table><p>The first start is the slow one. Mac OS 8.6 downloads once, and then the game reads what it needs from a disc that was mostly photographs and video. Later visits start much faster. The game plays in a 640×480 window on the 800×600 desktop, exactly as it did on a school Mac.</p>"
+      },
+      {
+        "h": "Starting out",
+        "html": "<p>The title screen offers three ways in. <strong>Quick Start</strong> builds a character for you, buys the supplies, and drops you just outside your jumping-off town; the Prologue tells you who you are (a pharmacist bound for the Rogue River Valley in 1851, say) and <strong>Hit The Trail!</strong> starts walking. <strong>New Game</strong> lets you set every choice yourself, and then you buy your own draft animals in town. <strong>Load Game</strong> opens a saved game.</p><p>On the trail each landmark is a screen of its own, with choices such as Continue, Rest here, Go into town and See who's around. The row along the bottom carries the date, the weather, the miles travelled and your party's morale, plus the Guide, your Diary, your party and your wagon.</p>"
+      },
+      {
+        "h": "The saves on the CD",
+        "html": "<p>MECC shipped the disc with a folder of ready-made games saved at landmarks along the way: Fort Laramie, Courthouse and Jail Rocks, South Pass, Fort Hall, City of Rocks, the California Trail junction, Emigrant Gap, the Barlow Toll Road and more, plus sets called Jumping Off, Good Hunting and Rafting. They are all here, in the Saved Games folder that Load Game opens. Teachers used them to drop a class straight into the part of the journey they were studying.</p><p>Your own games can only be saved at landmarks, not between them. That is the game's rule, not this site's.</p>"
+      },
+      {
+        "h": "Oregon Trail II and the original",
+        "html": "<p>MECC released Oregon Trail II in 1995, at the height of the CD-ROM boom, and it is a much bigger game than the one most people remember. It keeps the shape: a store, a long walk, hunting, river crossings and the steady arithmetic of food, health and money. Around it, it adds professions with their own skills, more trails, towns you can walk into, people to talk to along the way, and video at the river crossings and the map.</p><p>This 1.3 release added the Quick Start button and drop-down lists for buying, trading and dumping goods, and replaced the original title painting with the sunset over the river you see here.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the Oregon Trail II I played at school?",
+        "a": "If your school had Macs with CD-ROM drives in the late 1990s, very probably. This is MECC's Oregon Trail II CD for Macintosh, version 1.32, the release with the Quick Start button."
+      },
+      {
+        "q": "How is it different from the original Oregon Trail?",
+        "a": "It is a far bigger game: photographs, voices and video instead of pixel art, professions with their own skills, towns you can walk into and people to talk to. The original 1990 Macintosh Oregon Trail is also here, at /run/oregon-trail/."
+      },
+      {
+        "q": "How do I save?",
+        "a": "From the Game menu, but only at a landmark; the save option is disabled between landmarks. Saves stay in your own browser between visits."
+      },
+      {
+        "q": "Can I start part-way down the trail?",
+        "a": "Yes. Choose Load Game and open the Saved Games folder: the CD came with games saved at Fort Laramie, South Pass, Fort Hall and a dozen more landmarks."
+      },
+      {
+        "q": "It says I can't hunt because I have no ammunition.",
+        "a": "Hunting needs both bullets and gunpowder. Check your wagon for both, and buy more at the next town or fort."
+      },
+      {
+        "q": "Does it work on a phone?",
+        "a": "It loads, and it only needs a pointer, but the first start downloads a large system and the buttons are small. A computer is much more comfortable."
+      }
+    ],
+    "download": {
+      "heading": "Archives and originals",
+      "html": "<ul><li><a href=\"https://archive.org/details/oregon-trail-ii-win-en-win-95-mac-iso\" rel=\"noopener\">Internet Archive</a>: the preserved hybrid CD this copy came from.</li><li><a href=\"https://macintoshgarden.org/games/oregon-trail-ii\" rel=\"noopener\">Macintosh Garden</a>: other releases and scans.</li></ul>"
+    },
+    "related": [
+      "oregon-trail",
+      "amazon-trail",
+      "carmen-world"
+    ],
+    "updated": "2026-10-01",
+    "addedDate": "2026-10-01",
+    "screenshot": true,
+    "persist": true
+  },
+  {
+    "slug": "hot-dog-stand",
+    "title": "Play Hot Dog Stand Online — Sunburst's School Lab Classic",
+    "description": "Hot Dog Stand: The Works, Sunburst's school computer lab business game, free in your browser. The Macintosh CD release, on an emulated Mac.",
+    "keywords": "hot dog stand, hot dog stand game, hot dog stand the works, sunburst hot dog stand, hot dog stand computer game, school computer lab games, play hot dog stand online",
+    "ogTitle": "Hot Dog Stand in your browser",
+    "ogDescription": "Sunburst's Hot Dog Stand: The Works, the Macintosh CD release, on an emulated Mac.",
+    "crumb": "Hot Dog Stand",
+    "h1": "Hot Dog Stand: The Works — run the stand",
+    "appName": "Hot Dog Stand",
+    "appType": "game",
+    "author": "Sunburst Communications",
+    "year": 1998,
+    "genre": [
+      "Simulation",
+      "Educational"
+    ],
+    "categories": [
+      "Classroom classics"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 800,
+      "h": 600,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "hot-dog-stand-title"
+    ],
+    "provenance": "grey",
+    "licenseReason": "Sunburst Communications published Hot Dog Stand: The Works for schools, and this CD release has not been sold for well over twenty years; no current product contains it. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/hot-dog-stand.md\" rel=\"noopener\">notices/hot-dog-stand.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>The school computer lab game where the maths came disguised as a summer job. You run a hot dog stand at events in an arena: read the announcements, check the seating capacity and the inventory, decide what to order and what to charge, then open the stand and see how the day goes.</p>\n<p>This is Sunburst's Macintosh CD, Hot Dog Stand: The Works version 1.1, running here on an emulated Power Macintosh under Mac OS 8.6.</p>",
+    "launchNote": "Mac OS 8.6 starts and opens Hot Dog Stand by itself. Type your name at the sign-in and press Return, choose a level, then plan the day from the office.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Everything: the office, the bulletin board, the buttons along the bottom"
+      },
+      {
+        "keys": "Type + Return",
+        "does": "Sign in with your name"
+      },
+      {
+        "keys": "Help menu",
+        "does": "The game's own help"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh, 800×600, 256 colours</td></tr><tr><th>System</th><td>Mac OS 8.6</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Version</th><td>Hot Dog Stand: The Works 1.1</td></tr><tr><th>Saves</th><td>Inside the emulated Mac, in your browser</td></tr></tbody></table><p>The first start is the slow one: Mac OS 8.6 downloads once, then the game. Later visits start much faster.</p>"
+      },
+      {
+        "h": "Starting out",
+        "html": "<p>The stand asks you to sign in; type a name and press Return. Then pick a level: <strong>Beginner</strong> has no random events and guides you with flashing objects, <strong>Intermediate</strong> adds some random events, and <strong>Advanced</strong> many.</p><p>The day begins in the office. The bulletin board carries the arena management's announcement, the seating capacity for the event, your inventory and a tip; a Today's Special list waits to be filled in. Along the bottom are Quit, Journal, Go to Hot Dog Stand and Next.</p>"
+      },
+      {
+        "h": "Why schools used it",
+        "html": "<p>Sunburst made software for classrooms, and Hot Dog Stand is maths by stealth: estimating a crowd, working out how much stock that means, pricing, and reading the results afterwards. The random events at the higher levels are the business lesson: the weather, the crowd and the supplier do not always do what the plan expected.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the Hot Dog Stand from school?",
+        "a": "If your school had Macs in the late 1990s and ran Sunburst software, very probably. This is Hot Dog Stand: The Works, version 1.1, for Macintosh."
+      },
+      {
+        "q": "Which level should I start on?",
+        "a": "Beginner. It has no random events and points you at what to do next with flashing objects. Intermediate and Advanced add random events."
+      },
+      {
+        "q": "Can I save and come back?",
+        "a": "Your progress stays inside the emulated Mac, which is kept in your own browser between visits."
+      },
+      {
+        "q": "Does it work on a phone?",
+        "a": "It loads and it is all mouse, but the first start downloads a large system and the buttons are small. A computer is much more comfortable."
+      }
+    ],
+    "download": {
+      "heading": "Archives and originals",
+      "html": "<ul><li><a href=\"https://archive.org/details/hot-dog-stand-the-works\" rel=\"noopener\">Internet Archive</a>: the preserved CD this copy came from.</li></ul>"
+    },
+    "related": [
+      "oregon-trail",
+      "amazon-trail",
+      "super-munchers"
+    ],
+    "updated": "2026-10-01",
+    "addedDate": "2026-10-01",
     "screenshot": true,
     "persist": true
   },
@@ -14995,6 +15406,116 @@
     "updated": "2026-09-27",
     "addedDate": "2026-09-27",
     "rank": 2,
+    "screenshot": true,
+    "persist": true
+  },
+  {
+    "slug": "dungeon-revealed",
+    "title": "Play The Dungeon Revealed Online — 1987 Mac Dungeon Crawl",
+    "description": "The Dungeon Revealed, John Raymonds' 1987 Macintosh dungeon crawl, free in your browser on an emulated black-and-white Mac. No download, no install.",
+    "keywords": "the dungeon revealed, dungeon revealed mac, dungeon of doom mac, john raymonds, woodrose editions, classic mac rpg, mac roguelike, play dungeon revealed online",
+    "ogTitle": "The Dungeon Revealed in your browser",
+    "ogDescription": "The 1987 Macintosh dungeon crawl, on an emulated black-and-white Mac.",
+    "crumb": "The Dungeon Revealed",
+    "h1": "The Dungeon Revealed — down the stairs, 1987",
+    "appName": "The Dungeon Revealed",
+    "appType": "game",
+    "author": "John Raymonds",
+    "year": 1987,
+    "genre": [
+      "Role-playing",
+      "Dungeon crawl"
+    ],
+    "categories": [
+      "Puzzle & strategy"
+    ],
+    "era": "system-7",
+    "machine": "Mac-SE",
+    "screen": {
+      "w": 512,
+      "h": 342,
+      "depth": 1
+    },
+    "bootDisk": "dungeon-revealed-v1",
+    "provenance": "grey",
+    "licenseReason": "The Dungeon Revealed was published by Woodrose Editions in 1987 and has not been sold in any form for decades; no current product contains it. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/dungeon-revealed.md\" rel=\"noopener\">notices/dungeon-revealed.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>A dungeon crawl in the tradition of <a href=\"/run/rogue/\">Rogue</a>, drawn instead of typed: a hand-inked dungeon of square tiles, a character portrait framed in skulls and shields, and a mostly-black map that fills in as you walk it. You create a character, pick a class, and go down.</p>\n<p>John Raymonds wrote it, and Woodrose Editions published it in 1987 as the full version of his earlier Dungeon of Doom. This is that release, on an emulated black-and-white Macintosh.</p>",
+    "launchNote": "The title picture appears by itself. Choose New from the File menu, save the game file when asked, then name your character, pick a class and click Onward! The arrow keys move you.",
+    "keymap": {
+      "ArrowUp": "Numpad8",
+      "ArrowDown": "Numpad2",
+      "ArrowLeft": "Numpad4",
+      "ArrowRight": "Numpad6"
+    },
+    "macControls": [
+      {
+        "keys": "Arrow keys",
+        "does": "Move one square; the map scrolls to keep you in the middle"
+      },
+      {
+        "keys": "Numeric keypad",
+        "does": "Move, as the original intended, if your keyboard has one"
+      },
+      {
+        "keys": "File menu",
+        "does": "New, Open and Save your game"
+      },
+      {
+        "keys": "Use and Inventory menus",
+        "does": "Use, wear and drop what you are carrying"
+      },
+      {
+        "keys": "Help menu",
+        "does": "The game's own help for every menu, its keyboard commands, rumours and the Hall of Legends"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh SE, 512×342 black and white</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Basilisk II, compiled to WebAssembly</td></tr><tr><th>Year</th><td>1987, John Raymonds and Woodrose Editions</td></tr><tr><th>Saves</th><td>Your game file lives inside the emulated Mac, in your browser</td></tr></tbody></table><p>It is a small program on a small machine, so it starts in seconds. The game originally moved with the numeric keypad; here the arrow keys are sent to the keypad for you, since most keyboards no longer have one.</p>"
+      },
+      {
+        "h": "Starting a game",
+        "html": "<p>The title picture waits for you. Choose <strong>New</strong> from the File menu and the game first asks where to save your game file; accept the suggested name. Then comes the character screen: type a name, choose a class (Knight, Fighter, Sage, Wizard, Alchemist, Jeweller or Jones), and look over the rolled Strength, Intelligence, Wisdom, Dexterity, Constitution and Charisma. <strong>Onward!</strong> puts you on the first level.</p><p>The right-hand panel keeps your statistics, your dungeon level (DL), hit points (HP) and experience level (EL) in view, and the message box below it reports what happens each turn.</p>"
+      },
+      {
+        "h": "Its own help is the manual",
+        "html": "<p>The Help menu is unusually complete for 1987: a page for each of the File, Edit and Control, Use and Inventory menus, a general guide, the keyboard commands, a page of rumours, and the Hall of Legends, where the dead are remembered. Read the keyboard commands before going far down.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "How do I move?",
+        "a": "With the arrow keys, which this page sends to the numeric keypad the game was written for. A real keypad works too, and gives you the diagonals."
+      },
+      {
+        "q": "How is it related to The Dungeon of Doom?",
+        "a": "The Dungeon of Doom was John Raymonds' earlier version, passed around as a demo and as shareware. The Dungeon Revealed is the full game Woodrose Editions published in 1987."
+      },
+      {
+        "q": "Can I save and come back?",
+        "a": "Yes. Your game is a file saved inside the emulated Mac, which is kept in your own browser between visits. Open it again from the File menu."
+      },
+      {
+        "q": "Does it work on a phone?",
+        "a": "It loads, and on-screen arrow keys appear once it starts, but the menus are small. A computer with a keyboard is much more comfortable."
+      }
+    ],
+    "download": {
+      "heading": "Archives and originals",
+      "html": "<ul><li><a href=\"https://archive.org/details/TheDungeonRevealedMacintosh\" rel=\"noopener\">Internet Archive</a>: the preserved disk this copy came from.</li><li><a href=\"https://archive.org/details/DungeonOfDoomRevealed\" rel=\"noopener\">The Dungeon of Doom &amp; The Dungeon Revealed</a>: earlier versions, also at the Internet Archive.</li></ul>"
+    },
+    "related": [
+      "rogue",
+      "scarab-of-ra",
+      "pyramid-of-peril"
+    ],
+    "updated": "2026-10-01",
+    "addedDate": "2026-10-01",
     "screenshot": true,
     "persist": true
   },

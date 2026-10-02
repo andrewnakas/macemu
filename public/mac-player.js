@@ -686,8 +686,19 @@
     // for bytes that never arrive. Without a watchdog that failure looks
     // identical to a slow machine, and the visitor stares at a progress bar
     // until they leave.
-    var watchdog = setTimeout(function () {
-      if (global.__macBooted) return;
+    //
+    // It is an INACTIVITY timer, not a stopwatch. Before the machine starts,
+    // the runtime prefetches the shared Mac OS 8.6 image's first 224 chunks
+    // (56 MB). On a 3 Mbit/s connection that alone takes six minutes, and a
+    // fixed 90-second deadline told those visitors (Andrew among them, on
+    // 2026-10-02) that the disk was broken while it was still arriving. So it
+    // fires only after 75 seconds with no progress at all, or 15 minutes in.
+    var lastActivity = Date.now();
+    ui.poke = function () { lastActivity = Date.now(); };
+    var watchdog = setInterval(function () {
+      if (global.__macBooted) { clearInterval(watchdog); return; }
+      if (Date.now() - lastActivity < 75000 && Date.now() - ui.t0 < 900000) return;
+      clearInterval(watchdog);
       // The documented way persistence goes wrong is not an error — it is a
       // machine that never finishes starting. That never rejects, so the
       // catch below would not see it; the watchdog has to revoke persistence
@@ -713,10 +724,11 @@
       ui.overlay.hidden = false;
       ui.btn.disabled = false;
       ui.btn.innerHTML = "Try again";
-      ui.hint.innerHTML = "This machine did not finish starting. That usually means a disk is " +
-        "incomplete on our side rather than anything wrong at yours. " +
+      ui.hint.innerHTML = "This machine stopped making progress while starting. On a slow or " +
+        "interrupted connection, Try again picks up from what is already downloaded; if it " +
+        "stalls again, a disk may be incomplete on our side. " +
         (cfg.slug ? '<a href="/contact/" style="color:#9cf">Tell us</a> and it gets fixed.' : "");
-    }, 90000);
+    }, 5000);
 
     ui.booted = loadRuntime().then(function (MacEmulator) {
       // A saved boot disk is marked as cleanly shut down before the emulator
@@ -786,12 +798,16 @@
         // Service-Worker-Allowed: / on the script so this scope is permitted.
         serviceWorker: { scope: "/" },
         onProgress: function (done, total) {
+          if (ui.poke) ui.poke();
           if (total) ui.fill.style.width = Math.round((done / total) * 100) + "%";
         },
         // Fires once per 256 KB disk chunk the machine asks for, from the
         // network or the cache. The runtime's own progress counts its files,
         // not bytes, so this is the only honest measure of a long first boot.
-        onDiskActivity: function (busy) { if (busy) ui.chunks = (ui.chunks || 0) + 1; },
+        onDiskActivity: function (busy) {
+          if (ui.poke) ui.poke();
+          if (busy) ui.chunks = (ui.chunks || 0) + 1;
+        },
         onQuiescent: function () {
           if (ui.ready) return;
           ui.ready = true;

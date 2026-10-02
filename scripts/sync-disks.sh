@@ -34,12 +34,22 @@ while [ $# -gt 0 ]; do
   esac
 done
 
-TOKEN="${CLOUDFLARE_API_TOKEN:-}"
-if [ -z "$TOKEN" ]; then
-  cfg="$HOME/Library/Preferences/.wrangler/config/default.toml"
-  [ -f "$cfg" ] || cfg="$HOME/.wrangler/config/default.toml"
-  TOKEN=$(grep -E '^oauth_token' "$cfg" 2>/dev/null | sed 's/.*= *"\(.*\)"/\1/')
-fi
+# wrangler's OAuth token lives about an hour, and a large upload outlasts it:
+# on 2026-10-01 one run kept "uploading" for seven hours after the token died,
+# every PUT failing quietly. So the token is re-read, after asking wrangler to
+# refresh it, before every round rather than once at the start.
+load_token() {
+  TOKEN="${CLOUDFLARE_API_TOKEN:-}"
+  if [ -z "$TOKEN" ]; then
+    npx --yes wrangler r2 bucket list >/dev/null 2>&1 || true
+    cfg="$HOME/Library/Preferences/.wrangler/config/default.toml"
+    [ -f "$cfg" ] || cfg="$HOME/.wrangler/config/default.toml"
+    WRANGLER_CFG="$cfg"; export WRANGLER_CFG
+    TOKEN=$(grep -E '^oauth_token' "$cfg" 2>/dev/null | sed 's/.*= *"\(.*\)"/\1/')
+  fi
+  export TOKEN
+}
+load_token
 if [ -z "$TOKEN" ]; then
   echo "No Cloudflare credential. Set CLOUDFLARE_API_TOKEN, or run: npx wrangler login"
   exit 2
@@ -51,17 +61,27 @@ export TOKEN ACCOUNT BUCKET
 upload_one() {
   local f="$1" key="$2"
   for try in 1 2 3; do
+    # The OAuth token can expire in the middle of a round (it did, 155 objects
+    # into one, on 2026-10-02), so each upload takes the current one from
+    # wrangler's config, and an "Authentication error" refreshes it first.
+    if [ -z "${CLOUDFLARE_API_TOKEN:-}" ] && [ -n "${WRANGLER_CFG:-}" ]; then
+      TOKEN=$(grep -E '^oauth_token' "$WRANGLER_CFG" 2>/dev/null | sed 's/.*= *"\(.*\)"/\1/')
+    fi
     resp=$(curl -s --max-time 120 -X PUT \
       "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT/r2/buckets/$BUCKET/objects/$key" \
       -H "Authorization: Bearer $TOKEN" \
       -H "Content-Type: application/octet-stream" \
       --data-binary "@$f")
     case "$resp" in
-      *'"success":true'*) echo "  put    $key"; return 0 ;;
+      # Cloudflare's API allows about 1,200 requests per five minutes; two
+      # parallel uploads ran into it, so stay near two a second.
+      *'"success":true'*) echo "  put    $key"; sleep 0.4; return 0 ;;
+      *'"code":10000'*) npx --yes wrangler r2 bucket list >/dev/null 2>&1 || true ;;
+      *'"code":10429'*) sleep 20 ;;
     esac
     sleep 2
   done
-  echo "  FAILED $key"
+  echo "  FAILED $key: $(printf '%s' "$resp" | tr -d '\n' | head -c 200)"
   return 1
 }
 export -f upload_one
@@ -108,6 +128,7 @@ PY
 if [ "$verify_only" = 0 ]; then
   for round in 1 2 3 4; do
     echo "round $round"
+    [ "$round" = 1 ] || load_token
     list=$(missing)
     [ -z "$list" ] && { echo "  nothing to upload"; break; }
     echo "$list" | while read -r kind name; do

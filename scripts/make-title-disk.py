@@ -35,6 +35,12 @@ def main():
     ap.add_argument("--app", required=True, help="the application inside it to launch")
     ap.add_argument("--slug", required=True)
     ap.add_argument("--size", type=int, default=32, help="output size in MB")
+    ap.add_argument("--volume-name", default="Title",
+                    help="only for testing: the shared system's startup alias looks for a "
+                         "volume named Title, and on any other name it fails with 'the disk "
+                         "Title could not be found'. A CD that opens its files by absolute "
+                         "path gets its own disk under its own name instead (Carmen USA, "
+                         "The Museum of Anything Goes)")
     ap.add_argument("--shared-base", default="Images/system/macos8-shared.img",
                     help="read only for its volume creation date, which the alias must match")
     args = ap.parse_args()
@@ -48,18 +54,20 @@ def main():
         shared_peek.read(open(args.shared_base, "rb").read())
         folder = bti.read_native_folder(args.from_folder, shared_peek.crdate)
     else:
-        if not args.source or not args.folder:
+        if not args.source or args.folder is None:
             sys.exit("give either --from-folder, or both --source and --folder")
         src = machfs.Volume(); src.read(open(args.source, "rb").read())
         folder = src
-        for part in args.folder.split(":"):
+        # --folder "" takes the whole volume: a CD whose projector sits at the
+        # root next to its data folders (The Museum of Anything Goes).
+        for part in filter(None, args.folder.split(":")):
             folder = folder[part]
     if args.app not in folder:
         sys.exit(f"{args.app!r} is not in {args.folder!r}; it holds {sorted(folder.keys())}")
 
     shared = machfs.Volume(); shared.read(open(args.shared_base, "rb").read())
     t = machfs.Volume()
-    t.name = "Title"
+    t.name = args.volume_name
     t.crdate = t.mddate = t.bkdate = shared.crdate   # the alias matches on this
     t["Start App"] = folder[args.app]                # first, so its cnid is fixed
     alias = machfs.File()
