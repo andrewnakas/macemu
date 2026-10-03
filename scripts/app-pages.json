@@ -938,8 +938,8 @@
     "era": "mac-os-8",
     "machine": "Power-Macintosh-9500",
     "screen": {
-      "w": 800,
-      "h": 600,
+      "w": 640,
+      "h": 506,
       "depth": 8
     },
     "bootDisk": "macos8-shared",
@@ -1023,8 +1023,8 @@
     ],
     "shotSetup": {
       "screen": [
-        800,
-        600
+        640,
+        506
       ],
       "steps": [
         {
@@ -1036,8 +1036,8 @@
         },
         {
           "click": [
-            400,
-            300
+            320,
+            260
           ],
           "waitMs": 7000
         }
@@ -1072,8 +1072,8 @@
     "era": "mac-os-8",
     "machine": "Power-Macintosh-9500",
     "screen": {
-      "w": 800,
-      "h": 600,
+      "w": 640,
+      "h": 488,
       "depth": 8
     },
     "bootDisk": "macos8-shared",
@@ -1169,8 +1169,8 @@
     "era": "mac-os-8",
     "machine": "Power-Macintosh-9500",
     "screen": {
-      "w": 800,
-      "h": 600,
+      "w": 640,
+      "h": 486,
       "depth": 8
     },
     "bootDisk": "macos8-shared",
@@ -1267,8 +1267,8 @@
     "era": "mac-os-8",
     "machine": "Power-Macintosh-9500",
     "screen": {
-      "w": 800,
-      "h": 600,
+      "w": 640,
+      "h": 490,
       "depth": 8
     },
     "bootDisk": "macos8-shared",
@@ -1378,8 +1378,8 @@
     "era": "mac-os-8",
     "machine": "Power-Macintosh-9500",
     "screen": {
-      "w": 800,
-      "h": 600,
+      "w": 640,
+      "h": 480,
       "depth": 8
     },
     "bootDisk": "macos8-shared",
@@ -15196,25 +15196,22 @@
     "categories": [
       "Puzzle & strategy"
     ],
-    "era": "mac-os-8",
-    "machine": "Power-Macintosh-9500",
+    "era": "system-7",
+    "machine": "Mac-II",
     "screen": {
-      "w": 800,
-      "h": 600,
+      "w": 640,
+      "h": 480,
       "depth": 8
     },
-    "bootDisk": "macos8-shared",
-    "extraDisks": [
-      "simtower-title"
-    ],
+    "bootDisk": "simtower-68k-v1",
     "provenance": "grey",
     "licenseReason": "SimTower belongs to Electronic Arts, which bought Maxis in 1997, and to Yoot Saito, who designed it. This 1995 Macintosh release has not been sold for decades and is in no current product. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/simtower.md\" rel=\"noopener\">notices/simtower.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
     "verdict": {
       "kind": "good",
       "text": "Runs here"
     },
-    "intro": "<p>You get an empty lot, two million dollars and a side-on view of the sky. SimTower asks you to fill that sky with a building people want to be in: offices, condos, hotel rooms, shops and restaurants, all joined up by elevators that are never quite fast enough. Tenants move in, complain, and move out, and the tower earns its stars as it grows.</p>\n<p>It was designed in Japan by Yoot Saito and published in the West by Maxis in 1994. This is the Macintosh release, version 1.2, installed from the original CD onto an emulated Power Macintosh.</p>",
-    "launchNote": "Mac OS 8.6 starts and opens SimTower by itself. Click Yes when it asks to switch to 256 colours, then New Tower. Start with a lobby on the ground floor.",
+    "intro": "<p>You get an empty lot, two million dollars and a side-on view of the sky. SimTower asks you to fill that sky with a building people want to be in: offices, condos, hotel rooms, shops and restaurants, all joined up by elevators that are never quite fast enough. Tenants move in, complain, and move out, and the tower earns its stars as it grows.</p>\n<p>It was designed in Japan by Yoot Saito and published in the West by Maxis in 1994. This is the Macintosh release, version 1.2, installed from the original CD and running on an emulated Macintosh II under System 7.5.3.</p>",
+    "launchNote": "System 7.5.3 starts and opens SimTower by itself. Click New Tower, then give it a minute to build the empty lot. Start with a lobby on the ground floor.",
     "macControls": [
       {
         "keys": "Mouse",
@@ -15236,7 +15233,7 @@
     "sections": [
       {
         "h": "How it works & what to expect",
-        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh, 800×600, 256 colours</td></tr><tr><th>System</th><td>Mac OS 8.6</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Version</th><td>SimTower 1.2 (readme dated 24 April 1995)</td></tr><tr><th>Saves</th><td>Towers save inside the emulated Mac, in your browser</td></tr></tbody></table><p>SimTower insists on 256 colours and asks to switch before it starts; say Yes. The first start downloads Mac OS 8.6 once, and every Mac OS 8 title after it starts faster.</p>"
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh II, 640×480, 256 colours</td></tr><tr><th>System</th><td>System 7.5.3</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Version</th><td>SimTower 1.2 (readme dated 24 April 1995)</td></tr><tr><th>Saves</th><td>Towers save inside the emulated Mac, in your browser</td></tr></tbody></table><p>SimTower 1.2 carries both PowerPC and 68k code. The PowerPC version crashed under emulation once a tower got going (“system error type 7”), so this runs the 68k version on a colour Macintosh II, which is what the game was first written for. Starting a new tower takes a minute while the game builds the lot; it is working, not stuck.</p>"
       },
       {
         "h": "Your first tower",
@@ -15250,11 +15247,11 @@
     "faq": [
       {
         "q": "Is this the real SimTower?",
-        "a": "Yes: the 1994 Maxis game, Macintosh version 1.2, installed from the original CD and running on an emulated Power Macintosh."
+        "a": "Yes: the 1994 Maxis game, Macintosh version 1.2, installed from the original CD and running on an emulated Macintosh II."
       },
       {
-        "q": "Why does it ask to switch colours?",
-        "a": "SimTower was written for 256-colour screens and will not start otherwise. Click Yes and it switches the emulated monitor for you."
+        "q": "It crashed for me earlier. Is that fixed?",
+        "a": "Yes. Until 3 October 2026 this page ran SimTower's PowerPC version, which could stop with “system error type 7” soon after you started building. It now runs the 68k version on a Macintosh II, and a tower saved under the old setup will not carry over, so start a new one."
       },
       {
         "q": "Can I save my tower?",
@@ -15280,20 +15277,16 @@
     ],
     "shotSetup": {
       "screen": [
-        800,
-        600
+        640,
+        480
       ],
       "steps": [
         {
-          "waitMs": 15000
-        },
-        {
-          "key": "Enter",
-          "waitMs": 12000
+          "waitMs": 20000
         }
       ]
     },
-    "updated": "2026-09-27",
+    "updated": "2026-10-03",
     "addedDate": "2026-09-27",
     "rank": 1,
     "screenshot": true,

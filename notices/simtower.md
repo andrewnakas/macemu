@@ -29,10 +29,16 @@ empty work disk; the resulting "SimTower" folder (the application, "Read Me
 First!" and Maxis's Electronic Registration application) was copied onto the
 title disk unaltered. Steps: `scripts/steps/simtower.json`.
 
-On the title disk the application is named "Start App", with an alias "Start",
-so the shared system can launch it at boot. Only the name changed.
+On 2026-10-03 the title moved off the shared Mac OS 8.6 system. SimTower 1.2
+is a fat application, and under SheepShaver its PowerPC code crashed with
+"system error type 7" after the first lobby was placed. It now boots its own
+System 7.5.3 disk on an emulated Macintosh II, which runs the application's
+68k code. The application, unaltered and under its original name, sits in
+System Folder:Startup Items beside "Read Me First!" so the system launches it
+at boot. Electronic Registration was left off.
 
-Played on 2026-09-27: the 256-colour prompt, the title screen, and a new tower.
+Played on 2026-09-27 (PowerPC) and again on 2026-10-03 (68k): the title
+screen, a new tower, a lobby on the ground floor, and the first weekend.
 
 ## Takedown
 
