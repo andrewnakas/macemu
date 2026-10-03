@@ -599,3 +599,6 @@ body.is-embed .embed-stage { border: 0; border-radius: 0; margin: 0; }
   pointer-events: none;
 }
 .touch-pad.tp-over .tp-key { pointer-events: auto; opacity: 0.55; }
+.qa-start-row { margin: -0.3rem 0 1rem; }
+.qa-start { display: inline-block; padding: 0.55rem 1.1rem; border-radius: 6px; background: var(--accent); color: #fff; font-weight: 600; text-decoration: none; }
+.qa-start:hover { background: var(--accent-hover); color: #fff; }

@@ -1099,6 +1099,14 @@
     wireControls(cfg, ui);
     ui.btn.addEventListener("click", function () { boot(cfg, ui, null); });
 
+    // The Start link in the answer box at the top of the page.
+    var qa = document.querySelector("[data-qa-start]");
+    if (qa) qa.addEventListener("click", function (e) {
+      e.preventDefault();
+      ui.stage.scrollIntoView({ behavior: "smooth", block: "center" });
+      if (!ui.btn.disabled) ui.btn.click();
+    });
+
     // Inside an embed on somebody else's page there is no article to read, so
     // waiting for a second click is just friction.
     if (cfg.mode === "fallback" && global.self !== global.top) boot(cfg, ui, null);

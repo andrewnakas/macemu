@@ -410,8 +410,13 @@ function quickAnswer(p) {
     p.persist ? "Your progress is saved in your own browser between visits." : "",
     needsKeyboard(p) ? "It plays best with a keyboard; on a phone, on-screen keys appear once it starts." : "",
   ].filter(Boolean);
+  // The player sits below the intro, past the first screen on a laptop and on
+  // a phone, so this answer said "Press Start" with no Start in sight. The
+  // button jumps to the player and starts it; without JS it is still a jump.
+  const start = `<a class="qa-start" href="#mac-embed" data-rec="quick-start" data-qa-start>▶ Start ${esc(p.appName)}</a>`;
   return `
-    <p class="quick-answer">${parts.join(" ")}</p>`;
+    <p class="quick-answer">${parts.join(" ")}</p>
+    <p class="qa-start-row">${start}</p>`;
 }
 
 function licenseHtml(p) {
