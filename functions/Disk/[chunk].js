@@ -20,7 +20,11 @@ async function serve(context) {
   }
 
   const cache = caches.default;
-  const cacheKey = new Request(new URL(request.url).toString(), request);
+  // The key carries a version so a change to the response headers is not
+  // masked by year-old cached copies. v2: served as application/wasm.
+  const keyUrl = new URL(request.url);
+  keyUrl.search = "?v=2";
+  const cacheKey = new Request(keyUrl.toString(), request);
   const hit = await cache.match(cacheKey);
   if (hit) return hit;
 
@@ -28,9 +32,15 @@ async function serve(context) {
   const object = await env.DISK_BUCKET.get(name);
   if (!object) return new Response("not found", { status: 404 });
 
+  // Labelled application/wasm, not octet-stream, so that Cloudflare's edge
+  // Brotli-compresses it: it skips octet-stream but compresses wasm. A chunk is
+  // an HFS disk slice, mostly code, resources and zeros, and travels at about
+  // 40% of its size compressed. On a first Mac OS 8 visit (224 chunks, 56 MB)
+  // that is the difference between a minute of grey screen and half that. Nothing
+  // reads the type: the runtime fetches chunks as ArrayBuffers.
   const res = new Response(object.body, {
     headers: {
-      "Content-Type": "application/octet-stream",
+      "Content-Type": "application/wasm",
       "Cache-Control": "public, max-age=31536000, immutable",
       "Cross-Origin-Resource-Policy": "same-origin",
       "ETag": object.httpEtag,
