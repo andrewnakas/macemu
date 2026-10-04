@@ -1,0 +1,55 @@
+{
+ "screen": [
+  640,
+  480
+ ],
+ "steps": [
+  {
+   "waitMs": 3000,
+   "note": "desk"
+  },
+  {
+   "doubleClick": [
+    597,
+    95
+   ],
+   "waitMs": 6000,
+   "note": "disk1"
+  },
+  {
+   "doubleClick": [
+    38,
+    88
+   ],
+   "waitMs": 15000,
+   "note": "launch"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 6000,
+   "note": "enter1"
+  },
+  {
+   "click": [
+    449,
+    387
+   ],
+   "waitMs": 8000,
+   "note": "agree"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 60000,
+   "note": "installing"
+  },
+  {
+   "waitMs": 60000,
+   "note": "done"
+  },
+  {
+   "key": "Enter",
+   "waitMs": 90000,
+   "note": "restarted"
+  }
+ ]
+}

@@ -15293,6 +15293,170 @@
     "persist": true
   },
   {
+    "slug": "museum-of-anything-goes",
+    "title": "The Museum of Anything Goes — the 1995 CD-ROM, in Your Browser",
+    "description": "Walk the halls of The Museum of Anything Goes, Wayzata Technology's strange 1995 CD-ROM, on an emulated Mac in your browser. No download, no install.",
+    "keywords": "museum of anything goes, the museum of anything goes online, museum of anything goes play, wayzata technology, moag cd-rom, museum of anything goes mac, 1995 cd-rom game",
+    "ogTitle": "The Museum of Anything Goes in your browser",
+    "ogDescription": "Wayzata Technology's 1995 CD-ROM museum, running on an emulated Macintosh.",
+    "crumb": "The Museum of Anything Goes",
+    "h1": "The Museum of Anything Goes — a 1995 CD-ROM you walk through",
+    "appName": "The Museum of Anything Goes",
+    "appType": "game",
+    "author": "Wayzata Technology (Michael Markowski, Maxwell S. Robinson)",
+    "year": 1995,
+    "genre": [
+      "Adventure",
+      "Exploration",
+      "Puzzle"
+    ],
+    "categories": [
+      "Puzzle & strategy"
+    ],
+    "era": "system-7",
+    "machine": "Mac-II",
+    "screen": {
+      "w": 640,
+      "h": 480,
+      "depth": 8
+    },
+    "bootDisk": "museum-of-anything-goes-68k-v1",
+    "extraDisks": [
+      "museum-of-anything-goes-cd"
+    ],
+    "provenance": "grey",
+    "licenseReason": "The Museum of Anything Goes was published by Wayzata Technology, which closed in 1996, a year after it came out. The CD has been out of print ever since and is in no current product. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/museum-of-anything-goes.md\" rel=\"noopener\">notices/museum-of-anything-goes.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>A courtyard, a pergola, a pair of heavy wooden doors. Click ahead of you and you walk towards them; click again and they open onto a corridor with a checkerboard floor, paintings down both walls and a pair of staring eyes at the far end. That is the front door of The Museum of Anything Goes, and it does not get less strange from there.</p>\n<p>It was made by Michael Markowski and Maxwell S. Robinson and published in 1995 by Wayzata Technology, a Minnesota CD-ROM publisher that closed the following year. This is the Macintosh side of the original hybrid CD, running on an emulated Macintosh II under System 7.5.3 with QuickTime 2.5.</p>",
+    "launchNote": "System 7.5.3 starts and opens the museum by itself, which takes about a minute. Click Skip Introduction (or Play Introduction), then click ahead of you to walk. The cursor changes shape to show which way a click will take you.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Everything: the cursor changes shape to show the move a click will make"
+      },
+      {
+        "keys": "Centre / bottom of the screen",
+        "does": "Walk ahead, or back up"
+      },
+      {
+        "keys": "Left and right edges",
+        "does": "Turn; the corners move diagonally"
+      },
+      {
+        "keys": "Click a picture",
+        "does": "Warp into it, then click the objects inside"
+      },
+      {
+        "keys": "Small picture icon (bottom)",
+        "does": "Leave a picture and return to the hall"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh II, 640×480, 256 colours</td></tr><tr><th>System</th><td>System 7.5.3 with QuickTime 2.5</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Disc</th><td>The original 1995 hybrid CD, Macintosh partition</td></tr><tr><th>Saves</th><td>None; it is a place to explore, not a game you save</td></tr></tbody></table><p>The museum is a Macromedia Director projector, the tool most CD-ROMs of the mid-1990s were built with. Under Mac OS 8.6 on an emulated PowerPC it stopped at its first screen, so it runs here on a colour Macintosh II, which runs its 68k code. The disc is read straight off the emulated CD drive, so the first view of each room can take a moment to arrive.</p>"
+      },
+      {
+        "h": "What is inside",
+        "html": "<p>The museum is a set of corridors and galleries you move through one click at a time, in the style of Myst, which came out two years earlier. Paintings, sculptures, sounds and short films hang off the walls, and many of them can be opened. Some are pieces of art, some are small puzzles and games, and some are recordings and writings that are hard to place at all.</p><p>There is no score and no ending to reach. The point is to wander, open things, and find the rooms that are not obvious from the main hall. People who played it as children mostly remember the atmosphere: the music, the silence between exhibits, and a handful of images that are more unsettling than anything an educational CD was expected to contain.</p>"
+      },
+      {
+        "h": "Why people look for it now",
+        "html": "<p>For years The Museum of Anything Goes was the kind of CD-ROM people half-remembered and could not name. It found a second life online when streamers and YouTube channels went through it on camera, and it now turns up in lists of eerie 1990s software alongside the creepier corners of the shareware era.</p><p>Most of the ways to see it today are a video of someone else playing it. Here you can walk it yourself, on the kind of Macintosh it was made for, at your own pace.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the real Museum of Anything Goes?",
+        "a": "Yes: the 1995 Wayzata Technology CD-ROM, running from the Macintosh side of the original disc on an emulated Macintosh II."
+      },
+      {
+        "q": "How do I move around?",
+        "a": "Click where you want to go. The centre walks ahead, the bottom backs up, the left and right edges turn, and the corners move diagonally; the cursor changes shape to show which. Click a picture to warp into it, and the small picture icon at the bottom brings you back out."
+      },
+      {
+        "q": "Why does it take a minute to start?",
+        "a": "The emulated Mac boots System 7.5.3 first and then opens the museum from its CD. After that, each room loads from the disc as you reach it."
+      },
+      {
+        "q": "Is it suitable for children?",
+        "a": "It was sold as family software, but it is famous for being unsettling. Some exhibits are strange or grim, so look first if you are choosing it for a young child."
+      },
+      {
+        "q": "Is The Museum of Anything Goes still sold?",
+        "a": "No. Wayzata Technology closed in 1996 and the CD has been out of print since."
+      }
+    ],
+    "download": {
+      "heading": "Archives and originals",
+      "html": "<ul><li><a href=\"https://archive.org/details/museum-of-anything-goes\" rel=\"noopener\">Internet Archive</a>: the preserved hybrid CD this copy comes from.</li></ul>"
+    },
+    "related": [
+      "kid-pix",
+      "amazon-trail",
+      "after-dark"
+    ],
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "waitMs": 90000
+        },
+        {
+          "click": [
+            425,
+            337
+          ],
+          "waitMs": 15000
+        },
+        {
+          "click": [
+            320,
+            250
+          ],
+          "waitMs": 12000
+        },
+        {
+          "click": [
+            320,
+            250
+          ],
+          "waitMs": 12000
+        },
+        {
+          "click": [
+            320,
+            250
+          ],
+          "waitMs": 12000
+        },
+        {
+          "click": [
+            320,
+            250
+          ],
+          "waitMs": 12000
+        },
+        {
+          "click": [
+            320,
+            250
+          ],
+          "waitMs": 12000
+        }
+      ]
+    },
+    "updated": "2026-10-04",
+    "addedDate": "2026-10-04",
+    "rank": 3
+  },
+  {
     "slug": "scarab-of-ra",
     "title": "Scarab of Ra — Play the Classic Mac Shareware Adventure Free",
     "description": "Scarab of Ra, Rick Holzgrafe's 1987 Macintosh pyramid adventure, playable free in your browser. Map the maze, watch your food and health, find the scarab.",
