@@ -15458,6 +15458,490 @@
     "screenshot": true
   },
   {
+    "slug": "bad-day-on-the-midway",
+    "title": "Bad Day on the Midway — The Residents' CD-ROM, in Your Browser",
+    "description": "The Residents' Bad Day on the Midway, the 1995 Inscape CD-ROM, running on an emulated Mac in your browser. Freeware since 2022. No download, no install.",
+    "keywords": "bad day on the midway, bad day on the midway online, the residents bad day on the midway, inscape cd-rom, jim ludtke, bad day on the midway mac, 1995 cd-rom game",
+    "ogTitle": "Bad Day on the Midway in your browser",
+    "ogDescription": "The Residents' 1995 carnival CD-ROM, running on an emulated Macintosh.",
+    "crumb": "Bad Day on the Midway",
+    "h1": "Bad Day on the Midway — The Residents' carnival, on a 1995 Mac",
+    "appName": "Bad Day on the Midway",
+    "appType": "game",
+    "author": "The Residents, Jim Ludtke, The Cryptic Corporation (published by Inscape)",
+    "year": 1995,
+    "genre": [
+      "Adventure",
+      "Interactive film"
+    ],
+    "categories": [
+      "Puzzle & strategy"
+    ],
+    "era": "system-7",
+    "machine": "Mac-II",
+    "screen": {
+      "w": 640,
+      "h": 480,
+      "depth": 8
+    },
+    "bootDisk": "bad-day-on-the-midway-68k-v1",
+    "extraDisks": [
+      "bad-day-on-the-midway-cd"
+    ],
+    "provenance": "grey",
+    "licenseReason": "In March 2022 the copyright holder, The Cryptic Corporation, and Inscape's former CEO Michael L. Nash let Bad Day on the Midway go free, on condition that nobody charges for it. That release is <a href=\"https://www.wegneronline.com/badday/\" rel=\"noopener\">Max Wegner's Bad Day on the Midway package</a>, linked from The Residents' own site; this page runs the original Macintosh CD instead, free of charge. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/bad-day-on-the-midway.md\" rel=\"noopener\">notices/bad-day-on-the-midway.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>It is one in the afternoon at a run-down carnival, and you are Timmy, ten years old, with a midway full of rides, freak-show tents and sideshow booths ahead of you. Everyone you pass is thinking out loud, in lines of text that drift along the bottom of the screen, and most of what they are thinking is not what a ten-year-old should hear.</p>\n<p>Bad Day on the Midway was written and directed by The Residents, the anonymous San Francisco art-rock group, drawn by Jim Ludtke and published by Inscape in November 1995. This is the Macintosh side of the original CD, running on an emulated Macintosh II under System 7.5.3 with QuickTime 2.5.</p>",
+    "launchNote": "System 7.5.3 starts and opens the carnival by itself. The screen then goes black with a small eye and \"Loading…\" for a minute or so while the first films come off the disc; leave it, the intro follows. After that, click where you want to go.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Everything: the cursor changes shape to show what a click will do"
+      },
+      {
+        "keys": "Click a place",
+        "does": "Walk there, or into a ride, booth or tent"
+      },
+      {
+        "keys": "Click a visible character",
+        "does": "Jump into their head and play as them"
+      },
+      {
+        "keys": "Captions (bottom)",
+        "does": "The thoughts of whoever you are playing"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh II, 640×480, 256 colours</td></tr><tr><th>System</th><td>System 7.5.3 with QuickTime 2.5</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Disc</th><td>The original 1995 hybrid CD, Macintosh partition</td></tr><tr><th>Saves</th><td>None; a visit runs from 1 pm to midnight and starts fresh each time</td></tr></tbody></table><p>The game is a Macromedia Director projector. It runs here on an emulated colour Macintosh II, which runs its 68k code, the same way The Museum of Anything Goes does. Every film, sound and scene is read straight off the emulated CD drive, so the first view of each place can take a moment to arrive, as it did on a double-speed drive in 1995.</p>"
+      },
+      {
+        "h": "How you play",
+        "html": "<p>There are no puzzles to solve in the usual sense and no inventory. You walk the midway by clicking, ride the rides, and listen. The trick of the game is that you are not stuck being Timmy: whenever another character is on screen you can click on them and take over, seeing the carnival through their eyes and reading their thoughts instead.</p><p>Each of them wants something. Dixie runs the shooting gallery and owns the midway; Jocko is her foreman and lover; Ted is a killer who lives with his mother Lottie; Oscar is a rat carrying a plague. Following one character for a while, then jumping into another, is how the story comes together. A clock runs from one in the afternoon to midnight, several characters can die, and there is more than one ending. Timmy is safe from most of the deaths, which makes him a good body to come back to.</p>"
+      },
+      {
+        "h": "Why people look for it now",
+        "html": "<p>Bad Day on the Midway was praised on release and then went missing for a quarter of a century: the CD was made for Windows 3.1 and the classic Mac OS, and it stopped running on either long ago. It survived as a cult object among Residents fans and in lists of the strangest CD-ROMs of the 1990s, and Ron Howard's company once optioned it as a television series for David Lynch.</p><p>In 2022 its owners made it free, and fans built a package around an emulated Windows 3.1. This page is the other half: the Macintosh version, as it ran on a Mac, with nothing to install.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the real Bad Day on the Midway?",
+        "a": "Yes: the 1995 Inscape CD-ROM by The Residents, running from the Macintosh side of the original disc on an emulated Macintosh II."
+      },
+      {
+        "q": "Is Bad Day on the Midway free?",
+        "a": "Yes. In 2022 the copyright holder, The Cryptic Corporation, and Inscape's former CEO allowed it to be given away, as long as nobody charges for it. The fans' download for modern Windows and macOS is at wegneronline.com/badday."
+      },
+      {
+        "q": "Why is the screen black with \"Loading…\" at the start?",
+        "a": "The game is reading its first films off the emulated CD. It takes about a minute; the intro follows by itself."
+      },
+      {
+        "q": "How do I switch characters?",
+        "a": "Click on a character while they are on screen. You take them over, and the captions at the bottom become their thoughts."
+      },
+      {
+        "q": "Is it suitable for children?",
+        "a": "No. Timmy is a child, but the game is a dark comedy for adults, with a serial killer, death scenes and a lot of grim humour."
+      }
+    ],
+    "download": {
+      "heading": "Archives and originals",
+      "html": "<ul><li><a href=\"https://www.wegneronline.com/badday/\" rel=\"noopener\">Bad Day on the Midway package by Max Wegner</a>: the free 2022 release for modern Windows and macOS, authorised by the rights holders.</li><li><a href=\"https://archive.org/details/bad-day-on-the-midway\" rel=\"noopener\">Internet Archive</a>: the preserved hybrid CD this copy comes from.</li></ul>"
+    },
+    "related": [
+      "museum-of-anything-goes",
+      "hitchhikers-guide",
+      "suspect"
+    ],
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "waitMs": 150000
+        }
+      ]
+    },
+    "updated": "2026-10-05",
+    "addedDate": "2026-10-05",
+    "rank": 2,
+    "screenshot": true
+  },
+  {
+    "slug": "word-munchers-deluxe",
+    "title": "Word Munchers Deluxe — MECC's 1996 CD-ROM, in Your Browser",
+    "description": "MECC's Word Munchers Deluxe for the Mac, running in your browser. Munch the right words, dodge the Troggles, grades 1 to 5. No download, no install.",
+    "keywords": "word munchers, word munchers deluxe, word munchers online, word munchers deluxe online, mecc munchers, munchers game, troggles, word munchers mac",
+    "ogTitle": "Word Munchers Deluxe in your browser",
+    "ogDescription": "MECC's 1996 word game, running on an emulated Power Macintosh.",
+    "crumb": "Word Munchers Deluxe",
+    "h1": "Word Munchers Deluxe — eat the right words, dodge the Troggles",
+    "appName": "Word Munchers Deluxe",
+    "appType": "game",
+    "author": "MECC",
+    "year": 1996,
+    "genre": [
+      "Educational",
+      "Arcade"
+    ],
+    "categories": [
+      "Classroom classics"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 640,
+      "h": 480,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "extraDisks": [
+      "word-munchers-deluxe-title",
+      "word-munchers-deluxe-cd"
+    ],
+    "persist": true,
+    "provenance": "grey",
+    "licenseReason": "MECC was sold to SoftKey in 1995 and its catalogue eventually reached Houghton Mifflin Harcourt. Word Munchers Deluxe has not been sold for more than twenty years, and no current product contains it. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/word-munchers-deluxe.md\" rel=\"noopener\">notices/word-munchers-deluxe.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>A grid of words, a green Muncher, and a line at the top of the screen telling you what to eat: red things, words that begin with a <em>b</em> sound, the missing word in <em>Goldilocks ate lunch with a ____</em>. Eat the right ones, avoid the wrong ones, and keep away from the Troggles wandering the board.</p>\n<p>Word Munchers Deluxe is MECC's 1996 CD-ROM remake of its own 1985 school-lab classic, the reading-side sibling of Number Munchers. This is the original Macintosh CD, running on an emulated Power Macintosh under Mac OS 8.6.</p>",
+    "launchNote": "Mac OS 8.6 starts and opens Word Munchers Deluxe by itself, in about a minute. Click Play with Troggles (or Troggle Free), pick a grade and a topic in the book, click OK, and munch.",
+    "macControls": [
+      {
+        "keys": "Arrow keys",
+        "does": "Move the Muncher"
+      },
+      {
+        "keys": "Space",
+        "does": "Munch the word you are standing on"
+      },
+      {
+        "keys": "Click a square (twice)",
+        "does": "Walk there, then munch it"
+      },
+      {
+        "keys": "X (hold)",
+        "does": "Jump over a Troggle"
+      },
+      {
+        "keys": "A",
+        "does": "Hear the commentators say the word"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh, 640×480, 256 colours</td></tr><tr><th>System</th><td>Mac OS 8.6</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Disc</th><td>The original 1996 MECC CD, Macintosh partition</td></tr><tr><th>Saves</th><td>None needed; every round stands on its own</td></tr></tbody></table><p>The game asked for a 68040 or a Power Macintosh in 1996, so it runs here on the same emulated Power Mac and shared Mac OS 8.6 system as Oregon Trail II and Hot Dog Stand. The application sits on its own small disk; its pictures and the commentators' voices come off the emulated CD as you play, as they did in a school lab.</p>"
+      },
+      {
+        "h": "How to play",
+        "html": "<p>Choose <strong>Play with Troggles</strong> for the full game or <strong>Troggle Free</strong> for a calmer one where only a wrong answer costs you a Muncher. The book that opens next sets the content: pick a grade from 1 to 5 down the right-hand edge, then a topic (Classification for grades 1 and 2, then Grammar, Phonics, Vocabulary, Sentences and Challenge), tick the skills you want, and click OK.</p><p>On the board, move with the arrow keys and press Space to eat the word you are standing on, or click a square to walk there and click it again to eat. The rule for the round is printed at the top. A Troggle that reaches you eats your Muncher; hold X to jump over one, step into a safe zone, or eat the cookie Cookie drops to be invincible for a while. Clear three boards and the Muncher and the Troggles act out a fairy tale.</p>"
+      },
+      {
+        "h": "Word Munchers, Number Munchers and this version",
+        "html": "<p>MECC made Number Munchers and Word Munchers in 1985, for the Apple II machines that filled American classrooms. Both were remade in colour in the 1990s, and Word Munchers Deluxe is the CD-ROM remake, with spoken words, animated cut-scenes and grades 1 to 5 of reading skills instead of the original's vowel sounds.</p><p>No working Macintosh copy of Number Munchers appears to survive in public archives, which is why this site's maths Munchers game is <a href=\"/run/super-munchers/\">Super Munchers</a>. This is the reading half.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the real Word Munchers?",
+        "a": "It is Word Munchers Deluxe, MECC's 1996 CD-ROM version, running from the original Macintosh CD on an emulated Power Macintosh."
+      },
+      {
+        "q": "How do I eat a word?",
+        "a": "Move onto it with the arrow keys and press Space, or click its square to walk there and click it again."
+      },
+      {
+        "q": "How do I get past a Troggle?",
+        "a": "Hold X to jump over it, move to a safe zone, or eat the cookie for a short spell of invincibility. In Troggle Free mode there are none."
+      },
+      {
+        "q": "Which grades does it cover?",
+        "a": "Grades 1 to 5. Classification is grades 1 and 2 only; grammar, phonics, vocabulary, sentences and the challenge mix run through grade 5."
+      },
+      {
+        "q": "Is Number Munchers here too?",
+        "a": "Not as a game: no Macintosh copy of Number Munchers is known to survive in working order. Super Munchers, MECC's maths-and-trivia sibling, is playable here instead."
+      }
+    ],
+    "download": {
+      "heading": "Archives and originals",
+      "html": "<ul><li><a href=\"https://archive.org/details/word-munchers-deluxe\" rel=\"noopener\">Internet Archive</a>: the preserved hybrid CD this copy comes from.</li></ul>"
+    },
+    "related": [
+      "super-munchers",
+      "number-munchers",
+      "hot-dog-stand"
+    ],
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "waitMs": 75000
+        },
+        {
+          "click": [
+            152,
+            425
+          ],
+          "waitMs": 14000
+        },
+        {
+          "click": [
+            205,
+            429
+          ],
+          "waitMs": 15000
+        }
+      ]
+    },
+    "updated": "2026-10-05",
+    "addedDate": "2026-10-05",
+    "rank": 2,
+    "screenshot": true
+  },
+  {
+    "appType": "game",
+    "author": "Edmark (developed by Theatrix Interactive)",
+    "genre": [
+      "Educational"
+    ],
+    "categories": [
+      "Classroom classics"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 640,
+      "h": 480,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "persist": true,
+    "provenance": "grey",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "updated": "2026-10-05",
+    "addedDate": "2026-10-05",
+    "rank": 3,
+    "screenshot": true,
+    "slug": "millies-math-house",
+    "title": "Millie's Math House — Edmark's 1995 CD-ROM, in Your Browser",
+    "description": "Millie's Math House, Edmark's preschool maths CD-ROM, running on an emulated Mac in your browser. Counting, shapes and sizes with Millie the cow. No install.",
+    "keywords": "millie's math house, millies math house, millie's math house online, edmark millie, millie the cow game, edmark house series, preschool math cd-rom",
+    "ogTitle": "Millie's Math House in your browser",
+    "ogDescription": "Edmark's preschool maths CD-ROM, running on an emulated Power Macintosh.",
+    "crumb": "Millie's Math House",
+    "h1": "Millie's Math House — counting with Millie the cow",
+    "appName": "Millie's Math House",
+    "year": 1995,
+    "extraDisks": [
+      "millies-math-house-title"
+    ],
+    "licenseReason": "Edmark's House series passed from IBM to Riverdeep to Houghton Mifflin Harcourt, which retired the Edmark brand in 2017. This CD release of Millie's Math House has not been sold for more than twenty years. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/millies-math-house.md\" rel=\"noopener\">notices/millies-math-house.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
+    "intro": "<p>A cow in a yellow sweater sits at a counter in a room full of cubbyholes: a giant sneaker, a little house, a jar of cookies, a cash register with buttons from 0 to 10. Click one and it opens into a game about counting, shapes, sizes or patterns, pitched at children of about two to six who cannot read yet.</p>\n<p>Millie's Math House was Edmark's first Early Learning House title, released in 1992 and enlarged in 1995. This is the 1995 version 2.0 from the Macintosh side of the original CD, running on an emulated Power Macintosh under Mac OS 8.6.</p>",
+    "launchNote": "Mac OS 8.6 starts and opens Millie's Math House by itself, in about a minute. Click any picture in Millie's room to go into that activity; the small picture in the bottom corner brings you back.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Everything: no reading or typing needed"
+      },
+      {
+        "keys": "Click a picture in the room",
+        "does": "Open that activity"
+      },
+      {
+        "keys": "Bottom-left icon",
+        "does": "Back to Millie's room"
+      },
+      {
+        "keys": "Stop sign (bottom left of the room)",
+        "does": "Quit"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh, 640×480, 256 colours</td></tr><tr><th>System</th><td>Mac OS 8.6</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Disc</th><td>The original Edmark CD's Macintosh application and its data</td></tr><tr><th>Saves</th><td>None needed; every activity starts fresh</td></tr></tbody></table><p>The 1995 program was written for the 68k Macs and early Power Macs of the time. It runs here on the same emulated Power Mac and shared Mac OS 8.6 system as Oregon Trail II and Word Munchers Deluxe, with its activities and voices on a small disk of their own, so it starts quickly and answers a click at once.</p>"
+      },
+      {
+        "h": "The activities",
+        "html": "<p>Everything is spoken and clicked; nothing has to be read. The activities on this disc are <strong>Cookie Factory</strong> and <strong>Number Machine</strong> (counting, and matching a number to a quantity), <strong>Little, Middle &amp; Big</strong> (sizes, with shoes to fit three characters), <strong>Mouse House</strong> and <strong>Build-A-Bug</strong> (shapes, and putting a number of parts together), <strong>Bing &amp; Boing</strong> (patterns to finish) and <strong>What's My Number</strong>.</p><p>Each has two modes, as the House series always did: click around freely and see what happens, or let the characters ask questions and answer them. Children can wander between rooms whenever they like, which is a large part of why it was so popular with parents and preschool teachers.</p>"
+      },
+      {
+        "h": "Why people remember it",
+        "html": "<p>Millie's Math House won MacUser's Editors' Choice for best children's program in 1992 and a string of education awards after it, and it sat on preschool and kindergarten computers for most of the decade. It was followed by Bailey's Book House, Sammy's Science House and Trudy's Time &amp; Place House, and the series stayed in schools into the 2000s.</p><p>Here it runs as it did on a 1990s Mac, with nothing to install, which makes it easy to show a child the program their parent learnt to count with.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the real Millie's Math House?",
+        "a": "Yes: Edmark's version 2.0 from 1995, running from the original Macintosh CD on an emulated Power Macintosh."
+      },
+      {
+        "q": "What age is it for?",
+        "a": "Edmark pitched it at about two to six. Everything is spoken, so a child does not need to read."
+      },
+      {
+        "q": "How do I go back to Millie's room?",
+        "a": "Click the small picture in the bottom-left corner of an activity."
+      },
+      {
+        "q": "Is it still sold?",
+        "a": "No. Edmark's House series has been out of print for many years; the brand was retired in 2017."
+      }
+    ],
+    "download": {
+      "heading": "Archives and originals",
+      "html": "<ul><li><a href=\"https://archive.org/details/millies-math-house\" rel=\"noopener\">Internet Archive</a>: the preserved CD this copy comes from.</li></ul>"
+    },
+    "related": [
+      "sammys-science-house",
+      "reader-rabbit",
+      "math-blaster"
+    ],
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "waitMs": 60000
+        }
+      ]
+    }
+  },
+  {
+    "appType": "game",
+    "author": "Edmark (developed by Theatrix Interactive)",
+    "genre": [
+      "Educational"
+    ],
+    "categories": [
+      "Classroom classics"
+    ],
+    "era": "mac-os-8",
+    "machine": "Power-Macintosh-9500",
+    "screen": {
+      "w": 640,
+      "h": 480,
+      "depth": 8
+    },
+    "bootDisk": "macos8-shared",
+    "persist": true,
+    "provenance": "grey",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "updated": "2026-10-05",
+    "addedDate": "2026-10-05",
+    "rank": 3,
+    "screenshot": true,
+    "slug": "sammys-science-house",
+    "title": "Sammy's Science House — Edmark's 1994 CD-ROM, in Your Browser",
+    "description": "Sammy's Science House, Edmark's preschool science CD-ROM with Sammy the snake, running on an emulated Mac in your browser. Weather, sorting, building. No install.",
+    "keywords": "sammy's science house, sammys science house, sammy's science house online, edmark sammy the snake, edmark house series, weather machine game, preschool science cd-rom",
+    "ogTitle": "Sammy's Science House in your browser",
+    "ogDescription": "Edmark's preschool science CD-ROM, running on an emulated Power Macintosh.",
+    "crumb": "Sammy's Science House",
+    "h1": "Sammy's Science House — weather, building and sorting with Sammy the snake",
+    "appName": "Sammy's Science House",
+    "year": 1994,
+    "extraDisks": [
+      "sammys-science-house-title"
+    ],
+    "licenseReason": "Edmark's House series passed from IBM to Riverdeep to Houghton Mifflin Harcourt, which retired the Edmark brand in 2017. This CD release of Sammy's Science House has not been sold for more than twenty years. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/sammys-science-house.md\" rel=\"noopener\">notices/sammys-science-house.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
+    "intro": "<p>A long striped snake in a red cap lies coiled across a workbench. Behind him are a pegboard of tools, a window onto a pond, a thermostat with a big green GO button and an old film projector. Each of them opens a small science game for children of about three to six: make the weather, sort plants and animals, build a toy from a plan, put a film strip in order.</p>\n<p>Sammy's Science House was the third of Edmark's Early Learning House titles, released in 1994. This is the CD version 1.0 from the Macintosh side of the original disc, running on an emulated Power Macintosh under Mac OS 8.6.</p>",
+    "launchNote": "Mac OS 8.6 starts and opens Sammy's Science House by itself, in about a minute. Click anything in Sammy's room to go into that activity; the small Sammy icon in the bottom corner brings you back.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Everything: no reading or typing needed"
+      },
+      {
+        "keys": "Click a thing in the room",
+        "does": "Open that activity"
+      },
+      {
+        "keys": "Bottom-left Sammy icon",
+        "does": "Back to Sammy's room"
+      },
+      {
+        "keys": "Stop sign (bottom left of the room)",
+        "does": "Quit"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Power Macintosh, 640×480, 256 colours</td></tr><tr><th>System</th><td>Mac OS 8.6</td></tr><tr><th>Emulator</th><td>SheepShaver, compiled to WebAssembly</td></tr><tr><th>Disc</th><td>The original Edmark CD's Macintosh application and its data</td></tr><tr><th>Saves</th><td>None needed; every activity starts fresh</td></tr></tbody></table><p>The program runs here on the same emulated Power Mac and shared Mac OS 8.6 system as Millie's Math House and Oregon Trail II. Its activities and voices are on a small disk of their own, so it starts quickly and answers a click at once.</p>"
+      },
+      {
+        "h": "The activities",
+        "html": "<p>There are five, and every one is spoken and clicked rather than read. In the <strong>Weather Machine</strong> you set the temperature, the clouds and the wind, press GO and watch the weather you made, then try to make the weather the bear asks for. The <strong>Sorting Station</strong> puts things into groups by what they have in common. The <strong>Workshop</strong> builds toys and machines by matching parts to a plan. <strong>Acorn Pond</strong> is about the animals that live around a pond, and <strong>Make-A-Movie</strong> puts the frames of a short film into the right order and then plays it.</p><p>Like the rest of the House series, each activity can be explored freely or played as a set of questions.</p>"
+      },
+      {
+        "h": "Why people remember it",
+        "html": "<p>Sammy's Science House won a Parents' Choice Award in 1994 and was a fixture of preschool and kindergarten computers alongside Millie's Math House and Bailey's Book House. The Weather Machine in particular is the bit people describe when they are trying to remember what the game was called.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this the real Sammy's Science House?",
+        "a": "Yes: Edmark's 1994 CD version, running from the original Macintosh CD on an emulated Power Macintosh."
+      },
+      {
+        "q": "What age is it for?",
+        "a": "Edmark pitched it at about three to six. Everything is spoken, so a child does not need to read."
+      },
+      {
+        "q": "How does the Weather Machine work?",
+        "a": "Pick a temperature, a cloud and a wind with the buttons on the right, then press GO to see the weather you made."
+      },
+      {
+        "q": "Is it still sold?",
+        "a": "No. Edmark's House series has been out of print for many years; the brand was retired in 2017."
+      }
+    ],
+    "download": {
+      "heading": "Archives and originals",
+      "html": "<ul><li><a href=\"https://archive.org/details/SammysScienceHouse-iso\" rel=\"noopener\">Internet Archive</a>: the preserved CD this copy comes from.</li></ul>"
+    },
+    "related": [
+      "millies-math-house",
+      "reader-rabbit",
+      "simearth"
+    ],
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "waitMs": 60000
+        }
+      ]
+    }
+  },
+  {
     "slug": "scarab-of-ra",
     "title": "Scarab of Ra — Play the Classic Mac Shareware Adventure Free",
     "description": "Scarab of Ra, Rick Holzgrafe's 1987 Macintosh pyramid adventure, playable free in your browser. Map the maze, watch your food and health, find the scarab.",
