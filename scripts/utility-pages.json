@@ -39,6 +39,10 @@
       {
         "h": "Where the file goes",
         "html": "<p>Nowhere. The emulator is WebAssembly running in this tab, and your file is read by JavaScript on your own machine and passed straight into the emulated Mac's memory. There is no upload, no server round trip, and no copy kept anywhere.</p><p>Anything you then save inside the emulated Mac is stored in your browser's own storage. It survives closing the tab. It does not follow you to another browser or another device, and clearing site data for this site will delete it.</p>"
+      },
+      {
+        "h": "Documents rather than programs",
+        "html": "<p>If the archive or disk turns out to hold old documents rather than software (MacWrite, ClarisWorks and AppleWorks, Word for Mac, WriteNow, PICT pictures), you do not need to boot a Mac to read them: our sister site <a href=\"https://openoldfile.com/\" rel=\"noopener\">openoldfile.com</a> opens those files directly in the browser and saves modern copies.</p>"
       }
     ],
     "faq": [
@@ -120,6 +124,10 @@
       {
         "h": "What happens when you drop a file in",
         "html": "<p>The file is copied into a shared folder on the emulated Macintosh's desktop. StuffIt Expander is already on the boot disk. Double-click the archive and it expands beside itself, exactly as it did in 1995.</p><p>If what comes out is an application, double-click it and it runs. If it is a document, the Mac will open it in whatever application on the disk claims its creator code, or tell you it cannot find one.</p><p>Nothing is uploaded. The whole thing happens in your browser.</p>"
+      },
+      {
+        "h": "Documents rather than programs",
+        "html": "<p>If the archive or disk turns out to hold old documents rather than software (MacWrite, ClarisWorks and AppleWorks, Word for Mac, WriteNow, PICT pictures), you do not need to boot a Mac to read them: our sister site <a href=\"https://openoldfile.com/\" rel=\"noopener\">openoldfile.com</a> opens those files directly in the browser and saves modern copies.</p>"
       }
     ],
     "faq": [
@@ -197,6 +205,10 @@
       {
         "h": "The other formats in the same family",
         "html": "<p><strong>MacBinary</strong> (<code>.bin</code>) solves the same problem with a binary container rather than text: a 128-byte header holding the filename, type, creator and fork lengths, then the data fork, then the resource fork, each padded to 128 bytes. It is more efficient than BinHex and was preferred wherever the transport was eight-bit clean, such as FTP in binary mode.</p><p><strong>AppleSingle</strong> and <strong>AppleDouble</strong> do the same job again for A/UX and network filesystems; AppleDouble is why a Mac-made ZIP contains a <code>__MACOSX</code> folder full of files whose names start with a dot underscore. Those are the resource forks.</p><p>All of them are here for the same reason: a Macintosh file was never just a stream of bytes, and every other system in the world assumed it was.</p>"
+      },
+      {
+        "h": "Documents rather than programs",
+        "html": "<p>If the archive or disk turns out to hold old documents rather than software (MacWrite, ClarisWorks and AppleWorks, Word for Mac, WriteNow, PICT pictures), you do not need to boot a Mac to read them: our sister site <a href=\"https://openoldfile.com/\" rel=\"noopener\">openoldfile.com</a> opens those files directly in the browser and saves modern copies.</p>"
       }
     ],
     "faq": [
