@@ -16,6 +16,15 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 VENDOR="$ROOT/vendor/infinite-mac"
 OUT="$ROOT/public/mac"
 
+# The macemu-specific entrypoint and vite config are not part of upstream
+# infinite-mac — they live only here, tracked, and are copied into the
+# submodule checkout on every build. Without this step they existed only as
+# untracked files inside vendor/infinite-mac, invisible to git and lost the
+# moment that checkout was deleted or re-cloned.
+cp "$ROOT/scripts/runtime-overlay/vite.runtime.config.ts" "$VENDOR/vite.runtime.config.ts"
+mkdir -p "$VENDOR/runtime"
+cp "$ROOT/scripts/runtime-overlay/runtime/"* "$VENDOR/runtime/"
+
 cd "$VENDOR"
 
 # --- dependencies -----------------------------------------------------------
