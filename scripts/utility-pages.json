@@ -498,8 +498,8 @@
   },
   {
     "slug": "classic-mac-emulator-online",
-    "title": "Mac Emulator Online — Run Classic Mac OS in Your Browser, Free",
-    "description": "A free Macintosh emulator that runs in your browser: System 6, System 7 and Mac OS 8.6, plus over 100 classic Mac games ready to play. No download, no plugin.",
+    "title": "Mac Emulator Online: Run a Classic Macintosh in Your Browser",
+    "description": "A free Macintosh emulator online: System 6, System 7 and Mac OS 8.6 in your browser, with over 120 classic Mac games ready to play. No download, no plugin.",
     "keywords": "mac emulator online, macintosh emulator online, mac emulator in browser, classic mac os emulator, system 7 emulator, mac os 7 emulator, mac os 8 emulator, basilisk ii online, sheepshaver online",
     "ogTitle": "A classic Mac emulator in your browser",
     "ogDescription": "System 6, System 7 and Mac OS 8.6, running in a tab. No download.",
@@ -548,6 +548,10 @@
         "a": "Real emulation. Mini vMac, Basilisk II and SheepShaver are mature open-source emulators compiled to WebAssembly; they execute the actual 68k or PowerPC instructions and boot Apple's real system software."
       },
       {
+        "q": "Is this a Mac emulator or a Mac simulator?",
+        "a": "An emulator. A simulator imitates how a Macintosh looks; an emulator pretends to be the hardware, so Apple’s real system software boots on it and real programs from the 1980s and 1990s run unmodified. Everything on this page is the genuine article, running on an imitation of the machine."
+      },
+      {
         "q": "Do I need to install anything?",
         "a": "No. It is a web page. There is no plugin, no extension and no account."
       },
@@ -589,7 +593,7 @@
         "desc": "Where the limits are."
       }
     ],
-    "updated": "2026-09-13",
+    "updated": "2026-10-06",
     "bootDisk": "system-7.5.3"
   }
 ]
