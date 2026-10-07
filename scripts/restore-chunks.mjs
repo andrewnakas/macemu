@@ -6,6 +6,7 @@
 //
 //   node scripts/restore-chunks.mjs              # every chunk any manifest references
 //   node scripts/restore-chunks.mjs oregon-trail # only this title's own + extra disks
+//   node scripts/restore-chunks.mjs system-7.5.3 # or one disk, by manifest name
 //   node scripts/restore-chunks.mjs --base https://macemu.com
 //
 // Each download is self-verifying: the file name IS blake2b(bytes), so a
@@ -27,6 +28,9 @@ const slug = args[0];
 
 function manifestsFor(slug) {
   if (!slug) return readdirSync(DISKS).filter((f) => f.endsWith(".json")).map((f) => join(DISKS, f));
+  // A disk with no title of its own (the loader's system-7.5.3, the shared
+  // OS images) is named directly.
+  if (existsSync(join(DISKS, `${slug}.json`))) return [join(DISKS, `${slug}.json`)];
   const pages = JSON.parse(readFileSync(resolve(ROOT, "scripts/app-pages.json"), "utf8"));
   const p = pages.find((x) => x.slug === slug);
   if (!p) throw new Error(`no catalogue entry for slug "${slug}"`);

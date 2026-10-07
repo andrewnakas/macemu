@@ -4719,6 +4719,165 @@
     "persist": true
   },
   {
+    "slug": "system-7",
+    "title": "System 7 Emulator Online — Run Mac OS 7.5 in Your Browser",
+    "description": "System 7.5 running free in your browser on an emulated Macintosh II, in colour. The Finder, Stickies, Note Pad and the Jigsaw Puzzle, with nothing to install.",
+    "keywords": "system 7 emulator, mac os 7 emulator, system 7.5 online, run system 7 in browser, macintosh ii emulator",
+    "ogTitle": "System 7.5 in your browser",
+    "ogDescription": "The whole System 7.5 desktop on an emulated Macintosh II, in colour.",
+    "crumb": "System 7",
+    "h1": "System 7.5 — the whole desktop",
+    "appName": "System 7.5",
+    "appType": "app",
+    "author": "Apple",
+    "year": 1996,
+    "genre": [
+      "Operating system"
+    ],
+    "categories": [
+      "Apps & utilities"
+    ],
+    "era": "system-7",
+    "machine": "Mac-II",
+    "screen": {
+      "w": 640,
+      "h": 480,
+      "depth": 8
+    },
+    "bootDisk": "system-7.5.3",
+    "provenance": "grey",
+    "licenseReason": "System 7.5.3 is Apple's. Apple published it as a free download from its own servers in the 1990s, has not sold it in nearly thirty years, and it runs on no machine Apple makes. Full reasoning is in <a href=\"https://github.com/andrewnakas/macemu/blob/main/notices/system-7.md\" rel=\"noopener\">notices/system-7.md</a>, and the <a href=\"/takedown/\">takedown promise</a> applies without argument.",
+    "verdict": {
+      "kind": "good",
+      "text": "Runs here"
+    },
+    "intro": "<p>Not a game and not an application: the whole machine. This is System 7.5.3 booting to its own desktop on an emulated Macintosh II, in colour, with the Finder, the Apple menu, the Control Strip along the bottom of the screen and a clock in the menu bar.</p>\n<p>System 7 was the Macintosh from 1991 until 1997, and most of the classic Mac software library was written for it. If you remember a Mac in a school lab, an office or a bedroom in the early 1990s, it was very probably running some version of this.</p>",
+    "launchNote": "Boots to the System 7.5 desktop on an emulated Macintosh II. ResEdit's window is open from the last time someone used this disk: close it, then double-click System 7.5 at the top right. Nothing you do here is kept between visits.",
+    "macControls": [
+      {
+        "keys": "Mouse",
+        "does": "Everything. It is a Mac."
+      },
+      {
+        "keys": "Apple menu (top left)",
+        "does": "Hold the button down: Stickies, Note Pad, Calculator, Jigsaw Puzzle, Control Panels"
+      },
+      {
+        "keys": "Double-click System 7.5",
+        "does": "Open the hard disk in the Finder"
+      },
+      {
+        "keys": "Cmd-N",
+        "does": "New folder in the Finder"
+      },
+      {
+        "keys": "Special menu",
+        "does": "Restart and Shut Down"
+      }
+    ],
+    "sections": [
+      {
+        "h": "How it works & what to expect",
+        "html": "<table class=\"spec-table\"><tbody><tr><th>Machine</th><td>Macintosh II, 640×480 in 256 colours</td></tr><tr><th>Processor</th><td>Motorola 68020, emulated</td></tr><tr><th>System</th><td>System 7.5.3, from 1996</td></tr><tr><th>Emulator</th><td>Mini vMac, compiled to WebAssembly</td></tr><tr><th>Changes</th><td>Not kept. Every visit starts from the same clean disk.</td></tr></tbody></table><p>A System 7 disk is small by modern standards, about twenty megabytes, so the first boot takes a few seconds rather than the minute the Mac OS 8 machine needs. Your browser keeps the pieces it has downloaded, and later visits start faster.</p>\n<p>Break it as much as you like. Drag the System Folder somewhere strange, change the desktop pattern, throw things in the Trash. Reload the page and it is back the way it was. That also means nothing you write in Note Pad or Stickies survives a reload, so don't keep anything there you want to keep.</p>"
+      },
+      {
+        "h": "What to actually look at",
+        "html": "<p><strong>The Apple menu.</strong> Press and hold on the apple at the top left. System 7 turned the Apple menu into something you could fill yourself: anything placed in the Apple Menu Items folder shows up there. 7.5 added submenus for Control Panels and for recently used applications and documents, which is why some items have arrows.</p>\n<p><strong>Stickies.</strong> Yellow notes on the desktop, new in System 7.5. It is still in macOS today, essentially unchanged.</p>\n<p><strong>The Jigsaw Puzzle.</strong> 7.5 replaced the original Macintosh sliding-tile Puzzle with a jigsaw of a picture, pieces scattered for you to drag back into place. It is good practice with a mouse, and surprisingly hard to stop doing.</p>\n<p><strong>Key Caps and the Scrapbook.</strong> Key Caps shows which character each key types in the current font, which is how you found ® or ¢ before character pickers existed. The Scrapbook is a place to keep clippings that survive between copy and paste.</p>\n<p><strong>The Control Strip</strong>, the row of small tiles at the bottom left. It was made for PowerBooks, so you could change the volume or the screen without opening a control panel, and this disk has it running on a desktop Mac.</p>\n<p><strong>ResEdit.</strong> Apple's own resource editor, on this disk next to the System Folder. Classic Mac files kept their icons, menus, dialog boxes and sounds as separate resources, and ResEdit let anyone open an application and change them. A generation of Mac users learned what a program was made of by doing exactly that.</p>"
+      },
+      {
+        "h": "Where System 7 sits in the story",
+        "html": "<p>System 7 shipped in May 1991, and it was the largest change to the Macintosh since 1984. 32-bit colour came built in. MultiFinder, which had let several programs run at once as an add-on, became the only way the Mac worked. It brought aliases, balloon help, file sharing between Macs on a network, TrueType fonts that scaled cleanly to any size, and virtual memory on machines that could use it.</p>\n<p>It also needed more machine: two megabytes of memory, twice what a Mac Plus came with, and plenty of people stayed on System 6 for years. That is why so much early software on this site runs on System 6 instead.</p>\n<p>What runs here is <strong>7.5.3</strong>, from 1996. System 7.5, released in 1994, added Stickies, the Jigsaw Puzzle, the menu-bar clock, WindowShade (double-click a title bar and the window rolls up into it) and Apple Guide's step-by-step help. 7.5.3 was a maintenance release that ran on both the old 68k Macs and the new Power Macintosh, and Apple made it a free download.</p>\n<p>The next release, 7.6 in 1997, was the first to be called Mac OS, which is why people still search for this as Mac OS 7. Mac OS 8 followed later that year, and <a href=\"/run/mac-os-8/\">it runs here too</a>.</p>"
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is this a real System 7?",
+        "a": "Yes. It is a real System 7.5.3 install booting on an emulated Macintosh II with a 68020 processor, not a picture or a re-creation of the interface."
+      },
+      {
+        "q": "Is System 7 the same as Mac OS 7?",
+        "a": "Yes. Apple called it System 7 until version 7.6 in 1997, which was the first release officially named Mac OS. People search for either name and mean the same system."
+      },
+      {
+        "q": "Does it save what I do?",
+        "a": "No. Every visit starts from the same clean disk, so notes, files and settings are gone after a reload. The games on this site do save; this machine is for looking around."
+      },
+      {
+        "q": "Can I run my own old Mac software on it?",
+        "a": "Not from this page, but the file loader opens a disk image or a .sit archive you bring on an emulated Mac of its own, running this same System 7.5."
+      },
+      {
+        "q": "Why a Macintosh II?",
+        "a": "Because Mini vMac brings the Macintosh II up in colour straight away. Basilisk II, which the file loader uses, starts in black and white until you change it in the Monitors control panel."
+      },
+      {
+        "q": "Why is ResEdit's window open when it starts?",
+        "a": "Because it was open on the disk when it was saved. Close it with the box at its top-left corner. ResEdit is Apple's own free resource editor and worth a look."
+      },
+      {
+        "q": "Does the internet work?",
+        "a": "No. The emulated Mac has no network connection."
+      },
+      {
+        "q": "Is this legal?",
+        "a": "Apple released System 7.5.3 as a free download in the 1990s and has not sold it in nearly thirty years. The reasoning is written out in full on the notice linked above, and the takedown promise is unconditional."
+      }
+    ],
+    "download": {
+      "heading": "Archives",
+      "html": "<ul><li><a href=\"https://infinitemac.org\" rel=\"noopener\">Infinite Mac</a> has every version of the classic Mac OS, from the project whose emulator builds this site uses.</li><li><a href=\"https://archive.org/search?query=system+7.5.3\" rel=\"noopener\">Internet Archive</a> keeps the System 7.5.3 install sets Apple released.</li></ul>"
+    },
+    "related": [
+      {
+        "href": "/run/mac-os-8/",
+        "title": "Mac OS 8",
+        "desc": "The next era, on a Power Macintosh."
+      },
+      {
+        "href": "/run/oregon-trail/",
+        "title": "The Oregon Trail",
+        "desc": "Something to run on System 7."
+      },
+      {
+        "href": "/collection/system-7/",
+        "title": "System 7 software",
+        "desc": "Everything here that runs on this era."
+      }
+    ],
+    "shotSetup": {
+      "screen": [
+        640,
+        480
+      ],
+      "steps": [
+        {
+          "waitMs": 35000
+        },
+        {
+          "click": [
+            13,
+            37
+          ]
+        },
+        {
+          "click": [
+            598,
+            45
+          ]
+        },
+        {
+          "key": "Meta+o",
+          "waitMs": 3000
+        }
+      ]
+    },
+    "updated": "2026-10-06",
+    "addedDate": "2026-10-06",
+    "rank": 2,
+    "screenshot": true,
+    "persist": false
+  },
+  {
     "slug": "prince-of-persia",
     "title": "Play Prince of Persia (1992) Online — The Macintosh Version",
     "description": "Jordan Mechner's Prince of Persia for the Macintosh, in colour, running in your browser. Sixty minutes to save the princess.",
