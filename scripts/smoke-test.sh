@@ -79,7 +79,10 @@ echo "Crawler surface"
 for p in sitemap.xml robots.txt llms.txt favicon.ico og.png; do
   [ "$(code "$U/$p")" = "200" ] && pass "/$p" || fail "/$p" "not 200"
 done
-curl -s "$U/robots.txt" | grep -q "Disallow: /play/" && pass "robots disallows /play/" || fail "robots.txt" "missing /play/ disallow"
+# /play/ and /embed/ must stay crawlable: they are noindex, and a crawler that
+# may not fetch them never sees it. /mac/ (the runtime and chunks) is closed.
+curl -s "$U/robots.txt" | grep -qE "Disallow: /(play|embed)/" && fail "robots.txt" "disallows /play/ or /embed/, hiding their noindex" || pass "robots leaves /play/ and /embed/ crawlable"
+curl -s "$U/robots.txt" | grep -q "Disallow: /mac/" && pass "robots disallows /mac/" || fail "robots.txt" "missing /mac/ disallow"
 
 echo "A non-browser fetcher gets the page, not a challenge"
 for ua in "Mediapartners-Google" "Googlebot/2.1" "GPTBot/1.0" "ClaudeBot/1.0"; do
