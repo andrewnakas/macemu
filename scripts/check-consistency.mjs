@@ -210,8 +210,17 @@ for (const file of htmlFiles) {
   if ((isPlay || isEmbed) && !/name="robots"[^>]*noindex/.test(html)) {
     fail(`${file}: missing noindex. It is the same title as its /run/ page with the article removed; indexing both invites a duplicate-content judgement on the page that matters.`);
   }
-  if ((isPlay || isEmbed) && !/rel="canonical" href="[^"]*\/run\//.test(html)) {
-    fail(`${file}: canonical should point at the /run/ page`);
+  // noindex plus a canonical pointing elsewhere is two contradictory signals;
+  // Google says pick one. These pages pick noindex.
+  if ((isPlay || isEmbed) && /rel="canonical"/.test(html)) {
+    fail(`${file}: is noindex and must not also name a canonical`);
+  }
+  if (!isPlay && !isEmbed && !/name="robots"[^>]*noindex/.test(html)) {
+    const t = (html.match(/<title>([^<]*)<\/title>/) || [])[1] || "";
+    const d = (html.match(/<meta name="description" content="([^"]*)"/) || [])[1] || "";
+    const len = (x) => x.replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">").length;
+    if (len(t) > 65) fail(`${file}: <title> is ${len(t)} chars; Bing and Google truncate past ~60–65`);
+    if (len(d) < 70 || len(d) > 165) fail(`${file}: meta description is ${len(d)} chars; keep it 70–165 or search engines write their own`);
   }
   if (file.startsWith("run/") && /mac-runtime\.js/.test(html)) {
     fail(`${file}: loads the emulator runtime directly. /run/ pages load it lazily through mac-player.js so that reading an article does not cost a multi-megabyte download.`);
@@ -308,8 +317,15 @@ section("Sitemap");
 section("Crawler files");
 {
   const robots = read("robots.txt") || "";
-  if (!/Disallow: \/play\//.test(robots)) fail("robots.txt should disallow /play/");
-  if (!/Disallow: \/embed\//.test(robots)) fail("robots.txt should disallow /embed/");
+  // A crawler can only obey the noindex on /play/ and /embed/ if it may fetch
+  // them. Disallowing them hides the tag and leaves the URLs indexable bare.
+  if (/Disallow: \/(play|embed)\//.test(robots)) fail("robots.txt disallows /play/ or /embed/, which hides their noindex from crawlers");
+  // Every named bot group replaces the * group for that bot, so each one has
+  // to repeat the /mac/ rule or it walks straight into the disk chunks.
+  const groups = robots.split(/\n(?=User-agent:)/).filter((g) => /^User-agent:/m.test(g));
+  for (const g of groups) {
+    if (!/Disallow: \/mac\//.test(g)) fail(`robots.txt group "${g.match(/User-agent: *(\S+)/)[1]}" has no Disallow: /mac/`);
+  }
   if (!/Sitemap: /.test(robots)) fail("robots.txt has no Sitemap line");
 
   // A takedown promise of 48 hours is worth nothing if the address behind it

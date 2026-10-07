@@ -149,10 +149,14 @@ export const FREE_BADGE = ` <span class="badge-free" title="Free and complete �
 // `rec` names the list a card sits in ("also", "hub", …). It rides on the link
 // as data-rec so one delegated click listener (scripts/site.mjs) can report
 // which recommendations people actually follow.
-export function posterCard(p, rec) {
+// `eager` is for the first row or two of a grid: lazy-loading the cards a
+// visitor sees first only delays the page's largest paint.
+export const EAGER_CARDS = 8;
+
+export function posterCard(p, rec, eager = false) {
   const shot = screenshotFile(p);
   const art = shot
-    ? `<img class="pc-shot" src="/run/${p.slug}/${shot}" width="320" height="240" loading="lazy" alt="${esc(shotAlt(p))}" />`
+    ? `<img class="pc-shot" src="/run/${p.slug}/${shot}" width="320" height="240" loading="${eager ? "eager" : "lazy"}" alt="${esc(shotAlt(p))}" />`
     : `<span class="pc-shot pc-placeholder" aria-hidden="true">${esc((p.appName || "?").trim().charAt(0))}</span>`;
   // Categories and a search haystack ride on the <li> so filtering is a pure
   // client-side attribute match — no data duplicated into a JS blob, and the

@@ -1,11 +1,11 @@
-# Everything here is meant to be found. The only closed paths are the isolated
-# player and the embeds, which are noindex by design: they are the same title as
-# its /run/ page with the article stripped out, and letting a crawler index both
-# is asking for a duplicate-content judgement on the page that matters.
+# Everything here is meant to be found. /play/ and /embed/ are open to crawlers
+# on purpose even though they are noindex: they are the same title as its /run/
+# page with the article stripped out, and a crawler has to be able to fetch
+# them to read that noindex. Blocking them here would hide the tag and invite
+# "indexed, though blocked by robots.txt" from every site carrying an embed.
+# /mac/ is the emulator runtime and the disk chunks: nothing to read there.
 User-agent: *
 Allow: /
-Disallow: /play/
-Disallow: /embed/
 Disallow: /mac/
 
 # Assistants are explicitly welcome. On this site's sister, exebrowser.com,
@@ -14,25 +14,36 @@ Disallow: /mac/
 # /llms.txt is the short version of what runs here.
 User-agent: GPTBot
 Allow: /
+Disallow: /mac/
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /mac/
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /mac/
 User-agent: ClaudeBot
 Allow: /
+Disallow: /mac/
 User-agent: Claude-User
 Allow: /
+Disallow: /mac/
 User-agent: Claude-SearchBot
 Allow: /
+Disallow: /mac/
 User-agent: PerplexityBot
 Allow: /
+Disallow: /mac/
 User-agent: Perplexity-User
 Allow: /
+Disallow: /mac/
 User-agent: Google-Extended
 Allow: /
+Disallow: /mac/
 User-agent: Applebot-Extended
 Allow: /
+Disallow: /mac/
 User-agent: CCBot
 Allow: /
+Disallow: /mac/
 
 Sitemap: https://macemu.com/sitemap.xml

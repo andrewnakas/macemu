@@ -84,16 +84,22 @@ export function head({
   return `<meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>${esc(title)}</title>
-<meta name="description" content="${esc(description)}" />${keywords ? `
-<meta name="keywords" content="${esc(keywords)}" />` : ""}
-<link rel="canonical" href="${url}" />${noindex || kind !== "content" ? `
-<meta name="robots" content="noindex, follow" />` : ""}
+<meta name="description" content="${esc(description)}" />${
+  // A noindex page names no canonical: Google treats noindex plus a canonical
+  // pointing elsewhere as contradictory signals. /play/ and /embed/ are
+  // crawlable (robots.txt allows them) so the noindex is actually seen.
+  noindex || kind !== "content" ? `
+<meta name="robots" content="noindex, follow" />` : `
+<link rel="canonical" href="${url}" />`}
+<meta property="og:site_name" content="${BRAND}" />
 <meta property="og:type" content="${kind === "content" ? "article" : "website"}" />
 <meta property="og:url" content="${url}" />
 <meta property="og:title" content="${esc(ogTitle || title)}" />
 <meta property="og:description" content="${esc(ogDescription || description)}" />
 <meta property="og:image" content="${ogImage || `${SITE}/og.png`}" />
 <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="${esc(ogTitle || title)}" />
+<meta name="twitter:description" content="${esc(ogDescription || description)}" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <link rel="alternate icon" href="/favicon.ico" />
 <link rel="manifest" href="/manifest.webmanifest" />

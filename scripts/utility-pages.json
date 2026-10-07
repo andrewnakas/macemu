@@ -191,7 +191,7 @@
       ".bin",
       ".sit"
     ],
-    "onHome": false,
+    "onHome": true,
     "intro": "<p>A <code>.hqx</code> file is BinHex: a complete Macintosh file — both forks, the type and creator codes, a checksum — converted into printable text so it could survive being pasted into an email or posted to Usenet. Drop one here. It is decoded in your browser and handed to an emulated Macintosh with everything still attached.</p>",
     "sections": [
       {
@@ -355,7 +355,7 @@
       ".cdr",
       ".img"
     ],
-    "onHome": false,
+    "onHome": true,
     "intro": "<p>A <code>.toast</code> file is a CD image made by Toast, the Macintosh burning software that everyone with a CD writer owned. Drop one in and it mounts as a CD on an emulated Macintosh, which is generally the only thing that will read it properly — Toast images of Mac CDs use HFS, which Windows cannot mount at all.</p>",
     "sections": [
       {

@@ -1,7 +1,7 @@
 [
   {
     "slug": "guide",
-    "title": "What Classic Mac Software Actually Runs in a Browser — An Honest Guide",
+    "title": "What Classic Mac Software Runs in a Browser — An Honest Guide",
     "description": "Which Macintosh software runs in a browser and which cannot: System 6 through Mac OS 9 work, Mac OS X does not. Why, and what to do instead.",
     "keywords": "run mac apps in browser, can you emulate mac os, classic mac emulator, mac os x emulator browser, basilisk ii sheepshaver",
     "crumb": "What runs",
@@ -142,7 +142,7 @@
   {
     "slug": "terms",
     "title": "Terms — macemu",
-    "description": "Terms of use for macemu.",
+    "description": "Terms of use for macemu: free and as-is, no warranty, you answer for what you load, and nothing still sold is hosted here.",
     "keywords": "terms macemu",
     "crumb": "Terms",
     "h1": "Terms of use",

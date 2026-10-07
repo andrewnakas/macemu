@@ -62,7 +62,7 @@ import { dirname, resolve } from "node:path";
 import { createHash } from "node:crypto";
 import {
   SITE, esc, xmlEsc, isPlayable, isSold, emulatorFor, screenshotFile, isNew,
-  NEW_BADGE, FREE_BADGE, posterCard, byoCard, sortPlayable, categoryCounts,
+  NEW_BADGE, FREE_BADGE, posterCard, EAGER_CARDS, byoCard, sortPlayable, categoryCounts,
   categoryChips, jsonText, maxDate, toRfc822, itemListLd, ERA_ORDER, ERA_LABELS, shotAlt,
 } from "./catalogue.mjs";
 import {
@@ -181,8 +181,11 @@ const screenOf = (p) => p.screen || { w: 640, h: 480, depth: 8 };
 // ── structured data ────────────────────────────────────────────────────────
 function appLd(p) {
   const url = `${SITE}/run/${p.slug}/`;
-  const common = `  "name": ${jsonText(p.appName)},
+  const common = `  "@id": "${url}#app",
+  "name": ${jsonText(p.appName)},
   "url": "${url}",
+  "mainEntityOfPage": "${url}",
+  "isPartOf": { "@id": "${SITE}/#website" },
   "image": "${ogImage(p)}",
   "description": ${jsonText(p.description)},
   "operatingSystem": "Web Browser"${shotUrl(p) ? `,
@@ -379,16 +382,23 @@ function figureHtml(p) {
 // engines like it; more to the point, people ask it constantly.
 function specLine(p) {
   const s = screenOf(p);
-  const bits = [
-    p.year ? `${p.year}` : "",
-    p.author || "",
-    ERA_LABELS[p.era] || "",
+  // The era links to its collection and the emulator to the emulator page:
+  // the two pages a reader of a title is most likely to want next, and the
+  // two that otherwise get almost no links from the titles they gather.
+  const era = ERA_LABELS[p.era] && pages.some((q) => q.era === p.era)
+    ? `<a href="/collection/${esc(p.era)}/">${esc(ERA_LABELS[p.era])}</a>` : esc(ERA_LABELS[p.era] || "");
+  const emu = emulatorFor(p)
     // On a guide page the machine is what the loader WILL use, not what the
     // page is running — say so, rather than implying something is live.
-    emulatorFor(p) ? `${isPlayable(p) ? "" : "runs under "}${emulatorFor(p)} (${(p.machine || "").replace(/-/g, " ")})` : "",
-    `${s.w}×${s.h}${s.depth === 1 ? " black and white" : s.depth ? ` at ${s.depth}-bit colour` : ""}`,
+    ? `${isPlayable(p) ? "" : "runs under "}<a href="/classic-mac-emulator-online/">${esc(emulatorFor(p))}</a> (${esc((p.machine || "").replace(/-/g, " "))})` : "";
+  const bits = [
+    p.year ? esc(`${p.year}`) : "",
+    esc(p.author || ""),
+    era,
+    emu,
+    esc(`${s.w}×${s.h}${s.depth === 1 ? " black and white" : s.depth ? ` at ${s.depth}-bit colour` : ""}`),
   ].filter(Boolean);
-  return `<p class="muted small" style="margin-top:0.25rem;">${bits.map(esc).join(" · ")}</p>`;
+  return `<p class="muted small" style="margin-top:0.25rem;">${bits.join(" · ")}</p>`;
 }
 
 // The direct answer to "can I play X online?", in one paragraph at the top.
@@ -534,6 +544,11 @@ function runPage(p) {
       breadcrumbLd([{ name: "Home", href: "/" }, { name: "All titles", href: "/run/" }, { name: p.crumb, href: `/run/${p.slug}/` }]),
       appLd(p), faqLd(p),
     ],
+    // The poster behind Start is the largest thing on a playable page, and
+    // mac-player.js sets it as a CSS background, which the preload scanner
+    // cannot see. Name it up front so it is not discovered last.
+    extraHead: playable && screenshotFile(p) && existsSync(resolve(ROOT, "run", p.slug, screenshotFile(p)))
+      ? `\n<link rel="preload" as="image" href="/run/${esc(p.slug)}/${esc(screenshotFile(p))}" fetchpriority="high" />` : "",
   });
   const body = `${header()}
 
@@ -541,13 +556,14 @@ function runPage(p) {
   ${crumbs([{ name: "Home", href: "/" }, { name: "All titles", href: "/run/" }, { name: p.crumb }])}
 
   <section class="card">
-    <h1 class="page-title">${esc(p.h1 || p.crumb)} <span class="verdict ${p.verdict.kind}">${esc(p.verdict.text)}</span>${!playable && p.fullyFree ? `
-    <span class="verdict good" title="The licence is clear; this site simply does not host a copy">Freely licensed</span>` : ""}</h1>
+    <h1 class="page-title">${esc(p.h1 || p.crumb)}</h1>
+    <p class="title-badges"><span class="verdict ${p.verdict.kind}">${esc(p.verdict.text)}</span>${!playable && p.fullyFree ? `
+    <span class="verdict good" title="The licence is clear; this site simply does not host a copy">Freely licensed</span>` : ""}</p>
     ${specLine(p)}${p.updated ? `
     <p class="muted small">Guide updated ${esc(monthYear(p.updated))}${playable ? "" : " · needs your own copy"}</p>` : ""}${quickAnswer(p)}
     ${p.intro}${playerBlock(p)}${p.launchNote && playable ? `
     <p class="muted small">${esc(p.launchNote)}</p>` : ""}${controlsHtml(p)}${figureHtml(p)}${soldHtml(p)}${licenseHtml(p)}
-  </section>${downloadHtml(p)}${sectionsHtml(p.sections)}${faqHtml(p)}${embedBlockHtml(p)}${alsoPlayHtml(p, pages)}${relatedHtml(p.related, pages)}${hubLinksHtml(p)}
+  </section>${downloadHtml(p)}${sectionsHtml(p.sections)}${faqHtml(p)}${embedBlockHtml(p)}${alsoPlayHtml(p, pages)}${relatedHtml(p.related, pages)}${hubLinksHtml(p)}${postLinksHtml(p)}
 </main>
 
 ${footer()}`;
@@ -566,8 +582,7 @@ function playPage(p) {
   const headHtml = head({
     title: `${p.appName} — ${BRAND}`,
     description: `${p.appName} running in ${emulatorFor(p) || "an emulator"}.`,
-    path: `/play/${p.slug}/`, kind: "play",
-    canonical: `${SITE}/run/${p.slug}/`, ogImage: ogImage(p),
+    path: `/play/${p.slug}/`, kind: "play", ogImage: ogImage(p),
     extraHead: `\n<meta name="theme-color" content="#131313" />`,
   });
   const body = `<div class="playbar">
@@ -588,18 +603,17 @@ function playPage(p) {
 // ── /embed/<slug>/ — for other people's sites ──────────────────────────────
 // Runs in fallback mode, because the host page almost certainly is not
 // cross-origin isolated. Slower, and honest about it: the bar links out to the
-// full-speed page, which is also the backlink.
+// title's /run/ page, which runs at full speed and is the page that ranks.
 function embedPage(p) {
   const s = screenOf(p);
   const headHtml = head({
     title: `${p.appName} (embed) — ${BRAND}`,
     description: `${p.appName} embedded from ${BRAND}.`,
     path: `/embed/${p.slug}/`, kind: "embed",
-    canonical: `${SITE}/run/${p.slug}/`,
     extraHead: `\n<meta name="theme-color" content="#131313" />`,
   });
   const body = `${macMount(p, { mode: "fallback" })}
-<div class="embedbar"><a id="embed-out" href="${SITE}/play/${p.slug}/?utm_source=embed&amp;utm_medium=embed&amp;utm_campaign=${esc(p.slug)}" target="_blank" rel="noopener">▶ Full speed on ${BRAND}</a></div>
+<div class="embedbar"><a id="embed-out" href="${SITE}/run/${p.slug}/?utm_source=embed&amp;utm_medium=embed&amp;utm_campaign=${esc(p.slug)}" target="_blank" rel="noopener">▶ Full speed on ${BRAND}</a></div>
 <script>
   // Name the site this embed is sitting on, so a visit that comes through it
   // is credited to that site rather than to macemu.com's own /embed/ page —
@@ -655,7 +669,7 @@ ${playNow.length ? `  <section class="card">
     <h2>Play now</h2>
 ${gridFilter(playNow)}
     <ul class="poster-grid">
-${playNow.map((q) => posterCard(q, "catalog")).join("\n")}
+${playNow.map((q, i) => posterCard(q, "catalog", i < EAGER_CARDS)).join("\n")}
 ${byoCard()}
     </ul>
   </section>` : ""}
@@ -718,7 +732,7 @@ ${playNow.length ? `  <section class="card">
     <h2>Start here</h2>
 ${gridFilter(playNow)}
     <ul class="poster-grid">
-${playNow.map((q) => posterCard(q, "home")).join("\n")}
+${playNow.map((q, i) => posterCard(q, "home", i < EAGER_CARDS)).join("\n")}
 ${byoCard()}
     </ul>
   </section>` : `  <section class="card">
@@ -804,6 +818,30 @@ for (const h of existsSync(HUBS_FILE) ? JSON.parse(readFileSync(HUBS_FILE, "utf8
 // "More like this" at the foot of a title page: every hub the title appears
 // on. This is what makes the hubs part of the site rather than a side door —
 // without it they are linked only from the homepage.
+// The titles a blog post is about: the ones it names for its card, plus every
+// /run/ page its text links to. Used in both directions, so a post and the
+// games it discusses always point at each other.
+function postTitles(post) {
+  const linked = [...String(post.body).matchAll(/href="\/run\/([a-z0-9-]+)\/"/g)].map((m) => m[1]);
+  const slugs = new Set([...(post.cardSlugs || []), ...linked]);
+  return pages.filter((q) => slugs.has(q.slug) && isPlayable(q));
+}
+
+function postLinksHtml(p) {
+  const about = posts.filter((post) => postTitles(post).some((q) => q.slug === p.slug));
+  if (!about.length) return "";
+  return `
+  <section class="card">
+    <h2>Read more</h2>
+    <div class="card-grid">
+${about.map((post) => `      <a class="link-card" href="/blog/${post.slug}/" data-rec="post" data-slug="${esc(post.slug)}">
+        <strong>${esc(post.crumb)}</strong>
+        <span>${esc(post.description)}</span>
+      </a>`).join("\n")}
+    </div>
+  </section>`;
+}
+
 function hubLinksHtml(p) {
   const hubs = CATEGORY_HUBS.filter((h) => h.match(p));
   if (!hubs.length) return "";
@@ -842,7 +880,7 @@ function categoryPage(hub) {
 ${playNow.length ? `  <section class="card">
     <h2>Play now</h2>
     <ul class="poster-grid">
-${playNow.map((q) => posterCard(q, "hub")).join("\n")}
+${playNow.map((q, i) => posterCard(q, "hub", i < EAGER_CARDS)).join("\n")}
     </ul>
   </section>` : ""}
 </main>
@@ -864,7 +902,10 @@ ${footer()}`;
 // poorer game to someone else's audience.
 function embedSnippet(p) {
   const s = p.screen || { w: 640, h: 480 };
-  return `<iframe src="${SITE}/embed/${p.slug}/"\n        width="${s.w}" height="${s.h}"\n        style="border:0;max-width:100%"\n        allowfullscreen\n        title="${esc(p.appName)}"></iframe>`;
+  // The line under the frame is the attribution, and the only part of an
+  // embed a search engine counts as a link: links inside an iframe belong to
+  // the framed page, not to the site carrying it.
+  return `<iframe src="${SITE}/embed/${p.slug}/"\n        width="${s.w}" height="${s.h}"\n        style="border:0;max-width:100%"\n        allowfullscreen\n        title="${esc(p.appName)}"></iframe>\n<p><a href="${SITE}/run/${p.slug}/">Play ${esc(p.appName)}</a> free on ${BRAND}</p>`;
 }
 
 function embedBlockHtml(p) {
@@ -957,7 +998,7 @@ function collectionPage(era) {
 ${playNow.length ? `  <section class="card">
     <h2>Play now</h2>
     <ul class="poster-grid">
-${playNow.map((q) => posterCard(q, "collection")).join("\n")}
+${playNow.map((q, i) => posterCard(q, "collection", i < EAGER_CARDS)).join("\n")}
     </ul>
   </section>` : ""}
 ${list.filter((p) => !isPlayable(p)).length ? `  <section class="card">
@@ -1125,11 +1166,17 @@ function blogPost(post) {
     <h1 class="page-title">${esc(post.title)}</h1>
     <p class="muted small">${esc(monthYear(post.date))} · ${esc(post.author)}</p>
     ${post.body.replace(/<(\/?)h3>/g, "<$1h2>")}
-  </article>
+  </article>${postTitles(post).length ? `
   <section class="card">
-    <h2>More</h2>
+    <h2>Play the games in this post</h2>
+    <ul class="poster-grid">
+${postTitles(post).map((q) => posterCard(q, "post")).join("\n")}
+    </ul>
+  </section>` : ""}
+  <section class="card">
+    <h2>More from the blog</h2>
     <div class="card-grid">
-${posts.filter((q) => q.slug !== post.slug).slice(0, 2).map((q) => `      <a class="link-card" href="/blog/${q.slug}/">
+${posts.filter((q) => q.slug !== post.slug).map((q) => `      <a class="link-card" href="/blog/${q.slug}/">
         <strong>${esc(q.crumb)}</strong>
         <span>${esc(q.description)}</span>
       </a>`).join("\n")}
@@ -1202,22 +1249,32 @@ ${footer()}`,
 // ── sitemap, feed, llms.txt ────────────────────────────────────────────────
 // Only indexable pages belong here: /play/ and /embed/ are noindex by design,
 // and listing them would be telling a crawler two different things at once.
+// The date of the last template change that altered what every page says (not
+// a CSS tweak). Each lastmod is at least this, so a site-wide change reaches
+// search engines through the sitemap and `indexnow.mjs --changed` like any
+// other edit. Bump it only for changes a reader would notice.
+const TEMPLATE_UPDATED = "2026-10-06";
+
 function sitemapXml(staticPaths) {
-  const entries = [
+  const raw = [
     { loc: "/", lastmod: maxDate(pages.map((p) => p.updated)) },
     { loc: "/run/", lastmod: maxDate(pages.map((p) => p.updated)) },
-    ...pages.map((p) => ({ loc: `/run/${p.slug}/`, lastmod: p.updated })),
+    ...pages.map((p) => ({ loc: `/run/${p.slug}/`, lastmod: p.updated, image: shotUrl(p) })),
     ...ERA_ORDER.filter((e) => pages.some((p) => p.era === e)).map((e) => ({ loc: `/collection/${e}/`, lastmod: maxDate(pages.filter((p) => p.era === e).map((p) => p.updated)) })),
     ...CATEGORY_HUBS.filter((h) => pages.some(h.match)).map((h) => ({ loc: `/${h.slug}/`, lastmod: maxDate(pages.filter(h.match).map((p) => p.updated)) })),
     { loc: `/${EMBED_HUB.slug}/`, lastmod: maxDate(pages.map((p) => p.updated)) },
     ...utils.map((u) => ({ loc: `/${u.slug}/`, lastmod: u.updated })),
     ...staticPaths.map((s) => ({ loc: s.loc, lastmod: s.lastmod })),
   ];
+  const entries = raw.map((e) => ({ ...e, lastmod: maxDate([e.lastmod, TEMPLATE_UPDATED]) }));
+  // Screenshots go in as image entries: people search for what these games
+  // looked like, and an image search result is a way in to the playable page.
   return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${entries.map((e) => `  <url>
     <loc>${xmlEsc(SITE + e.loc)}</loc>${e.lastmod ? `
-    <lastmod>${e.lastmod}</lastmod>` : ""}
+    <lastmod>${e.lastmod}</lastmod>` : ""}${e.image ? `
+    <image:image><image:loc>${xmlEsc(e.image)}</image:loc></image:image>` : ""}
   </url>`).join("\n")}
 </urlset>
 `;

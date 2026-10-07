@@ -2,7 +2,7 @@
   {
     "slug": "how-we-run-system-7-in-a-browser",
     "title": "How a 1991 Macintosh Boots in a Browser Tab in Two Seconds",
-    "description": "The stack behind macemu: WebAssembly emulators, content-addressed disk chunks, cross-origin isolation, and why the fast page and the readable page have to be different pages.",
+    "description": "The stack behind macemu: WebAssembly emulators, content-addressed disk chunks, cross-origin isolation, and why the fast page and the readable page differ.",
     "date": "2026-09-13",
     "author": "Andrew Nakas",
     "crumb": "How System 7 boots in a tab",
@@ -20,7 +20,7 @@
   {
     "slug": "what-shareware-licences-actually-say",
     "title": "What Shareware Licences Actually Say",
-    "description": "Most of the Macintosh catalogue between 1985 and 2000 was released on terms that explicitly permit copying it. Three licence files, read properly, and what they allow.",
+    "description": "Most of the 1985–2000 Macintosh catalogue was released on terms that explicitly permit copying it. Three licence files, read properly.",
     "date": "2026-09-16",
     "author": "Andrew Nakas",
     "crumb": "What shareware licences say",
