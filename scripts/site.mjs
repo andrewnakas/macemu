@@ -143,6 +143,7 @@ export const footer = () => `<footer>
     <a href="/privacy/">Privacy</a>
     <a href="/terms/">Terms</a>
   </nav>
+  <p class="small">Related projects: <a href="https://exebrowser.com/">ExeBrowser</a> · <a href="https://openoldfile.com/">OpenOldFile</a> · <a href="https://decompgames.com/">Decomp Games</a></p>
   <p class="muted small">${BRAND} is not affiliated with Apple Inc. Macintosh, Mac OS and System 7 are trademarks of Apple Inc.</p>
 </footer>`;
 

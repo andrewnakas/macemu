@@ -687,19 +687,39 @@ ${footer()}`;
   return page({ headHtml, bodyHtml: body, scripts: `<script src="/grid-filter.js?v=${av("grid-filter.js")}"></script>\n<script src="/continue-playing.js?v=${av("continue-playing.js")}"></script>` });
 }
 
+// The three questions the homepage's search traffic is actually asking. Every
+// answer restates something another page here already says — the emulator
+// page's FAQ, its "how the emulation works" section, the homepage itself — so
+// nothing in it is a new claim.
+const HOME_FAQ = [
+  {
+    q: "Can I run classic Mac OS in a browser?",
+    a: `Yes. Three open-source emulators compiled to WebAssembly — Mini vMac, Basilisk II and SheepShaver — boot Apple's real system software in a browser tab: System 6 on a black-and-white Macintosh, System 7 on a 68k Macintosh, and Mac OS 8.6 on a Power Macintosh. <a href="/classic-mac-emulator-online/">The emulator page</a> starts a plain Macintosh with nothing loaded.`,
+  },
+  {
+    q: "Is it free?",
+    a: "Yes, and there is nothing to buy. There is no account and nothing to install, nothing you open is uploaded, and your saves stay in your own browser.",
+  },
+  {
+    q: "Do I need a ROM?",
+    a: "Not one of your own. The emulators need Apple's ROM and system software to boot, exactly as a real Macintosh did, but every machine on this site boots straight away with nothing to download first.",
+  },
+];
+
 function homePage() {
   const playNow = sortPlayable(pages);
   const headHtml = head({
-    title: `${BRAND} — run classic Mac games and apps in your browser`,
-    description: "Over 100 classic Mac games and apps from System 6, System 7 and Mac OS 8, running in a browser tab. No download, no install. Open your own .sit or disk image too.",
+    title: `Mac Emulator Online: Classic Mac OS in a Browser — ${BRAND}`,
+    description: "A free Mac emulator online: System 6, System 7 and Mac OS 8 in a browser tab, with over 100 classic Mac games and apps. No download, install or account.",
     path: "/", kind: "content",
-    ld: [siteLd(), itemListLd(playNow, { name: "Classic Mac titles playable in the browser", url: `${SITE}/` })],
+    ld: [siteLd(), itemListLd(playNow, { name: "Classic Mac titles playable in the browser", url: `${SITE}/` }), faqLd({ faq: HOME_FAQ })],
   });
   const body = `${header()}
 
 <main class="prose">
   <section class="card">
-    <h1 class="page-title">Classic Mac games, running in a browser tab</h1>
+    <h1 class="page-title">Mac emulator online: classic Mac games in a browser tab</h1>
+    <p><strong>The short answer:</strong> yes, you can run classic Mac OS in a browser. ${BRAND} is a free Mac emulator online that boots Apple's real System 6, System 7 and Mac OS 8 in this tab, with over 100 classic games and apps ready to play and nothing to download or install.</p>
     <p>${BRAND} runs classic Macintosh software the way it actually ran: the real System software, the real applications, emulated in WebAssembly. Pick a title and it starts in a couple of seconds. Nothing installs, nothing is uploaded, and your saves stay in your own browser.</p>
     <p>Got a file of your own — a <code>.sit</code> from an old download, a <code>.img</code> off a Zip disk, a <code>.hqx</code> from a Usenet archive? <a href="/load-mac-file/">Drop it in the loader</a> and it opens on an emulated Mac.</p>
   </section>
@@ -763,6 +783,7 @@ ${utils.filter((u) => u.onHome).map((u) => `      <a class="link-card" href="/${
       </a>`).join("\n")}
     </div>
   </section>
+${faqHtml({ faq: HOME_FAQ })}
 </main>
 
 ${footer()}`;
@@ -874,7 +895,7 @@ function categoryPage(hub) {
 <main class="prose">
   ${crumbs([{ name: "Home", href: "/" }, { name: "All titles", href: "/run/" }, { name: hub.name }])}
   <section class="card">
-    <h1 class="page-title">${esc(hub.name)}</h1>
+    <h1 class="page-title">${esc(hub.h1 || hub.name)}</h1>
     ${hub.body}
   </section>
 ${playNow.length ? `  <section class="card">
